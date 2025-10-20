@@ -742,6 +742,20 @@ def deploy_to_webserver(html_content, staging_dir='JobAnalysis', webdav_machine=
             timeout=30.0  # 30 second timeout
         )
         
+        # Conservative connectivity test - use HEAD on staging root instead of PROPFIND
+        try:
+            print(f"Testing WebDAV connectivity to {webdav_machine}...")
+            # HEAD request is safer than PROPFIND - most servers support it
+            import requests
+            head_response = requests.head(
+                f'https://{webdav_machine}/staging/',
+                auth=(login, password),
+                timeout=10.0
+            )
+            print(f"Connectivity test: {head_response.status_code}")
+        except Exception as e:
+            print(f"Warning: Connectivity test failed ({e}), proceeding anyway...")
+        
         # Generate filename with timestamp 
         timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
         filename = f'{staging_dir}-{timestamp}.html'
