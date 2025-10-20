@@ -1,0 +1,5 @@
+# JobServe RSS Feed URLs
+# One URL per line, comments start with #
+# Each line corresponds to a different JobServe saved search filter
+
+http://www.jobserve.com/MySearch/5251D11283CB9F69.rss

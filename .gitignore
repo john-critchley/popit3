@@ -1,0 +1,78 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+*.log.gz
+
+# Data files and generated content
+*.tar.gz
+*.zip
+data/
+html/
+parsed/
+llm_output/
+job_requests/
+models/
+
+# Generated reports (keep source code, ignore generated HTML)
+job_analysis_report_*.html
+job_analysis_results_*.txt
+
+# Lock files and temporary files
+*.lock
+*.tmp
+out*.log
+lr
+d
+ct
+
+# Personal/sensitive data
+*.key
+*.pem
+.env
+.netrc
+
+# Database files
+*.db
+*.sqlite
+*.gdbm
+
+# OS files
+.DS_Store
+Thumbs.db
