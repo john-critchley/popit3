@@ -397,7 +397,7 @@ def deploy_to_webserver(html_content, staging_dir='JobAnalysis', webdav_machine=
         # Read WebDAV credentials from ~/.netrc
         login, password = read_netrc()
         if not login or not password:
-            print("❌ Failed to read WebDAV credentials")
+            print("Failed to read WebDAV credentials")
             return False
         print(f"Using WebDAV credentials for {webdav_machine} (user: {login})")
             
@@ -422,7 +422,7 @@ def deploy_to_webserver(html_content, staging_dir='JobAnalysis', webdav_machine=
         try:
             print(f"Creating staging directory: {staging_dir}...")
             client.mkdir(staging_dir)
-            print(f"✅ Created staging directory: {staging_dir}")
+            print(f"Created staging directory: {staging_dir}")
         except Exception as e:
             # Directory might already exist, that's okay
             print(f"Directory creation: {e} (likely already exists)")
@@ -431,9 +431,9 @@ def deploy_to_webserver(html_content, staging_dir='JobAnalysis', webdav_machine=
         print(f"Uploading to staging/{staging_path}...")
         try:
             client.upload_fileobj(html_bytesio, staging_path, overwrite=True)
-            print(f"✅ Upload completed successfully")
+            print(f"Upload completed successfully")
         except Exception as e:
-            print(f"❌ Upload failed: {e}")
+            print(f"Upload failed: {e}")
             raise
         
         # Deploy to production using the deployment API (2-step process)
@@ -443,7 +443,7 @@ def deploy_to_webserver(html_content, staging_dir='JobAnalysis', webdav_machine=
         
         dir_response = requests.get(dir_deploy_url)
         if not dir_response.ok:
-            print(f"❌ Directory creation failed: {dir_response.status_code}")
+            print(f"Directory creation failed: {dir_response.status_code}")
             print(dir_response.text)
             return False
             
@@ -454,16 +454,16 @@ def deploy_to_webserver(html_content, staging_dir='JobAnalysis', webdav_machine=
         response = requests.get(deploy_url)
         if response.ok:
             production_url = f'https://www.critchley.biz/{staging_path}'
-            print(f"✅ Successfully deployed!")
-            print(f"🌐 View at: {production_url}")
+            print(f"Successfully deployed!")
+            print(f"View at: {production_url}")
             return production_url
         else:
-            print(f"❌ File deployment failed: {response.status_code}")
+            print(f"File deployment failed: {response.status_code}")
             print(response.text)
             return False
         
     except Exception as e:
-        print(f"❌ Error deploying to webserver: {e}")
+        print(f"Error deploying to webserver: {e}")
         return False
 
 
@@ -503,16 +503,16 @@ def main():
     local_filename = f"job_analysis_report_{datetime.datetime.now().strftime('%Y%m%d_%H%M%S')}.html"
     with open(local_filename, 'w', encoding='utf-8') as f:
         f.write(html_content)
-    print(f"📄 Local file saved: {local_filename}")
+    print(f"Local file saved: {local_filename}")
     
     # Deploy to webserver unless local-only mode
     if not args.local_only:
         print("\nDeploying to webserver...")
         result = deploy_to_webserver(html_content, args.staging_dir, args.webdav_machine)
         if result:
-            print(f"🎉 Report successfully deployed and available at: {result}")
+            print(f"Report successfully deployed and available at: {result}")
         else:
-            print("❌ Deployment failed, but local file is available")
+            print("Deployment failed, but local file is available")
             return 1
     
     return 0

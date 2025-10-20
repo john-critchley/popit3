@@ -195,7 +195,7 @@ def reset_jobs_by_model(target_model='gpt-4o-mini'):
             except Exception as e:
                 print(f'Error resetting {message_id}: {e}')
     
-    print(f'✅ Successfully reset {reset_count} jobs')
+    print(f'Successfully reset {reset_count} jobs')
     print(f'These jobs will now be re-processed with {target_model}')
     
     # Check how many jobs now need processing
