@@ -18,6 +18,7 @@ import requests
 import netrc
 import re
 from pathlib import Path
+import html as html_mod
 
 # Add current directory to path for local imports
 sys.path.append('.')
@@ -233,6 +234,40 @@ def generate_job_analysis_html(job_data, title="Job Analysis Report", score_limi
             background-color: #ecf0f1;
             border-radius: 5px;
         }}
+        /* Details/summary based expandable panel for score cells */
+        details.score-details {{
+            display: inline-block;
+            cursor: pointer;
+        }}
+        details.score-details summary {{
+            list-style: none;
+            cursor: pointer;
+            padding: 6px 10px;
+            border-radius: 6px;
+            background: rgba(0,0,0,0.04);
+            display: inline-block;
+            font-weight: bold;
+        }}
+        details.score-details summary::-webkit-details-marker {{ display:none; }}
+        details.score-details .expanded-panel {{
+            margin-top: 10px;
+            padding: 12px;
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+            max-height: 600px;
+            overflow: auto;
+        }}
+        details.score-details .expanded-panel .analysis-full {{
+            margin-bottom: 12px;
+        }}
+        details.score-details .expanded-panel iframe.job-frame {{
+            width: 100%;
+            height: 420px;
+            border: 1px solid #dcdcdc;
+            border-radius: 4px;
+        }}
     </style>
 </head>
 <body>
@@ -275,8 +310,32 @@ def generate_job_analysis_html(job_data, title="Job Analysis Report", score_limi
 
         html += f'<tr style="background-color: {bg_color};">\n'
         
-        # Score cell
-        html += f'<td class="score-cell" style="color: {score_color};">{score}/10</td>\n'
+        # Score cell -> clickable details showing full analysis + original HTML
+        msg_id = job.get('message_id', '')
+        details_id = f"details-{msg_id}"
+        # Determine if we have a processed file to iframe
+        iframe_html = ''
+        if processed_files and processed_files.get(msg_id):
+            pf = processed_files.get(msg_id)
+            iframe_src = f"https://www.critchley.biz/{staging_dir}/jobs/{pf}"
+            iframe_html = f'<iframe class="job-frame" src="{iframe_src}"></iframe>'
+        else:
+            # fallback - include truncated original HTML escaped
+            orig_html = get_original_html_content(msg_id) or ''
+            escaped = html_mod.escape(orig_html)
+            iframe_html = f'<pre style="white-space: pre-wrap; font-size: 12px;">{escaped}</pre>'
+
+        details_block = (
+            f'<details id="{details_id}" class="score-details">'
+            f'<summary style="color: {score_color};">{score}/10</summary>'
+            f'<div class="expanded-panel">'
+            f'<div class="analysis-full">{html_mod.escape(str(job.get("analysis", "No analysis available")))}</div>'
+            f'{iframe_html}'
+            f'</div>'
+            f'</details>'
+        )
+
+        html += f'<td class="score-cell">{details_block}</td>\n'
         
         # Job title
         job_title = job.get('job_title', 'Unknown Job')
@@ -405,18 +464,12 @@ def get_job_analysis_data(days_limit=7):
     return job_data
 
 
-def improve_job_html(html_content, job_title):
-    """Improve job HTML with better CSS styling and clean up display issues"""
+def improve_job_html(html_content, job_title, analysis_data=None):
+    """Improve job HTML with better CSS styling and add LLM analysis"""
     
     # Additional CSS to improve readability and fix display issues
     additional_css = """
     <style type="text/css">
-        /* Override problematic styles that might hide content */
-        * {
-            display: block !important;
-            visibility: visible !important;
-        }
-        
         /* Improve overall layout */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
@@ -471,6 +524,21 @@ def improve_job_html(html_content, job_title):
             margin: 20px 0 !important;
             border-radius: 5px !important;
         }
+        /* Button improvements */
+        .buttontable1,
+        .buttontable {
+            margin: 20px 0 !important;
+            border-radius: 5px !important;
+        }
+        
+        /* Ensure good contrast for all button text - force white text on buttons */
+        table.buttontable1 a,
+        table.buttontable a,
+        table[bgcolor="#00aeef"] a {
+            color: #ffffff !important;
+            text-decoration: none !important;
+            font-weight: bold !important;
+        }
         
         /* Mobile responsiveness */
         @media (max-width: 768px) {
@@ -503,11 +571,49 @@ def improve_job_html(html_content, job_title):
     html_content = re.sub(r'display:\s*none\s*!important', 'display: block', html_content, flags=re.IGNORECASE)
     html_content = re.sub(r'display:\s*none', 'display: block', html_content, flags=re.IGNORECASE)
     
-    # Add our improved CSS right after the head tag
-    html_content = re.sub(r'(<head[^>]*>)', r'\1' + additional_css, html_content, flags=re.IGNORECASE)
+    # Insert our improved CSS before the closing </head> tag (safer than inserting after <head>)
+    head_close = re.search(r'</head\s*>', html_content, flags=re.IGNORECASE)
+    if head_close:
+        pos = head_close.start()
+        html_content = html_content[:pos] + additional_css + html_content[pos:]
+    else:
+        # Fallback: prepend to the document
+        html_content = additional_css + html_content
+
+    # Note: Removed the buttontable anchor rewriting as it was making buttons unreadable
+    # The original button colors from JobServe emails are actually fine - both buttons 
+    # should have white text on their respective backgrounds
     
     # Update the title to be more descriptive
     html_content = re.sub(r'<title>.*?</title>', f'<title>Job Analysis: {job_title}</title>', html_content, flags=re.IGNORECASE)
+    
+    # Add LLM analysis section if provided
+    if analysis_data:
+        analysis_section = f"""
+        <div style="background-color: #f8f9fa; border: 2px solid #3498db; border-radius: 8px; margin: 20px; padding: 20px;">
+            <h2 style="color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 10px;">
+                🤖 AI Analysis (Score: {analysis_data.get('score', 'N/A')}/10)
+            </h2>
+            <div style="background-color: white; padding: 15px; border-radius: 5px; margin-top: 15px;">
+                <h3 style="color: #27ae60; margin-top: 0;">Analysis Summary:</h3>
+                <p style="line-height: 1.6; margin-bottom: 15px;">{analysis_data.get('analysis', 'No analysis available')}</p>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 20px;">
+                    <div style="background-color: #ecf0f1; padding: 10px; border-radius: 5px;">
+                        <strong style="color: #2c3e50;">Model Used:</strong><br>
+                        {analysis_data.get('model_used', 'Unknown')}
+                    </div>
+                    <div style="background-color: #ecf0f1; padding: 10px; border-radius: 5px;">
+                        <strong style="color: #2c3e50;">Processed:</strong><br>
+                        {analysis_data.get('processing_date', 'Unknown')}
+                    </div>
+                </div>
+            </div>
+        </div>
+        """
+        
+        # Insert the analysis section before the closing body tag
+        html_content = re.sub(r'</body>', analysis_section + '</body>', html_content, flags=re.IGNORECASE)
     
     return html_content
 
@@ -553,7 +659,15 @@ def process_and_upload_job_htmls(job_data, webdav_client, staging_dir='JobAnalys
             with open(html_file, 'r', encoding='utf-8', errors='ignore') as f:
                 original_html = f.read()
             
-            improved_html = improve_job_html(original_html, job_title)
+            # Prepare analysis data for inclusion
+            analysis_data = {
+                'score': job.get('score'),
+                'analysis': job.get('analysis'),
+                'model_used': job.get('model_used'),
+                'processing_date': job.get('processing_date')
+            }
+            
+            improved_html = improve_job_html(original_html, job_title, analysis_data)
             
             # Generate deterministic filename using CRC32 (like mailspool.py)
             company = job.get('company', '')
@@ -580,6 +694,35 @@ def process_and_upload_job_htmls(job_data, webdav_client, staging_dir='JobAnalys
             continue
     
     return processed_files
+
+
+def deploy_jobs_directory(staging_dir='JobAnalysis', processed_files=None):
+    """Deploy all processed job files individually from staging to production"""
+    if not processed_files:
+        print("No job files to deploy")
+        return True
+        
+    try:
+        success_count = 0
+        total_count = len(processed_files)
+        
+        for message_id, filename in processed_files.items():
+            # Deploy each job file individually
+            file_path = f'{staging_dir}/jobs/{filename}'
+            deploy_url = f'http://www.critchley.biz/deploy/{file_path}'
+            
+            response = requests.get(deploy_url)
+            if response.ok:
+                success_count += 1
+            else:
+                print(f"Failed to deploy {filename}: {response.status_code}")
+        
+        print(f"Successfully deployed {success_count}/{total_count} job analysis files")
+        return success_count == total_count
+        
+    except Exception as e:
+        print(f"Error deploying job files: {e}")
+        return False
 
 
 def deploy_to_webserver(html_content, staging_dir='JobAnalysis', webdav_machine='webdav.critchley.biz'):
@@ -723,6 +866,15 @@ def main():
         result = deploy_to_webserver(html_content, args.staging_dir, args.webdav_machine)
         if result:
             print(f"Report successfully deployed and available at: {result}")
+            
+            # Also deploy the jobs directory if we processed any job files
+            if processed_files:
+                print("Deploying job HTML files...")
+                jobs_result = deploy_jobs_directory(args.staging_dir, processed_files)
+                if jobs_result:
+                    print("Job analysis files are now accessible via 'View Analysis' links")
+                else:
+                    print("Warning: Some job files deployment failed, but main report is available")
         else:
             print("Deployment failed, but local file is available")
             return 1
