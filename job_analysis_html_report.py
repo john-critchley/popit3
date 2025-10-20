@@ -23,6 +23,8 @@ from pathlib import Path
 sys.path.append('.')
 import query_jobs
 import webdav4.client
+import shutil
+import zlib
 
 # Seaborn-style color palette
 SEABORN_COLORS = {
@@ -139,7 +141,7 @@ def get_score_colors(score):
         return SEABORN_COLORS['bg_poor'], SEABORN_COLORS['poor']
 
 
-def generate_job_analysis_html(job_data, title="Job Analysis Report", score_limit=6, staging_dir="JobAnalysis", days_limit=7):
+def generate_job_analysis_html(job_data, title="Job Analysis Report", score_limit=6, staging_dir="JobAnalysis", days_limit=7, processed_files=None):
     """Generate full HTML document for job analysis results"""
     
     html = f"""<!DOCTYPE html>
@@ -306,14 +308,26 @@ def generate_job_analysis_html(job_data, title="Job Analysis Report", score_limi
             email_date_str = str(email_date)
         html += f'<td class="date" style="color: {age_color};">{email_date_str}</td>\n'
         
+        # Links column - both job and analysis
+        html += '<td>'
+        
         # Link to actual job posting
         job_url = job.get('job_url', '')
         if job_url and not job_url.startswith('#'):
-            html += f'<td><a href="{job_url}" target="_blank" style="color: {score_color};">View Job</a></td>\n'
+            html += f'<p><a href="{job_url}" target="_blank" style="color: {score_color};">View Job</a></p>'
         else:
             message_id = job.get('message_id', '')
-            html += f'<td><span style="color: #999;" title="{message_id}">No Link</span></td>\n'
+            html += f'<p><span style="color: #999;" title="{message_id}">No Link</span></p>'
         
+        # Link to processed job analysis HTML
+        if processed_files and processed_files.get(job.get('message_id')):
+            analysis_filename = processed_files[job.get('message_id')]
+            analysis_url = f"https://www.critchley.biz/{staging_dir}/jobs/{analysis_filename}"
+            html += f'<p><a href="{analysis_url}" target="_blank" style="color: {score_color};">View Analysis</a></p>'
+        else:
+            html += f'<p><span style="color: #999;">Processing...</span></p>'
+        
+        html += '</td>\n'
         html += '</tr>\n'
 
     html += """
@@ -389,6 +403,183 @@ def get_job_analysis_data(days_limit=7):
     ))
     
     return job_data
+
+
+def improve_job_html(html_content, job_title):
+    """Improve job HTML with better CSS styling and clean up display issues"""
+    
+    # Additional CSS to improve readability and fix display issues
+    additional_css = """
+    <style type="text/css">
+        /* Override problematic styles that might hide content */
+        * {
+            display: block !important;
+            visibility: visible !important;
+        }
+        
+        /* Improve overall layout */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+            line-height: 1.6 !important;
+            color: #333 !important;
+            margin: 20px !important;
+            background-color: #f8f9fa !important;
+        }
+        
+        /* Container styling */
+        table.outertable {
+            background-color: white !important;
+            border-radius: 8px !important;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1) !important;
+            margin: 20px auto !important;
+            padding: 20px !important;
+        }
+        
+        /* Heading improvements */
+        h1, h2 {
+            color: #2c3e50 !important;
+            margin-bottom: 15px !important;
+        }
+        
+        h1 {
+            border-bottom: 3px solid #3498db !important;
+            padding-bottom: 10px !important;
+        }
+        
+        /* Text content improvements */
+        p.maintext {
+            font-size: 15px !important;
+            line-height: 1.7 !important;
+            margin-bottom: 15px !important;
+            text-align: justify !important;
+        }
+        
+        /* Link styling */
+        a {
+            color: #3498db !important;
+            text-decoration: none !important;
+            border-bottom: 1px dotted #3498db !important;
+        }
+        
+        a:hover {
+            color: #2980b9 !important;
+            border-bottom: 1px solid #2980b9 !important;
+        }
+        
+        /* Button improvements */
+        .buttontable1 {
+            margin: 20px 0 !important;
+            border-radius: 5px !important;
+        }
+        
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            body {
+                margin: 10px !important;
+            }
+            .outertable {
+                width: 100% !important;
+                margin: 10px 0 !important;
+            }
+        }
+        
+        /* Fix any hidden content */
+        .rest {
+            display: block !important;
+            visibility: visible !important;
+        }
+        
+        .mobileshow {
+            display: none !important;
+        }
+    </style>
+    """
+    
+    # Clean up the HTML and add our CSS
+    # Remove any existing style tags that might conflict
+    html_content = re.sub(r'<style[^>]*>.*?</style>', '', html_content, flags=re.DOTALL)
+    
+    # Remove display:none that might hide content
+    html_content = re.sub(r'display:\s*none\s*!important', 'display: block', html_content, flags=re.IGNORECASE)
+    html_content = re.sub(r'display:\s*none', 'display: block', html_content, flags=re.IGNORECASE)
+    
+    # Add our improved CSS right after the head tag
+    html_content = re.sub(r'(<head[^>]*>)', r'\1' + additional_css, html_content, flags=re.IGNORECASE)
+    
+    # Update the title to be more descriptive
+    html_content = re.sub(r'<title>.*?</title>', f'<title>Job Analysis: {job_title}</title>', html_content, flags=re.IGNORECASE)
+    
+    return html_content
+
+
+def get_job_html_file(message_id):
+    """Find the HTML file for a given message ID"""
+    html_dir = Path('./html')
+    if not html_dir.exists():
+        return None
+    
+    # Look for files containing the message ID
+    for html_file in html_dir.glob('*.html'):
+        if message_id in html_file.name:
+            return html_file
+    
+    return None
+
+
+def process_and_upload_job_htmls(job_data, webdav_client, staging_dir='JobAnalysis'):
+    """Process job HTML files with improved CSS and upload them to the jobs subdirectory"""
+    processed_files = {}
+    jobs_dir = f'{staging_dir}/jobs'
+    
+    # Create jobs subdirectory
+    try:
+        webdav_client.mkdir(jobs_dir)
+        print(f"Created jobs directory: {jobs_dir}")
+    except Exception as e:
+        print(f"Jobs directory creation: {e} (likely already exists)")
+    
+    for job in job_data:
+        message_id = job['message_id']
+        job_title = job['job_title']
+        
+        # Find the HTML file
+        html_file = get_job_html_file(message_id)
+        if not html_file or not html_file.exists():
+            print(f"HTML file not found for job: {job_title}")
+            continue
+        
+        try:
+            # Read and improve the HTML
+            with open(html_file, 'r', encoding='utf-8', errors='ignore') as f:
+                original_html = f.read()
+            
+            improved_html = improve_job_html(original_html, job_title)
+            
+            # Generate deterministic filename using CRC32 (like mailspool.py)
+            company = job.get('company', '')
+            location = job.get('location', '')
+            
+            hash_input = f"{message_id}{job_title}{company}{location}".encode('utf-8')
+            crc = zlib.crc32(hash_input) & 0xffffffff  # Ensure positive
+            filename = f"{crc:08x}.html"
+            
+            # Upload the improved HTML
+            html_bytes = improved_html.encode('utf-8')
+            html_bytesio = io.BytesIO(html_bytes)
+            html_bytesio.seek(0)
+            
+            job_path = f'{jobs_dir}/{filename}'
+            webdav_client.upload_fileobj(html_bytesio, job_path, overwrite=True)
+            
+            # Store the filename for linking
+            processed_files[message_id] = filename
+            print(f"Processed and uploaded: {job_title}")
+            
+        except Exception as e:
+            print(f"Error processing {job_title}: {e}")
+            continue
+    
+    return processed_files
 
 
 def deploy_to_webserver(html_content, staging_dir='JobAnalysis', webdav_machine='webdav.critchley.biz'):
@@ -490,13 +681,34 @@ def main():
     
     print(f"Found {len(job_data)} analyzed jobs")
     
+    # Process and upload job HTML files (if deploying to web)
+    processed_files = {}
+    if not args.local_only:
+        print("Processing job HTML files...")
+        try:
+            # Create WebDAV client for job file processing
+            login, password = read_netrc()
+            if login and password:
+                webdav_client = webdav4.client.Client(
+                    base_url=f'https://{args.webdav_machine}/staging',
+                    auth=(login, password),
+                    timeout=30.0
+                )
+                processed_files = process_and_upload_job_htmls(job_data, webdav_client, args.staging_dir)
+                print(f"Processed {len(processed_files)} job HTML files")
+            else:
+                print("Warning: Could not read WebDAV credentials for job file processing")
+        except Exception as e:
+            print(f"Warning: Job HTML processing failed: {e}")
+    
     # Generate HTML report
     print("Generating HTML report...")
     html_content = generate_job_analysis_html(
         job_data, 
         title="JobServe Analysis Report",
         score_limit=args.score_limit,
-        staging_dir=args.staging_dir
+        staging_dir=args.staging_dir,
+        processed_files=processed_files
     )
     
     # Save locally
