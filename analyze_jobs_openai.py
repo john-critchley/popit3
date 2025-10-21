@@ -167,36 +167,18 @@ Job Description:
                 "Reserve high scores (8-10) for genuinely exceptional matches where the candidate clearly exceeds expectations."
             )
             
-            user_content = '\\n'.join([
-                "Please analyze how well this CV matches the job description below.",
-                "Consider:",
-                "- Relevant technical skills and experience",
-                "- Industry experience and domain knowledge", 
-                "- Overall career progression and fit",
-                "- Likelihood of being selected for interview",
-                "",
-                "Provide a brief analysis (2-3 paragraphs) explaining the match quality,",
-                "highlighting strengths and any potential concerns.",
-                "",
-                "IMPORTANT: You must end your response with exactly this format:",
-                "Score: N",
-                "(where N is a single digit from 0-10)",
-                "",
-                "Scoring guide (use the FULL range - be discriminating at the top end):",
-                "- 0-2: Poor match, completely unsuitable (wrong industry/skills)",
-                "- 3-4: Below average match, major skill gaps or misalignment",
-                "- 5-6: Average match, some relevant experience but notable gaps", 
-                "- 7: Good match, relevant skills with minor gaps or adaptation needed",
-                "- 8: Strong match, most requirements met with minimal concerns",
-                "- 9: Excellent match, exceeds most requirements with very minor gaps",
-                "- 10: Perfect match, meets ALL requirements ideally (rare - reserve for exceptional fits)",
-                "",
-                "Job Details:",
-                job_info,
-                "",
-                "CV:",
-                self.cv_content
-            ])
+            # Load prompt from file
+            try:
+                with open('current_prompt.txt', 'r') as f:
+                    prompt_template = f.read().strip()
+            except FileNotFoundError:
+                print("Warning: current_prompt.txt not found, using fallback prompt")
+                prompt_template = (
+                    "Analyze how well this CV matches the job description.\\n"
+                    "Provide analysis and end with: Score: N (0-10)"
+                )
+            
+            user_content = f"{prompt_template}\\n\\nJob Details:\\n{job_info}\\n\\nCV:\\n{self.cv_content}"
             
             # Call OpenAI API
             print(f"Analyzing: {job_title}")
