@@ -1,0 +1,73 @@
+JobServe Filter Settings Recommendations
+========================================
+
+Based on analysis of 333 jobs showing 24.5% poor matches (≤4 score), these exclusions 
+should be added to your JobServe search criteria to reduce API costs:
+
+EXCLUDE THESE TERMS/PATTERNS:
+-----------------------------
+
+1. CARE & SOCIAL WORK (non-technical):
+   - "care worker"
+   - "support worker" 
+   - "care assistant"
+   - "care home"
+   - "1:1 support"
+   - "learning support assistant"
+
+2. EDUCATION (non-technical):
+   - "teaching assistant" 
+   - "school support"
+   - "learning support"
+   - "classroom assistant"
+   - "education support"
+
+3. HEALTHCARE (non-technical):
+   - "healthcare assistant"
+   - "nursing assistant" 
+   - "medical assistant"
+   - "care home"
+   - "hospital porter"
+
+4. GENERIC ADMIN/CLERICAL:
+   - "clerical assistant"
+   - "receptionist"
+   - "administrative assistant"
+   - "data entry clerk"
+   - "filing clerk"
+
+5. NON-TECHNICAL SUPPORT:
+   - "customer service"
+   - "call centre"
+   - "retail assistant"
+   - "shop assistant"
+
+CURRENT IMPACT:
+--------------
+- 64 out of 261 analyzed jobs (24.5%) scored ≤4 (poor matches)
+- Estimated waste: ~$0.64 in API costs on unsuitable jobs
+- Potential savings: 15-20% of analysis costs with better filtering
+
+KEEP THESE (Technical Support):
+------------------------------
+- "Application Support" ✓
+- "System Support" ✓  
+- "Infrastructure Support" ✓
+- "Technical Support" ✓
+- "IT Support" ✓
+
+HOW TO IMPLEMENT:
+----------------
+1. Log into JobServe account
+2. Edit your job alert criteria
+3. Add negative keywords/exclusions for the terms above
+4. Test with a few days of alerts to verify effectiveness
+
+MONITORING:
+----------
+The system now includes pre-filtering that will automatically skip obvious 
+mismatches before API analysis. Monitor filtering_report.py output to track
+effectiveness and adjust criteria as needed.
+
+Generated: October 21, 2025
+Analysis based on: 333 jobs, 261 analyzed, 24.5% poor matches

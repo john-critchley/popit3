@@ -246,19 +246,33 @@ Job Description:
             }
     
     def save_analysis_result(self, message_id, analysis_results):
-        """Save analysis results to the job database"""
+        """Save analysis results to the job database - handles both analyzed and pre-filtered jobs"""
         try:
-            # Prepare LLM results data for database
-            llm_data = {
-                'status': 'completed' if 'score' in analysis_results else 'failed',
-                'processing_completed': analysis_results['timestamp'],
-                'llm_score': analysis_results.get('score'),
-                'llm_explanation': analysis_results.get('analysis_text'),
-                'model_used': analysis_results.get('model'),
-                'tokens_used': analysis_results.get('tokens_used'),
-                'openai_response': analysis_results.get('api_response'),
-                'error': analysis_results.get('error')
-            }
+            # Handle pre-filtered jobs
+            if analysis_results.get('pre_filtered'):
+                llm_data = {
+                    'status': 'skipped',
+                    'processing_completed': analysis_results['timestamp'],
+                    'llm_score': None,
+                    'llm_explanation': f"Pre-filtered: {analysis_results['skip_reason']}",
+                    'model_used': 'pre-filter',
+                    'tokens_used': 0,
+                    'skip_reason': analysis_results['skip_reason'],
+                    'pre_filtered': True
+                }
+            else:
+                # Handle normal analyzed jobs
+                llm_data = {
+                    'status': 'completed' if 'score' in analysis_results else 'failed',
+                    'processing_completed': analysis_results['timestamp'],
+                    'llm_score': analysis_results.get('score'),
+                    'llm_explanation': analysis_results.get('analysis_text'),
+                    'model_used': analysis_results.get('model'),
+                    'tokens_used': analysis_results.get('tokens_used'),
+                    'openai_response': analysis_results.get('api_response'),
+                    'error': analysis_results.get('error'),
+                    'pre_filtered': False
+                }
             
             return query_jobs.update_job_llm_data(message_id, llm_data)
             
@@ -268,6 +282,47 @@ Job Description:
             traceback.print_exc()
             return False
     
+    def should_skip_job(self, job_title, job_description):
+        """
+        Determine if a job should be skipped before LLM analysis
+        Based on analysis of poor matches to save API costs
+        """
+        title_lower = job_title.lower()
+        desc_lower = job_description.lower() if job_description else ''
+        
+        # Exclude non-technical support roles
+        exclude_patterns = [
+            # Care/social work
+            ('care support', ['care', 'support']),
+            ('support worker', ['support', 'worker']),
+            ('support assistant', ['support', 'assistant']),
+            ('learning support', ['learning', 'support']),
+            ('1:1 support', ['1:1', 'support']),
+            
+            # Education (unless technical)
+            ('teacher', ['teacher', 'teaching']),
+            ('school', ['school']),
+            
+            # Healthcare (unless health tech)
+            ('nursing', ['nursing', 'nurse']),
+            ('healthcare assistant', ['healthcare', 'assistant']),
+            
+            # Generic admin/clerical
+            ('clerical', ['clerical']),
+            ('receptionist', ['receptionist']),
+            ('secretary', ['secretary']),
+        ]
+        
+        # Check exclusion patterns
+        for pattern_name, keywords in exclude_patterns:
+            if all(keyword in title_lower for keyword in keywords):
+                # But allow if it mentions technical terms
+                tech_terms = ['software', 'system', 'application', 'technical', 'it ', 'data', 'analyst', 'developer', 'engineer']
+                if not any(term in title_lower or term in desc_lower for term in tech_terms):
+                    return True, f"Non-technical {pattern_name} role"
+        
+        return False, None
+
     def analyze_jobs_batch(self, count=None):
         """
         Analyze a batch of jobs that need LLM processing
@@ -301,6 +356,33 @@ Job Description:
             print(f"\\n[{i}/{len(jobs_to_process)}] Processing job...")
             
             try:
+                # Pre-filter check
+                parsed = email_data.get('parsed', {})
+                job_title = parsed.get('job_title', '')
+                job_description = parsed.get('description', '')
+                
+                should_skip, skip_reason = self.should_skip_job(job_title, job_description)
+                
+                if should_skip:
+                    print(f"  ⏭ Skipping: {job_title}")
+                    print(f"     Reason: {skip_reason}")
+                    
+                    # Save skip result to avoid reprocessing
+                    skip_results = {
+                        'message_id': message_id,
+                        'job_title': job_title,
+                        'skip_reason': skip_reason,
+                        'timestamp': datetime.now().isoformat(),
+                        'pre_filtered': True
+                    }
+                    
+                    if self.save_analysis_result(message_id, skip_results):
+                        stats['skipped'] += 1
+                    else:
+                        stats['errors'] += 1
+                        print(f"  ✗ Failed to save skip result")
+                    continue
+                
                 # Analyze the job
                 analysis_results = self.analyze_job(message_id, email_data)
                 
@@ -320,7 +402,9 @@ Job Description:
         print(f"\\n=== Batch Analysis Complete ===")
         print(f"Processed: {stats['processed']}")
         print(f"Errors: {stats['errors']}")
+        print(f"Skipped: {stats['skipped']}")
         print(f"Total cost estimate: ~${stats['processed'] * 0.01:.2f} (rough estimate)")
+        print(f"Estimated savings: ~${stats['skipped'] * 0.01:.2f} from pre-filtering")
         
         return stats
 
