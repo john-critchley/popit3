@@ -11,7 +11,7 @@ import re
 
 import js_email
 from process_lock import retry_gdbm_operation, is_gdbm_locked_error
-import process_jobs_with_llm
+import analyze_jobs_openai
 
 home = os.environ['HOME']
 
@@ -564,7 +564,7 @@ def process_js_mails(segregated_js_emails):
             print(f"\nStarting LLM analysis for {len(newly_processed_message_ids)} newly processed JobServe jobs...")
             try:
                 # Call LLM processor with the newly processed message IDs
-                success = process_jobs_with_llm.main(argv=[], message_ids=newly_processed_message_ids)
+                success = analyze_jobs_openai.main(argv=[], message_ids=newly_processed_message_ids)
                 if success:
                     print("JobServe LLM analysis completed successfully")
                 else:
