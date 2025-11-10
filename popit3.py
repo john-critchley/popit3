@@ -31,7 +31,6 @@ import stat
 import requests  # pip install requests
 import gdata  # import gdata, use gdata.gdata_raw and gdata.gdata as needed
 import process_emails  # for do_processing
-from process_lock import ProcessLock
 
 #import pdb
 
@@ -189,21 +188,6 @@ def get_uidl_map(pop):
     return mapping
 
 
-#def get_size_map(pop):
-#    """Return {msgnum: size} from LIST."""
-#    resp = pop.send_cmd("LIST")
-#    pop.expect_ok(resp, "LIST")
-#    sizes = {}
-#    for ln in pop._read_multiline():
-#        s = ln.decode("utf-8", "replace").strip()
-#        if not s:
-#            continue
-#        parts = s.split()
-#        if len(parts) >= 2 and parts[0].isdigit() and parts[1].isdigit():
-#            sizes[int(parts[0])] = int(parts[1])
-#    return sizes
-
-
 def fetch_message_bytes(pop, msgnum):
     """RETR msgnum and return raw bytes (without the final dot line)."""
     resp = pop.send_cmd(f"RETR {msgnum}")
@@ -217,28 +201,6 @@ def del_message(pop, msgnum):
     pop.expect_ok(resp, "DELE")
 
 def main(
-    machine=None,
-    host="outlook.office365.com",
-    port=995,
-    user=None,
-    client_id=None,
-    authority="https://login.microsoftonline.com/consumers",
-    dbfile=os.path.expanduser(DEFAULT_DBFILE),
-    show=True,
-    reprocess=False
-):
-    # Prevent concurrent execution
-    lock_file = "/tmp/popit3.lock"
-    try:
-        with ProcessLock(lock_file):
-            _main_impl(machine, host, port, user, client_id, authority, dbfile, show, reprocess)
-    except RuntimeError as e:
-        print(f"Error: {e}")
-        print("Another popit3 process is already running. Exiting.")
-        sys.exit(1)
-
-
-def _main_impl(
     machine=None,
     host="outlook.office365.com",
     port=995,
@@ -280,12 +242,10 @@ def _main_impl(
 
         # Build current server view
         uidl_map = get_uidl_map(pop)           # {uidl: num}
-        #size_map = get_size_map(pop)           # {num: size}
 
         # Fetch new mail
         mails_to_process = []
         for uidl, num in uidl_map.items():
-            #size = size_map.get(num, None)
             if uidl in maildb:
                 if reprocess:
                     raw=maildb[uidl]
@@ -295,23 +255,21 @@ def _main_impl(
                 raw = fetch_message_bytes(pop, num)  # bytes
 
                 maildb[uidl] = raw  # store raw bytes
-            mails_to_process.append((uidl, raw#, size
-                                ))
+            mails_to_process.append((uidl, raw))
         # Call processing function for new emails
         todelete=process_emails.do_processing(mails_to_process, maildb)
 
-        with gdata.gdata_raw(gdbm_file=dbfile+'.save') as oldmaildb:
-            for delthis in todelete:
-                if isinstance(delthis, int):
-                    delthis=str(delthis).encode('ascii') # only 0-9 anyway
-                elif isinstance(delthis, str):
-                    delthis=delthis.encode('utf-8')
-                del_message(pop, uidl_map[delthis])
-                oldmaildb[delthis]=maildb[delthis]
-                del maildb[delthis]
-                del uidl_map[delthis]
-            
-
+        print(uidl_map)
+        for delmsg in todelete:
+            if isinstance(delmsg, int):
+                delmsg=bytes(str(delmsg), 'ascii')
+            elif isinstance(delmsg, str):
+                delmsg=bytes(str(delmsg), 'utf-8')
+            print(delmsg,type(delmsg))
+            assert isinstance(delmsg, bytes)
+            msgno=uidl_map[delmsg]
+            print("delete:", delmsg, msgno)
+            del_message(pop, msgno)
         # WILL NOT DELE
         # if QUIT not sent
         # so comment for testing

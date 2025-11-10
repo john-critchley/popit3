@@ -1,11 +1,8 @@
-import email
-#import dl_email
+if __name__ != "__main__": print("Module:", __name__)
 import re
 from email.utils import parseaddr
 
-def parse_email_address(addr_string):
-    return _parse_email_address(addr_string)
-def _parse_email_address(addr_string,
+def parse_email_address(addr_string,
     EMAIL_PATTERN = re.compile(r'^[^\s@]+@[^\s@]+\.[^\s@]+$'),
     SECURITY_ISSUES = re.compile(r'[\r\n]|<[^>]*<|@@|[\x00-\x1f]')
     ):
@@ -35,9 +32,9 @@ def _parse_email_address(addr_string,
         
         return (email, True)
         
-    except Exception:
+    except Exception as e:
+        print("Caught exception:", e.__clas__.__name__, * e.args) # XXX NO!
         return ("", False)
-
 
 def parse_email_addresses(addr_string):
     if not addr_string or not isinstance(addr_string, str):

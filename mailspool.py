@@ -1,4 +1,5 @@
 
+if __name__ != "__main__": print("Module:", __name__)
 #"mailspool.py"
 import zlib
 import email
@@ -9,9 +10,10 @@ import io
 
 class MailSpool:
     dirstructure = {'new', 'cur', 'tmp'}
-    def __init__(self, maildir_path, webdav_client=None):
+    def __init__(self, maildir_path, webdav_client=None, delete=True):
         self.maildir_path = Path(maildir_path)
         self.webdav_client = webdav_client
+        self.delete=delete
         
         # Create local maildir structure
         for subdir in self.dirstructure:
@@ -46,7 +48,8 @@ class MailSpool:
                     # Upload from memory if no local storage
                     self._store_webdav_from_memory(filename, raw_email)
             
-            successful_uidls.append(uidl)
+            if self.delete:
+                successful_uidls.append(uidl)
         
         return successful_uidls
     

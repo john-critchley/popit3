@@ -1,4 +1,5 @@
 import re, html
+if __name__ != "__main__": print("Module:", __name__)
 from datetime import datetime
 from html.parser import HTMLParser
 

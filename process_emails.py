@@ -1,3 +1,4 @@
+if __name__ != "__main__": print("Module:", __name__)
 # WORK ON This
 import os
 import gdata
@@ -5,8 +6,8 @@ import email
 import scanmailheaders
 
 import MyDavidLloydSchedule
-import MyJobserveJobs
-import jobserve_parser
+## import MyJobserveJobs
+##import jobserve_parser
 import mailspool
 
 import json
@@ -15,7 +16,12 @@ import traceback
 import netrc
 import webdav4.client
 import time
-mode="n" # change to "n" for going from clean
+
+import newparser_jobserve
+
+import httpx
+
+mode="w" # change to "n" for going from clean
 
 host='webdav.critchley.biz' # needs to be parameterized better!
 user, account, password=netrc.netrc().authenticators(host)
@@ -28,7 +34,7 @@ def create_webdav_client_with_retry(url, auth, max_retries=3):
             # Test the connection
             client.ls('/', detail=False)
             return client
-        except (ConnectionError, TimeoutError, OSError) as e:
+        except (ConnectionError, TimeoutError, OSError, httpx.ConnectTimeout) as e:
             if attempt < max_retries - 1:
                 print(f"WebDAV connection attempt {attempt + 1} failed: {e}")
                 print(f"Retrying in {2 ** attempt} seconds...")
@@ -41,11 +47,12 @@ webdav_client = create_webdav_client_with_retry(f'https://{host}/john/Mail', (us
 js_webdav_client = create_webdav_client_with_retry(f'https://{host}/js/Mail', (user, password))
 # Create MailSpool instances for different email addresses
 mail_spool = mailspool.MailSpool(os.path.expanduser('~/Mail'), webdav_client)
+js_mail_spool = mailspool.MailSpool(os.path.expanduser('~/py/popit3/jsMail'), delete=False)
 # Note - using webdav_client not js_webdav_client
 # Keep the MyJobserveJobs processor available under a distinct name, but use the
 # `jobserve_parser` module (the jobserve parser) for processing so it benefits
 # from the new alert handling and gdbm storage logic.
-myjobserve_processor = MyJobserveJobs.JobserveProcessor(webdav_client=webdav_client)
+#myjobserve_processor = MyJobserveJobs.JobserveProcessor(webdav_client=webdav_client)
 
 map= [
         ("john.ncaf@critchley.biz", lambda x: [ uidl for uidl, eb in x ]),
@@ -58,7 +65,10 @@ map= [
         ("o_f@critchley.biz", lambda x: [ uidl for uidl, eb in x ]),
         ("john.dl@critchley.biz", MyDavidLloydSchedule.process_dl_mails),
 #        ("john.js@critchley.biz", MyJobserveJobs.process_js_mails),
-        ("john.js@critchley.biz", jobserve_parser.process_js_mails),
+###        ("john.js@critchley.biz", jobserve_parser.process_js_mails),
+        ("john.js@critchley.biz", newparser_jobserve.process_js_mails),
+        ("john.js@critchley.biz", js_mail_spool.store_messages),
+       
         ("john.amazon.com@critchley.biz", mail_spool.store_messages),
         ("john.tr@critchley.biz", mail_spool.store_messages),
         ("john.q@critchley.biz", mail_spool.store_messages),
@@ -66,7 +76,7 @@ map= [
 def do_processing(new_emails, mail_db=None, meta_db_file = os.path.expanduser("~/.email3.meta.gdbm")):
     assert isinstance(meta_db_file, (str, bytes, os.PathLike)), f"meta_db_file, is a {type(meta_db_file)} not str, bytes or os.PathLike."
     foo={}
-    deletes=[]
+    deletes=set()
     print("Processing new emails:")
     print(*(x[0].decode('utf-8') for x in new_emails), sep=',')
     
@@ -82,17 +92,15 @@ def do_processing(new_emails, mail_db=None, meta_db_file = os.path.expanduser("~
     for email_match, mail_func in map:
         print(f"Processing {email_match}:")
         try:
-            deletes+=(mail_func(foo.get(email_match, []))) # still call even if new IDs, for old mail expiration etc
-        except (OSError, ValueError, KeyError, ConnectionError, TimeoutError) as e:
+            dels=mail_func(foo.get(email_match, []))
+            print('Dels:', dels)
+            deletes.update(dels) # still call even if new IDs, for old mail expiration etc
+        except Exception as e:
+            print(type(email_match))
             print(f"Error processing emails for {email_match}: {e}")
             print(traceback.format_exc())
+#            import pdb
+#            pdb.set_trace()
+            raise
 
     return deletes
-#def main():
-#    dbfile = os.path.expanduser("~/.email3.mail.gdbm")
-#    with gdata.gdata_raw(gdbm_file=dbfile, mode="w") as maildb:
-#        nmails=[(uidl, msg_bin) for uidl, msg_bin in maildb.items()]
-#        print(do_processing(nmails))
-#
-#if __name__=='__main__':
-#    main()

@@ -1,3 +1,4 @@
+if __name__ != "__main__": print("Module:", __name__)
 import re
 from datetime import datetime
 import html
@@ -23,6 +24,7 @@ def parse_jobserve_email_part(html_part):
             
             # Structured data we're looking for
             self.job_title = None
+            self.job_url = None
             self.h2_values = []  # Sequential h2 values after job title
             self.description_parts = []  # snippet and rest spans
             self.metadata_lines = []  # Employment Business, Ref, Posted
@@ -51,6 +53,8 @@ def parse_jobserve_email_part(html_part):
                 if "heading" in cls:
                     self._in_heading = True
                     self._capture = []
+                    # Extract the URL from the href attribute
+                    self.job_url = self._current_attrs.get("href")
             
             # Check for h2 tags (location, salary, work_type)
             elif tag == "h2":
@@ -132,6 +136,7 @@ def parse_jobserve_email_part(html_part):
     
     # Extract fields
     job_title = p.job_title
+    job_url = p.job_url
     
     # Parse h2 values: location, [salary], work_type
     location = None
@@ -182,6 +187,7 @@ def parse_jobserve_email_part(html_part):
     
     return {
         "job_title": job_title,
+        "job_url": job_url,
         "location": location,
         "salary": salary,
         "work_type": work_type,

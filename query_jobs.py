@@ -1,21 +1,10 @@
-"""
-JobServe email database access module.
-Provides API for LLM job processing application.
-"""
 
-import gdata
+# Compatibility shim for query_jobs
 import os
-import datetime
-
-home = os.environ['HOME']
-
-# Database configuration - change this during migration testing
-DATABASE_FILENAME = '.js_new.gdbm'  # Using the migrated database
-
-def get_database(mode='r'):
-    """Get database connection."""
-    gdbm_path = os.path.join(home, DATABASE_FILENAME)
-    return gdata.gdata(gdbm_path, mode=mode)
+shim_path = os.path.join(os.path.dirname(__file__), 'TO_DELETE', 'query_jobs.py')
+with open(shim_path, 'r') as f:
+    code = f.read()
+exec(code, globals())
 
 def get_job(message_id):
     """
