@@ -1,0 +1,16 @@
+# Core dependencies
+requests>=2.31.0
+msal>=1.24.0
+openai>=1.0.0
+pandas>=2.0.0
+numpy>=1.24.0
+box>=7.0.0
+
+# Web/Network
+webdav4>=0.9.8
+
+# Date/Time handling
+python-dateutil>=2.8.2
+pytz>=2023.3
+tzdata>=2023.3
+zoneinfo>=0.2.1
