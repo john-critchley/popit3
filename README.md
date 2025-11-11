@@ -113,10 +113,10 @@ popit3/
 ##  Report Features
 
 - **Color-Coded Scores**: 
-  -  8-10: Excellent match
-  -  7: Good match
-  -  6: Average match
-  -  <6: Poor match
+  - 🟢 8-10: Excellent match
+  - 🔵 7: Good match
+  - 🟡 6: Average match
+  - 🔴 <6: Poor match
 - **Expandable Details**: Click scores to see full analysis
 - **Job Age Indicators**: Visual freshness by color intensity
 - **Direct Links**: Apply buttons and analysis pages
@@ -126,15 +126,15 @@ popit3/
 ### Cron Setup
 ```bash
 # Process emails every 30 minutes
-*/30 * * * * cd /path/to/popit3 && ./popit3.py >> out.log 2>&1
+22,37,52 6-22 * * * * cd py/popit3 && ./popit3.py >> out.log 2>&1
+# handles mails already seen but needing further processing eg expiring
+7 6-22 * * * * cd py/popit3 && ./popit3.py --reprocess >> out.log 2>&1
 
-# Generate reports daily at 9 AM
-0 9 * * * cd /path/to/popit3 && python3 job_analysis_html_report.py
+0,30 * * * * cd py/popit3 && python3 job_analysis_html_report.py >> out.log 2>&1
 ```
 
 ##  Troubleshooting
 
-- **Database Locked**: Check `/tmp/popit3.lock` and remove if stale
 - **OAuth Issues**: Regenerate token with `get_pop_refresh_token.py`
 - **LLM Failures**: Check API quota and model availability
 - **WebDAV Errors**: Verify credentials in `~/.netrc`
