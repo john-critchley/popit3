@@ -11,68 +11,6 @@ import json
 import os
 import sys
 import re
-import traceback
-import gdata
-import openai
-from datetime import datetime
-# Add current directory to path for local imports
-sys.path.append('.')
-import query_jobs
-
-
-class OpenAIJobAnalyzer:
-    """Handles job analysis using OpenAI API"""
-    
-    def __init__(self, env_data_path="~/.env_data", cv_file="cv_llm_optimized.md"):
-        self.env_data_path = os.path.expanduser(env_data_path)
-        self.cv_content = self.load_cv(cv_file)
-        self.client = None
-        self.model = None
-        self._setup_openai_client()
-        
-    def load_cv(self, cv_file):
-        """Load CV content from file"""
-        cv_path = os.path.expanduser(cv_file)
-        if not os.path.exists(cv_path):
-            # Try relative to current directory
-            cv_path = cv_file
-        
-        try:
-            with open(cv_path, 'r', encoding='utf-8') as f:
-                return f.read()
-        except FileNotFoundError:
-            print(f"Error: CV file not found: {cv_file}")
-            sys.exit(1)
-        except PermissionError:
-            print(f"Error: Permission denied reading CV file: {cv_file}")
-            sys.exit(1)
-        except UnicodeDecodeError as e:
-            print(f"Error: Cannot decode CV file {cv_file}: {e}")
-            sys.exit(1)
-    
-    def _setup_openai_client(self):
-        """Setup OpenAI client using environment data"""
-        try:
-            print(f"Loading environment data from: {self.env_data_path}")
-            
-            # Try to access the environment data with proper error handling
-            try:
-                environ_gd = gdata.gdata(self.env_data_path, mode='r')
-            except FileNotFoundError:
-                print(f"Error: Environment data file not found: {self.env_data_path}")
-                print("Make sure ~/.env_data exists and contains your OpenAI API credentials")
-                sys.exit(1)
-            except PermissionError:
-                print(f"Error: Permission denied accessing: {self.env_data_path}")
-                sys.exit(1)
-            
-            try:
-                # Use JobServe-specific credentials if available, otherwise fall back to defaults
-                if 'jobserve_api_key' in environ_gd:
-                    client_params = {
-                        'api_key': environ_gd['jobserve_api_key'],
-                        'project': environ_gd.get('jobserve_project')
-                    }
                     self.model = environ_gd.get('jobserve_model', 'gpt-4o-mini')
                     print(f"Using JobServe project: {environ_gd.get('jobserve_project')}")
                     print(f"Using JobServe model: {self.model}")
