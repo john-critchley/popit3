@@ -55,6 +55,7 @@ js_mail_spool = mailspool.MailSpool(os.path.expanduser('~/py/popit3/jsMail'), de
 #myjobserve_processor = MyJobserveJobs.JobserveProcessor(webdav_client=webdav_client)
 
 map= [
+        ("john.flix@critchley.biz", lambda x: [ uidl for uidl, eb in x ]),
         ("john.ncaf@critchley.biz", lambda x: [ uidl for uidl, eb in x ]),
         ("john.bat@critchley.biz", lambda x: [ uidl for uidl, eb in x ]),
         ("john.guardian@critchley.biz", lambda x: [ uidl for uidl, eb in x ]),
@@ -69,6 +70,8 @@ map= [
         ("john.js@critchley.biz", newparser_jobserve.process_js_mails),
         ("john.js@critchley.biz", js_mail_spool.store_messages),
        
+        ("john-medium@critchley.biz", mail_spool.store_messages),
+        ("john.boots_advantage_card@critchley.biz", mail_spool.store_messages),
         ("john.amazon.com@critchley.biz", mail_spool.store_messages),
         ("john.tr@critchley.biz", mail_spool.store_messages),
         ("john.q@critchley.biz", mail_spool.store_messages),

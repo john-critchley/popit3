@@ -142,37 +142,49 @@ def process_js_mails(js_emails):
                     print("job_url is", rec.parsed_job.job_url)
             if 'scored_job' not in rec:
                 if 'cv' not in vars():
-                    cv_file=os.path.expanduser(CV_PATH)
+                    cv_file = os.path.expanduser(CV_PATH)
                     with open(cv_file, 'r') as fd:
-                        cv=fd.read()
+                        cv = fd.read()
                 if 'client' not in vars():
-                    with open(os.path.expanduser(KEY_PATH+".yaml"), "r") as fd:
-                        client_params=yaml.safe_load(fd.read())
+                    with open(os.path.expanduser(KEY_PATH + ".yaml"), "r") as fd:
+                        client_params = yaml.safe_load(fd.read())
                     client = openai.OpenAI(**client_params)
 
+                # Define the schema for the LLM output
+                schema_instruction = (
+                    "Analyze how well this CV matches the job description. "
+                    "Respond in JSON with two fields: 'score' (integer 0-10, be discriminating) and 'reason' (string, concise reasoning for the score). "
+                    "Example: {\"score\": 7, \"reason\": \"Good skills match, but lacks required certification.\"} "
+                )
                 chat_completion = client.chat.completions.create(
                     messages=[
                         {"role": "system", "content": SYSTEM_CONTENT},
-                        {"role": "user", "content": '\\n'.join(                    (
-                            "Analyze how well this CV matches the job description.",
-                            "Provide analysis and end with: Score: N (0-10)",
+                        {"role": "user", "content": '\n'.join((
+                            schema_instruction,
                             "Job Details:", rec.parsed_job['description'],
                             "CV:", cv
                         ))}
                     ],
                     model=MODEL,
-                    temperature=0.3  # Lower temperature for more consistent scoring
-                    )
-                response_text = chat_completion.choices[0].message.content
-                print(f"Response:", response_text)
-                rec.scored_job=response_text
+                    temperature=0.3,
+                    response_format={"type": "json_object"}
+                )
+                response_json = chat_completion.choices[0].message.content
+                print(f"Response (JSON):", response_json)
+                rec.scored_job = response_json
+
             if 'score' not in rec:
-                m = re.findall(r"Score\s*:\s*(\d+)", rec.scored_job)
-                if m:
-                    rec.score = int(m[-1])
+                try:
+                    scored = json.loads(rec.scored_job)
+                    rec.score = int(scored.get('score'))
+                    rec.score_reason = scored.get('reason', '')
                     print('score added:', rec.score)
-                else:
-                    print("score: None")
+                    print('score reason:', rec.score_reason)
+                except json.JSONDecodeError as e:
+                    import traceback
+                    print("Failed to parse score from JSON response:", e)
+                    print("Raw response:", rec.scored_job)
+                    traceback.print_exc()
             else:
                 print('score found:', rec.score)
         js_gd[msg_id]=rec.to_dict()

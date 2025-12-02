@@ -1,0 +1,34 @@
+# PopIt3 Code Relationships and Execution Summary
+
+## 1. Code Run Directly or Indirectly as Part of popit3.py
+
+- popit3.py (main entry point)
+  - Imports and calls:
+    - process_emails.py (main email routing/processing)
+      - Imports:
+        - scanmailheaders.py (email address parsing/security)
+        - MyDavidLloydSchedule.py (David Lloyd bookings)
+          - Imports dl_email.py (David Lloyd HTML parsing)
+        - mailspool.py (maildir archiving)
+        - newparser_jobserve.py (JobServe parsing and scoring)
+          - Imports:
+            - js_email.py (JobServe HTML extraction)
+            - js_alert_parser.py (JobServe alert parsing)
+            - openai, yaml, gdata, etc.
+
+## 2. Code to Create and Upload the HTML Job Report
+
+- job_analysis_report.py (run directly to generate and upload report)
+  - Key functions:
+    - load_recent_jobs() (loads jobs from GDBM)
+    - sort_jobs() (sorts jobs by score/date)
+    - generate_html_table() (creates HTML table)
+    - create_full_html_document() (wraps table in HTML)
+    - deploy_html_to_webdav() (uploads HTML to WebDAV, cleans up old reports)
+  - Uses:
+    - gdata.py (GDBM wrapper)
+    - webdav4.client (WebDAV upload)
+    - requests (checks deployment)
+  - Can be run via:  python3 job_analysis_report.py
+
+See README.md for more details and module relationships.

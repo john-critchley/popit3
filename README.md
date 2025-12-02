@@ -163,3 +163,29 @@ MIT License - See LICENSE file
 - Uses `gdata` for GDBM wrapper functionality
 - OpenAI for GPT models
 - JobServe for job listings
+
+## Module Relationships
+
+### Core Pipeline
+- **popit3.py**: Main entry point for POP3 email fetching and synchronization. Imports `process_emails`, `gdata`, `requests`, etc.
+- **process_emails.py**: Routes and processes emails by type. Imports `scanmailheaders`, `MyDavidLloydSchedule`, `mailspool`, `newparser_jobserve`, `gdata`, `webdav4.client`, etc.
+- **newparser_jobserve.py**: Parses JobServe job suggestion/alert emails and scores them using OpenAI. Imports `js_email`, `js_alert_parser`, `openai`, `yaml`, `gdata`, etc.
+- **js_email.py**: Extracts structured job data from JobServe HTML emails.
+- **scanmailheaders.py**: Provides email address parsing and security checks.
+- **mailspool.py**: Handles local and remote (WebDAV) maildir archiving.
+- **MyDavidLloydSchedule.py**: Processes David Lloyd booking emails. Imports `dl_email`, `gdata`, etc.
+- **dl_email.py**: Extracts structured booking data from David Lloyd HTML emails.
+
+### Analysis & Reporting
+- **job_analysis_report.py**: Generates and deploys HTML job analysis reports. Imports `gdata`, `webdav4.client`, etc.
+- **query_jobs.py**: Provides CLI/database queries for jobs.
+- **analyze_jobs_openai.py**: (If present) Handles OpenAI-based job analysis.
+
+### Parsers & Utilities
+- **jobserve_parser.py**: Compatibility shim; re-exports everything from `newparser_jobserve.py`.
+- **js_alert_parser.py**: Parses JobServe alert HTML.
+
+### Other/Legacy
+- Files in `TO_DELETE/` are legacy or deprecated scripts.
+
+_No NOTES file was found; documentation is included here._

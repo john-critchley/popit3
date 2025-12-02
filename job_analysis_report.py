@@ -12,9 +12,10 @@ import datetime
 import numpy as np
 import requests
 import netrc
-import gdata
+import re
 import webdav4.client
 
+import gdata
 
 def rec_format_tdelta(rtd, now):
     """Format time delta between now and record date in human-readable format."""
@@ -59,15 +60,15 @@ def generate_html_table(gd, keys, min_score=5):
     now = datetime.datetime.now(datetime.UTC)
     
     rec_to_row = [
-        ('Score', lambda r: str(r.get('score'))),
-        ('Reference', lambda r: r['parsed_job']['ref']),
+        ('Score', lambda r: str(r.get('score', ''))),
+        ('Reference', lambda r: str(r['parsed_job'].get('ref', '-')) if 'parsed_job' in r else '-'),
         ('Job Title', lambda r: r['parsed_job']['job_title'] if 'parsed_job' in r and 'job_title' in r['parsed_job'] else '-'),
         ('Company', lambda r: r['parsed_job']['employment_business'] if 'parsed_job' in r and 'employment_business' in r['parsed_job'] else '-'),
         ('age', lambda r: rec_format_tdelta(r, now)),
         ('Location', lambda r: r['parsed_job']['location'] if 'parsed_job' in r and 'location' in r['parsed_job'] else '-'),
         ('Salary', lambda r: r['parsed_job']['salary'] if 'parsed_job' in r and 'salary' in r['parsed_job'] else '-'),
-        ('Summary', None),
-        ('Email', None),
+        ('Summary', lambda r: '-'),
+        ('Email', lambda r: '-'),
         ('Date', lambda r: datetime.datetime.fromisoformat(r['date']).strftime('%D')),
         ('Link', lambda r: '<a href="' + r['parsed_job']['job_url'] + '"> Job</a>' if 'parsed_job' in r and 'job_url' in r['parsed_job'] else '-')
     ]
@@ -93,62 +94,69 @@ def generate_html_table(gd, keys, min_score=5):
     
     html_table += '</tr></thead>\n<tbody>'
     
-    # Score to color mapping
+    # Score to color mapping (10=purple, 9=blue, 8=green, 7=yellow, 6=orange, 5=red)
     score_colors = {
-        10: '#c8e6c9',  # Light green
-        9: '#c8e6c9',   # Light green
-        8: '#c8e6c9',   # Light green
-        7: '#fff9c4',   # Light yellow
-        6: '#ffecb3',   # Light orange
-        5: '#ffcdd2',   # Light red
+        10: '#d1c4e9',  # Light purple (lilac)
+        9:  '#b3e5fc',  # Light blue
+        8:  '#c8e6c9',  # Light green
+        7:  '#fff9c4',  # Light yellow
+        6:  '#ffecb3',  # Light orange
+        5:  '#ffcdd2',  # Light red
     }
     
+    import markdown
     for idx, key in enumerate(keys):
         rec = gd[key]
         if rec.get('score', 99) < min_score:
             continue
-        
+
         # Set background color based on score
         score = rec.get('score', 0)
         bg_color = score_colors.get(score, '#ffffff')  # Default to white
-        
+
         html_table += f'<tr class="job_row" data-row="{idx}" style="background-color: {bg_color};">'
-        for k, t in rec_to_row:
-            if k == 'Link':
-                continue
-            html_table += '<td>'
-            html_table += t(rec) if callable(t) else str(t) if t else ''
-            html_table += '</td>'
-        
-        for k, t in rec_to_row:
-            if k == 'Link':
-                html_table += '<td>'
-                html_table += t(rec) if callable(t) else str(t) if t else ''
-                html_table += '</td>'
+        for col_idx, (k, t) in enumerate(rec_to_row):
+            value = t(rec) if callable(t) else t
+            if k == 'Score':
+                html_table += f'<td class="job_score_col" style="cursor:pointer;">{value}</td>'
+            elif k == 'Link':
+                html_table += f'<td class="job_link_col">{value}</td>'
+            else:
+                html_table += f'<td>{value}</td>'
         html_table += '</tr>\n'
-        
+
+        # Convert markdown to HTML for analysis
+        analysis = rec.get("scored_job", "")
+        from html import escape
+        analysis_html = markdown.markdown(analysis) if analysis.strip() else ''
+        # Always wrap in a div for word wrapping
+        analysis_html = f'<div style="white-space: pre-wrap; word-break: break-word;">{analysis_html}</div>'
+
         html_table += f'<tr class="scored_job_row" id="scored_job_{idx}">'
-        html_table += f'<td colspan="{len(rec_to_row)}">'
-        html_table += f'<pre style="margin:0; text-align: left">{rec.get("scored_job", "")}</pre>'
-        html_table += '</td></tr>\n'
+        html_table += f'<td colspan="{len(rec_to_row)}">{analysis_html}</td></tr>\n'
     
     html_table += '</tbody></table>'
     
     html_table += '''
 <script>
+// Only expand/collapse when clicking the Score column
 document.querySelectorAll('tr.job_row').forEach(function(row) {
-    row.addEventListener('click', function() {
-        var idx = row.getAttribute('data-row');
-        var scoredRow = document.getElementById('scored_job_' + idx);
-        if (scoredRow.style.display === 'table-row') {
-            scoredRow.style.display = 'none';
-        } else {
-            document.querySelectorAll('tr.scored_job_row').forEach(function(r) { 
-                r.style.display = 'none'; 
-            });
-            scoredRow.style.display = 'table-row';
-        }
-    });
+    var idx = row.getAttribute('data-row');
+    var scoreCell = row.querySelector('td.job_score_col');
+    if (scoreCell) {
+        scoreCell.addEventListener('click', function(event) {
+            var scoredRow = document.getElementById('scored_job_' + idx);
+            if (scoredRow.style.display === 'table-row') {
+                scoredRow.style.display = 'none';
+            } else {
+                document.querySelectorAll('tr.scored_job_row').forEach(function(r) { 
+                    r.style.display = 'none'; 
+                });
+                scoredRow.style.display = 'table-row';
+            }
+            event.stopPropagation();
+        });
+    }
 });
 </script>
 '''
@@ -184,21 +192,33 @@ def deploy_html_to_webdav(html_content, host):
         raise ValueError(f"No credentials found in ~/.netrc for host '{host}': {e}")
     
     client = webdav4.client.Client(f'https://{host}', auth=(user, password))
-    
+
     now = datetime.datetime.now(datetime.UTC)
     date_time_representation = now.strftime('%Y%m%d_%H%M%S')
-    
+
     file_loc = f'JobAnalysis/jobanalysis-{date_time_representation}.html'
     deploy_url = f'https://www.critchley.biz/deploy/{file_loc}'
-    
+
     html_bytesio = io.BytesIO(html_content.encode('utf-8'))
     html_bytesio.seek(0)
-    
+
     client.upload_fileobj(html_bytesio, f"staging/{file_loc}", overwrite=True)
-    
+
+    # --- Cleanup: keep only the last 5 jobanalysis-*.html files ---
+    # List all files in the JobAnalysis directory (filenames only)
+    files = client.ls('staging/JobAnalysis/', detail=False)
+    job_files = [f for f in files if re.match(r"jobanalysis-\\d{8}_\\d{6}\\.html$", f)]
+    # Sort by filename (date in name, descending)
+    job_files_sorted = sorted(job_files, reverse=True)
+    # Keep only the most recent 5
+    for old_file in job_files_sorted[5:]:
+        full_path = f'staging/JobAnalysis/{old_file}'
+        print(f"Deleting old report: {full_path}")
+        client.remove(full_path)
+
     resp = requests.get(deploy_url)
     print('Deployed:', resp.ok)
-    
+
     return resp.ok
 
 
@@ -249,15 +269,19 @@ def main():
     
     args = parser.parse_args()
     
-    uids_to_delete = process_job_analysis(
-        db_path=args.db_path,
-        days=args.days,
-        min_score=args.min_score,
-        deploy=not args.no_deploy
-    )
-    
-    print(f"Email UIDs to delete: {uids_to_delete}")
-
+    try:
+        uids_to_delete = process_job_analysis(
+            db_path=args.db_path,
+            days=args.days,
+            min_score=args.min_score,
+            deploy=not args.no_deploy
+        )
+        print(f"Email UIDs to delete: {uids_to_delete}")
+    except Exception as e:
+        import traceback
+        traceback.print_exc()
+        import sys
+        sys.exit(1)
 
 if __name__ == '__main__':
     main()
