@@ -125,10 +125,22 @@ def generate_html_table(gd, keys, min_score=5):
                 html_table += f'<td>{value}</td>'
         html_table += '</tr>\n'
 
-        # Convert markdown to HTML for analysis
+        # Show only the 'reason' field from structured LLM output if present
         analysis = rec.get("scored_job", "")
         from html import escape
-        analysis_html = markdown.markdown(analysis) if analysis.strip() else ''
+        import json
+        reason_text = None
+        if analysis.strip():
+            try:
+                parsed = json.loads(analysis)
+                if isinstance(parsed, dict) and 'reason' in parsed:
+                    reason_text = str(parsed['reason'])
+            except Exception:
+                pass
+        if reason_text:
+            analysis_html = markdown.markdown(reason_text)
+        else:
+            analysis_html = markdown.markdown(analysis)
         # Always wrap in a div for word wrapping
         analysis_html = f'<div style="white-space: pre-wrap; word-break: break-word;">{analysis_html}</div>'
 

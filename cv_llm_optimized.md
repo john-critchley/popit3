@@ -1,3 +1,11 @@
+## Certifications
+
+Post Graduate Program in Artificial Intelligence and Machine Learning: Business Applications — The University of Texas at Austin (Texas Executive Education), issued Mar 2024. GPA: 4.27/4.33.
+
+- Modules completed (A/A+): Python Foundations (A+), Machine Learning (A+), Advanced Machine Learning (A), Introduction to Neural Networks (A+), Computer Vision (A+), Natural Language Processing (A+).
+- Focus: supervised/unsupervised learning, model evaluation and tuning, deep learning (NN/CV/NLP), practical AI for business applications.
+- Certificate verification: https://www.mygreatlearning.com/certificate/EUKKBMBG
+
 # John Critchley
 
 Email: john@critchley.biz | Mobile: 07887733029 | LinkedIn: www.linkedin.com/in/john-critchley

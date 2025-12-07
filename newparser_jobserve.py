@@ -23,7 +23,7 @@ import js_email
 #import analyze_jobs_openai
 
 KEY_PATH = "~/py/popit3/.openai"
-CV_PATH = "~/Downloads/cv_llm_optimized.md"
+CV_PATH = os.environ.get('CV_PATH', "~/Downloads/cv_llm_optimized.md")
 
 MODEL='gpt-4o-mini'
 SYSTEM_CONTENT = (
@@ -153,8 +153,11 @@ def process_js_mails(js_emails):
                 # Define the schema for the LLM output
                 schema_instruction = (
                     "Analyze how well this CV matches the job description. "
-                    "Respond in JSON with two fields: 'score' (integer 0-10, be discriminating) and 'reason' (string, concise reasoning for the score). "
-                    "Example: {\"score\": 7, \"reason\": \"Good skills match, but lacks required certification.\"} "
+                    "Respond in JSON with two fields: 'score' (integer 0-10, be discriminating) and 'reason' (string). "
+                    "In 'reason', provide a detailed explanation (at least 120-200 words) including: "
+                    "key skill matches, experience gaps, seniority fit, domain relevance, and any blockers (e.g., location, clearance). "
+                    "Use clear sentences (no bullet lists) to keep it readable. "
+                    "Example: {\"score\": 7, \"reason\": \"Strong Python and data experience, but limited MLOps...\"} "
                 )
                 chat_completion = client.chat.completions.create(
                     messages=[
@@ -167,7 +170,8 @@ def process_js_mails(js_emails):
                     ],
                     model=MODEL,
                     temperature=0.3,
-                    response_format={"type": "json_object"}
+                    response_format={"type": "json_object"},
+                    max_tokens=600
                 )
                 response_json = chat_completion.choices[0].message.content
                 print(f"Response (JSON):", response_json)

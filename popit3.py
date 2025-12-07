@@ -18,6 +18,7 @@ Example:
 """
 
 import argparse
+import datetime
 import base64
 import netrc
 import os
@@ -295,4 +296,12 @@ if __name__ == "__main__":
     ns = p.parse_args()
     kwargs = {k: v for k, v in vars(ns).items() if v is not None}
     print(kwargs)
+    try:
+        print("START:", datetime.datetime.now(datetime.UTC).isoformat())
+    except Exception:
+        pass
     main(**kwargs)
+    try:
+        print("END:", datetime.datetime.now(datetime.UTC).isoformat())
+    except Exception:
+        pass
