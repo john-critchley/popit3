@@ -7,7 +7,9 @@ A modular email processing system that routes incoming emails to specialized han
 See the system in action:
 
 - **Job Analysis Report**: [https://www.critchley.biz/JobAnalysis](https://www.critchley.biz/JobAnalysis)
+Click on the score to get the AI reasoning
 - **David Lloyd Schedule**: [https://www.critchley.biz/DavidLloyd/timetable.html](https://www.critchley.biz/DavidLloyd/timetable.html)
+Derived from parsing the booking emails - no AI involved
 
 Reports are updated automatically via cron.
 
