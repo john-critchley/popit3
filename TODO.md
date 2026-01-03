@@ -11,18 +11,18 @@
 
 **Essential (Do Next):**
 
-- [ ] Add unit tests (pytest) - at least basic coverage
-- [ ] Set up GitHub Actions CI/CD pipeline
+- [ ] Add crash/error alerts to web reports (visible indicator when pipeline fails)
+- [ ] Save sample emails as debugging fixtures (real anonymised examples for manual testing)
 
 **High Value:**
 
 - [ ] Add proper Python package structure (pyproject.toml)
-- [ ] Add type hints throughout
 - [ ] Generate HTML report for applications (like job analysis report)
 - [ ] Add AngelList/other job board integration
+- [ ] Validation in reports — flag missing fields visually (e.g. job with no title)
 
 **Nice to Have:**
 
-- [ ] Add a simple web interface (FastAPI)
-- [ ] Write contributing guidelines
-- [ ] Ensure consistent code style (black/ruff)
+- [ ] Add a simple web interface (FastAPI) [To serve email databases?]
+- [ ] Add type hints throughout (with asserts)
+- [ ] Ensure consistent code style (own style)
