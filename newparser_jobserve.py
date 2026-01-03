@@ -51,10 +51,13 @@ def decode_header_value(header_value):
 def classify_job(subj):
     if 'job suggestion' in subj:
         print(f"Processing JOB SUGGESTION: {subj}")
-        return  'suggestion'
+        return 'suggestion'
     elif 'job alert' in subj:
         print(f"Processing JOB ALERT: {subj}")
         return 'alert'
+    elif 'Application Confirmation' in subj:
+        print(f"Processing APPLICATION CONFIRMATION: {subj}")
+        return 'application'
     else:
         print(f"Skipping non-job email: {subj}")
         return None
@@ -127,6 +130,23 @@ def process_js_mails(js_emails):
                     payload=fd.read()
                 
             html_content = payload.decode(rec.charset)
+            
+            # Handle application confirmations separately
+            if rec.job_type == "application":
+                import js_application_parser
+                if 'parsed_application' not in rec:
+                    rec.parsed_application = js_application_parser.parse_jobserve_application_confirmation(html_content)
+                    print("Parsed application:", rec.parsed_application)
+                
+                # Store in separate applications database
+                app_gdbm_path = os.path.expanduser('~/.jobserve_applications.gdbm')
+                app_gd = gdata.gdata(app_gdbm_path)
+                app_gd[msg_id] = dict(rec)
+                app_gd.close()
+                print("Stored application confirmation")
+                continue
+            
+            # Handle job suggestions and alerts
             if 'parsed_job' not in rec:
                 if rec.job_type =="suggestion":
                     rec.parsed_job = js_email.parse_jobserve_email_part(html_content)

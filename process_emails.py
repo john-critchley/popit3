@@ -43,11 +43,11 @@ def create_webdav_client_with_retry(url, auth, max_retries=3):
                 print(f"WebDAV connection failed after {max_retries} attempts: {e}")
                 raise
 
-webdav_client = create_webdav_client_with_retry(f'https://{host}/john/Mail', (user, password))
-js_webdav_client = create_webdav_client_with_retry(f'https://{host}/js/Mail', (user, password))
+webdav_client = create_webdav_client_with_retry(f'https://{host}/mail/john', (user, password))
+js_webdav_client = create_webdav_client_with_retry(f'https://{host}/mail/john.js', (user, password))
 # Create MailSpool instances for different email addresses
 mail_spool = mailspool.MailSpool(os.path.expanduser('~/Mail'), webdav_client)
-js_mail_spool = mailspool.MailSpool(os.path.expanduser('~/py/popit3/jsMail'), delete=False)
+js_mail_spool = mailspool.MailSpool(os.path.expanduser('~/py/popit3/jsMail'), js_webdav_client, delete=False)
 # Note - using webdav_client not js_webdav_client
 # Keep the MyJobserveJobs processor available under a distinct name, but use the
 # `jobserve_parser` module (the jobserve parser) for processing so it benefits

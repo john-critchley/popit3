@@ -135,12 +135,10 @@ def generate_html_table(gd, keys, min_score=5):
                 parsed = json.loads(analysis)
                 if isinstance(parsed, dict) and 'reason' in parsed:
                     reason_text = str(parsed['reason'])
-            except Exception:
-                pass
-        if reason_text:
-            analysis_html = markdown.markdown(reason_text)
-        else:
-            analysis_html = markdown.markdown(analysis)
+            except json.JSONDecodeError:
+                # Not JSON; fall back to rendering full analysis text
+                reason_text = None
+        analysis_html = markdown.markdown(reason_text if reason_text else analysis)
         # Always wrap in a div for word wrapping
         analysis_html = f'<div style="white-space: pre-wrap; word-break: break-word;">{analysis_html}</div>'
 
@@ -281,19 +279,13 @@ def main():
     
     args = parser.parse_args()
     
-    try:
-        uids_to_delete = process_job_analysis(
-            db_path=args.db_path,
-            days=args.days,
-            min_score=args.min_score,
-            deploy=not args.no_deploy
-        )
-        print(f"Email UIDs to delete: {uids_to_delete}")
-    except Exception as e:
-        import traceback
-        traceback.print_exc()
-        import sys
-        sys.exit(1)
+    uids_to_delete = process_job_analysis(
+        db_path=args.db_path,
+        days=args.days,
+        min_score=args.min_score,
+        deploy=not args.no_deploy
+    )
+    print(f"Email UIDs to delete: {uids_to_delete}")
 
 if __name__ == '__main__':
     main()

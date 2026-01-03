@@ -12,7 +12,7 @@ Email: john@critchley.biz | Mobile: 07887733029 | LinkedIn: www.linkedin.com/in/
 
 ## Professional Summary
 
-Senior Python developer and data engineer with over 15 years' experience designing, automating, and supporting real-time platforms in high-stakes environments. Specialist in Python, SQL, Linux, and CI/CD, with a record of delivering robust automation, monitoring, and operational tooling for data-centric systems. Adept at mentoring, collaborating across global teams, and rapidly adapting to new tools and platforms.
+Senior operations and automation engineer with 20+ years in financial technology, transitioning to software development roles. Extensive experience supporting trading platforms and FX derivatives systems at UBS Investment Bank, TrueEx, FXall, and Tassat. Strong Python development skills (6+ years) built through creating automation, monitoring, and operational tooling for mission-critical financial systems. Recently completed postgraduate training in AI and Machine Learning (2024, GPA 4.27/4.33). Specialist in Python, SQL, Linux, and CI/CD, with proven ability to deliver reliable solutions in high-stakes environments.
 
 ## Education & Certifications
 

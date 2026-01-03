@@ -11,58 +11,84 @@ import json
 import os
 import sys
 import re
-                    self.model = environ_gd.get('jobserve_model', 'gpt-4o-mini')
-                    print(f"Using JobServe project: {environ_gd.get('jobserve_project')}")
-                    print(f"Using JobServe model: {self.model}")
-                else:
-                    # Fallback to default credentials
-                    required_keys = ['api_key']
-                    optional_keys = ['organization', 'project', 'model']
-                    
-                    # Check for required keys
-                    missing_keys = [key for key in required_keys if key not in environ_gd]
-                    if missing_keys:
-                        print(f"Missing required keys in {self.env_data_path}: {missing_keys}")
-                        print("Please set up your OpenAI API credentials first.")
-                        environ_gd.close()
-                        sys.exit(1)
-                    
-                    # Setup client parameters
-                    client_params = {'api_key': environ_gd['api_key']}
-                    
-                    # Add optional parameters if available
-                    for key in optional_keys:
-                        if key in environ_gd:
-                            if key == 'model':
-                                self.model = environ_gd[key]
-                            else:
-                                client_params[key] = environ_gd[key]
-                
-                # Add organization if available
-                if 'organization' in environ_gd:
-                    client_params['organization'] = environ_gd['organization']
-                
-                # Close the gdata file
-                environ_gd.close()
-                
-            except KeyError as e:
-                environ_gd.close()
-                print(f"Missing required key in environment data: {e}")
-                sys.exit(1)
-            except Exception as e:
-                environ_gd.close()
-                print(f"Error reading environment data: {e}")
-                traceback.print_exc()
-                sys.exit(1)
-            
-            # Use default model if not specified  
-            if not self.model:
-                self.model = "gpt-4o-mini"  # Much better than gpt-3.5-turbo for structured tasks
-            
-            # Create OpenAI client
+import traceback
+from datetime import datetime
+
+# OpenAI SDK
+import openai
+
+# Job database/query helpers (shim loads TO_DELETE/query_jobs.py)
+import query_jobs
+
+"""
+NOTE: This module was previously missing the OpenAIJobAnalyzer class and
+had brittle regex-based score parsing. This refactor restores the class,
+adds required imports, and switches to structured JSON output (score, reason)
+using OpenAI Responses API to ensure reliable parsing and longer reasoning.
+"""
+
+class OpenAIJobAnalyzer:
+    """Analyze JobServe jobs using OpenAI with structured JSON output."""
+
+    def __init__(self, env_data_path: str, cv_file_path: str):
+        self.env_data_path = os.path.expanduser(env_data_path or '~/.env_data')
+        self.cv_file_path = cv_file_path
+        self.model = None
+
+        # Load CV content
+        cv_path = os.path.expanduser(self.cv_file_path)
+        with open(cv_path, 'r', encoding='utf-8') as f:
+            self.cv_content = f.read()
+
+        # Configure OpenAI client
+        client_params = {}
+
+        # Prefer environment variables for simplicity and security
+        api_key = os.environ.get('OPENAI_API_KEY')
+        organization = os.environ.get('OPENAI_ORG') or os.environ.get('OPENAI_ORGANIZATION')
+        project = os.environ.get('OPENAI_PROJECT')
+        model = os.environ.get('OPENAI_MODEL')
+
+        # Attempt to read ~/.env_data if present for backwards compatibility
+        try:
+            if os.path.exists(self.env_data_path):
+                # Minimal parser: expect JSON or line-based KEY=VALUE
+                with open(self.env_data_path, 'r', encoding='utf-8') as f:
+                    raw = f.read()
+                try:
+                    data = json.loads(raw)
+                except json.JSONDecodeError:
+                    data = {}
+                    for line in raw.splitlines():
+                        if '=' in line and not line.strip().startswith('#'):
+                            k, v = line.split('=', 1)
+                            data[k.strip()] = v.strip()
+
+                api_key = api_key or data.get('api_key') or data.get('OPENAI_API_KEY')
+                organization = organization or data.get('organization') or data.get('OPENAI_ORGANIZATION')
+                project = project or data.get('project') or data.get('OPENAI_PROJECT')
+                model = model or data.get('model') or data.get('OPENAI_MODEL')
+
+        except Exception:
+            # Non-fatal; fall back to env vars
+            pass
+
+        if not api_key:
+            print("Missing OpenAI API key. Set OPENAI_API_KEY or provide in ~/.env_data")
+            sys.exit(1)
+
+        client_params['api_key'] = api_key
+        if organization:
+            client_params['organization'] = organization
+        if project:
+            client_params['project'] = project
+
+        self.model = model or 'gpt-4o-mini'
+
+        # Initialize client
+        try:
             self.client = openai.OpenAI(**client_params)
             print(f"OpenAI client initialized with model: {self.model}")
-            
         except Exception as e:
             print(f"Error setting up OpenAI client: {e}")
             traceback.print_exc()
@@ -121,52 +147,70 @@ Job Description:
             # Call OpenAI API
             print(f"Analyzing: {job_title}")
             
-            chat_completion = self.client.chat.completions.create(
-                messages=[
-                    {"role": "system", "content": system_content},
-                    {"role": "user", "content": user_content}
-                ],
+            # Use Responses API with structured JSON output
+            resp = self.client.responses.create(
                 model=self.model,
-                temperature=0.3  # Lower temperature for more consistent scoring
+                temperature=0.3,
+                max_output_tokens=700,
+                response_format={"type": "json_object"},
+                input=[
+                    {
+                        "role": "system",
+                        "content": system_content,
+                    },
+                    {
+                        "role": "user",
+                        "content": (
+                            "Return a strict JSON object with keys 'score' (integer 0-10) and 'reason' (120-200 words). "
+                            "Be discriminating with scores; reserve 8-10 for exceptional matches. "
+                            "Explain key matches and gaps versus the CV.\n\n" + user_content
+                        ),
+                    },
+                ],
             )
-            
-            # Extract response
-            response_text = chat_completion.choices[0].message.content
-            
-            # Debug: Print end of response to see score format
-            print(f"Response ending: ...{response_text[-100:]}")
-            
-            # Extract score using regex - try multiple patterns
-            score_match = re.search(r'Score:\s*(\d+)', response_text)
-            if not score_match:
-                # Try alternative patterns
-                score_match = re.search(r'score:\s*(\d+)', response_text, re.IGNORECASE)
-            if not score_match:
-                score_match = re.search(r'(\d+)/10', response_text)
-            
-            score = int(score_match.group(1)) if score_match else None
-            
+
+            # Extract structured output
+            response_text = resp.output_text
+            parsed_json = None
+            try:
+                parsed_json = json.loads(response_text)
+            except json.JSONDecodeError:
+                # Some SDK versions may return JSON directly in first item
+                try:
+                    first = resp.output[0].content[0].text
+                    response_text = first
+                    parsed_json = json.loads(first)
+                except Exception:
+                    parsed_json = None
+
+            score = None
+            reason = None
+            if isinstance(parsed_json, dict):
+                score = parsed_json.get('score')
+                reason = parsed_json.get('reason')
+
             if score is None:
-                print(f"Warning: Could not extract score from response")
-                print(f"Last 200 chars: {response_text[-200:]}")
-            else:
-                print(f"Extracted score: {score}")
-            
+                print("Warning: Could not extract 'score' from JSON; falling back to regex")
+                score_match = re.search(r"'score'\s*:\s*(\d+)|\"score\"\s*:\s*(\d+)", response_text)
+                if not score_match:
+                    score_match = re.search(r'Score:\s*(\d+)', response_text)
+                score = int(score_match.group(1)) if score_match else None
+
             if score is not None:
-                score = min(10, max(0, score))  # Clamp to 0-10 range
-            
+                score = min(10, max(0, int(score)))
+
             # Prepare results
             analysis_results = {
                 'message_id': message_id,
                 'job_title': job_title,
                 'company': company,
                 'job_type': job_type,
-                'analysis_text': response_text,
+                'analysis_text': reason or response_text,
                 'score': score,
                 'model': self.model,
                 'timestamp': datetime.now().isoformat(),
-                'tokens_used': chat_completion.usage.total_tokens if chat_completion.usage else None,
-                'api_response': chat_completion.model_dump(mode='json')
+                'tokens_used': getattr(resp, 'usage', None).total_tokens if getattr(resp, 'usage', None) else None,
+                'api_response': resp.model_dump(mode='json')
             }
             
             print(f"✓ Score: {score}/10 - {job_title}")

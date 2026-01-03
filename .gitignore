@@ -36,6 +36,11 @@ env/
 *.swo
 *~
 
+# Jupyter notebooks
+.ipynb_checkpoints/
+Untitled.ipynb
+check_job_processing.ipynb
+
 # Logs
 *.log
 *.log.gz
@@ -61,12 +66,19 @@ out*.log
 lr
 d
 ct
+outputb.txr
+popit3.files
+weather.json
+system.txt
+edscr
 
 # Personal/sensitive data
 *.key
 *.pem
 .env
 .netrc
+.key_for_openai
+.openai.yaml
 
 # Database files
 *.db
@@ -76,3 +88,25 @@ ct
 # OS files
 .DS_Store
 Thumbs.db
+
+# Local data directories
+john/
+jsMail/
+gdata/
+tmp/
+text/
+random/
+TO_DELETE/
+
+# Backup files
+cv_llm_optimized_save.md
+
+# Personal docs
+*.pdf
+transcript.txt
+
+# Code review notes (point-in-time)
+CODE_REVIEW_COMPLETE.md
+PROGRAMMING_RULES.txt
+
+TODO.html

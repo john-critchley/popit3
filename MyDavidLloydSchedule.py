@@ -127,21 +127,29 @@ def process_dl_mails(segregated_dl_emails):
                         print('Skipping', bo[booking_reference], bo.msg_id, "because already processed")
                     continue
                 
-                if (bo.kind=='booking') == (bo[booking_reference] in mail_dbm): 
-                    # either it is a booking and there is a booking already
-                    # or it isn't a booking and there is not an existing booking
-                    # either are bad!
-                    print(f'{bo.msg_id}, {bo[booking_reference]}: "kind" is {bo.kind} but', 
-                          f"{booking_reference} in mail_dbm" 
-                              if bo[booking_reference] in mail_dbm 
-                              else f"{booking_reference} not in mail_dbm")
-                    continue
+                # State check: booking should NOT exist yet; cancellation/update should exist
+                if bo.kind == 'booking':
+                    if bo[booking_reference] in mail_dbm:
+                        # Booking already exists - likely duplicate confirmation email
+                        print(f'Warning: {bo.msg_id}, {bo[booking_reference]}: duplicate booking email (already exists)')
+                        continue
+                elif bo.kind in ('cancellation', 'booking_update'):
+                    if bo[booking_reference] not in mail_dbm:
+                        # Cancellation/update for booking that's not in DB
+                        # Likely already expired and cleaned up, or cancel→book→cancel sequence
+                        # Skip silently
+                        continue
+                
                 if bo.kind=='booking':
                     required_fields=['day', 'activity', 'coach', 'start', 'end',  'venue', 'club']
                     
                     mail_dbm[bo[booking_reference]]=dd({k:bo[k] for k in required_fields if k in bo}).to_json()
                 elif bo.kind=='cancellation':
                     del mail_dbm[bo[booking_reference]]
+                elif bo.kind=='booking_update':
+                    # Update existing booking with new details
+                    required_fields=['day', 'activity', 'coach', 'start', 'end',  'venue', 'club']
+                    mail_dbm[bo[booking_reference]]=dd({k:bo[k] for k in required_fields if k in bo}).to_json()
 
     with gdata.gdata_simple(os.sep.join([home, loc, '.booksings_db2.gdbm']), mode='r') as db:
         df=pd.DataFrame(([td(box.Box({booking_reference:k, **box.Box.from_json(v)})) for k,v in db.items()]))

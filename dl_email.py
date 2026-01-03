@@ -137,10 +137,22 @@ def parse_david_lloyd_email_part(html_part: str) -> dict:
 
     if h_idx is not None:
         agg = {"time":None,"date":None,"day":None,"coach":None,"venue":None,"session":None}
+        header_row = p.rows[h_idx]
+        expected_cols = len(header_row)
+        
         for r in p.rows[h_idx+1:h_idx+6]:
+            # Handle rowspan: if row is shorter than header, columns may be shifted left
+            # Adjust header indices by the number of missing leading columns
+            col_offset = expected_cols - len(r)
+            
             def get(k):
                 j = header.get(k)
-                return (r[j].strip() if (j is not None and j < len(r) and r[j].strip()) else None)
+                if j is None:
+                    return None
+                # Adjust index for missing rowspan columns
+                actual_j = j - col_offset
+                return (r[actual_j].strip() if (0 <= actual_j < len(r) and r[actual_j].strip()) else None)
+            
             for k in list(agg):
                 agg[k] = agg[k] or get(k)
             if agg["time"] and agg["date"] and (agg["coach"] or agg["venue"]):
