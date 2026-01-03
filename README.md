@@ -2,11 +2,20 @@
 
 A modular email processing system that routes incoming emails to specialized handlers based on recipient address. Currently supports automated job application analysis with AI-powered CV matching, fitness class schedule management, and intelligent spam filtering.
 
-## 🏗️ Architecture Overview
+##  Live Reports
+
+See the system in action:
+
+- **Job Analysis Report**: [https://www.critchley.biz/JobAnalysis](https://www.critchley.biz/JobAnalysis)
+- **David Lloyd Schedule**: [https://www.critchley.biz/DavidLloyd/timetable.html](https://www.critchley.biz/DavidLloyd/timetable.html)
+
+Reports are updated automatically via cron.
+
+##  Architecture Overview
 
 ![PopIt3 Architecture](architecture.svg)
 
-## 📋 Core Functionality
+##  Core Functionality
 
 ### Email Routing System
 The system routes emails to specialized processors based on the `To:` address:
@@ -18,7 +27,7 @@ The system routes emails to specialized processors based on the `To:` address:
 | Spam addresses | Spam Filter | Deletes known spam recipients |
 | Other addresses | Mail Router | Routes to appropriate mailspool |
 
-### 1. Job Analysis Processor 🎯
+### 1. Job Analysis Processor 
 
 **Purpose**: Automatically scores job opportunities against your CV using AI
 
@@ -39,7 +48,7 @@ The system routes emails to specialized processors based on the `To:` address:
 
 **Technologies**: OpenAI GPT-4o-mini, GDBM, HTML generation, WebDAV
 
-### 2. Gym Booking Processor 🏋️
+### 2. Gym Booking Processor 
 
 **Purpose**: Maintains calendar of fitness class bookings
 
@@ -51,7 +60,7 @@ The system routes emails to specialized processors based on the `To:` address:
 
 **Technologies**: HTML parsing, GDBM storage
 
-### 3. Spam Filter Processor 🗑️
+### 3. Spam Filter Processor 
 
 **Purpose**: Automatically deletes emails to known spam addresses
 
@@ -60,7 +69,7 @@ The system routes emails to specialized processors based on the `To:` address:
 2. Logs deletion
 3. Removes from mail server
 
-### 4. Mail Router 📬
+### 4. Mail Router 
 
 **Purpose**: Routes other emails to appropriate mailspools
 
@@ -69,7 +78,7 @@ The system routes emails to specialized processors based on the `To:` address:
 2. Archives to local or WebDAV maildir
 3. Maintains message integrity
 
-## 🚀 Quick Start
+##  Quick Start
 
 ### Prerequisites
 
@@ -117,40 +126,40 @@ python3 query_jobs.py search "python developer"
 python3 extract_job_analysis.py --sort-by-score
 ```
 
-## 📁 Project Structure
+##  Project Structure
 
 ```
 popit3/
-├── Core Email Processing
-│   ├── popit3.py                    # POP3/IMAP email fetcher
-│   ├── process_emails.py            # Email router & processor orchestrator
-│   └── process_lock.py              # Concurrency control
-│
-├── Email Processors
-│   ├── newparser_jobserve.py        # JobServe processor (main)
-│   ├── MyDavidLloydSchedule.py      # Gym booking processor
-│   └── mailspool.py                 # Generic mail archiver
-│
-├── Parsers
-│   ├── js_email.py                  # JobServe HTML email parser
-│   ├── js_alert_parser.py           # JobServe alert parser
-│   ├── dl_email.py                  # David Lloyd email parser
-│   └── scanmailheaders.py           # Email security & validation
-│
-├── Job Analysis
-│   ├── analyze_jobs_openai.py       # OpenAI integration
-│   ├── job_analysis_html_report.py  # HTML report generator
-│   ├── query_jobs.py                # Database query CLI
-│   └── extract_job_analysis.py      # Results extraction
-│
-└── Utilities
-    ├── gdata.py                     # GDBM wrapper (external dependency)
-    └── webdav4/                     # WebDAV client
+ Core Email Processing
+    popit3.py                    # POP3/IMAP email fetcher
+    process_emails.py            # Email router & processor orchestrator
+    process_lock.py              # Concurrency control
+
+ Email Processors
+    newparser_jobserve.py        # JobServe processor (main)
+    MyDavidLloydSchedule.py      # Gym booking processor
+    mailspool.py                 # Generic mail archiver
+
+ Parsers
+    js_email.py                  # JobServe HTML email parser
+    js_alert_parser.py           # JobServe alert parser
+    dl_email.py                  # David Lloyd email parser
+    scanmailheaders.py           # Email security & validation
+
+ Job Analysis
+    analyze_jobs_openai.py       # OpenAI integration
+    job_analysis_html_report.py  # HTML report generator
+    query_jobs.py                # Database query CLI
+    extract_job_analysis.py      # Results extraction
+
+ Utilities
+     gdata.py                     # GDBM wrapper (external dependency)
+     webdav4/                     # WebDAV client
 
 TO_DELETE/                           # Legacy/deprecated code
 ```
 
-## ⚙️ Configuration
+##  Configuration
 
 ### Email Setup (`.netrc`)
 
@@ -198,15 +207,15 @@ else:
     archive_email(msg, destination)
 ```
 
-## 📊 Job Analysis Reports
+##  Job Analysis Reports
 
 ### Report Features
 
 - **Color-Coded Scoring**:
-  - 🟢 8-10: Excellent match
-  - 🔵 7: Good match  
-  - 🟡 6: Average match
-  - 🔴 <6: Poor match
+  -  8-10: Excellent match
+  -  7: Good match  
+  -  6: Average match
+  -  <6: Poor match
 
 - **Expandable Details**: Click scores to see full AI analysis
 - **Job Metadata**: Salary, location, contract type, skills
@@ -230,7 +239,7 @@ Gaps:
 Recommendation: Strong candidate, apply immediately
 ```
 
-## 🔄 Automation
+##  Automation
 
 ### Cron Configuration
 
@@ -245,7 +254,7 @@ Recommendation: Strong candidate, apply immediately
 0,30 * * * * cd ~/py/popit3 && python3 job_analysis_html_report.py >> out.log 2>&1
 ```
 
-## 🛠️ Technical Details
+##  Technical Details
 
 ### Data Storage
 
@@ -267,7 +276,7 @@ Recommendation: Strong candidate, apply immediately
 - HTML generation: <1 second for 100 jobs
 - Database capacity: 1000+ jobs efficiently
 
-## 🐛 Troubleshooting
+##  Troubleshooting
 
 | Issue | Solution |
 |-------|----------|
@@ -277,7 +286,7 @@ Recommendation: Strong candidate, apply immediately
 | Duplicate jobs appearing | Check Message-ID deduplication logic |
 | Email parsing errors | Review parser logs, update HTML selectors |
 
-## 🔮 Future Enhancements
+##  Future Enhancements
 
 ### Planned Features
 - [ ] LinkedIn and Indeed email support
@@ -310,35 +319,35 @@ if to_address == "john.newtype@critchley.biz":
     process_new_email_type(msg, to_address)
 ```
 
-## 📝 Module Dependencies
+##  Module Dependencies
 
 ### Core Pipeline
-- **popit3.py** → `process_emails`, `gdata`, `requests`
-- **process_emails.py** → `scanmailheaders`, `MyDavidLloydSchedule`, `mailspool`, `newparser_jobserve`, `gdata`, `webdav4.client`
-- **newparser_jobserve.py** → `js_email`, `js_alert_parser`, `openai`, `yaml`, `gdata`
+- **popit3.py**  `process_emails`, `gdata`, `requests`
+- **process_emails.py**  `scanmailheaders`, `MyDavidLloydSchedule`, `mailspool`, `newparser_jobserve`, `gdata`, `webdav4.client`
+- **newparser_jobserve.py**  `js_email`, `js_alert_parser`, `openai`, `yaml`, `gdata`
 
 ### Parsers
-- **js_email.py** → BeautifulSoup, email parsing
-- **dl_email.py** → BeautifulSoup, email parsing
-- **scanmailheaders.py** → Email security validation
+- **js_email.py**  BeautifulSoup, email parsing
+- **dl_email.py**  BeautifulSoup, email parsing
+- **scanmailheaders.py**  Email security validation
 
 ### Storage & Reporting
-- **mailspool.py** → `webdav4.client`, maildir handling
-- **job_analysis_html_report.py** → `gdata`, `webdav4.client`, Jinja2
-- **gdata.py** → GDBM wrapper (external dependency)
+- **mailspool.py**  `webdav4.client`, maildir handling
+- **job_analysis_html_report.py**  `gdata`, `webdav4.client`, Jinja2
+- **gdata.py**  GDBM wrapper (external dependency)
 
-## 📄 License
+##  License
 
 MIT License - See LICENSE file
 
-## 🙏 Acknowledgments
+##  Acknowledgments
 
 - **gdata** module for GDBM wrapper functionality
 - **OpenAI** for GPT models powering job analysis
 - **JobServe** for job listing alerts
 - **David Lloyd** for fitness class bookings
 
-## 👤 Author
+##  Author
 
 John Critchley - [GitHub](https://github.com/john-critchley/popit3)
 
