@@ -32,7 +32,7 @@ def get_all_jobs():
             try:
                 email_data = db[key]
                 # Only return entries that have job data
-                if 'parsed' in email_data:
+                if 'parsed_job' in email_data:
                     results.append((key, email_data))
             except (KeyError, TypeError):
                 continue
@@ -109,7 +109,7 @@ def get_jobs_needing_llm_processing():
             try:
                 email_data = db[key]
                 # Only return entries that have job data but no LLM results
-                if 'parsed' in email_data and 'llm_results' not in email_data:
+                if 'parsed_job' in email_data and 'llm_results' not in email_data:
                     results.append((key, email_data))
             except (KeyError, TypeError):
                 continue
@@ -128,7 +128,7 @@ def search_jobs_by_keywords(keywords):
     
     for message_id, email_data in all_jobs:
         try:
-            parsed = email_data.get('parsed', {})
+            parsed = email_data.get('parsed_job', {})
             searchable_text = ' '.join([
                 parsed.get('job_title', ''),
                 parsed.get('description', ''),

@@ -27,6 +27,8 @@ def parse_args():
 
 
 def is_recent(rec_date_iso: str, days: int) -> bool:
+    assert isinstance(rec_date_iso, str), f"rec_date_iso must be str, got {type(rec_date_iso)}"
+    assert isinstance(days, int), f"days must be int, got {type(days)}"
     try:
         rec_dt = datetime.datetime.fromisoformat(rec_date_iso)
     except Exception:
@@ -36,6 +38,8 @@ def is_recent(rec_date_iso: str, days: int) -> bool:
 
 
 def reset_recent(db_path: str, days: int) -> int:
+    assert isinstance(db_path, str), f"db_path must be str, got {type(db_path)}"
+    assert isinstance(days, int), f"days must be int, got {type(days)}"
     db_path = os.path.expanduser(db_path)
     count = 0
     gd = gdata.gdata(db_path)
