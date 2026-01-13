@@ -104,6 +104,6 @@ def do_processing(new_emails, mail_db=None, meta_db_file = os.path.expanduser("~
             print(traceback.format_exc())
 #            import pdb
 #            pdb.set_trace()
-            raise
+            continue
 
     return deletes

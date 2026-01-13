@@ -120,7 +120,7 @@ def process_dl_mails(segregated_dl_emails):
                     print(bo)
                     continue
                 if bo.end<now:
-                    print(chr(8226), bo['start'], bo['end'], bo[booking_reference], bo['msg_id'])
+                    print(chr(8226), int(bo.UIDL), bo['start'], bo['end'], bo[booking_reference], bo['msg_id'])
                     cleanup.append(bo)
                 if not aox(booking_map, bo[booking_reference], bo.msg_id, uidl_decode(bo.UIDL)):
                     if 'verbose' in vars() and bool(verbose) and verbose:
