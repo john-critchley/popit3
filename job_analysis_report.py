@@ -282,12 +282,38 @@ def process_job_analysis(db_path='~/.jobserve.gdbm', days=7, min_score=5,
         deploy: Whether to deploy to WebDAV
     
     Returns:
-        list: List of email UIDs to be deleted (empty in current implementation)
+        list: List of email UIDs to be deleted (jobs older than 14 days)
     """
-    gd = load_recent_jobs(db_path, days=days)
-    keys = sort_jobs(gd)
+    gd = gdata.gdata(os.path.expanduser(db_path))
+    now = datetime.datetime.now(datetime.UTC)
+    uids_to_delete = []
     
-    table_html = generate_html_table(gd, keys, min_score=min_score)
+    # Find and delete jobs older than 14 days
+    for key in list(gd.keys()):
+        try:
+            record = gd[key]
+            if 'date' in record:
+                job_date = datetime.datetime.fromisoformat(record['date'])
+                age = now - job_date
+                if age > datetime.timedelta(days=14):
+                    # Extract UID from the message ID if available
+                    msg_id = key if isinstance(key, str) else key.decode()
+                    uids_to_delete.append(msg_id)
+                    print(f"Deleting old job: {msg_id} (age: {age.days} days)")
+                    del gd[key]
+        except Exception as e:
+            print(f"Error processing key {key}: {e}")
+    
+    gd.close()
+    
+    # Reload without deleted jobs
+    gd = load_recent_jobs(db_path, days=days)
+    
+    # Filter out unclassified from the jobs list
+    classified_jobs = {k: v for k, v in gd.items() if 'unclassified' not in v}
+    keys = sort_jobs(classified_jobs)
+    
+    table_html = generate_html_table(classified_jobs, keys, min_score=min_score)
     unclassified_html = generate_unclassified_table(gd)
     full_html = create_full_html_document(table_html, unclassified_html)
     
@@ -296,9 +322,9 @@ def process_job_analysis(db_path='~/.jobserve.gdbm', days=7, min_score=5,
             deploy_html_to_webdav(full_html, host)
         except ValueError as e:
             print(f"Warning: Could not deploy - {e}")
-            return []
+            return uids_to_delete
     
-    return []
+    return uids_to_delete
 
 
 def main():
