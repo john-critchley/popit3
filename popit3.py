@@ -296,12 +296,6 @@ if __name__ == "__main__":
     ns = p.parse_args()
     kwargs = {k: v for k, v in vars(ns).items() if v is not None}
     print(kwargs)
-    try:
-        print("START:", datetime.datetime.now(datetime.UTC).isoformat())
-    except Exception:
-        pass
+    print("START:", datetime.datetime.now(datetime.UTC).isoformat())
     main(**kwargs)
-    try:
-        print("END:", datetime.datetime.now(datetime.UTC).isoformat())
-    except Exception:
-        pass
+    print("END:", datetime.datetime.now(datetime.UTC).isoformat())

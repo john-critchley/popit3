@@ -20,6 +20,7 @@
 - [ ] Generate HTML report for applications (like job analysis report)
 - [ ] Add AngelList/other job board integration
 - [ ] Validation in reports — flag missing fields visually (e.g. job with no title)
+- [ ] If any scripts generate intermediate/debug artifacts, auto-schedule cleanup via `at` (teatime tomorrow); only delete safe targets (e.g. `tmp_` prefix or dedicated scratch dirs), and document cancellation via `atrm`/`at -r`
 
 **Nice to Have:**
 

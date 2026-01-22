@@ -36,8 +36,10 @@ def parse_email_address(addr_string,
         print("Caught exception:", e.__clas__.__name__, * e.args) # XXX NO!
         return ("", False)
 
-def parse_email_addresses(addr_string):
-    if not addr_string or not isinstance(addr_string, str):
+def parse_email_addresses(addr_string: str):
+    if not isinstance(addr_string, str):
+        raise TypeError(f"addr_string must be str, got {type(addr_string).__name__}")
+    if not addr_string:
         return []
     
     # Safe comma splitting that respects quoted strings

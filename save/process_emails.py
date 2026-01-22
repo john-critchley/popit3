@@ -1,5 +1,6 @@
 if __name__ != "__main__": print("Module:", __name__)
 # WORK ON This
+##import pdb
 import os
 import gdata
 import email
@@ -20,6 +21,9 @@ import time
 import newparser_jobserve
 
 import httpx
+
+import yaml
+import re
 
 mode="w" # change to "n" for going from clean
 
@@ -82,6 +86,12 @@ map= [
         ("john.tr@critchley.biz", mail_spool.store_messages),
         ("john.q@critchley.biz", mail_spool.store_messages),
     ]
+
+if os.environ.get("POPIT3_JS_ONLY") == "1":
+    map = [
+        ("john.js@critchley.biz", newparser_jobserve.process_js_mails),
+    ]
+
 def do_processing(new_emails, mail_db=None, meta_db_file = os.path.expanduser("~/.email3.meta.gdbm")):
     assert isinstance(meta_db_file, (str, bytes, os.PathLike)), f"meta_db_file, is a {type(meta_db_file)} not str, bytes or os.PathLike."
     foo={}
@@ -91,26 +101,31 @@ def do_processing(new_emails, mail_db=None, meta_db_file = os.path.expanduser("~
     
     with gdata.gdata(gdbm_file=meta_db_file, mode=mode) as metadb:
         for uidl, email_bin in new_emails:
+#            if int(uidl)== 164370:
+#                pdb.set_trace()
+            print('uidl', uidl)
+
+            raw_dump_dir = os.environ.get("POPIT3_RAW_DUMP_DIR")
+            if raw_dump_dir:
+                os.makedirs(raw_dump_dir, exist_ok=True)
+                uidl_str = uidl.decode("utf-8", errors="replace") if isinstance(uidl, (bytes, bytearray)) else str(uidl)
+                safe_uidl = re.sub(r"[^0-9A-Za-z_.-]+", "_", uidl_str)
+                tmp_path = os.path.join(raw_dump_dir, f"{safe_uidl}.eml.tmp")
+                final_path = os.path.join(raw_dump_dir, f"{safe_uidl}.eml")
+                with open(tmp_path, "wb") as f:
+                    f.write(email_bin)
+                os.replace(tmp_path, final_path)
+
             msg=email.message_from_bytes(_norm(email_bin))
+            assert msg is not None, f"Email {int(uidl)} failed to parse"
             To=msg['To']
-            try:
-                parsed_to = scanmailheaders.parse_email_addresses(To)
-            except TypeError as e:
-                frm = msg.get('From')
-                subj = msg.get('Subject')
-                dt = msg.get('Date')
-                mid = msg.get('Message-ID')
-                print(
-                    f"ERROR parsing To header (uidl={uidl!r}): {e}; "
-                    f"To={To!r} From={frm!r} Subject={subj!r} Date={dt!r} Message-ID={mid!r}"
-                )
-                foo.setdefault(None, []).append((uidl, msg))
-                continue
-            #print('To:', To)
-            to_addresses=[ address for address, safe in parsed_to if bool(safe)]
+            print(' To:', To)
+            to_addresses=[ address for address, safe in scanmailheaders.parse_email_addresses(To) if bool(safe)]
             for addr in to_addresses:
                 foo.setdefault(addr, []).append((uidl,msg))
     print(json.dumps(sorted([(to, len(refs)) for to, refs in foo.items()], key=lambda x:x[1])))
+    print("foo:")
+    print(yaml.dump({to: [int(r[0]) for r in refs] for to, refs in foo.items()}))
     for email_match, mail_func in map:
         print(f"Processing {email_match}:")
         try:

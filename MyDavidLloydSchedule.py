@@ -114,13 +114,23 @@ def process_dl_mails(segregated_dl_emails):
     with gdata.gdata(os.sep.join([home, loc, '.booking_map2.gdbm'])) as booking_map:
         with gdata.gdata_simple(os.sep.join([home, loc, '.booksings_db2.gdbm'])) as mail_dbm:
             for bo in sorted(all, key=lambda k:k['Sent']):
-                assert bo.kind in ['booking', 'cancellation', "booking_update"], "not valid kind: "+bo.kind
-                if any(bo[x] is None for x in [booking_reference, "start", "end"]):
-                    print(chr(8227), int(bo.UIDL), "has None field:")
-                    print(bo)
+                if bo.kind not in ['booking', 'cancellation', "booking_update"]:
+                    print(chr(8227), int(bo.UIDL), f"Skipping unknown kind: {bo.kind}")
                     continue
-                if bo.end<now:
-                    print(chr(8226), int(bo.UIDL), bo['start'], bo['end'], bo[booking_reference], bo['msg_id'])
+
+                if bo.kind in ("booking", "booking_update"):
+                    missing = [k for k in (booking_reference, "start", "end") if bo.get(k) is None]
+                    if missing:
+                        print(chr(8227), int(bo.UIDL), f"has missing field(s): {', '.join(missing)}")
+                        print(bo)
+                        continue
+                elif bo.kind == "cancellation":
+                    if bo.get(booking_reference) is None:
+                        print(chr(8227), int(bo.UIDL), f"has missing field(s): {booking_reference}")
+                        print(bo)
+                        continue
+                if bo.kind in ("booking", "booking_update") and bo.get("end") is not None and bo.end < now:
+                    print(chr(8226), int(bo.UIDL), bo.get('start'), bo.get('end'), bo.get(booking_reference), bo.get('msg_id'))
                     cleanup.append(bo)
                 if not aox(booking_map, bo[booking_reference], bo.msg_id, uidl_decode(bo.UIDL)):
                     if 'verbose' in vars() and bool(verbose) and verbose:
@@ -168,6 +178,9 @@ def process_dl_mails(segregated_dl_emails):
     bookings_html=(
         '<!DOCTYPE html>\n'
         '<html><head><title>David Lloyd Bookings</title>'
+        '<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">'
+        '<meta http-equiv="Pragma" content="no-cache">'
+        '<meta http-equiv="Expires" content="0">'
         f"""<style>
 .bks{{font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;border-collapse:collapse;width:100%}}
 .bks th,.bks td{{border:1px solid #ddd;padding:8px;text-align:center}}

@@ -63,13 +63,15 @@ def classify_job(subj):
         return None
 
 def process_js_mails(js_emails):
+    print('process_js_mails')
+    print(f'len js_emails {len(js_emails)}')
     gdbm_path = os.path.join(os.path.expanduser(DATABASE_FILENAME))
     js_gd=gdata.gdata(gdbm_path) # I cleanup at the end
     uids_to_delete=set()
     for uid, msg in js_emails:
         uid=int(uid)
         msg_id=msg['Message-ID']
-        print("Message:", msg_id)
+        print("Mail UID:", uid, "Message:", msg_id)
         if not ( msg_id.startswith('<') and msg_id.endswith('>') ):
             print("Warning - Doesn't have angle brackets - added")
             msg_id=f'<{msg_id}>'

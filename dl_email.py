@@ -4,7 +4,8 @@ from datetime import datetime
 from html.parser import HTMLParser
 
 BOOKING_REF_RE = re.compile(r"\bDL-[A-Z0-9]+-[A-Z0-9]+(?:/\d+)?\b", re.I)
-CANCEL_RE      = re.compile(r"\bcancel(?:led|lation|)\b", re.I)
+# Avoid false positives from phrases like "you can cancel your booking" in confirmations.
+CANCEL_RE      = re.compile(r"\b(cancelled|canceled|cancellation)\b|\bhas been cancel(?:led|ed)\b", re.I)
 BOOK_RE        = re.compile(r"\b(book(?:ing|ed)?|reserved|confirmation)\b", re.I)
 UPDATE_RE      = re.compile(
     r"(?:\b(class|session|booking)\b.{0,40}\bhas been (?:changed|amended)\b)"
@@ -13,7 +14,7 @@ UPDATE_RE      = re.compile(
     r"|(?:\bmoved\b)"
     , re.I
 )
-TIME_RANGE_RE  = re.compile(r"\b(\d{1,2}:\d{2})\s*-\s*(\d{1,2}:\d{2})\b", re.I)
+TIME_RANGE_RE  = re.compile(r"\b(\d{1,2}[:.]\d{2})\s*-\s*(\d{1,2}[:.]\d{2})\b", re.I)
 SPORT_RE       = re.compile(r"\b(padel|pickleball|tennis|squash|badminton|table\s*tennis)\b", re.I)
 
 def parse_david_lloyd_email_part(html_part: str) -> dict:
@@ -27,7 +28,7 @@ def parse_david_lloyd_email_part(html_part: str) -> dict:
     def _parse_flex_date(s):
         if not s: return None
         t = re.sub(r"(\d{1,2})(st|nd|rd|th)", r"\1", s.strip())
-        for fmt in ("%A %d %B %Y","%a %d %B %Y","%d %B %Y","%d %b %Y","%d/%m/%Y"):
+        for fmt in ("%A %d %B %Y","%a %d %B %Y","%d %B %Y","%d %b %Y","%d/%m/%Y","%d/%m/%y"):
             try: return datetime.strptime(t, fmt).date()
             except ValueError: pass
         return None
@@ -36,8 +37,10 @@ def parse_david_lloyd_email_part(html_part: str) -> dict:
         m = TIME_RANGE_RE.search(s or "")
         if not m: return (None, None)
         try:
-            return (datetime.strptime(m.group(1), "%H:%M").time(),
-                    datetime.strptime(m.group(2), "%H:%M").time())
+            t1 = m.group(1).replace(".", ":")
+            t2 = m.group(2).replace(".", ":")
+            return (datetime.strptime(t1, "%H:%M").time(),
+                    datetime.strptime(t2, "%H:%M").time())
         except ValueError:
             return (None, None)
 
@@ -99,7 +102,8 @@ def parse_david_lloyd_email_part(html_part: str) -> dict:
         return None
 
     # kind: cancellation > update > booking > unknown
-    if CANCEL_RE.search(full):
+    status = (kv("status", "booking status") or "")
+    if (status and CANCEL_RE.search(status)) or CANCEL_RE.search(full):
         kind = "cancellation"
     elif UPDATE_RE.search(full) or p.saw_strike:
         kind = "booking_update"
