@@ -173,7 +173,43 @@ document.querySelectorAll('tr.job_row').forEach(function(row) {
     return html_table
 
 
-def create_full_html_document(table_html):
+def generate_unclassified_table(gd):
+    """Generate HTML table for unclassified emails (datetime order, newest last)."""
+    now = datetime.datetime.now(datetime.UTC)
+    
+    # Filter for unclassified entries
+    unclassified = {k: v for k, v in gd.items() if 'unclassified' in v}
+    
+    if not unclassified:
+        return ''
+    
+    # Sort by date ascending (newest last)
+    sorted_keys = sorted(
+        unclassified.keys(),
+        key=lambda k: datetime.datetime.fromisoformat(unclassified[k].get('date', '2000-01-01'))
+    )
+    
+    html_table = '''
+<h2>Unclassified Emails</h2>
+<table border="1">
+<thead><tr>
+    <th>DateTime</th>
+    <th>Subject</th>
+</tr></thead>
+<tbody>
+'''
+    
+    for key in sorted_keys:
+        rec = unclassified[key]
+        date_str = datetime.datetime.fromisoformat(rec.get('date', '2000-01-01')).strftime('%Y-%m-%d %H:%M:%S')
+        subject = rec.get('subject', 'No Subject')
+        html_table += f'<tr><td>{date_str}</td><td>{subject}</td></tr>\n'
+    
+    html_table += '</tbody></table>\n'
+    return html_table
+
+
+def create_full_html_document(table_html, unclassified_html=''):
     """Wrap the table HTML in a complete HTML document."""
     now = datetime.datetime.now(datetime.UTC)
     date_str = now.strftime('%Y-%m-%d %H:%M:%S UTC')
@@ -190,6 +226,7 @@ def create_full_html_document(table_html):
     <p>Generated: {date_str}</p>
     <p><a href="/JobAnalysis">Load latest analysis</a></p>
     {table_html}
+    {unclassified_html}
 </body>
 </html>'''
 
@@ -251,7 +288,8 @@ def process_job_analysis(db_path='~/.jobserve.gdbm', days=7, min_score=5,
     keys = sort_jobs(gd)
     
     table_html = generate_html_table(gd, keys, min_score=min_score)
-    full_html = create_full_html_document(table_html)
+    unclassified_html = generate_unclassified_table(gd)
+    full_html = create_full_html_document(table_html, unclassified_html)
     
     if deploy:
         try:

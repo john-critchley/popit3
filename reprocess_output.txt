@@ -1,0 +1,1542 @@
+Module: process_emails
+Module: scanmailheaders
+Module: MyDavidLloydSchedule
+Module: dl_email
+Module: mailspool
+Module: newparser_jobserve
+Module: js_alert_parser
+Module: js_email
+{'reprocess': True}
+START: 2026-01-22T16:45:52.079840+00:00
++OK The Microsoft Exchange POP3 service is ready. (BACKENDAUTHENTICATE) [TABPADQAUAAxADIAMwBDAEEAMAA0ADIANwAuAEcAQgBSAFAAMQAyADMALgBQAFIATwBEAC4ATwBVAFQATABPAE8ASwAuAEMATwBNAA==]
+>>> AUTH XOAUTH2
++
++OK User successfully authenticated.
+>>> UIDL
++OK
+Processing new emails:
+152675,152707,152710,152719,152722,152725,152812,152815,152819,152994,153018,153024,153124,153256,153349,153484,153494,153515,153521,153774,153780,153860,153863,153891,153938,154018,154027,154063,154090,154230,154248,154261,154308,154344,154350,154369,154381,154387,154393,154402,154414,154433,154463,154466,154472,154484,154491,154497,154508,154511,154514,154526,154532,154561,154582,154588,154643,154649,154652,154686,154718,154724,154745,154754,154760,154765,154768,154779,154818,154826,154838,154847,154853,154872,154878,154918,154936,154939,154942,154945,154948,154951,154954,154957,154963,154973,154979,154982,155008,155020,155050,155057,155077,155095,155103,155162,155175,155176,155181,155184,155188,155192,155198,155298,155405,155413,155425,155486,155493,155507,155564,155576,155585,155591,155597,155600,155609,155649,155661,155667,155670,155673,155682,155686,155709,155732,155744,155761,155764,155776,155779,155796,155802,155811,155820,155845,155851,155854,155866,155872,155886,155889,155892,155899,155904,155984,155993,156033,156055,156082,156110,156119,156128,156157,156208,156235,156238,156254,156257,156285,156288,156299,156388,156403,156409,156421,156423,156446,156503,156521,156551,156578,156621,156674,156686,156694,156716,156738,156744,156757,156793,156799,156810,156813,156816,156822,156827,156830,156833,156845,156854,156857,156867,156870,156873,156878,156881,156884,156918,156924,156927,156933,156946,156952,156956,156962,156965,156968,156971,156982,156991,156994,157005,157029,157033,157046,157064,157068,157075,157100,157148,157154,157157,157167,157182,157201,157204,157207,157220,157224,157227,157233,157236,157239,157276,157293,157302,157305,157311,157317,157323,157347,157350,157356,157359,157369,157372,157387,157398,157404,157407,157444,157465,157485,157491,157494,157497,157503,157509,157522,157525,157528,157534,157552,157560,157566,157569,157596,157599,157609,157614,157624,157630,157636,157642,157645,157651,157675,157689,157702,157711,157714,157730,157733,157742,157753,157773,157782,157785,157788,157790,157793,157796,157799,157801,157824,157844,157853,157865,157877,157880,157883,157889,157892,157895,157901,157904,157918,157934,157979,157982,157988,158025,158028,158031,158037,158040,158057,158066,158075,158087,158116,158138,158143,158149,158152,158168,158174,158177,158186,158192,158201,158213,158222,158228,158238,158241,158250,158265,158277,158280,158312,158334,158341,158362,158405,158408,158418,158431,158434,158465,158477,158492,158498,158501,158513,158519,158538,158547,158550,158562,158565,158568,158574,158614,158651,158654,158657,158667,158679,158685,158688,158690,158695,158700,158709,158744,158750,158762,158771,158774,158777,158780,158798,158801,158813,158826,158846,158855,158870,158881,158904,158907,158933,158953,158956,158968,158971,158980,158983,158999,159017,159025,159036,159060,159064,159067,159076,159086,159095,159104,159107,159118,159120,159123,159126,159151,159154,159172,159175,159178,159190,159214,159231,159240,159255,159261,159264,159267,159270,159272,159288,159314,159325,159329,159332,159338,159348,159374,159389,159392,159395,159401,159404,159407,159410,159419,159427,159444,159447,159481,159490,159493,159502,159525,159528,159540,159549,159564,159571,159585,159590,159596,159615,159625,159631,159634,159649,159652,159655,159658,159661,159675,159678,159694,159697,159710,159716,159734,159749,159758,159763,159767,159775,159778,159781,159803,159814,159820,159877,159886,159892,159895,159898,159903,159906,159914,159923,159926,159946,159949,159960,159966,159988,159998,160001,160015,160030,160033,160075,160097,160103,160112,160122,160134,160137,160140,160149,160155,160164,160166,160178,160184,160201,160204,160231,160242,160252,160256,160273,160276,160279,160282,160285,160315,160325,160329,160342,160354,160378,160381,160384,160402,160412,160419,160427,160430,160455,160465,160471,160477,160499,160512,160518,160521,160545,160548,160572,160591,160597,160610,160613,160621,160633,160652,160658,160661,160664,160685,160688,160703,160706,160709,160713,160726,160738,160751,160754,160770,160785,160806,160812,160818,160841,160850,160853,160862,160865,160891,160900,160903,160929,160932,160944,160947,160956,160959,160968,160974,160987,160993,161006,161010,161020,161044,161056,161059,161065,161068,161071,161077,161080,161092,161110,161119,161122,161128,161134,161185,161211,161220,161241,161268,161282,161285,161288,161291,161313,161345,161360,161375,161384,161390,161399,161402,161408,161414,161419,161422,161425,161439,161445,161449,161455,161473,161502,161521,161524,161527,161564,161567,161570,161609,161612,161629,161649,161652,161658,161699,161712,161718,161725,161728,161740,161743,161755,161779,161791,161820,161842,161845,161848,161874,161884,161890,161896,161930,161946,161957,161974,161977,161980,161986,162002,162005,162011,162026,162034,162043,162052,162063,162088,162091,162124,162146,162152,162168,162182,162185,162188,162197,162209,162218,162221,162235,162257,162277,162296,162299,162304,162334,162361,162377,162380,162389,162398,162411,162427,162430,162436,162439,162445,162448,162452,162455,162459,162463,162470,162482,162503,162525,162534,162537,162561,162564,162571,162590,162617,162632,162647,162650,162677,162680,162683,162715,162719,162732,162735,162750,162779,162782,162794,162797,162816,162819,162822,162823,162831,162840,162875,162890,162900,162923,162935,162960,162969,162978,162981,162990,162993,163008,163018,163019,163028,163037,163045,163096,163102,163108,163127,163162,163165,163202,163223,163229,163236,163252,163255,163259,163260,163265,163289,163299,163314,163318,163321,163328,163331,163346,163349,163389,163407,163431,163443,163480,163493,163501,163504,163510,163527,163530,163545,163564,163589,163595,163619,163631,163648,163651,163657,163661,163664,163684,163691,163697,163712,163715,163726,163729,163732,163735,163747,163755,163770,163773,163779,163818,163833,163836,163839,163846,163876,163879,163885,163888,163895,163901,163907,163910,163923,163926,163932,163935,163943,163949,163952,163958,163964,163967,163970,163973,163977,163980,163983,163988,164004,164007,164010,164013,164022,164025,164043,164063,164067,164082,164092,164095,164098,164107,164121,164127,164140,164143,164150,164169,164178,164181,164187,164190,164196,164199,164202,164205,164208,164209,164217,164220,164223,164226,164229,164232,164235,164238,164241,164249,164252,164255,164261,164264,164267,164270,164281,164288,164294,164297,164300,164306,164312,164315,164318,164321,164324,164330,164333,164342,164349,164352,164355,164358,164361,164364,164370,164382,164388,164391,164394,164397,164400,164403,164409,164415,164418,164421,164424,164427,164430,164447,164457,164460,164463,164469,164483,164486,164489,164499,164502,164505,164508,164511,164516,164519,164522,164525,164528,164535,164544,164547,164550,164553,164556,164562,164574,164584,164593,164596,164599,164602,164605,164608,164611,164617,164623,164626,164629,164635,164638,164641,164644,164647,164650,164653,164656,164660,164663,164676,164681,164684
+ERROR parsing To header (uidl=b'158657'): addr_string must be str, got NoneType; To=None From='HSManager.BristolEmersonsGreen\r\n\t<HSManager.BristolEmersonsGreen@davidlloyd.co.uk>' Subject='Christmas Party menu choices' Date='Tue, 25 Nov 2025 14:39:03 +0000' Message-ID='<CWXP123MB3605DFDBB879955E23029B0FBAD1A@CWXP123MB3605.GBRP123.PROD.OUTLOOK.COM>'
+[["john.eg@critchley.biz", 1], ["john.nomad@critchley.biz", 1], ["john.opz@critchley.biz", 1], ["john.klm@critchley.biz", 1], ["john.2g2g@critchley.biz", 1], ["john.jellyfaas@critchley.biz", 1], ["johnpolloai@critchley.biz", 1], ["john.giraffe@critchley.biz", 1], [null, 1], ["reception@thekinmel.co.uk", 1], ["john_bluesky@critchley.biz", 1], ["john.argos@critchley.biz", 1], ["john.kfc@critchley.biz", 1], ["john.meetup@critchley.biz", 1], ["john.ts@critchley.biz", 1], ["katherine_critchley@hotmail.com", 1], ["pam@critchley.biz", 1], ["john.bldo@critchley.biz", 1], ["john.indeed@critchley.biz", 1], ["john.u@critchley.biz", 1], ["john.jmf@critchley.biz", 1], ["john.waze@critchley.biz", 2], ["john.saga@critchley.biz", 2], ["john.js864898@critchley.biz", 2], ["john.hg@critchley.biz", 2], ["john.rp@critchley.biz", 2], ["john.liafuw@critchley.biz", 2], ["accounts@critchley.biz", 2], ["john.wellfound@critchley.biz", 2], ["john.chatgpt@critchley.biz", 3], ["john.cloudflare@critchley.biz", 3], ["john.oneplus@critchley.biz", 3], ["adm@critchley.biz", 3], ["john.claude@critchley.biz", 3], ["john.2@critchley.biz", 3], ["john.cra@critchley.biz", 3], ["ctm@critchley.biz", 3], ["john.frbe@critchley.biz", 3], ["john.scc@critchley.biz", 4], ["john.retire@critchley.biz", 4], ["john.ss@critchley.biz", 4], ["john.knowingless@critchley.biz", 4], ["john.seetickets@critchley.biz", 4], ["john.hb@critchley.biz", 4], ["john.a@critchley.biz", 4], ["survey_maker@critchley.biz", 5], ["john.amd@critchley.biz", 5], ["john.joules@critchley.biz", 5], ["john.stan@critchley.biz", 6], ["john.pipers_farm@critchley.biz", 6], ["john.chatnoirlondon@critchley.biz", 7], ["john.je@critchley.biz", 8], ["john.yourparty@critchley.biz", 9], ["john.booking@critchley.biz", 9], ["john.am@critchley.biz", 9], ["john+change@critchley.biz", 9], ["john.greggs@critchley.biz", 9], ["john.data_alchemy@critchley.biz", 10], ["john.butc@critchley.biz", 10], ["john_at_celtic_manor@critchley.biz", 10], ["john.bc-job@critchley.biz", 11], ["john.leads@critchley.biz", 11], ["john.tr2@critchley.biz", 11], ["john.dr@critchley.biz", 11], ["jsr_critchley@hotmail.com", 12], ["john.19@critchley.biz", 12], ["john.bpa@critchley.biz", 13], ["john.aferry@critchley.biz", 13], ["john.unicef@critchley.biz", 13], ["john.aeg_repair@critchley.biz", 13], ["john.purp@critchley.biz", 14], ["john.msxp@critchley.biz", 14], ["john.vm@critchley.biz", 15], ["john.c@critchley.biz", 15], ["john.w@critchley.biz", 17], ["john.mygreatlearning@critchley.biz", 18], ["john.theknow@critchley.biz", 18], ["john.nectar@critchley.biz", 19], ["john.fa@critchley.biz", 20], ["john.ha_ev@critchley.biz", 20], ["john.gd@critchley.biz", 21], ["john.fe@critchley.biz", 22], ["john.dl@critchley.biz", 22], ["john.rac@critchley.biz", 26], ["john4eu@critchley.biz", 26], ["john.ltm@critchley.biz", 31], ["john.ld@critchley.biz", 34], ["john.webby@critchley.biz", 34], ["john.vodafone@critchley.biz", 38], ["john_apple_uk@critchley.biz", 45], ["jsr@critchley.biz", 69], ["john.js@critchley.biz", 129]]
+Processing john.flix@critchley.biz:
+Dels: []
+Processing john.ncaf@critchley.biz:
+Dels: []
+Processing john.bat@critchley.biz:
+Dels: []
+Processing john.guardian@critchley.biz:
+Dels: []
+Processing john.duolingo@critchley.biz:
+Dels: []
+Processing john.ig@critchley.biz:
+Dels: []
+Processing john.od@critchley.biz:
+Dels: []
+Processing readingreddit@critchley.biz:
+Dels: []
+Processing o_f@critchley.biz:
+Dels: []
+Processing john.dl@critchley.biz:
+‣ 155162 has missing field(s): booking_reference, start, end
+{'msg_id': '<pBPd6Q1sSqyJRJPOde21Aw@geopod-ismtpd-31>', 'UIDL': b'155162', 'Sent': datetime.datetime(2025, 11, 1, 9, 3, 2, tzinfo=datetime.timezone.utc), 'kind': 'booking', 'booking_reference': None, 'activity': None, 'club': None, 'venue': None, 'coach': None, 'day': None, 'start': None, 'end': None}
+‣ 157645 has missing field(s): booking_reference, start, end
+{'msg_id': '<kNJjqAG-QTWFgd6bwNQFig@geopod-ismtpd-12>', 'UIDL': b'157645', 'Sent': datetime.datetime(2025, 11, 17, 19, 23, 6, tzinfo=datetime.timezone.utc), 'kind': 'booking', 'booking_reference': None, 'activity': None, 'club': None, 'venue': None, 'coach': None, 'day': None, 'start': None, 'end': None}
+‣ 159120 has missing field(s): booking_reference, start, end
+{'msg_id': '<tdapyaxdSYySdN2sM_zV6Q@geopod-ismtpd-canary-0>', 'UIDL': b'159120', 'Sent': datetime.datetime(2025, 12, 1, 19, 23, 5, tzinfo=datetime.timezone.utc), 'kind': 'booking', 'booking_reference': None, 'activity': None, 'club': None, 'venue': None, 'coach': None, 'day': None, 'start': None, 'end': None}
+‣ 159781 has missing field(s): booking_reference, start, end
+{'msg_id': '<BWcDdhhPQ9ikK7ceNHCITg@geopod-ismtpd-48>', 'UIDL': b'159781', 'Sent': datetime.datetime(2025, 12, 8, 19, 23, 1, tzinfo=datetime.timezone.utc), 'kind': 'booking', 'booking_reference': None, 'activity': None, 'club': None, 'venue': None, 'coach': None, 'day': None, 'start': None, 'end': None}
+‣ 160402 has missing field(s): booking_reference, start, end
+{'msg_id': '<BahNaGhqS42D66mIA0F_qQ@geopod-ismtpd-64>', 'UIDL': b'160402', 'Sent': datetime.datetime(2025, 12, 13, 9, 8, 11, tzinfo=datetime.timezone.utc), 'kind': 'booking', 'booking_reference': None, 'activity': None, 'club': None, 'venue': None, 'coach': None, 'day': None, 'start': None, 'end': None}
+‣ 162732 Skipping unknown kind: unknown
+‣ 162990 has missing field(s): booking_reference, start, end
+{'msg_id': '<YPWvoDYnSmOIz_6WWOIi-g@geopod-ismtpd-10>', 'UIDL': b'162990', 'Sent': datetime.datetime(2026, 1, 8, 17, 51, 18, tzinfo=datetime.timezone.utc), 'kind': 'booking_update', 'booking_reference': None, 'activity': None, 'club': None, 'venue': None, 'coach': None, 'day': None, 'start': None, 'end': None}
+‣ 163018 has missing field(s): booking_reference
+{'msg_id': '<2.2.1.1101072161.1734488.3535858745930@mybookings.davidlloyd.co.uk>', 'UIDL': b'163018', 'Sent': datetime.datetime(2026, 1, 9, 4, 29, 32, tzinfo=datetime.timezone(datetime.timedelta(seconds=3600))), 'kind': 'cancellation', 'booking_reference': None, 'activity': 'Class', 'club': None, 'venue': None, 'coach': None, 'day': None, 'start': None, 'end': None}
+‣ 163223 has missing field(s): booking_reference, start, end
+{'msg_id': '<DArw_WxJQl-o5mdITj8i8Q@geopod-ismtpd-59>', 'UIDL': b'163223', 'Sent': datetime.datetime(2026, 1, 10, 9, 3, 2, tzinfo=datetime.timezone.utc), 'kind': 'booking', 'booking_reference': None, 'activity': None, 'club': None, 'venue': None, 'coach': None, 'day': None, 'start': None, 'end': None}
+‣ 163818 has missing field(s): booking_reference, start, end
+{'msg_id': '<SGx9IB8IQSaw-4V1ZklhOw@geopod-ismtpd-50>', 'UIDL': b'163818', 'Sent': datetime.datetime(2026, 1, 15, 10, 0, 37, tzinfo=datetime.timezone.utc), 'kind': 'booking', 'booking_reference': None, 'activity': None, 'club': None, 'venue': None, 'coach': None, 'day': None, 'start': None, 'end': None}
+‣ 164063 has missing field(s): booking_reference, start, end
+{'msg_id': '<1B7esxM-T8eozUux-8Fzqg@geopod-ismtpd-12>', 'UIDL': b'164063', 'Sent': datetime.datetime(2026, 1, 17, 9, 3, 4, tzinfo=datetime.timezone.utc), 'kind': 'booking', 'booking_reference': None, 'activity': None, 'club': None, 'venue': None, 'coach': None, 'day': None, 'start': None, 'end': None}
+Deployed: True
+Dels: []
+Processing john.js@critchley.biz:
+process_js_mails
+len js_emails 129
+Mail UID: 157636 Message: <000846O00000580df62c@apps.jobserve.com>
+Subject: 8 Jobs for Monday, 17 November 2025 from JobServe
+Skipping non-job email: 8 Jobs for Monday, 17 November 2025 from JobServe
+Not an automated job notification
+Mail UID: 157773 Message: <000847O00000587207e1@apps.jobserve.com>
+Subject: 5 Jobs for Tuesday, 18 November 2025 from JobServe
+Skipping non-job email: 5 Jobs for Tuesday, 18 November 2025 from JobServe
+Not an automated job notification
+Mail UID: 157934 Message: <000847O000005873318a@apps.jobserve.com>
+Subject: 6 Jobs for Wednesday, 19 November 2025 from JobServe
+Skipping non-job email: 6 Jobs for Wednesday, 19 November 2025 from JobServe
+Not an automated job notification
+Mail UID: 158087 Message: <000845O0000056d86708@apps.jobserve.com>
+Subject: 6 Jobs for Thursday, 20 November 2025 from JobServe
+Skipping non-job email: 6 Jobs for Thursday, 20 November 2025 from JobServe
+Not an automated job notification
+Mail UID: 158280 Message: <000846O000005812d7d6@apps.jobserve.com>
+Subject: 10 Jobs for Friday, 21 November 2025 from JobServe
+Skipping non-job email: 10 Jobs for Friday, 21 November 2025 from JobServe
+Not an automated job notification
+Mail UID: 158574 Message: <000846O00000581522e3@apps.jobserve.com>
+Subject: 6 Jobs for Monday, 24 November 2025 from JobServe
+Skipping non-job email: 6 Jobs for Monday, 24 November 2025 from JobServe
+Not an automated job notification
+Mail UID: 158690 Message: <000847O0000058790671@apps.jobserve.com>
+Subject: 4 Jobs for Tuesday, 25 November 2025 from JobServe
+Skipping non-job email: 4 Jobs for Tuesday, 25 November 2025 from JobServe
+Not an automated job notification
+Mail UID: 158870 Message: <000846O0000058178fba@apps.jobserve.com>
+Subject: 11 Jobs for Wednesday, 26 November 2025 from JobServe
+Skipping non-job email: 11 Jobs for Wednesday, 26 November 2025 from JobServe
+Not an automated job notification
+Mail UID: 159178 Message: <000846O00000581cbce6@apps.jobserve.com>
+Subject: 8 Jobs for Tuesday, 02 December 2025 from JobServe
+Skipping non-job email: 8 Jobs for Tuesday, 02 December 2025 from JobServe
+Not an automated job notification
+Mail UID: 159288 Message: <000845O0000056e4e328@apps.jobserve.com>
+Subject: 8 Jobs for Wednesday, 03 December 2025 from JobServe
+Skipping non-job email: 8 Jobs for Wednesday, 03 December 2025 from JobServe
+Not an automated job notification
+Mail UID: 159419 Message: <000848O0000048833203@apps.jobserve.com>
+Subject: 4 Jobs for Thursday, 04 December 2025 from JobServe
+Skipping non-job email: 4 Jobs for Thursday, 04 December 2025 from JobServe
+Not an automated job notification
+Mail UID: 159549 Message: <000848O000004884724f@apps.jobserve.com>
+Subject: 11 Jobs for Friday, 05 December 2025 from JobServe
+Skipping non-job email: 11 Jobs for Friday, 05 December 2025 from JobServe
+Not an automated job notification
+Mail UID: 159615 Message: <000845O0000056e7a76c@apps.jobserve.com>
+Subject: Jobs for Saturday, 06 December 2025 from JobServe
+Skipping non-job email: Jobs for Saturday, 06 December 2025 from JobServe
+Not an automated job notification
+Mail UID: 159778 Message: <000848O00000488671ee@apps.jobserve.com>
+Subject: 10 Jobs for Monday, 08 December 2025 from JobServe
+Skipping non-job email: 10 Jobs for Monday, 08 December 2025 from JobServe
+Not an automated job notification
+Mail UID: 159903 Message: <000848O000004887baa1@apps.jobserve.com>
+Subject: 8 Jobs for Tuesday, 09 December 2025 from JobServe
+Skipping non-job email: 8 Jobs for Tuesday, 09 December 2025 from JobServe
+Not an automated job notification
+Mail UID: 160001 Message: <d761adf2.AVoAAIX_1GMAAAAAAAAAAGI_k0cAAAAAT0QAAAAAABy7MABpOZec@mailjet.com>
+Subject: Ad response to: Python Developer from Jobserve
+Skipping non-job email: Ad response to: Python Developer from Jobserve
+Not an automated job notification
+Mail UID: 160015 Message: <750d1430.AU4AAIYvABgAAAAAAAAAAGI_k0cAAAAAT0QAAAAAABy7MABpOawL@mailjet.com>
+Subject: Job Opportunity - from Robert Half International Thanks for your recent application.
+
+Skipping non-job email: Job Opportunity - from Robert Half International Thanks for your recent application.
+
+Not an automated job notification
+Mail UID: 160030 Message: <000847O00000588765cc@apps.jobserve.com>
+Subject: 8 Jobs for Wednesday, 10 December 2025 from JobServe
+Skipping non-job email: 8 Jobs for Wednesday, 10 December 2025 from JobServe
+Not an automated job notification
+Mail UID: 160201 Message: <000847O0000058887b72@apps.jobserve.com>
+Subject: 8 Jobs for Thursday, 11 December 2025 from JobServe
+Skipping non-job email: 8 Jobs for Thursday, 11 December 2025 from JobServe
+Not an automated job notification
+Mail UID: 160354 Message: <000847O000005889a019@apps.jobserve.com>
+Subject: 7 Jobs for Friday, 12 December 2025 from JobServe
+Skipping non-job email: 7 Jobs for Friday, 12 December 2025 from JobServe
+Not an automated job notification
+Mail UID: 160597 Message: <000845O0000056efdc35@apps.jobserve.com>
+Subject: 12 Jobs for Monday, 15 December 2025 from JobServe
+Skipping non-job email: 12 Jobs for Monday, 15 December 2025 from JobServe
+Not an automated job notification
+Mail UID: 160709 Message: <000847O00000588c9914@apps.jobserve.com>
+Subject: 2 Jobs for Tuesday, 16 December 2025 from JobServe
+Skipping non-job email: 2 Jobs for Tuesday, 16 December 2025 from JobServe
+Not an automated job notification
+Mail UID: 160818 Message: <000846O00000582ab510@apps.jobserve.com>
+Subject: Your CV has been accessed by a recruiter
+Skipping non-job email: Your CV has been accessed by a recruiter
+Not an automated job notification
+Mail UID: 160865 Message: <000848O00000488f0f04@apps.jobserve.com>
+Subject: 8 Jobs for Wednesday, 17 December 2025 from JobServe
+Skipping non-job email: 8 Jobs for Wednesday, 17 December 2025 from JobServe
+Not an automated job notification
+Mail UID: 160974 Message: <000846O00000582c0a60@apps.jobserve.com>
+Subject: 7 Jobs for Thursday, 18 December 2025 from JobServe
+Skipping non-job email: 7 Jobs for Thursday, 18 December 2025 from JobServe
+Not an automated job notification
+Mail UID: 161128 Message: <000848O000004890f953@apps.jobserve.com>
+Subject: 5 Jobs for Friday, 19 December 2025 from JobServe
+Skipping non-job email: 5 Jobs for Friday, 19 December 2025 from JobServe
+Not an automated job notification
+Mail UID: 161422 Message: <000848O000004892e99f@apps.jobserve.com>
+Subject: 5 Jobs for Monday, 22 December 2025 from JobServe
+Skipping non-job email: 5 Jobs for Monday, 22 December 2025 from JobServe
+Not an automated job notification
+Mail UID: 161502 Message: <000847O0000058926d70@apps.jobserve.com>
+Subject: 5 Jobs for Tuesday, 23 December 2025 from JobServe
+Skipping non-job email: 5 Jobs for Tuesday, 23 December 2025 from JobServe
+Not an automated job notification
+Mail UID: 161609 Message: <000847O0000058936ed3@apps.jobserve.com>
+Subject: 8 Jobs for Wednesday, 24 December 2025 from JobServe
+Skipping non-job email: 8 Jobs for Wednesday, 24 December 2025 from JobServe
+Not an automated job notification
+Mail UID: 161699 Message: <000846O000005831d79b@apps.jobserve.com>
+Subject: 7 Jobs for Thursday, 25 December 2025 from JobServe
+Skipping non-job email: 7 Jobs for Thursday, 25 December 2025 from JobServe
+Not an automated job notification
+Mail UID: 161791 Message: <000849O0000048925959@apps.jobserve.com>
+Subject: 6 Jobs for Friday, 26 December 2025 from JobServe
+Skipping non-job email: 6 Jobs for Friday, 26 December 2025 from JobServe
+Not an automated job notification
+Mail UID: 161986 Message: <000849O000004893f9df@apps.jobserve.com>
+Subject: Jobs for Monday, 29 December 2025 from JobServe
+Skipping non-job email: Jobs for Monday, 29 December 2025 from JobServe
+Not an automated job notification
+Mail UID: 162063 Message: <000845O0000056fbf86b@apps.jobserve.com>
+Subject: Jobs for Tuesday, 30 December 2025 from JobServe
+Skipping non-job email: Jobs for Tuesday, 30 December 2025 from JobServe
+Not an automated job notification
+Mail UID: 162152 Message: <000847O0000058981c28@apps.jobserve.com>
+Subject: Jobs for Wednesday, 31 December 2025 from JobServe
+Skipping non-job email: Jobs for Wednesday, 31 December 2025 from JobServe
+Not an automated job notification
+Mail UID: 162334 Message: <000846O0000058374850@apps.jobserve.com>
+Subject: 5 Jobs for Friday, 02 January 2026 from JobServe
+Skipping non-job email: 5 Jobs for Friday, 02 January 2026 from JobServe
+Not an automated job notification
+Mail UID: 162448 Message: <000846O000005837f095@apps.jobserve.com>
+Subject: Jobs for Sunday, 04 January 2026 from JobServe
+Skipping non-job email: Jobs for Sunday, 04 January 2026 from JobServe
+Not an automated job notification
+Mail UID: 162537 Message: <000845O0000056ffde02@apps.jobserve.com>
+Subject: 8 Jobs for Monday, 05 January 2026 from JobServe
+Skipping non-job email: 8 Jobs for Monday, 05 January 2026 from JobServe
+Not an automated job notification
+Mail UID: 163879 Message: <000846O000005842aa9d@apps.jobserve.com>
+Subject: "Python Developer" job alert
+Processing JOB ALERT: "Python Developer" job alert
+Sent: 2026-01-15 16:25:06+00:00 / Traceback (most recent call last):
+  File "/home/john/py/popit3/newparser_jobserve.py", line 203, in process_js_mails
+    scored = json.loads(rec.scored_job)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "/home/john/py/popit3/newparser_jobserve.py", line 203, in process_js_mails
+    scored = json.loads(rec.scored_job)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "/home/john/py/popit3/newparser_jobserve.py", line 203, in process_js_mails
+    scored = json.loads(rec.scored_job)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "/home/john/py/popit3/newparser_jobserve.py", line 203, in process_js_mails
+    scored = json.loads(rec.scored_job)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "/home/john/py/popit3/newparser_jobserve.py", line 203, in process_js_mails
+    scored = json.loads(rec.scored_job)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "/home/john/py/popit3/newparser_jobserve.py", line 203, in process_js_mails
+    scored = json.loads(rec.scored_job)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "/home/john/py/popit3/newparser_jobserve.py", line 203, in process_js_mails
+    scored = json.loads(rec.scored_job)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "/home/john/py/popit3/newparser_jobserve.py", line 203, in process_js_mails
+    scored = json.loads(rec.scored_job)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "/home/john/py/popit3/newparser_jobserve.py", line 203, in process_js_mails
+    scored = json.loads(rec.scored_job)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "/home/john/py/popit3/newparser_jobserve.py", line 203, in process_js_mails
+    scored = json.loads(rec.scored_job)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "/home/john/py/popit3/newparser_jobserve.py", line 203, in process_js_mails
+    scored = json.loads(rec.scored_job)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "/home/john/py/popit3/newparser_jobserve.py", line 203, in process_js_mails
+    scored = json.loads(rec.scored_job)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "/home/john/py/popit3/newparser_jobserve.py", line 203, in process_js_mails
+    scored = json.loads(rec.scored_job)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "/home/john/py/popit3/newparser_jobserve.py", line 203, in process_js_mails
+    scored = json.loads(rec.scored_job)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "/home/john/py/popit3/newparser_jobserve.py", line 203, in process_js_mails
+    scored = json.loads(rec.scored_job)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "/home/john/py/popit3/newparser_jobserve.py", line 203, in process_js_mails
+    scored = json.loads(rec.scored_job)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "/home/john/py/popit3/newparser_jobserve.py", line 203, in process_js_mails
+    scored = json.loads(rec.scored_job)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "/home/john/py/popit3/newparser_jobserve.py", line 203, in process_js_mails
+    scored = json.loads(rec.scored_job)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "/home/john/py/popit3/newparser_jobserve.py", line 203, in process_js_mails
+    scored = json.loads(rec.scored_job)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "/home/john/py/popit3/newparser_jobserve.py", line 203, in process_js_mails
+    scored = json.loads(rec.scored_job)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "/home/john/py/popit3/newparser_jobserve.py", line 203, in process_js_mails
+    scored = json.loads(rec.scored_job)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "/home/john/py/popit3/newparser_jobserve.py", line 203, in process_js_mails
+    scored = json.loads(rec.scored_job)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "/home/john/py/popit3/newparser_jobserve.py", line 203, in process_js_mails
+    scored = json.loads(rec.scored_job)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "/home/john/py/popit3/newparser_jobserve.py", line 203, in process_js_mails
+    scored = json.loads(rec.scored_job)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "/home/john/py/popit3/newparser_jobserve.py", line 203, in process_js_mails
+    scored = json.loads(rec.scored_job)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "/home/john/py/popit3/newparser_jobserve.py", line 203, in process_js_mails
+    scored = json.loads(rec.scored_job)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "/home/john/py/popit3/newparser_jobserve.py", line 203, in process_js_mails
+    scored = json.loads(rec.scored_job)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "/home/john/py/popit3/newparser_jobserve.py", line 203, in process_js_mails
+    scored = json.loads(rec.scored_job)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "/home/john/py/popit3/newparser_jobserve.py", line 203, in process_js_mails
+    scored = json.loads(rec.scored_job)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "/home/john/py/popit3/newparser_jobserve.py", line 203, in process_js_mails
+    scored = json.loads(rec.scored_job)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "/home/john/py/popit3/newparser_jobserve.py", line 203, in process_js_mails
+    scored = json.loads(rec.scored_job)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "/home/john/py/popit3/newparser_jobserve.py", line 203, in process_js_mails
+    scored = json.loads(rec.scored_job)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+2026-01-15T16:25:06+00:00
+Too old - skipping 7 days, 0:20:51.205574
+Mail UID: 163895 Message: <000845O000005709a69e@apps.jobserve.com>
+Subject: "IT Support Analyst/BI Data Analyst - SQL/SSRS" job alert
+Sent: 2026-01-15 19:17:30+00:00 / 2026-01-15T19:17:30+00:00
+Found multipart
+Content type: text/plain
+Failed to parse score from JSON response: Expecting value: line 1 column 1 (char 0)
+Raw response: 
+Content type: text/html
+Failed to parse score from JSON response: Expecting value: line 1 column 1 (char 0)
+Raw response: 
+/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+Mail UID: 163923 Message: <000847O0000058a5975a@apps.jobserve.com>
+Subject: "Azure Cloud DevOps Engineer" job alert
+Sent: 2026-01-16 07:01:12+00:00 / 2026-01-16T07:01:12+00:00
+Found multipart
+Content type: text/plain
+Failed to parse score from JSON response: Expecting value: line 1 column 1 (char 0)
+Raw response: 
+Content type: text/html
+Failed to parse score from JSON response: Expecting value: line 1 column 1 (char 0)
+Raw response: 
+/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+Mail UID: 163932 Message: <000848O0000048a73598@apps.jobserve.com>
+Subject: "Senior Python Engineer" job alert
+Sent: 2026-01-16 08:05:54+00:00 / 2026-01-16T08:05:54+00:00
+Found multipart
+Content type: text/plain
+Failed to parse score from JSON response: Expecting value: line 1 column 1 (char 0)
+Raw response: 
+Content type: text/html
+Failed to parse score from JSON response: Expecting value: line 1 column 1 (char 0)
+Raw response: 
+/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+Mail UID: 163935 Message: <000847O0000058a5b1ed@apps.jobserve.com>
+Subject: "Software Engineer - Python" job alert
+Sent: 2026-01-16 08:10:35+00:00 / 2026-01-16T08:10:35+00:00
+Found multipart
+Content type: text/plain
+Failed to parse score from JSON response: Expecting value: line 1 column 1 (char 0)
+Raw response: 
+Content type: text/html
+Failed to parse score from JSON response: Expecting value: line 1 column 1 (char 0)
+Raw response: 
+/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+Mail UID: 163943 Message: <000849O0000048a2e75e@apps.jobserve.com>
+Subject: "Senior Python Engineer - Fully remote" job alert
+Sent: 2026-01-16 08:57:03+00:00 / 2026-01-16T08:57:03+00:00
+Found multipart
+Content type: text/plain
+Failed to parse score from JSON response: Expecting value: line 1 column 1 (char 0)
+Raw response: 
+Content type: text/html
+Failed to parse score from JSON response: Expecting value: line 1 column 1 (char 0)
+Raw response: 
+/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+Mail UID: 163949 Message: <000845O00000570a28d1@apps.jobserve.com>
+Subject: "DevOps Engineer - FinTech - Cloud Infrastructure" job alert
+Sent: 2026-01-16 10:02:21+00:00 / 2026-01-16T10:02:21+00:00
+Found multipart
+Content type: text/plain
+Failed to parse score from JSON response: Expecting value: line 1 column 1 (char 0)
+Raw response: 
+Content type: text/html
+Failed to parse score from JSON response: Expecting value: line 1 column 1 (char 0)
+Raw response: 
+/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+Mail UID: 163958 Message: <000848O0000048a77a81@apps.jobserve.com>
+Subject: "Infrastructure DevOps Engineer" job alert
+Sent: 2026-01-16 11:05:35+00:00 / 2026-01-16T11:05:35+00:00
+Found multipart
+Content type: text/plain
+Failed to parse score from JSON response: Expecting value: line 1 column 1 (char 0)
+Raw response: 
+Content type: text/html
+Failed to parse score from JSON response: Expecting value: line 1 column 1 (char 0)
+Raw response: 
+/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+Mail UID: 163964 Message: <000849O0000048a31df0@apps.jobserve.com>
+Subject: "Platform Engineering" job alert
+Sent: 2026-01-16 11:32:54+00:00 / 2026-01-16T11:32:54+00:00
+Found multipart
+Content type: text/plain
+Response (JSON): 
+Failed to parse score from JSON response: Expecting value: line 1 column 1 (char 0)
+Raw response: 
+Content type: text/html
+Failed to parse score from JSON response: Expecting value: line 1 column 1 (char 0)
+Raw response: 
+/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+Mail UID: 163967 Message: <000846O0000058437053@apps.jobserve.com>
+Subject: "DevOps Engineer - AWS, Terraform, Kubernetes" job alert
+Sent: 2026-01-16 11:40:45+00:00 / 2026-01-16T11:40:45+00:00
+Found multipart
+Content type: text/plain
+Response (JSON): 
+Failed to parse score from JSON response: Expecting value: line 1 column 1 (char 0)
+Raw response: 
+Content type: text/html
+Failed to parse score from JSON response: Expecting value: line 1 column 1 (char 0)
+Raw response: 
+/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+Mail UID: 163970 Message: <000847O0000058a6027d@apps.jobserve.com>
+Subject: "Senior DevOps Systems Administrator" job alert
+Sent: 2026-01-16 11:42:48+00:00 / 2026-01-16T11:42:48+00:00
+Found multipart
+Content type: text/plain
+Response (JSON): 
+Failed to parse score from JSON response: Expecting value: line 1 column 1 (char 0)
+Raw response: 
+Content type: text/html
+Failed to parse score from JSON response: Expecting value: line 1 column 1 (char 0)
+Raw response: 
+/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+Mail UID: 163977 Message: <000846O00000584365e8@apps.jobserve.com>
+Subject: "DEVOPS Engineer, GCP Engineer" job alert
+Sent: 2026-01-16 11:06:57+00:00 / 2026-01-16T11:06:57+00:00
+Found multipart
+Content type: text/plain
+Response (JSON): 
+Failed to parse score from JSON response: Expecting value: line 1 column 1 (char 0)
+Raw response: 
+Content type: text/html
+Failed to parse score from JSON response: Expecting value: line 1 column 1 (char 0)
+Raw response: 
+/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+Mail UID: 163980 Message: <000849O0000048a3349f@apps.jobserve.com>
+Subject: "Agentic AI Engineer - LangChain" job alert
+Sent: 2026-01-16 12:41:17+00:00 / 2026-01-16T12:41:17+00:00
+Found multipart
+Content type: text/plain
+Response (JSON): 
+Failed to parse score from JSON response: Expecting value: line 1 column 1 (char 0)
+Raw response: 
+Content type: text/html
+Failed to parse score from JSON response: Expecting value: line 1 column 1 (char 0)
+Raw response: 
+/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+Mail UID: 163988 Message: <000849O0000048a33ea3@apps.jobserve.com>
+Subject: "Data Analyst - Power BI" job alert
+Sent: 2026-01-16 13:32:31+00:00 / 2026-01-16T13:32:31+00:00
+Found multipart
+Content type: text/plain
+Response (JSON): 
+Failed to parse score from JSON response: Expecting value: line 1 column 1 (char 0)
+Raw response: 
+Content type: text/html
+Failed to parse score from JSON response: Expecting value: line 1 column 1 (char 0)
+Raw response: 
+/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+Mail UID: 164004 Message: <000849O0000048a34f74@apps.jobserve.com>
+Subject: "SC Cleared DevOps Engineer Remote" job alert
+Sent: 2026-01-16 15:11:21+00:00 / 2026-01-16T15:11:21+00:00
+Found multipart
+Content type: text/plain
+Response (JSON): 
+Failed to parse score from JSON response: Expecting value: line 1 column 1 (char 0)
+Raw response: 
+Content type: text/html
+Failed to parse score from JSON response: Expecting value: line 1 column 1 (char 0)
+Raw response: 
+/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+Mail UID: 164007 Message: <000846O000005843a17b@apps.jobserve.com>
+Subject: "SC AWS DevOps Engineer" job alert
+Sent: 2026-01-16 15:13:51+00:00 / 2026-01-16T15:13:51+00:00
+Found multipart
+Content type: text/plain
+Response (JSON): 
+Failed to parse score from JSON response: Expecting value: line 1 column 1 (char 0)
+Raw response: 
+Content type: text/html
+Failed to parse score from JSON response: Expecting value: line 1 column 1 (char 0)
+Raw response: 
+/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+Mail UID: 164013 Message: <000848O0000048a7d025@apps.jobserve.com>
+Subject: "Software Developer (Python, React) - Chester - Hybrid" job alert
+Sent: 2026-01-16 16:43:38+00:00 / 2026-01-16T16:43:38+00:00
+Found multipart
+Content type: text/plain
+Response (JSON): 
+Failed to parse score from JSON response: Expecting value: line 1 column 1 (char 0)
+Raw response: 
+Content type: text/html
+Failed to parse score from JSON response: Expecting value: line 1 column 1 (char 0)
+Raw response: 
+/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+Mail UID: 164067 Message: <000848O0000048a84e67@apps.jobserve.com>
+Subject: "BI Data Analyst - SQL/SSRS" job alert
+Sent: 2026-01-17 10:02:57+00:00 / 2026-01-17T10:02:57+00:00
+Traceback (most recent call last):
+  File "/home/john/py/popit3/newparser_jobserve.py", line 203, in process_js_mails
+    scored = json.loads(rec.scored_job)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "/home/john/py/popit3/newparser_jobserve.py", line 203, in process_js_mails
+    scored = json.loads(rec.scored_job)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "/home/john/py/popit3/newparser_jobserve.py", line 203, in process_js_mails
+    scored = json.loads(rec.scored_job)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "/home/john/py/popit3/newparser_jobserve.py", line 203, in process_js_mails
+    scored = json.loads(rec.scored_job)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "/home/john/py/popit3/newparser_jobserve.py", line 203, in process_js_mails
+    scored = json.loads(rec.scored_job)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "/home/john/py/popit3/newparser_jobserve.py", line 203, in process_js_mails
+    scored = json.loads(rec.scored_job)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "/home/john/py/popit3/newparser_jobserve.py", line 203, in process_js_mails
+    scored = json.loads(rec.scored_job)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "/home/john/py/popit3/newparser_jobserve.py", line 203, in process_js_mails
+    scored = json.loads(rec.scored_job)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "/home/john/py/popit3/newparser_jobserve.py", line 203, in process_js_mails
+    scored = json.loads(rec.scored_job)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "/home/john/py/popit3/newparser_jobserve.py", line 203, in process_js_mails
+    scored = json.loads(rec.scored_job)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "/home/john/py/popit3/newparser_jobserve.py", line 203, in process_js_mails
+    scored = json.loads(rec.scored_job)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "/home/john/py/popit3/newparser_jobserve.py", line 203, in process_js_mails
+    scored = json.loads(rec.scored_job)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "/home/john/py/popit3/newparser_jobserve.py", line 203, in process_js_mails
+    scored = json.loads(rec.scored_job)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "/home/john/py/popit3/newparser_jobserve.py", line 203, in process_js_mails
+    scored = json.loads(rec.scored_job)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "/home/john/py/popit3/newparser_jobserve.py", line 203, in process_js_mails
+    scored = json.loads(rec.scored_job)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "/home/john/py/popit3/newparser_jobserve.py", line 203, in process_js_mails
+    scored = json.loads(rec.scored_job)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "/home/john/py/popit3/newparser_jobserve.py", line 203, in process_js_mails
+    scored = json.loads(rec.scored_job)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "/home/john/py/popit3/newparser_jobserve.py", line 203, in process_js_mails
+    scored = json.loads(rec.scored_job)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "/home/john/py/popit3/newparser_jobserve.py", line 203, in process_js_mails
+    scored = json.loads(rec.scored_job)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "/home/john/py/popit3/newparser_jobserve.py", line 203, in process_js_mails
+    scored = json.loads(rec.scored_job)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "/home/john/py/popit3/newparser_jobserve.py", line 203, in process_js_mails
+    scored = json.loads(rec.scored_job)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "/home/john/py/popit3/newparser_jobserve.py", line 203, in process_js_mails
+    scored = json.loads(rec.scored_job)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "/home/john/py/popit3/newparser_jobserve.py", line 203, in process_js_mails
+    scored = json.loads(rec.scored_job)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "/home/john/py/popit3/newparser_jobserve.py", line 203, in process_js_mails
+    scored = json.loads(rec.scored_job)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "/home/john/py/popit3/newparser_jobserve.py", line 203, in process_js_mails
+    scored = json.loads(rec.scored_job)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "/home/john/py/popit3/newparser_jobserve.py", line 203, in process_js_mails
+    scored = json.loads(rec.scored_job)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "/home/john/py/popit3/newparser_jobserve.py", line 203, in process_js_mails
+    scored = json.loads(rec.scored_job)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "/home/john/py/popit3/newparser_jobserve.py", line 203, in process_js_mails
+    scored = json.loads(rec.scored_job)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "/home/john/py/popit3/newparser_jobserve.py", line 203, in process_js_mails
+    scored = json.loads(rec.scored_job)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "/home/john/py/popit3/newparser_jobserve.py", line 203, in process_js_mails
+    scored = json.loads(rec.scored_job)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "/home/john/py/popit3/newparser_jobserve.py", line 203, in process_js_mails
+    scored = json.loads(rec.scored_job)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "/home/john/py/popit3/newparser_jobserve.py", line 203, in process_js_mails
+    scored = json.loads(rec.scored_job)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "/home/john/py/popit3/newparser_jobserve.py", line 203, in process_js_mails
+    scored = json.loads(rec.scored_job)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+Found multipart
+Content type: text/plain
+Response (JSON): 
+Failed to parse score from JSON response: Expecting value: line 1 column 1 (char 0)
+Raw response: 
+Content type: text/html
+Failed to parse score from JSON response: Expecting value: line 1 column 1 (char 0)
+Raw response: 
+/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+Mail UID: 164098 Message: <000849O0000048a418e9@apps.jobserve.com>
+Subject: "Microsoft Azure DevOps Engineer" job alert
+Sent: 2026-01-17 17:03:37+00:00 / 2026-01-17T17:03:37+00:00
+Found multipart
+Content type: text/plain
+Response (JSON): 
+Failed to parse score from JSON response: Expecting value: line 1 column 1 (char 0)
+Raw response: 
+Content type: text/html
+Failed to parse score from JSON response: Expecting value: line 1 column 1 (char 0)
+Raw response: 
+/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+Mail UID: 164143 Message: <000849O0000048a4a8b1@apps.jobserve.com>
+Subject: "Senior/Lead Python AI Developer - Leading Technology AI Brand" job alert
+Sent: 2026-01-18 14:49:58+00:00 / 2026-01-18T14:49:58+00:00
+Found multipart
+Content type: text/plain
+Response (JSON): 
+Failed to parse score from JSON response: Expecting value: line 1 column 1 (char 0)
+Raw response: 
+Content type: text/html
+Failed to parse score from JSON response: Expecting value: line 1 column 1 (char 0)
+Raw response: 
+/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+Mail UID: 164150 Message: <000846O00000584500ea@apps.jobserve.com>
+Subject: "Java Developer" job alert
+Sent: 2026-01-18 17:47:40+00:00 / 2026-01-18T17:47:40+00:00
+Found multipart
+Content type: text/plain
+Response (JSON): 
+Failed to parse score from JSON response: Expecting value: line 1 column 1 (char 0)
+Raw response: 
+Content type: text/html
+Failed to parse score from JSON response: Expecting value: line 1 column 1 (char 0)
+Raw response: 
+/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+Mail UID: 164190 Message: <000848O0000048a98ede@apps.jobserve.com>
+Subject: "Azure DevOps Engineer" job alert
+Sent: 2026-01-19 10:30:56+00:00 / 2026-01-19T10:30:56+00:00
+Found multipart
+Content type: text/plain
+Response (JSON): 
+Failed to parse score from JSON response: Expecting value: line 1 column 1 (char 0)
+Raw response: 
+Content type: text/html
+Failed to parse score from JSON response: Expecting value: line 1 column 1 (char 0)
+Raw response: 
+/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+Mail UID: 164202 Message: <000849O0000048a54b47@apps.jobserve.com>
+Subject: "Python Developer" job alert
+Sent: 2026-01-19 11:54:55+00:00 / 2026-01-19T11:54:55+00:00
+Found multipart
+Content type: text/plain
+Response (JSON): 
+Failed to parse score from JSON response: Expecting value: line 1 column 1 (char 0)
+Raw response: 
+Content type: text/html
+Failed to parse score from JSON response: Expecting value: line 1 column 1 (char 0)
+Raw response: 
+/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+Mail UID: 164208 Message: <000846O000005845a96c@apps.jobserve.com>
+Subject: "Python Developer - GBP140,000 + Comps - London" job alert
+Sent: 2026-01-19 12:34:08+00:00 / 2026-01-19T12:34:08+00:00
+Found multipart
+Content type: text/plain
+Response (JSON): 
+Failed to parse score from JSON response: Expecting value: line 1 column 1 (char 0)
+Raw response: 
+Content type: text/html
+Failed to parse score from JSON response: Expecting value: line 1 column 1 (char 0)
+Raw response: 
+/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+Mail UID: 164209 Message: <000849O0000048a5590b@apps.jobserve.com>
+Subject: "MICROSOFT AZURE DEVOPS ENGINEER" job alert
+Sent: 2026-01-19 12:34:06+00:00 / 2026-01-19T12:34:06+00:00
+Found multipart
+Content type: text/plain
+Response (JSON): 
+Failed to parse score from JSON response: Expecting value: line 1 column 1 (char 0)
+Raw response: 
+Content type: text/html
+Failed to parse score from JSON response: Expecting value: line 1 column 1 (char 0)
+Raw response: 
+/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+Mail UID: 164217 Message: <000848O0000048a9c67b@apps.jobserve.com>
+Subject: "Python Developer" job alert
+Sent: 2026-01-19 13:09:47+00:00 / 2026-01-19T13:09:47+00:00
+Found multipart
+Content type: text/plain
+Response (JSON): 
+Failed to parse score from JSON response: Expecting value: line 1 column 1 (char 0)
+Raw response: 
+Content type: text/html
+Failed to parse score from JSON response: Expecting value: line 1 column 1 (char 0)
+Raw response: 
+/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+Mail UID: 164220 Message: <000846O000005845b9e1@apps.jobserve.com>
+Subject: "Senior Machine Learning Engineer - London" job alert
+Sent: 2026-01-19 13:55:43+00:00 / 2026-01-19T13:55:43+00:00
+Found multipart
+Content type: text/plain
+Response (JSON): 
+Failed to parse score from JSON response: Expecting value: line 1 column 1 (char 0)
+Raw response: 
+Content type: text/html
+Failed to parse score from JSON response: Expecting value: line 1 column 1 (char 0)
+Raw response: 
+/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+Mail UID: 164223 Message: <000848O0000048a9d658@apps.jobserve.com>
+Subject: "Python Developer" job alert
+Sent: 2026-01-19 14:24:41+00:00 / 2026-01-19T14:24:41+00:00
+Found multipart
+Content type: text/plain
+Response (JSON): 
+Failed to parse score from JSON response: Expecting value: line 1 column 1 (char 0)
+Raw response: 
+Content type: text/html
+Failed to parse score from JSON response: Expecting value: line 1 column 1 (char 0)
+Raw response: 
+/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+Mail UID: 164229 Message: <000846O000005845c402@apps.jobserve.com>
+Subject: "Python Developer" job alert
+Sent: 2026-01-19 14:41:32+00:00 / 2026-01-19T14:41:32+00:00
+Found multipart
+Content type: text/plain
+Response (JSON): 
+Failed to parse score from JSON response: Expecting value: line 1 column 1 (char 0)
+Raw response: 
+Content type: text/html
+Failed to parse score from JSON response: Expecting value: line 1 column 1 (char 0)
+Raw response: 
+/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+Mail UID: 164232 Message: <000849O0000048a57771@apps.jobserve.com>
+Subject: "GCP DevOps Engineer" job alert
+Sent: 2026-01-19 14:53:46+00:00 / 2026-01-19T14:53:46+00:00
+Found multipart
+Content type: text/plain
+Response (JSON): 
+Failed to parse score from JSON response: Expecting value: line 1 column 1 (char 0)
+Raw response: 
+Content type: text/html
+Failed to parse score from JSON response: Expecting value: line 1 column 1 (char 0)
+Raw response: 
+/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+Mail UID: 164235 Message: <000845O00000570c9f09@apps.jobserve.com>
+Subject: "Python Developer" job alert
+Sent: 2026-01-19 15:01:44+00:00 / 2026-01-19T15:01:44+00:00
+Found multipart
+Content type: text/plain
+Response (JSON): 
+Failed to parse score from JSON response: Expecting value: line 1 column 1 (char 0)
+Raw response: 
+Content type: text/html
+Failed to parse score from JSON response: Expecting value: line 1 column 1 (char 0)
+Raw response: 
+/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+Mail UID: 164238 Message: <000847O0000058a85c40@apps.jobserve.com>
+Subject: "Python Developer" job alert
+Sent: 2026-01-19 15:05:08+00:00 / 2026-01-19T15:05:08+00:00
+Found multipart
+Content type: text/plain
+Response (JSON): 
+Failed to parse score from JSON response: Expecting value: line 1 column 1 (char 0)
+Raw response: 
+Content type: text/html
+Failed to parse score from JSON response: Expecting value: line 1 column 1 (char 0)
+Raw response: 
+/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+Mail UID: 164241 Message: <000848O0000048a9e30b@apps.jobserve.com>
+Subject: "DevOps Engineer - 6 months - Onsite - Wokingham" job alert
+Sent: 2026-01-19 15:13:17+00:00 / 2026-01-19T15:13:17+00:00
+Found multipart
+Content type: text/plain
+Response (JSON): 
+Failed to parse score from JSON response: Expecting value: line 1 column 1 (char 0)
+Raw response: 
+Content type: text/html
+Failed to parse score from JSON response: Expecting value: line 1 column 1 (char 0)
+Raw response: 
+/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+Mail UID: 164249 Message: <000845O00000570cb2a7@apps.jobserve.com>
+Subject: "Senior Risk Python Developer" job alert
+Sent: 2026-01-19 16:16:08+00:00 / 2026-01-19T16:16:08+00:00
+Found multipart
+Content type: text/plain
+Response (JSON): 
+Failed to parse score from JSON response: Expecting value: line 1 column 1 (char 0)
+Raw response: 
+Content type: text/html
+Traceback (most recent call last):
+  File "/home/john/py/popit3/newparser_jobserve.py", line 203, in process_js_mails
+    scored = json.loads(rec.scored_job)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "/home/john/py/popit3/newparser_jobserve.py", line 203, in process_js_mails
+    scored = json.loads(rec.scored_job)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "/home/john/py/popit3/newparser_jobserve.py", line 203, in process_js_mails
+    scored = json.loads(rec.scored_job)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "/home/john/py/popit3/newparser_jobserve.py", line 203, in process_js_mails
+    scored = json.loads(rec.scored_job)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "/home/john/py/popit3/newparser_jobserve.py", line 203, in process_js_mails
+    scored = json.loads(rec.scored_job)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "/home/john/py/popit3/newparser_jobserve.py", line 203, in process_js_mails
+    scored = json.loads(rec.scored_job)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "/home/john/py/popit3/newparser_jobserve.py", line 203, in process_js_mails
+    scored = json.loads(rec.scored_job)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)

@@ -22,6 +22,11 @@ import openai
 import js_email
 #import analyze_jobs_openai
 
+import mylog
+import logging
+
+log=mylog(__name__, level=os.environ.get('LOGLEVEL', logging.DEBUG))
+
 KEY_PATH = "~/py/popit3/.openai"
 CV_PATH = os.environ.get('CV_PATH', "~/Downloads/cv_llm_optimized.md")
 
@@ -62,16 +67,15 @@ def classify_job(subj):
         print(f"Skipping non-job email: {subj}")
         return None
 
-def process_js_mails(js_emails):
-    print('process_js_mails')
-    print(f'len js_emails {len(js_emails)}')
+def rocess_js_mails(js_emails):
     gdbm_path = os.path.join(os.path.expanduser(DATABASE_FILENAME))
     js_gd=gdata.gdata(gdbm_path) # I cleanup at the end
     uids_to_delete=set()
     for uid, msg in js_emails:
         uid=int(uid)
+        log.info(f'{uid=}')
         msg_id=msg['Message-ID']
-        print("Mail UID:", uid, "Message:", msg_id)
+        log.info(f'{msg_id=}')
         if not ( msg_id.startswith('<') and msg_id.endswith('>') ):
             print("Warning - Doesn't have angle brackets - added")
             msg_id=f'<{msg_id}>'
@@ -79,18 +83,13 @@ def process_js_mails(js_emails):
 
         if 'Subject' in msg and not 'subject' in rec:
             rec.subject = decode_header_value(msg['Subject'])
-        print(f'Subject: {rec.subject}')
+        log.info(f'{rec.subject=}')
         if 'job_type' not in rec:
             rec.job_type=classify_job(rec.subject)
+        log.info(f'{rec.job_type=}')
         
         if rec.job_type is None:
-            print("Not an automated job notification - marking as unclassified")
-            if 'Date' in msg:
-                sent_date=email.utils.parsedate_to_datetime(msg['Date'])
-                rec.date=sent_date.isoformat()
-            rec.unclassified = {}
-            js_gd[msg_id]=rec.to_dict()
-            print("Stored unclassified email")
+            print("Not an automated job notification")
             continue
         if 'Date' not in msg:
             print("No date field")
@@ -100,7 +99,7 @@ def process_js_mails(js_emails):
         else:
             sent_date=email.utils.parsedate_to_datetime(msg['Date'])
             rec.date=sent_date.isoformat()
-        print('Sent:', sent_date, '/', rec.date)
+        log.info('Sent:', sent_date, '/', rec.date)
         age=datetime.datetime.now(datetime.UTC)-sent_date
         if  age>datetime.timedelta(days=7):
             print("Too old - skipping", age)
