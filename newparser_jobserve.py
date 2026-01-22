@@ -146,13 +146,13 @@ def process_js_mails(js_emails):
                     rec.parsed_application = js_application_parser.parse_jobserve_application_confirmation(html_content)
                     print("Parsed application:", rec.parsed_application)
                 
-                # Store in separate applications database
+                # Store ONLY in separate applications database, not in main jobs database
                 app_gdbm_path = os.path.expanduser('~/.jobserve_applications.gdbm')
                 app_gd = gdata.gdata(app_gdbm_path)
                 app_gd[msg_id] = dict(rec)
                 app_gd.close()
                 print("Stored application confirmation")
-                continue
+                continue  # Don't store in main jobs database
             
             # Handle job suggestions and alerts
             if 'parsed_job' not in rec:

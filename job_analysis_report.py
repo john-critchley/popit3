@@ -209,7 +209,43 @@ def generate_unclassified_table(gd):
     return html_table
 
 
-def create_full_html_document(table_html, unclassified_html=''):
+def generate_applications_table(gd):
+    """Generate HTML table for job applications (datetime order, newest last)."""
+    now = datetime.datetime.now(datetime.UTC)
+    
+    # Filter for application entries
+    applications = {k: v for k, v in gd.items() if v.get('job_type') == 'application'}
+    
+    if not applications:
+        return ''
+    
+    # Sort by date ascending (newest last)
+    sorted_keys = sorted(
+        applications.keys(),
+        key=lambda k: datetime.datetime.fromisoformat(applications[k].get('date', '2000-01-01'))
+    )
+    
+    html_table = '''
+<h2>Job Applications</h2>
+<table border="1">
+<thead><tr>
+    <th>DateTime</th>
+    <th>Subject</th>
+</tr></thead>
+<tbody>
+'''
+    
+    for key in sorted_keys:
+        rec = applications[key]
+        date_str = datetime.datetime.fromisoformat(rec.get('date', '2000-01-01')).strftime('%Y-%m-%d %H:%M:%S')
+        subject = rec.get('subject', 'No Subject')
+        html_table += f'<tr><td>{date_str}</td><td>{subject}</td></tr>\n'
+    
+    html_table += '</tbody></table>\n'
+    return html_table
+
+
+def create_full_html_document(table_html, applications_html='', unclassified_html=''):
     """Wrap the table HTML in a complete HTML document."""
     now = datetime.datetime.now(datetime.UTC)
     date_str = now.strftime('%Y-%m-%d %H:%M:%S UTC')
@@ -226,6 +262,7 @@ def create_full_html_document(table_html, unclassified_html=''):
     <p>Generated: {date_str}</p>
     <p><a href="/JobAnalysis">Load latest analysis</a></p>
     {table_html}
+    {applications_html}
     {unclassified_html}
 </body>
 </html>'''
@@ -282,21 +319,28 @@ def process_job_analysis(db_path='~/.jobserve.gdbm', days=7, min_score=5,
         deploy: Whether to deploy to WebDAV
     
     Returns:
-        list: List of email UIDs to be deleted (jobs older than 14 days)
+        list: List of email UIDs to be deleted (jobs older than 14 days, applications older than 28 days)
     """
     gd = gdata.gdata(os.path.expanduser(db_path))
     now = datetime.datetime.now(datetime.UTC)
     uids_to_delete = []
     
-    # Find and delete jobs older than 14 days
+    # Find and delete jobs older than 14 days, applications older than 28 days
     for key in list(gd.keys()):
         try:
             record = gd[key]
             if 'date' in record:
                 job_date = datetime.datetime.fromisoformat(record['date'])
                 age = now - job_date
-                if age > datetime.timedelta(days=14):
-                    # Extract UID from the message ID if available
+                
+                # Delete applications after 28 days
+                if record.get('job_type') == 'application' and age > datetime.timedelta(days=28):
+                    msg_id = key if isinstance(key, str) else key.decode()
+                    uids_to_delete.append(msg_id)
+                    print(f"Deleting old application: {msg_id} (age: {age.days} days)")
+                    del gd[key]
+                # Delete jobs after 14 days
+                elif age > datetime.timedelta(days=14):
                     msg_id = key if isinstance(key, str) else key.decode()
                     uids_to_delete.append(msg_id)
                     print(f"Deleting old job: {msg_id} (age: {age.days} days)")
@@ -309,13 +353,15 @@ def process_job_analysis(db_path='~/.jobserve.gdbm', days=7, min_score=5,
     # Reload without deleted jobs
     gd = load_recent_jobs(db_path, days=days)
     
-    # Filter out unclassified from the jobs list
-    classified_jobs = {k: v for k, v in gd.items() if 'unclassified' not in v}
+    # Filter out unclassified and applications from the jobs list
+    classified_jobs = {k: v for k, v in gd.items() 
+                       if 'unclassified' not in v and v.get('job_type') != 'application'}
     keys = sort_jobs(classified_jobs)
     
     table_html = generate_html_table(classified_jobs, keys, min_score=min_score)
+    applications_html = generate_applications_table(gd)
     unclassified_html = generate_unclassified_table(gd)
-    full_html = create_full_html_document(table_html, unclassified_html)
+    full_html = create_full_html_document(table_html, applications_html, unclassified_html)
     
     if deploy:
         try:
