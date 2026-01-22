@@ -48,6 +48,77 @@ The system routes emails to specialized processors based on the `To:` address:
 - Web-deployed visual reports
 - Historical job tracking
 
+##  Database Schema
+
+### Main Jobs Database: `~/.jobserve.gdbm`
+
+Each job record is keyed by Message-ID and contains:
+
+**Classified Job Records** (job_type: "alert" or "suggestion"):
+```json
+{
+  "subject": "Job Title from email",
+  "date": "2026-01-22T12:30:00+00:00",
+  "job_type": "alert",
+  "parsed_job": {
+    "job_title": "Senior Engineer",
+    "company": "Acme Inc",
+    "location": "London",
+    "salary": "£80-100k",
+    "description": "Full job description HTML",
+    "job_url": "https://...",
+    "ref": "JS-12345"
+  },
+  "scored_job": "{\"score\": 7, \"reason\": \"...detailed analysis...\"}",
+  "score": 7,
+  "score_reason": "...detailed reasoning..."
+}
+```
+
+**Application Records** (job_type: "application"):
+```json
+{
+  "subject": "JobServe Job Application Confirmation",
+  "date": "2026-01-22T14:00:00+00:00",
+  "job_type": "application",
+  "parsed_application": {"application_id": "...", "job_title": "..."}
+}
+```
+
+**Unclassified Email Records** (no job_type match):
+```json
+{
+  "subject": "Unmatched email subject",
+  "date": "2026-01-22T10:00:00+00:00",
+  "unclassified": {}
+}
+```
+
+### Email Classification Logic
+
+Classification happens in `newparser_jobserve.py::classify_job()`:
+
+| Pattern | Type | Handling | Cleanup |
+|---------|------|----------|---------|
+| "job suggestion" | suggestion | AI scored, included in jobs table | 14 days |
+| "job alert" | alert | AI scored, included in jobs table | 14 days |
+| "Application Confirmation" | application | Stored with parsed data | 28 days |
+| Other emails | unclassified | Stored as-is with flag | No auto-delete |
+
+### Report Generation
+
+`job_analysis_report.py` generates HTML with three tables:
+
+1. **Scored Jobs Table** - All classified jobs with scores (filtered: excludes applications & unclassified)
+2. **Job Applications Table** - Your application confirmations (DateTime, Subject)
+3. **Unclassified Emails Table** - Emails that didn't match patterns (DateTime, Subject)
+
+Auto-cleanup:
+- Jobs older than 14 days: Deleted from database and email marked for deletion
+- Applications older than 28 days: Deleted from database and email marked for deletion
+- Unclassified emails: No automatic deletion
+
+
 **Technologies**: OpenAI GPT-4o-mini, GDBM, HTML generation, WebDAV
 
 ### 2. Gym Booking Processor 
@@ -80,7 +151,36 @@ The system routes emails to specialized processors based on the `To:` address:
 2. Archives to local or WebDAV maildir
 3. Maintains message integrity
 
-##  Quick Start
+##  Development & Contributing
+
+### Git Workflow
+
+This project uses a feature branch strategy to keep `main` stable:
+
+- **`main` branch**: Production-ready code. Safe fallback point. Merged only when fully tested.
+- **`dev` branch**: Main development branch. Receives frequent commits as features are developed.
+- **Feature branches**: Created from `dev` for specific features/fixes.
+
+**Workflow**:
+1. Create feature branch from `dev`: `git checkout -b feature/my-feature dev`
+2. Commit frequently to track progress
+3. Test thoroughly (not just "it runs" - validate results are correct)
+4. When ready, merge to `main` with squashed commits: `git merge --squash feature/my-feature`
+5. This keeps `main` clean with meaningful commit history while preserving detailed history on `dev`
+
+**Safety**: If `dev` gets messy, you can always revert to the last known-good state on `main`.
+
+### Testing
+
+Key things to test when making changes:
+
+1. **Email Processing**: Run `popit3.py --reprocess` and verify scores are generated correctly
+2. **Report Generation**: Run `job_analysis_report.py --no-deploy` and check HTML output
+3. **Database Integrity**: Verify records in `~/.jobserve.gdbm` match expectations
+4. **Classification**: Ensure application confirmations and unclassified emails are properly separated
+5. **Cleanup**: Verify old records are deleted according to age thresholds
+
+
 
 ### Prerequisites
 
