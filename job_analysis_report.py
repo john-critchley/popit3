@@ -17,6 +17,29 @@ import webdav4.client
 
 import gdata
 
+def format_posted_date(record):
+    """Format posted date to match the old Date column format."""
+    if 'parsed_job' not in record or 'posted' not in record['parsed_job']:
+        return '-'
+    
+    posted = record['parsed_job']['posted']
+    if not posted or posted == '-':
+        return '-'
+    
+    try:
+        # Try different date formats
+        if '/' in posted:
+            # Format: 22/01/2026 18:24:45
+            dt = datetime.datetime.strptime(posted, '%d/%m/%Y %H:%M:%S')
+        else:
+            # Format: 20 Oct 2025 09:22
+            dt = datetime.datetime.strptime(posted, '%d %b %Y %H:%M')
+        return dt.strftime('%D')
+    except ValueError:
+        # If parsing fails, return the original string
+        return posted
+
+
 def rec_format_tdelta(rtd, now):
     """Format time delta between now and record date in human-readable format."""
     td = now - datetime.datetime.fromisoformat(rtd['date'])
@@ -67,9 +90,8 @@ def generate_html_table(gd, keys, min_score=5):
         ('age', lambda r: rec_format_tdelta(r, now)),
         ('Location', lambda r: r['parsed_job']['location'] if 'parsed_job' in r and 'location' in r['parsed_job'] else '-'),
         ('Salary', lambda r: r['parsed_job']['salary'] if 'parsed_job' in r and 'salary' in r['parsed_job'] else '-'),
-        ('Summary', lambda r: '-'),
-        ('Email', lambda r: '-'),
-        ('Date', lambda r: datetime.datetime.fromisoformat(r['date']).strftime('%D')),
+        ('Work Type', lambda r: r['parsed_job']['work_type'] if 'parsed_job' in r and 'work_type' in r['parsed_job'] else '-'),
+        ('Posted', format_posted_date),
         ('Link', lambda r: '<a href="' + r['parsed_job']['job_url'] + '"> Job</a>' if 'parsed_job' in r and 'job_url' in r['parsed_job'] else '-')
     ]
     
@@ -84,11 +106,10 @@ def generate_html_table(gd, keys, min_score=5):
     /* Floating overlay for reason text */
     .reason-overlay {
         position: fixed;
-        top: 10%;
+        top: 10vh;
         left: 50%;
         transform: translateX(-50%);
-        width: 90%;
-        max-width: 400px;
+        width: min(90vw, 400px);
         max-height: 80vh;
         background: white;
         border: 2px solid #333;
@@ -112,14 +133,42 @@ def generate_html_table(gd, keys, min_score=5):
         position: relative;
     }
     
-    /* Mobile responsive */
-    @media (max-width: 600px) {
+    /* Mobile responsive - smaller screens */
+    @media (max-width: 480px) {
         .reason-overlay {
-            width: 95%;
-            max-width: none;
-            left: 2.5%;
+            width: calc(100vw - 60px);
+            left: 30px;
             transform: none;
+            top: 5vh;
+            max-height: 85vh;
+            font-size: 15px;
+            padding: 12px;
+        }
+        
+        .close-overlay {
+            top: 6px;
+            right: 8px;
             font-size: 18px;
+            width: 18px;
+            height: 18px;
+        }
+    }
+    
+    /* Very small screens */
+    @media (max-width: 320px) {
+        .reason-overlay {
+            width: calc(100vw - 50px);
+            left: 25px;
+            padding: 10px;
+            font-size: 14px;
+        }
+        
+        .close-overlay {
+            top: 5px;
+            right: 5px;
+            font-size: 16px;
+            width: 16px;
+            height: 16px;
         }
     }
     
@@ -149,6 +198,9 @@ def generate_html_table(gd, keys, min_score=5):
         cursor: pointer;
         line-height: 1;
         text-decoration: none;
+        width: 20px;
+        height: 20px;
+        text-align: center;
     }
     
     .close-overlay:hover {
