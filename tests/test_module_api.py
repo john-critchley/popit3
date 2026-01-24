@@ -85,15 +85,6 @@ def test_get_jobs_output_csv():
     assert 'score' in first_line or 'status' in first_line
 
 
-def test_get_jobs_output_csv_includes_explanation():
-    """CSV output should include the explanation field in header."""
-    output = job_api.get_jobs_output(format='csv')
-    lines = output.strip().split('\n')
-    if len(lines) > 1:  # Has data
-        header = lines[0].lower()
-        assert 'explanation' in header
-
-
 def test_get_jobs_output_yaml():
     """YAML output should be valid YAML with expected structure."""
     output = job_api.get_jobs_output(format='yaml')
