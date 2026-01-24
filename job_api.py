@@ -145,7 +145,7 @@ def to_csv(jobs):
         return "status,count\nok,0\n"
     
     output = io.StringIO()
-    fieldnames = ['score', 'reference', 'job_title', 'company', 'age', 'location', 'salary', 'date', 'job_url']
+    fieldnames = ['score', 'reference', 'job_title', 'company', 'age', 'location', 'salary', 'date', 'job_url', 'explanation']
     writer = csv.DictWriter(output, fieldnames=fieldnames)
     writer.writeheader()
     

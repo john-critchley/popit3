@@ -67,6 +67,14 @@ def test_get_jobs_output_json():
     assert isinstance(data['jobs'], list)
 
 
+def test_get_jobs_output_json_includes_explanation():
+    """JSON output should include the explanation field."""
+    output = job_api.get_jobs_output(format='json')
+    data = json.loads(output)
+    for job in data['jobs']:
+        assert 'explanation' in job
+
+
 def test_get_jobs_output_csv():
     """CSV output should have header line with known fields."""
     output = job_api.get_jobs_output(format='csv')
@@ -75,6 +83,15 @@ def test_get_jobs_output_csv():
     assert len(lines) >= 1
     first_line = lines[0].lower()
     assert 'score' in first_line or 'status' in first_line
+
+
+def test_get_jobs_output_csv_includes_explanation():
+    """CSV output should include the explanation field in header."""
+    output = job_api.get_jobs_output(format='csv')
+    lines = output.strip().split('\n')
+    if len(lines) > 1:  # Has data
+        header = lines[0].lower()
+        assert 'explanation' in header
 
 
 def test_get_jobs_output_yaml():
@@ -86,6 +103,14 @@ def test_get_jobs_output_yaml():
     assert isinstance(data['jobs'], list)
 
 
+def test_get_jobs_output_yaml_includes_explanation():
+    """YAML output should include the explanation field."""
+    output = job_api.get_jobs_output(format='yaml')
+    data = yaml.safe_load(output)
+    for job in data['jobs']:
+        assert 'explanation' in job
+
+
 def test_get_jobs_output_xml():
     """XML output should contain expected elements."""
     output = job_api.get_jobs_output(format='xml')
@@ -93,6 +118,12 @@ def test_get_jobs_output_xml():
     assert '<status>ok</status>' in output
     assert '<count>' in output
     assert '<jobs>' in output
+
+
+def test_get_jobs_output_xml_includes_explanation():
+    """XML output should include the explanation field."""
+    output = job_api.get_jobs_output(format='xml')
+    assert '<explanation>' in output
 
 
 def test_get_jobs_output_unknown_format_defaults_to_json():
