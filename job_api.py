@@ -454,12 +454,15 @@ if HAS_FASTAPI:
         pass
     
     @app.get('/jobs')
+    @app.get('/jobs/')
+    @app.get('/jobs/{path:path}')
     def get_jobs(
         accept: str = Header(default='application/json'),
         days: int = 7,
         min_score: int = 5,
+        path: str = '',
     ):
-        """Get jobs in requested format."""
+        """Get jobs in requested format. Any path after /jobs/ is ignored."""
         config = get_config_from_env()
         config['days'] = days
         config['min_score'] = min_score
