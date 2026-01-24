@@ -470,7 +470,15 @@ if HAS_FASTAPI:
                 config['db_path'], config['days'], config['min_score'], accept
             )
 
-            return Response(content=output, media_type=content_type)
+            return Response(
+                content=output,
+                media_type=content_type,
+                headers={
+                    'Cache-Control': 'no-store, no-cache, must-revalidate, max-age=0',
+                    'Pragma': 'no-cache',
+                    'Expires': '0',
+                }
+            )
             
         except BlockingIOError:
             # Database is locked
@@ -480,6 +488,11 @@ if HAS_FASTAPI:
             error_body, content_type, headers = format_locked_error_response(
                 content_type_str, timeout, url='/jobs'
             )
+
+            # Add no-cache headers to error response
+            headers['Cache-Control'] = 'no-store, no-cache, must-revalidate, max-age=0'
+            headers['Pragma'] = 'no-cache'
+            headers['Expires'] = '0'
 
             return Response(
                 content=error_body,
@@ -493,7 +506,12 @@ if HAS_FASTAPI:
             error_msg = str(e)
             return JSONResponse(
                 status_code=500,
-                content={'status': 'error', 'error': error_msg}
+                content={'status': 'error', 'error': error_msg},
+                headers={
+                    'Cache-Control': 'no-store, no-cache, must-revalidate, max-age=0',
+                    'Pragma': 'no-cache',
+                    'Expires': '0',
+                }
             )
     
     # NOTE: format-specific endpoints removed — use Accept header with `/jobs`.
