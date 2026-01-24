@@ -78,10 +78,93 @@ def generate_html_table(gd, keys, min_score=5):
     table { border-collapse: collapse; width: 100%; }
     th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
     th { background-color: #555; color: white; }
-    tr.scored_job_row { display: none; }
-    tr.scored_job_row td { background: #f8f8f8; font-family: monospace; }
     tr.job_row { cursor: pointer; }
     tr.job_row:hover { opacity: 0.8; }
+    
+    /* Floating overlay for reason text */
+    .reason-overlay {
+        position: fixed;
+        top: 10%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 90%;
+        max-width: 400px;
+        max-height: 80vh;
+        background: white;
+        border: 2px solid #333;
+        border-radius: 8px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        z-index: 1000;
+        overflow-y: auto;
+        padding: 16px;
+        font-size: 16px;
+        line-height: 1.4;
+        display: none;
+    }
+    
+    /* Show overlay when target is active */
+    .reason-overlay:target {
+        display: block;
+    }
+    
+    /* Job row anchor targets */
+    .job-anchor {
+        position: relative;
+    }
+    
+    /* Mobile responsive */
+    @media (max-width: 600px) {
+        .reason-overlay {
+            width: 95%;
+            max-width: none;
+            left: 2.5%;
+            transform: none;
+            font-size: 18px;
+        }
+    }
+    
+    /* Style for the score cell as a clickable button */
+    .job_score_col {
+        cursor: pointer;
+        position: relative;
+    }
+    
+    .job_score_col a {
+        display: block;
+        width: 100%;
+        height: 100%;
+        text-decoration: none;
+        color: inherit;
+        cursor: pointer;
+    }
+    
+    /* Close button styling */
+    .close-overlay {
+        position: absolute;
+        top: 8px;
+        right: 12px;
+        font-size: 20px;
+        font-weight: bold;
+        color: #666;
+        cursor: pointer;
+        line-height: 1;
+        text-decoration: none;
+    }
+    
+    .close-overlay:hover {
+        color: #000;
+    }
+    
+    /* Mobile responsive */
+    @media (max-width: 600px) {
+        .reason-overlay {
+            width: 95%;
+            max-width: none;
+            left: 2.5%;
+            transform: none;
+            font-size: 18px;
+        }
+    }
 </style>
 <table><thead><tr>'''
     
@@ -114,11 +197,12 @@ def generate_html_table(gd, keys, min_score=5):
         score = rec.get('score', 0)
         bg_color = score_colors.get(score, '#ffffff')  # Default to white
 
-        html_table += f'<tr class="job_row" data-row="{idx}" style="background-color: {bg_color};">'
+        html_table += f'<tr class="job_row job-anchor" id="job-{idx}" data-row="{idx}" style="background-color: {bg_color};">'
         for col_idx, (k, t) in enumerate(rec_to_row):
             value = t(rec) if callable(t) else t
             if k == 'Score':
-                html_table += f'<td class="job_score_col" style="cursor:pointer;">{value}</td>'
+                # Create link that scrolls to job row and shows floating overlay
+                html_table += f'<td class="job_score_col"><a href="#job-{idx}">{value}</a></td>'
             elif k == 'Link':
                 html_table += f'<td class="job_link_col">{value}</td>'
             else:
@@ -139,37 +223,55 @@ def generate_html_table(gd, keys, min_score=5):
                 # Not JSON; fall back to rendering full analysis text
                 reason_text = None
         analysis_html = markdown.markdown(reason_text if reason_text else analysis)
-        # Always wrap in a div for word wrapping
-        analysis_html = f'<div style="white-space: pre-wrap; word-break: break-word;">{analysis_html}</div>'
 
-        html_table += f'<tr class="scored_job_row" id="scored_job_{idx}">'
-        html_table += f'<td colspan="{len(rec_to_row)}">{analysis_html}</td></tr>\n'
+        # Create floating overlay that appears when job row is targeted
+        html_table += f'''
+        <div class="reason-overlay" id="reason-{idx}">
+            <a href="#" class="close-overlay">&times;</a>
+            <div style="margin-top: 20px;">{analysis_html}</div>
+        </div>
+        '''
     
     html_table += '</tbody></table>'
     
+    # Add JavaScript to show overlay when job row is targeted
     html_table += '''
 <script>
-// Only expand/collapse when clicking the Score column
-document.querySelectorAll('tr.job_row').forEach(function(row) {
-    var idx = row.getAttribute('data-row');
-    var scoreCell = row.querySelector('td.job_score_col');
-    if (scoreCell) {
-        scoreCell.addEventListener('click', function(event) {
-            var scoredRow = document.getElementById('scored_job_' + idx);
-            if (scoredRow.style.display === 'table-row') {
-                scoredRow.style.display = 'none';
-            } else {
-                document.querySelectorAll('tr.scored_job_row').forEach(function(r) { 
-                    r.style.display = 'none'; 
-                });
-                scoredRow.style.display = 'table-row';
-            }
-            event.stopPropagation();
+// Show reason overlay when job row is in URL hash
+function checkHash() {
+    var hash = window.location.hash;
+    if (hash.startsWith('#job-')) {
+        // Hide all overlays
+        document.querySelectorAll('.reason-overlay').forEach(function(overlay) {
+            overlay.style.display = 'none';
         });
+        
+        // Show corresponding overlay
+        var jobNum = hash.replace('#job-', '');
+        var overlay = document.getElementById('reason-' + jobNum);
+        if (overlay) {
+            overlay.style.display = 'block';
+        }
+    }
+}
+
+// Check on page load and hash change
+window.addEventListener('load', checkHash);
+window.addEventListener('hashchange', checkHash);
+
+// Close overlay functionality
+document.addEventListener('click', function(e) {
+    if (e.target.classList.contains('close-overlay')) {
+        e.preventDefault();
+        document.querySelectorAll('.reason-overlay').forEach(function(overlay) {
+            overlay.style.display = 'none';
+        });
+        // Remove hash to prevent issues
+        history.replaceState(null, null, window.location.pathname);
     }
 });
-</script>
-'''
+</script>'''
+    
     return html_table
 
 
@@ -213,8 +315,17 @@ def generate_applications_table(gd):
     """Generate HTML table for job applications (datetime order, newest last)."""
     now = datetime.datetime.now(datetime.UTC)
     
-    # Filter for application entries
-    applications = {k: v for k, v in gd.items() if v.get('job_type') == 'application'}
+    # Load applications from separate applications database
+    app_db_path = os.path.expanduser('~/.jobserve_applications.gdbm')
+    applications = {}
+    
+    if os.path.exists(app_db_path):
+        try:
+            app_gd = gdata.gdata(app_db_path, mode='r')
+            applications = dict(app_gd.items())
+            app_gd.close()
+        except Exception as e:
+            print(f"Warning: Could not read applications database: {e}")
     
     if not applications:
         return ''
@@ -362,6 +473,13 @@ def process_job_analysis(db_path='~/.jobserve.gdbm', days=7, min_score=5,
     applications_html = generate_applications_table(gd)
     unclassified_html = generate_unclassified_table(gd)
     full_html = create_full_html_document(table_html, applications_html, unclassified_html)
+    
+    # Save HTML locally for debugging (always save when not deploying)
+    if not deploy:
+        output_file = 'job_analysis_report_debug.html'
+        with open(output_file, 'w') as f:
+            f.write(full_html)
+        print(f"HTML report saved to: {output_file}")
     
     if deploy:
         try:
