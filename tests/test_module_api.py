@@ -45,6 +45,14 @@ def test_get_jobs_data_raises_on_locked_db(monkeypatch):
         job_api.get_jobs_data()
 
 
+def test_get_jobs_data_includes_explanation():
+    """get_jobs_data should include the explanation field in job records."""
+    data = job_api.get_jobs_data()
+    for job in data['jobs']:
+        assert 'explanation' in job
+        assert isinstance(job['explanation'], str)
+
+
 # ---------------------------------------------------------------------------
 # get_jobs_output tests
 # ---------------------------------------------------------------------------
