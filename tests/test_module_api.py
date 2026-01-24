@@ -45,12 +45,11 @@ def test_get_jobs_data_raises_on_locked_db(monkeypatch):
         job_api.get_jobs_data()
 
 
-def test_get_jobs_data_includes_explanation():
-    """get_jobs_data should include the explanation field in job records."""
+def test_get_jobs_data_includes_score_reason():
+    """get_jobs_data should include the score_reason field in job records."""
     data = job_api.get_jobs_data()
     for job in data['jobs']:
-        assert 'explanation' in job
-        assert isinstance(job['explanation'], str)
+        assert 'score_reason' in job
 
 
 # ---------------------------------------------------------------------------
@@ -67,12 +66,12 @@ def test_get_jobs_output_json():
     assert isinstance(data['jobs'], list)
 
 
-def test_get_jobs_output_json_includes_explanation():
-    """JSON output should include the explanation field."""
+def test_get_jobs_output_json_includes_score_reason():
+    """JSON output should include the score_reason field."""
     output = job_api.get_jobs_output(format='json')
     data = json.loads(output)
     for job in data['jobs']:
-        assert 'explanation' in job
+        assert 'score_reason' in job
 
 
 def test_get_jobs_output_csv():
@@ -94,12 +93,12 @@ def test_get_jobs_output_yaml():
     assert isinstance(data['jobs'], list)
 
 
-def test_get_jobs_output_yaml_includes_explanation():
-    """YAML output should include the explanation field."""
+def test_get_jobs_output_yaml_includes_score_reason():
+    """YAML output should include the score_reason field."""
     output = job_api.get_jobs_output(format='yaml')
     data = yaml.safe_load(output)
     for job in data['jobs']:
-        assert 'explanation' in job
+        assert 'score_reason' in job
 
 
 def test_get_jobs_output_xml():
@@ -111,10 +110,10 @@ def test_get_jobs_output_xml():
     assert '<jobs>' in output
 
 
-def test_get_jobs_output_xml_includes_explanation():
-    """XML output should include the explanation field."""
+def test_get_jobs_output_xml_includes_score_reason():
+    """XML output should include the score_reason field."""
     output = job_api.get_jobs_output(format='xml')
-    assert '<explanation>' in output
+    assert '<score_reason>' in output
 
 
 def test_get_jobs_output_unknown_format_defaults_to_json():

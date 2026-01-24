@@ -127,7 +127,7 @@ def extract_job_data(gd, keys, min_score=5):
             'salary': record.get('parsed_job', {}).get('salary', '-'),
             'date': record.get('date', ''),
             'job_url': record.get('parsed_job', {}).get('job_url', '-'),
-            'explanation': record.get('score_reason', '')  # Get explanation from score_reason field
+            'score_reason': record.get('score_reason', '')  # Get explanation from score_reason field
         }
         jobs.append(job_data)
     
