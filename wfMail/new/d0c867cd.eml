@@ -1,0 +1,2023 @@
+Received: from GVZP280MB0347.SWEP280.PROD.OUTLOOK.COM (2603:10a6:150:40::5) by
+ GV3P280MB1286.SWEP280.PROD.OUTLOOK.COM with HTTPS; Thu, 8 Jan 2026 17:08:15
+ +0000
+Received: from DUZP191CA0062.EURP191.PROD.OUTLOOK.COM (2603:10a6:10:4fa::25)
+ by GVZP280MB0347.SWEP280.PROD.OUTLOOK.COM (2603:10a6:150:40::5) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9499.2; Thu, 8 Jan
+ 2026 17:08:14 +0000
+Received: from DB1PEPF000509E4.eurprd03.prod.outlook.com
+ (2603:10a6:10:4fa:cafe::a7) by DUZP191CA0062.outlook.office365.com
+ (2603:10a6:10:4fa::25) with Microsoft SMTP Server (version=TLS1_3,
+ cipher=TLS_AES_256_GCM_SHA384) id 15.20.9499.3 via Frontend Transport; Thu, 8
+ Jan 2026 17:08:11 +0000
+Authentication-Results: spf=pass (sender IP is 64.68.198.23)
+ smtp.mailfrom=srszone.org; dkim=pass (signature was verified)
+ header.d=hi.wellfound.com;dmarc=pass action=none
+ header.from=hi.wellfound.com;compauth=pass reason=100
+Received-SPF: Pass (protection.outlook.com: domain of srszone.org designates
+ 64.68.198.23 as permitted sender) receiver=protection.outlook.com;
+ client-ip=64.68.198.23; helo=mxc03.zoneedit.com; pr=C
+Received: from mxc03.zoneedit.com (64.68.198.23) by
+ DB1PEPF000509E4.mail.protection.outlook.com (10.167.242.54) with Microsoft
+ SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384) id 15.20.9520.1
+ via Frontend Transport; Thu, 8 Jan 2026 17:08:13 +0000
+X-IncomingTopHeaderMarker: OriginalChecksum:A7DDD06FA6EDB4E9993A04E0FCADEB159D3224DD83BF3DD014F47F0453ACB8B6;UpperCasedChecksum:54AD16FECC3E5A9E7C2046257BCF343D6F22C61E00CEE57DAF09F5A7CDE8A1FB;SizeAsReceived:2724;Count:20
+Received: from localhost (localhost [127.0.0.1])
+	by mxc03.zoneedit.com (Postfix) with ESMTP id 87B2D36DA9C
+	for <jsr_critchley@hotmail.com>; Thu,  8 Jan 2026 17:08:12 +0000 (UTC)
+Received: from mxc03.zoneedit.com ([127.0.0.1])
+	by localhost (mxc03-zpc.zoneedit.vpn [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 8VQiC54hQu6B for <jsr_critchley@hotmail.com>;
+	Thu,  8 Jan 2026 17:08:12 +0000 (UTC)
+Received: from mta-70-4-29.sparkpostmail.com (mta-70-4-29.sparkpostmail.com [156.70.4.29])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+	(No client certificate requested)
+	by mxc03.zoneedit.com (Postfix) with ESMTPS id 21E6836CEAA
+	for <john.wellfound@critchley.biz>; Thu,  8 Jan 2026 17:08:12 +0000 (UTC)
+X-MSFBL: n1hNS6ULzpENBcBKl14HVVB98fRyv+svhkFFMyrN1JY=|eyJyIjoiam9obi53ZWx
+	sZm91bmRAY3JpdGNobGV5LmJpeiIsInN1YmFjY291bnRfaWQiOiIyIiwidGVuYW5
+	0X2lkIjoic3BjIiwiY3VzdG9tZXJfaWQiOiIyODM1NDEiLCJtZXNzYWdlX2lkIjo
+	iNjk1YzdiZTQ1ZjY5MjY1MjE2Y2MifQ==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=hi.wellfound.com;
+	s=scph0123; t=1767892091; i=@hi.wellfound.com;
+	bh=W+C7aFuhmq3Po8hzDlbEXQXoAixZTeT8tsCzGnYNfFQ=;
+	h=To:Message-ID:Date:Content-Type:List-Unsubscribe:
+	 List-Unsubscribe-Post:Subject:From:From:To:Cc:Subject;
+	b=A+kjhvQ30fO9B+RBXr++qVcBd0Wo+cj7sFAWy5vZTeNXsI8KjXR9RThNo1qoTiNIn
+	 +KNthjZNx9oan7IQNMrgDHod5hMTc7NVptqv2m2bQHusdUGI02dw9bBbOpj0Gng9jz
+	 tWjeTXlte+Z2JV8MdHm+gcfRWSBRVlnf3AfHs0qc=
+Received: from [10.90.29.123] ([10.90.29.123])
+	by i-032ead819a3d20a6a.mta1vrest.sd.prd.sparkpost (ecelerity 5.1.0.74856 r(msys-ecelerity:tags/5.1.0.29)) with REST
+	id CC/69-37368-B74EF596; Thu, 08 Jan 2026 17:08:11 +0000
+To: john.wellfound@critchley.biz
+Message-ID: <CC.69.37368.B74EF596@i-032ead819a3d20a6a.mta1vrest.sd.prd.sparkpost>
+Date: Thu, 08 Jan 2026 17:08:11 +0000
+Content-Type: multipart/alternative; boundary="_----W++UVC4uwqkHI6tE1Tt/+A===_6B/69-37368-B74EF596"
+X-Campaign-ID: 16384656
+List-Unsubscribe: <https://links.iterable.com/s/uh/NefJhoPEYbT8BOcVG8tu9YZD7WCH5gASHLOuB_9smhBVjANLenflgmcx_gkj9tr_EAVdZ6qx9rovmwdkRiVpMUzNWT99gAmE82yQdYzNZOQtX5-8IIdL9M2JRgxkRZycuPNs1ddguE-BIVqCFehP3RAkUaX7KcrVgBh7bpFBkK3yTppggn67uSP_zP-bZDRPZ4A/DpG2js9y2iudnC_7cgJnCOM6TLvACNUJ/16>,<mailto:unsubscribe+16384656+21321646@unsubscribe.iterable.com>
+X-Message-ID: 69c41bf05b884ff89c683bc3ec3247ea
+X-Feedback-ID: 21321646:16384656:76029:iterable
+Reply-To: newsletters@wellfound.com
+List-Unsubscribe-Post: List-Unsubscribe=One-Click
+Subject: =?utf-8?B?Q2xhdWRl4oCZcyDigJhkbyBtb3JlIHdpdGggbGVzc+KAmSB3b3Jr?=
+	=?utf-8?B?Zmxvdw==?=
+From: "Wellfound" <newsletters@hi.wellfound.com>
+Feedback-ID: 21321646:16384656:76029:iterable
+X-IncomingHeaderCount: 20
+Return-Path: SRS0=/Mtg=7N=bounce.wellfound.com=msprvs1=20468ffOLkbf2=bounces-283541-2@srszone.org
+X-MS-Exchange-Organization-ExpirationStartTime: 08 Jan 2026 17:08:13.8284
+ (UTC)
+X-MS-Exchange-Organization-ExpirationStartTimeReason: OriginalSubmit
+X-MS-Exchange-Organization-ExpirationInterval: 1:00:00:00.0000000
+X-MS-Exchange-Organization-ExpirationIntervalReason: OriginalSubmit
+X-MS-Exchange-Organization-Network-Message-Id: 82605745-a55e-4e8e-6605-08de4ed8823f
+X-EOPAttributedMessage: 0
+X-EOPTenantAttributedMessage: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa:0
+X-MS-Exchange-Organization-MessageDirectionality: Incoming
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: DB1PEPF000509E4:EE_|GVZP280MB0347:EE_|GV3P280MB1286:EE_
+X-MS-Exchange-Organization-AuthSource: DB1PEPF000509E4.eurprd03.prod.outlook.com
+X-MS-Exchange-Organization-AuthAs: Anonymous
+X-MS-UserLastLogonTime: 1/8/2026 5:01:25 PM
+X-MS-Office365-Filtering-Correlation-Id: 82605745-a55e-4e8e-6605-08de4ed8823f
+X-MS-Exchange-EOPDirect: true
+X-Sender-IP: 64.68.198.23
+X-SID-PRA: NEWSLETTERS@HI.WELLFOUND.COM
+X-SID-Result: PASS
+X-MS-Exchange-AtpMessageProperties: SA|SL
+X-MS-Exchange-Organization-SCL: 1
+X-Microsoft-Antispam: BCL:2;ARA:1444111002|461199028|10300799038|9400799043|970799060|32080799006|58200799021|1680799066|9000799056|47200799024|35120799006|36140799009|3151999006|3412199025|4302099013|440099028|18021999003|30041999003|26104999006|1370799030|1360799030|1380799030|1417299016|1602099012|56899033|18301999012|18025499012|20015499003|2406899039;
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 08 Jan 2026 17:08:13.5642
+ (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 82605745-a55e-4e8e-6605-08de4ed8823f
+X-MS-Exchange-CrossTenant-Id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
+X-MS-Exchange-CrossTenant-AuthSource: DB1PEPF000509E4.eurprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: Internet
+X-MS-Exchange-CrossTenant-RMS-PersistedConsumerOrg: 00000000-0000-0000-0000-000000000000
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: GVZP280MB0347
+X-MS-Exchange-Transport-EndToEndLatency: 00:00:02.0699628
+X-MS-Exchange-Processed-By-BccFoldering: 15.20.9478.005
+X-Microsoft-Antispam-Mailbox-Delivery: 
+	ucf:0;jmr:0;ex:0;auth:1;dest:I;ENG:(5062000311)(920221119095)(90000117)(920221120095)(90005022)(91005020)(91035115)(9050020)(9100341)(944500132)(4810010)(4910033)(9575002)(10195002)(9320005)(120001)(1110175);
+X-Message-Delivery: Vj0xLjE7dXM9MDtsPTA7YT0wO0Q9MTtHRD0xO1NDTD0z
+X-Microsoft-Antispam-Message-Info: 
+	=?utf-8?B?cjVEUUQ5R08ySlFVYXpDUFVVczBYOXdDbnk0QlF0UkhPVFVjS0Rmd0ZGMWJ0?=
+ =?utf-8?B?a1FFT1Nuek5IS2JWbit2bWRsaENTZUtUSE9QKzV1TWJBRFBUZ01JbURMR1VN?=
+ =?utf-8?B?VjVnSnJIK2xINzVxNjVFTUtXT05XclQ3YVg4NTgxQzNiNEFoYjJtbUh4bXdl?=
+ =?utf-8?B?MmJ2dlNDcFB5ZTJsWkhXSUh0MEtLYkczTUdVK0FqOWJMS1UwTDlvUkg2NlZC?=
+ =?utf-8?B?bXVoOGJPeSszNTkvcmhqb1B2L0YwQSswSkIwUkV0RDRJeTlTUmdUN2NuOUhO?=
+ =?utf-8?B?bWEwS2xrRGNidnZrcUd0Nml4VHlpOXQydlRJckdZSW83eHRVSjhYWGRMTUpE?=
+ =?utf-8?B?eTdFTHQ0dUxXSG5KNVdlV2syVVRmODV1dHZVOE10V2NzcXhDTFNqblFVQ2NI?=
+ =?utf-8?B?TllIVFIwM2ZBWUw3OS8ybDV0VnE4NWJwZk13cmRzZDBaa2ZnNWJxRTlCcnJp?=
+ =?utf-8?B?UFZ4YnY0OXpzUHQxaFV1Z09IaUNNaVY4eHpCZ1E0ZFB2enVNZzBxMFFBYU9O?=
+ =?utf-8?B?SjM3LzBhWHBGUnk4RzNKZUxVbVFBb3dPOHBpSkFROEhNNkNEeXVkKzZEVXlV?=
+ =?utf-8?B?R2VpdkJRUVloajFwOGVuRFo3VVFyWHlTZlBFRkN6N1NodWg2dGMxZGdoZUZL?=
+ =?utf-8?B?c3d1RTlkamcxUml2YVZEYWNkdUxSZTNQNEZXZExpWUpuTjdqbnYvdjdKT0lv?=
+ =?utf-8?B?TGxOejR5cU1QSWs1U083UzNkT3lNUjZxLzQ3UW95SXd2THk1T2RvMkZqY1JW?=
+ =?utf-8?B?cWpNb1NESGFiRDg0NVJZVG9XL3pnejd4bUVCRWtpVDh6VlVVUDlPTXZ1d0Fj?=
+ =?utf-8?B?cHBrdS8yL0J2WWlRektaQ2dHdGJpbnV2RjZBNlkvYndNbnkzenlRM2Z3NXkx?=
+ =?utf-8?B?UkgrclphQzMvcGE1Vjh1VkRac3JNV09IMWdwbmRvK2ZDOWhzeFFxU1NjRzh2?=
+ =?utf-8?B?QkFKNDF4SzNPZ0ZQOHh2dnlFdlpSL21FdkVoRktPOGJlUkRjS3M2dE03dXRy?=
+ =?utf-8?B?YzUySWd4b1BDcG9EV2M5OU5xQ1FVTWk0U2tTWUg0alY3czcyV09qRHB5WkVX?=
+ =?utf-8?B?aTFlWHZsdVQwS0VnRGg0a3oyVWlXRjNIeXhNRlhyZDVsdU9CQk1wcVdpRTNu?=
+ =?utf-8?B?a3JFc3ZSbDBnS1R6UDZZdHhRc2IrUG1ZTkxKRWZIWFRzclZ4V0lZZkFvSUsz?=
+ =?utf-8?B?Z3Q0bXJFeitnZS9sYlRUY3RvTlFwWmFFc1JPZVRhV1lqRkF2eitQYWEwYnpN?=
+ =?utf-8?B?VEJkTlFWaFlrWXRxck1md1U2NVJTaXp6WjVDdDZXdG5kV1UrUm5RSmo2aU1r?=
+ =?utf-8?B?dXM1cklXaEpmNGlROGxWOEFBVjh5THo0L21hVDUxTmVOOXd5TW5VTkpsNTZw?=
+ =?utf-8?B?RFkwbTExK0UwRVJFQ3poaU1qN0lEOEF2MGF5R3ovbG1RWDVZanpFbjY1c2Iy?=
+ =?utf-8?B?SFZaN1NxK0NVVk8wSUIxN3luclJNOUFzN3FyWnBTOFVTbUxMdWxrMmY2aGFn?=
+ =?utf-8?B?ai9sTWZ5RUMwMTZHaXFITEtoSnJNNitDUXB6am9WRm9GK1cyZ0dTaUtrUWtI?=
+ =?utf-8?B?MERIUVJnSm5EWHF1TnNoS3B4OStLWHlBN3NVcmFIMkVpNlRzNTZTMXhMRkQ3?=
+ =?utf-8?B?U2dnVWVUMFFncEJnb1lrVU83V2xud2hBeGFHSk1Ia3oyREJXQTRNc1dUNGRa?=
+ =?utf-8?B?YmFjbVNmZ3ZYWSt2dkthN2VOd09xSWRwc1FuYWFaL3I5d3p5akVOM0pJOGFa?=
+ =?utf-8?B?RDdhZzhwRWttNDA2MllEaUEwUzNzL2padzczZTVSMlYzOVVxeGZhUTRPOUxw?=
+ =?utf-8?B?N3A2b2I1LytsODljYkMvajVsSVhyc2Q2MnlwUG9GUVlMT01SZWs5bFZyLzh4?=
+ =?utf-8?B?dG1sQTJtdjhteUw1Mm9WQWFtdWNUaTNZRTdJajZvcnJMZzN6alRyd3o2NVdo?=
+ =?utf-8?B?bGlpbCtBWGk0eEp2Y3d5SWxEbzNWNFhhY2xtQ1RFbEhZYlZXMFdXMnVFSUVu?=
+ =?utf-8?B?MGdLRkN1R1phLzVHcFlXd3Z0aTcxeVZKVzdkTHF3RjVDOWFvbjZpQmZMSVdi?=
+ =?utf-8?B?QkVYN2htdU1UQnNWYXRwbHpUcklCOEMzaWdGaFltM1g1QlpMY2c1R1U5anM2?=
+ =?utf-8?B?SVFNQVhYVXdWcWJkbExoYVdQYXVQSVNHU2ZOY1hiZW5ybWNFTmJ0TTUrNWdR?=
+ =?utf-8?B?SXZMSzRudW5jZmFubEFhNTEySnFtSWp3R3dWZ0JoRWRMLzBuZDZsdG5SNjNV?=
+ =?utf-8?B?QnlRTkl0OXNHd25BeG9oeUtzL2dhc3Z4Tm1Ib0FrenFNQ2hhTGNUYW1BOTMy?=
+ =?utf-8?B?aGg4N1Rwblk3dU1ONDBqbzJoRUJwcTQzUGhsUFhtRExiUm9rdFduRG5EUFll?=
+ =?utf-8?B?ZXk3cnpWem8xV3VWa3NXM0NEckZweitJVzdsQXhwRVZRbUxkaUN4ampHb243?=
+ =?utf-8?B?eWtFL0trZUovcWcxcm1aSzROYnQ4dFV2YVd6WFFYQXNTQmtSNHJyWU51TC8x?=
+ =?utf-8?B?azhDSVpqUkNoRXFpRHp4TklkcElDaGpRTkt6cTNKQTBPSk5UeEVTZHFSVDZJ?=
+ =?utf-8?B?eXkrUW5NRW5QWUI3a0RqSDk4dU9XRHNUbFZudkZtV0lHRk1LZWZpVS9FQXdH?=
+ =?utf-8?B?OVl4QnV4M0lEMEhPR3dIQWxlclA4VFB1cSs2VWI3ZEk1VG1CQmpNaVpYUXZo?=
+ =?utf-8?B?MENWd1RJTFZuZTltaHlmdWxOSzBUZmhKRGgvTDNYYXFORllhWXh4VEcwK3Ja?=
+ =?utf-8?B?TXFaSk9kMFFzMnVLbmNpZURvc1lBODB1WWpZWVdRREJWV3BwbjJkT0NPdFhF?=
+ =?utf-8?B?RFp2WFI4TEpjN3I5a2Y5allCY2I0QmdReXRjTDVveWdRa0M0L2NPclkxK05j?=
+ =?utf-8?B?VklPS1hXc2RzTlVBRnY2d1Q3YlFKMGdSczJNY0l4MUp3RXhkNXhHS0dxa01R?=
+ =?utf-8?B?cGlyY2NNRXlGaFdURDJuc1BQWVhwcjdwRFo4dWFLY1BQa1Uyam9oQjVnSk82?=
+ =?utf-8?B?S2k0NUR0MXV2U2VaZGUvK3dOcDJjMWtYODFDbHJHaVY0UHpPNUZ2RS9hbUNh?=
+ =?utf-8?Q?d7IeHANUri/Ucqe0ldS61J4uhtWWfsR9w=3D?=
+MIME-Version: 1.0
+
+--_----W++UVC4uwqkHI6tE1Tt/+A===_6B/69-37368-B74EF596
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="UTF-8"
+
+Claude=E2=80=99s creator reveals his workflow, GPU maker seeks =E2=80=98AI =
+forward=E2=80=99 candidates, =0AOpenAI unveils ChatGPT Health, a Power Rang=
+er steals show at hacker conference, =0Aand 5 trending companies hiring thi=
+s week.=0A=0A=0A=0A=0A <https://wellfound.com> =0Aview entire message  =0A<=
+https://links.wellfound.com/s/vb/JvtKpXvdkMgi2qXsAdfAkHpSHIjbiaunGZU-uTzmPu=
+_6N00oKq82CtUp-wwvfzRiqo_Gcp_v93BHQ_zoJuongQ1Eemx5iEH-6TUeRS8lDOQwNU2p8C_yE=
+8YgdoTwJmxoPe_GqQ3hzf2Wx10SSYXgQYt2/rC1k33V5jld7gk-oIwufPsOKSOO6AlE4/16>=0A=
+=0A=0A <> =0A=0A=0A=0AQuick Hits=0A=0A=0A=0ACar talk: Nvidia builds self-dr=
+iving =0A<https://www.bbc.com/news/articles/c0jv1vd571wo> tech.=0A=0A=0A=0A=
+=E2=80=98China tiger=E2=80=99: Zhipu =0A<https://www.cnbc.com/2026/01/08/ch=
+ina-ai-tiger-goes-ipo-zhipu-hong-kong-debut-openai-knowledge-atlas-hsi-hang=
+-seng-listing.html>=0A goes public.=0A=0A=0A=0AFord Tough: Car maker develo=
+ps own AI =0A<https://techcrunch.com/2026/01/07/ford-has-an-ai-assistant-an=
+d-new-hands-free-bluecruise-tech-on-the-way/>=0A.=0A=0A=0A=0AMarket flip: A=
+lphabet skips past Apple =0A<https://www.cnbc.com/2026/01/07/alphabets-mark=
+et-cap-surpasses-apples-for-first-time-since-2019.html>=0A.=0A=0A=0A=0ANIMB=
+Y: Microsoft faces backlash =0A<https://www.cnbc.com/2026/01/07/microsoft-b=
+ehind-controversial-data-center-in-michigan-township.html>=0A in Michigan.=
+=0A=0A=0A=0AFactory robots: Hyundai unveils humanoid helpers =0A<https://ww=
+w.bbc.com/news/articles/cvgjm5x54ldo>.=0A=0A=0A=0AGame changer: Threads add=
+s in-message games =0A<https://techcrunch.com/2026/01/06/threads-is-develop=
+ing-in-message-games/>.=0A=0A=0A=0AGrok infusion: xAI raises $20B =0A<https=
+://cryptobriefing.com/xai-raises-20b-series-e-funding/>.=0A=0A=0A=0ARaising=
+ Claude: Anthropic valued at $350B =0A<https://www.nytimes.com/2026/01/07/t=
+echnology/anthropic-funding-valuation.html>=0A.=0A=0A=0A=0A=E2=80=98Smart b=
+ricks=E2=80=99: Legos go digital =0A<https://www.bbc.com/news/articles/crml=
+nmnwzk2o>.=0A=0A=0A=0A=0AFounder Tip: You can't change someone.=0A=0A=0A=0A=
+This sounds obvious until you're actually hiring. Then, suddenly, you're =
+=0Aconvincing yourself that the smart candidate who seems indifferent will =
+get =0Aexcited once they see the work. Or the talented person who only asks=
+ about comp =0Awill care about the mission later.=0A=0A=0A=0AThey won't.=0A=
+=0A=0A=0AShensi Ding <https://www.linkedin.com/in/shensiding/>, Co-Founder =
+of Merge =0A<https://wellfound.com/company/mergeapi>, says early-stage hiri=
+ng is about =0Aselection, not transformation. You're looking for people who=
+ already care, not =0Apeople you can teach to care. =0A=0A=0A=0AThe mistake=
+ most founders make is hiring for potential and then spending six =0Amonths=
+ trying to instill drive that was never there to begin with.=0A=0A=0A=0AWat=
+ch the full interview here. <https://youtu.be/J-ehfOjSBBQ>=0A=0A=0A=0AThey'=
+re hiring! See 2 open roles here. <https://wellfound.com/company/mergeapi>=
+=0A=0A=0A=0A=0A <https://www.youtube.com/watch=3Fv=3D5Cf3YmMX_JE>=0A=0AStar=
+tups Hiring Now  <https://wellfound.com/company/oklo>=0A=0A=0A=0ACurrent=0A=
+=0AWe're on a mission to change our members' lives by creating better finan=
+cial =0Aoutcomes=0A=0ASee 21 open roles <https://wellfound.com/company/curr=
+ent>=0A=0A=0A=0AIndustrious=0A=0AFinding and creating workplace experiences=
+ that are optimized for your =0Abusiness needs=0A=0ASee 69 open roles <http=
+s://wellfound.com/company/industrious>=0A=0A=0A=0AAnything=0A=0AYour AI pro=
+duct engineer=0A=0ASee 7 open roles <https://wellfound.com/company/anything=
+dotcom>=0A=0A=0A=0AParallel Learning=0A=0AWe are the first human-centered c=
+are solution for students with learning =0Adifferences=0A=0ASee 22 open rol=
+es <https://wellfound.com/company/parallel-learning-1>=0A=0A=0A=0A=0AJob Se=
+arch Tip: Show you can build with AI, not just talk about it=0A=0A=0AChase =
+Johnson <https://www.linkedin.com/in/chasetalent/>, now at Primer =0A<https=
+://wellfound.com/company/primer-usa> after scaling Replit =0A<https://wellf=
+ound.com/company/repl-it>'s team, says recruiters don't want to =0Ahear you=
+ explain how models work. They want proof you built something that =0Asolve=
+d a real problem. =0A=0A=0AChase's take: "If you're not using AI to tinker =
+and solve problems in your =0Adaily work, you're probably behind."=0A=0A=0A=
+He's a recruiter, not an engineer. He built an equity calculator because he=
+ =0Akept needing one.=0A=0A=0A=0AThat's the bar: you saw a problem, you lea=
+rned enough to fix it, you shipped =0Asomething. The companies hiring right=
+ now want people who already think that =0Away.=0A=0A=0A Watch Chase's full=
+ Ask a Recruiter session here. =0A<https://youtu.be/_K3-odCWhkE>=0A=0A=0A=
+=0ANext week: Interview Red & Green Flags for Engineers, Data Scientists & =
+PMs =0AwithMatt Glickman <https://www.linkedin.com/in/mattglickman/> (Live =
+Q&A) =C2=B7 Jan =0A13, 4 PM ET =E2=86=92Sign up <https://wellfound.typeform=
+.com/mattglickman> =0A=0A=0A=0A=0A <https://www.youtube.com/watch=3Fv=3DfS=
+TMt3r7sgc>=0A=0A=0A=0A=0A=0AWhat We're Reading=0A=0A=0A=0AClaude=E2=80=99s =
+=E2=80=98do more with less=E2=80=99 workflow=0A=0AClaude=E2=80=99s creator =
+revealed a do-more-with-less workflow =0A<https://venturebeat.com/technolog=
+y/the-creator-of-claude-code-just-revealed-his-workflow-and-developers-are>=
+=0A running 5 agents at once. "If you're not reading the Claude Code best =
+=0Apractices straight from its creator, you're behind as a programmer," one=
+ =0Adeveloper says.=0A=0A=0A=0ASeeking: =E2=80=98AI forward=E2=80=99 candid=
+ates=0A=0AAI isn=E2=80=99t slowing hiring but is changing who they look for=
+, says the CEO of GPU =0Amaker AMD. =E2=80=9CWe=E2=80=99re hiring people wh=
+o areAI forward =0A<https://www.cnbc.com/2026/01/06/amd-lisa-su-ai-jobs-hir=
+ing.html>,=E2=80=9D she says.=0A=0A=0A=0AOpenAI unveils ChatGPT Health=0A=
+=0A230M+ people ask ChatGPT health questions each week, leading OpenAI to r=
+oll out=0AChatGPT Health =0A<https://techcrunch.com/2026/01/07/openai-unvei=
+ls-chatgpt-health-says-230-million-users-ask-about-health-each-week/>=0A to=
+ connect medical records.=0A=0A=0A=0APower Ranger hacktivist steals show=0A=
+=0AA hacker dressed as a Power Ranger =0A<https://futurism.com/artificial-i=
+ntelligence/tinder-for-nazis-hacked> deleted =0A3 white supremacist website=
+s live onstage and used bots to gather data on its =0Ausers.=0A=0A=0A=0A=0A=
+=E2=80=8A=0A=0A=0A=0AKnow of a company looking to hire=3F=0A=0A=0A=0A=0AWhe=
+n a new customer joins wellfound:ai <http://wellfound.ai/> and becomes a =
+=0Apaying customer, you'll get credits toward your future hiring needs.=0A=
+=0A=0A=0A$300 to you and $500 for your referral=0A=0AAnd $1,000 when they m=
+ake their first Autopilot hire.=0A=0A=0A=0ARefer & Earn  =0A<https://help.w=
+ellfound.com/article/1145-wellfound-ais-referral-program>=0A=0A=0A=0A <http=
+s://twitter.com/wellfoundhq> <https://www.instagram.com/wellfoundhq/> =0A<h=
+ttps://www.linkedin.com/company/wellfoundhq>  =0A<https://www.youtube.com/@=
+wellfound_hq>=0A=0A=0A=0AWellfound Weekly=0A=0A228 Park Ave S, PMB 40533=0A=
+=0ANew York, NY 10003=0A=0AUnsubscribe =0A<https://links.wellfound.com/s/u/=
+vRTjOGbDGMdkvNoiizhNV2X2xxa49NZ_KxUZNQ4J82HY5k2eaW9BV2GilYFU4aYrPTaZaFqr9KO=
+gjc2WKz3HWAZRFJSOWMuAXE37bwiXaOpkrDomqDKqiAKhhylgzJAoWBBGMXkcBt7k-sSD1BqI27=
+MMMzwT4c3qdyNRjz26ZVPt_yUTBQ9r8ddHDQ256ieGdHiCZ97WdiaJvWv8u3ByOSe-FBDOtxmyU=
+bFtCj0v4U5d/SORtM9fKG3PYoRn4N5U5j7zGSqHnv-U_/16>=0A |Update preferences <ht=
+tps://angel.co/profile/notifications>
+--_----W++UVC4uwqkHI6tE1Tt/+A===_6B/69-37368-B74EF596
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset="UTF-8"
+
+<!DOCTYPE html><html xmlns:v=3D"urn:schemas-microsoft-com:vml" xmlns:o=3D"u=
+rn:schemas-microsoft-com:office:office" lang=3D"en" style=3D"box-sizing: bo=
+rder-box;"><head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8"><t=
+itle></title><meta name=3D"viewport" content=3D"width=3Ddevice-width,initia=
+l-scale=3D1"><!--[if mso]><xml><w:WordDocument xmlns:w=3D"urn:schemas-micro=
+soft-com:office:word"><w:DontUseAdvancedTypographyReadingMail/></w:WordDocu=
+ment> <o:OfficeDocumentSettings><o:PixelsPerInch>96</o:PixelsPerInch><o:All=
+owPNG/></o:OfficeDocumentSettings></xml><![endif]--><style>*{box-sizing:bor=
+der-box}body{margin:0;padding:0}a[x-apple-data-detectors]{color:inherit!imp=
+ortant;text-decoration:inherit!important}#MessageViewBody a{color:inherit;t=
+ext-decoration:none}p{line-height:inherit}.desktop_hide,.desktop_hide table=
+{mso-hide:all;display:none;max-height:0;overflow:hidden}.image_block img+di=
+v{display:none}sub,sup{font-size:75%;line-height:0}@media(max-width:595px){=
+.social_block.desktop_hide .social-table{display:inline-block!important}.mo=
+bile_hide{display:none}.video_block .sizer{max-width:none!important}.row-co=
+ntent{width:100%!important}.stack .column{width:100%;display:block}.mobile_=
+hide{min-height:0;max-height:0;max-width:0;overflow:hidden;font-size:0}.des=
+ktop_hide,.desktop_hide table{display:table!important;max-height:none!impor=
+tant}.row-3 .column-1 .block-1.text_block td.pad,.row-5 .column-1 .block-2.=
+text_block td.pad,.row-6 .column-1 .block-1.text_block td.pad,.row-8 .colum=
+n-1 .block-1.text_block td.pad{padding:25px 0 0 30px!important}.row-10 .col=
+umn-1 .block-1.text_block td.pad{padding:5px 30px 15px!important}}</style><=
+!--[if mso ]><style>sup,sub{font-size:100%!important}sup{mso-text-raise:10%=
+}sub{mso-text-raise:-10%}</style><![endif]--></head><body class=3D"body" st=
+yle=3D"box-sizing: border-box; margin: 0; padding: 0; -webkit-text-size-adj=
+ust: none; text-size-adjust: none; background-color: #fff;">
+<div style=3D"color:transparent;visibility:hidden;opacity:0;font-size:0px;b=
+order:0;max-height:1px;width:1px;margin:0px;padding:0px;border-width:0px!im=
+portant;display:none!important;line-height:0px!important;"><img border=3D"0=
+" width=3D"1" height=3D"1" src=3D"https://post.spmailtechnol.com/q/YYSh5TwH=
+Dyxvkb3XVWxd2g~~/AARTlRA~/8f7ox2amE4K4U65tCAL1qmZLU6ZS7ygiYMisfTbQrX4Kn4xIU=
+EXkLJGFGIGRaJvMD9rK-YMNMVx1bTUOQb0yQg~~" alt=3D""></div>
+<span style=3D"color:transparent;visibility:hidden;display:none;opacity:0;h=
+eight:0;width:0;font-size:0;">Claude=E2=80=99s creator reveals his workflow=
+, GPU maker seeks =E2=80=98AI forward=E2=80=99 candidates, OpenAI unveils C=
+hatGPT Health, a Power Ranger steals show at hacker conference, and 5 trend=
+ing companies hiring this week.</span><img src=3D"https://links.wellfound.c=
+om/s/eo/ewu8rMRts9TUAUZHCXQihuMy4fIHsMvQM2mu87ccfzsD41rnMjHYEjBNwJEIsDi3boI=
+hErQMTPRTGMfrGmscl1G1kCMExw9x44OQ56B7hIsoz7AnRVjCfVaPaXEcsD1GYTpkDOhPQXcf9v=
+n5N48LMMRNTnP3uHxqg44c5dICQrehL9CrhTD8itBHk4iMSSGyzA31OVTjmkwnysDRol4LPN0/s=
+2U_GN5gryzWVF6Vo120ttR6dpdwSIyz/16" style=3D"border:0;width:1px;height:1px;=
+border-width:0px!important;display:none!important;line-height:0!important;"=
+ width=3D"1" height=3D"1"><table class=3D"nl-container" width=3D"100%" bord=
+er=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D=
+"box-sizing: border-box; mso-table-lspace: 0; mso-table-rspace: 0; backgrou=
+nd-color: #fff;" bgcolor=3D"#fff"><tbody style=3D"box-sizing: border-box;">=
+<tr style=3D"box-sizing: border-box;"><td style=3D"box-sizing: border-box;"=
+><table class=3D"row row-1" align=3D"center" width=3D"100%" border=3D"0" ce=
+llpadding=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"box-sizing=
+: border-box; mso-table-lspace: 0; mso-table-rspace: 0;"><tbody style=3D"bo=
+x-sizing: border-box;"><tr style=3D"box-sizing: border-box;"><td style=3D"b=
+ox-sizing: border-box;"><table class=3D"row-content stack" align=3D"center"=
+ border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" sty=
+le=3D"box-sizing: border-box; mso-table-lspace: 0; mso-table-rspace: 0; bac=
+kground-color: #fff; border-radius: 0; color: #000; width: 575px; margin: 0=
+ auto;" width=3D"575" bgcolor=3D"#fff"><tbody style=3D"box-sizing: border-b=
+ox;"><tr style=3D"box-sizing: border-box;"><td class=3D"column column-1" wi=
+dth=3D"50%" style=3D"box-sizing: border-box; mso-table-lspace: 0; mso-table=
+-rspace: 0; font-weight: 400; text-align: left; padding-bottom: 5px; paddin=
+g-top: 10px; vertical-align: top;" align=3D"left" valign=3D"top"><table cla=
+ss=3D"html_block block-1" width=3D"100%" border=3D"0" cellpadding=3D"0" cel=
+lspacing=3D"0" role=3D"presentation" style=3D"box-sizing: border-box; mso-t=
+able-lspace: 0; mso-table-rspace: 0;"><tr style=3D"box-sizing: border-box;"=
+><td class=3D"pad" style=3D"box-sizing: border-box;"><div style=3D"box-sizi=
+ng: border-box; font-family: Lucida Sans Unicode,Lucida Grande,Lucida Sans,=
+Geneva,Verdana,sans-serif; text-align: center;" align=3D"center"><table sty=
+le=3D"border-collapse: collapse; border-spacing: 0; color: #7b91b1; font-fa=
+mily: Helvetica, 'Helvetica Neue', Arial, sans-serif; font-size: 12px; line=
+-height: 1.5; margin: 0 0 32px; text-align: left; vertical-align: top; widt=
+h: 133px;"> <tbody> <tr> <td> <a href=3D"https://swe01.safelinks.protection=
+.outlook.com/?url=3Dhttps%3A%2F%2Flinks.wellfound.com%2Fs%2Fc%2FpEwawnsuNjk=
+gNiK3N66OFMyBcb9VRVH-xLPZkRChu-iXSpg54nMNl4QZHQQDEKJgl50HVB_RnKUK798mr_0mlq=
+FSIHHVYah45i3dBSJVVoPLLg86xwFkUFw8kWif3df3Q76faJyv3jhrosQu-ugQUXb-D6AoTjk8x=
+ewonJJrPY_e_4Co6_LkevyYwpalI2PCjGtQJoUI9BKCwjpjYQhY4gQbn9rYR5l-A7vqz-7gFCi0=
+yUBnMoy9FtRDTfcJpZzY5WtrGgk99EevDu4B7be3h-lA5gkm9ou8xPDIhjk_4jVmgRpKEKj7LHx=
+ELl6qwer_-3eZdmNCq8p531xemnQPmYNDL6zz6SOT_dzwVqy8%2Fi2DMgBSvHzD5ZTG_JpDxir2=
+of-qRqcdW%2F16&amp;data=3D05%7C02%7C%7C82605745a55e4e8e660508de4ed8823f%7C8=
+4df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C639034888958894778%7CUnknown%7CTW=
+FpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOI=
+joiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&amp;sdata=3Duyyq6m2E6%2ByXq3kev8u5=
+GtCfdaTohs8VqoBPFvDRjT8%3D&amp;reserved=3D0" originalsrc=3D"https://links.w=
+ellfound.com/s/c/pEwawnsuNjkgNiK3N66OFMyBcb9VRVH-xLPZkRChu-iXSpg54nMNl4QZHQ=
+QDEKJgl50HVB_RnKUK798mr_0mlqFSIHHVYah45i3dBSJVVoPLLg86xwFkUFw8kWif3df3Q76fa=
+Jyv3jhrosQu-ugQUXb-D6AoTjk8xewonJJrPY_e_4Co6_LkevyYwpalI2PCjGtQJoUI9BKCwjpj=
+YQhY4gQbn9rYR5l-A7vqz-7gFCi0yUBnMoy9FtRDTfcJpZzY5WtrGgk99EevDu4B7be3h-lA5gk=
+m9ou8xPDIhjk_4jVmgRpKEKj7LHxELl6qwer_-3eZdmNCq8p531xemnQPmYNDL6zz6SOT_dzwVq=
+y8/i2DMgBSvHzD5ZTG_JpDxir2of-qRqcdW/16" target=3D"_blank"> <img height=3D"3=
+0" src=3D"https://wellfound.com/images/logo/wellfound-lockup-black-resized-=
+for-email.png" width=3D"120"> </a> </td> </tr> </tbody> </table></div></td>=
+</tr></table></td><td class=3D"column column-2" width=3D"50%" style=3D"box-=
+sizing: border-box; mso-table-lspace: 0; mso-table-rspace: 0; font-weight: =
+400; text-align: left; padding-bottom: 5px; padding-top: 5px; vertical-alig=
+n: top;" align=3D"left" valign=3D"top"><table class=3D"button_block block-1=
+ mobile_hide" width=3D"100%" border=3D"0" cellpadding=3D"0" cellspacing=3D"=
+0" role=3D"presentation" style=3D"box-sizing: border-box; mso-table-lspace:=
+ 0; mso-table-rspace: 0;"><tr style=3D"box-sizing: border-box;"><td class=
+=3D"pad" style=3D"box-sizing: border-box; padding-top: 00px; text-align: ri=
+ght;" align=3D"right"><div class=3D"alignment" align=3D"right" style=3D"box=
+-sizing: border-box;"> <a href=3D"https://swe01.safelinks.protection.outloo=
+k.com/?url=3Dhttps%3A%2F%2Flinks.wellfound.com%2Fs%2Fvb%2FJvtKpXvdkMgi2qXsA=
+dfAkHpSHIjbiaunGZU-uTzmPu_6N00oKq82CtUp-wwvfzRiqo_Gcp_v93BHQ_zoJuongQ1Eemx5=
+iEH-6TUeRS8lDOQwNU2p8C_yE8YgdoTwJmxoPe_GqQ3hzf2Wx10SSYXgQYt2%2FrC1k33V5jld7=
+gk-oIwufPsOKSOO6AlE4%2F16&amp;data=3D05%7C02%7C%7C82605745a55e4e8e660508de4=
+ed8823f%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C639034888958920250%7CU=
+nknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW=
+4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&amp;sdata=3DmbuchVF0qgK=
+bzUQt5ZYmCHuUHQCTN408qrwCkTG7PbI%3D&amp;reserved=3D0" originalsrc=3D"https:=
+//links.wellfound.com/s/vb/JvtKpXvdkMgi2qXsAdfAkHpSHIjbiaunGZU-uTzmPu_6N00o=
+Kq82CtUp-wwvfzRiqo_Gcp_v93BHQ_zoJuongQ1Eemx5iEH-6TUeRS8lDOQwNU2p8C_yE8YgdoT=
+wJmxoPe_GqQ3hzf2Wx10SSYXgQYt2/rC1k33V5jld7gk-oIwufPsOKSOO6AlE4/16" target=
+=3D"_blank" style=3D"box-sizing: border-box; color: #e9357b; text-decoratio=
+n: none;"><!--[if mso]><v:roundrect xmlns:v=3D"urn:schemas-microsoft-com:vm=
+l" xmlns:w=3D"urn:schemas-microsoft-com:office:word" href=3D"https://swe01.=
+safelinks.protection.outlook.com/?url=3Dhttps%3A%2F%2Flinks.wellfound.com%2=
+Fs%2Fvb%2FJvtKpXvdkMgi2qXsAdfAkHpSHIjbiaunGZU-uTzmPu_6N00oKq82CtUp-wwvfzRiq=
+o_Gcp_v93BHQ_zoJuongQ1Eemx5iEH-6TUeRS8lDOQwNU2p8C_yE8YgdoTwJmxoPe_GqQ3hzf2W=
+x10SSYXgQYt2%2FrC1k33V5jld7gk-oIwufPsOKSOO6AlE4%2F16&amp;data=3D05%7C02%7C%=
+7C82605745a55e4e8e660508de4ed8823f%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7=
+C0%7C639034888958932992%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlY=
+iOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C=
+%7C&amp;sdata=3D%2FO95nYXxFr3i19mqqVnWeM8Mb0oEI1xNeTOS4IO8uh0%3D&amp;reserv=
+ed=3D0" originalSrc=3D"https://links.wellfound.com/s/vb/JvtKpXvdkMgi2qXsAdf=
+AkHpSHIjbiaunGZU-uTzmPu_6N00oKq82CtUp-wwvfzRiqo_Gcp_v93BHQ_zoJuongQ1Eemx5iE=
+H-6TUeRS8lDOQwNU2p8C_yE8YgdoTwJmxoPe_GqQ3hzf2Wx10SSYXgQYt2/rC1k33V5jld7gk-o=
+IwufPsOKSOO6AlE4/16" style=3D"height:27px;width:120px;v-text-anchor:middle;=
+" arcsize=3D"0%" fill=3D"false"> <v:stroke dashstyle=3D"Solid" weight=3D"1p=
+x" color=3D"transparent"/> <w:anchorlock/> <v:textbox inset=3D"0px,0px,0px,=
+0px"> <center dir=3D"false" style=3D"color:#e9357b;font-family:sans-serif;f=
+ont-size:12px"><![endif]--> <span class=3D"button" style=3D"box-sizing: bor=
+der-box; background-color: transparent; mso-shading: transparent; border-bo=
+ttom: 1px solid transparent; border-left: 1px solid transparent; border-rad=
+ius: 0px; border-right: 1px solid transparent; border-top: 1px solid transp=
+arent; color: #e9357b; display: inline-block; font-family: Lucida Sans Unic=
+ode, Lucida Grande, Lucida Sans, Geneva, Verdana, sans-serif; font-size: 12=
+px; font-weight: 400; mso-border-alt: none; padding-bottom: 2px; padding-to=
+p: 2px; padding-left: 2px; padding-right: 2px; text-align: center; width: a=
+uto; word-break: keep-all; letter-spacing: normal;"><span style=3D"box-sizi=
+ng: border-box; word-break: break-word;"><u style=3D"box-sizing: border-box=
+;"><span style=3D"box-sizing: border-box; word-break: break-word; line-heig=
+ht: 24px;" data-mce-style=3D"">view entire message</span></u></span></span>=
+ <!--[if mso]></center></v:textbox></v:roundrect><![endif]--></a></div></td=
+></tr></table></td></tr></tbody></table></td></tr></tbody></table><table cl=
+ass=3D"row row-2" align=3D"center" width=3D"100%" border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"box-sizing: border-=
+box; mso-table-lspace: 0; mso-table-rspace: 0;"><tbody style=3D"box-sizing:=
+ border-box;"><tr style=3D"box-sizing: border-box;"><td style=3D"box-sizing=
+: border-box;"><table class=3D"row-content stack" align=3D"center" border=
+=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"b=
+ox-sizing: border-box; mso-table-lspace: 0; mso-table-rspace: 0; background=
+-color: #fff; border-radius: 0; color: #000; width: 575px; margin: 0 auto;"=
+ width=3D"575" bgcolor=3D"#fff"><tbody style=3D"box-sizing: border-box;"><t=
+r style=3D"box-sizing: border-box;"><td class=3D"column column-1" width=3D"=
+100%" style=3D"box-sizing: border-box; mso-table-lspace: 0; mso-table-rspac=
+e: 0; font-weight: 400; text-align: left; padding-bottom: 5px; padding-top:=
+ 5px; vertical-align: top;" align=3D"left" valign=3D"top"><table class=3D"i=
+mage_block block-1" width=3D"100%" border=3D"0" cellpadding=3D"0" cellspaci=
+ng=3D"0" role=3D"presentation" style=3D"box-sizing: border-box; mso-table-l=
+space: 0; mso-table-rspace: 0;"><tr style=3D"box-sizing: border-box;"><td c=
+lass=3D"pad" style=3D"box-sizing: border-box; width: 100%;" width=3D"100%">=
+<div class=3D"alignment" align=3D"center" style=3D"box-sizing: border-box;"=
+><div style=3D"box-sizing: border-box; max-width: 575px;"><a href=3D"https:=
+//swe01.safelinks.protection.outlook.com/?url=3Dhttp%3A%2F%2Fwww.wellfound.=
+com%2F&amp;data=3D05%7C02%7C%7C82605745a55e4e8e660508de4ed8823f%7C84df9e7fe=
+9f640afb435aaaaaaaaaaaa%7C1%7C0%7C639034888958950445%7CUnknown%7CTWFpbGZsb3=
+d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpb=
+CIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&amp;sdata=3DZVDZBeaEHd6%2BomzjVZdlcxppt7wv=
+vOhhVp5kNxpr0xc%3D&amp;reserved=3D0" originalsrc=3D"http://www.wellfound.co=
+m/" target=3D"_blank" style=3D"box-sizing: border-box;"><img src=3D"https:/=
+/d15k2d11r6t6rl.cloudfront.net/public/users/Integrators/669d5713-9b6a-46bb-=
+bd7e-c542cff6dd6a/26b4e8aeb47d4cd3acd5eba415f76f62/Comp%202_1_1.gif" style=
+=3D"box-sizing: border-box; display: block; height: auto; border: 0; width:=
+ 100%;" width=3D"575" alt=3D"" title=3D"" height=3D"auto"></a></div></div><=
+/td></tr></table></td></tr></tbody></table></td></tr></tbody> </table><tabl=
+e class=3D"row row-3" align=3D"center" width=3D"100%" border=3D"0" cellpadd=
+ing=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"box-sizing: bord=
+er-box; mso-table-lspace: 0; mso-table-rspace: 0;"><tbody style=3D"box-sizi=
+ng: border-box;"><tr style=3D"box-sizing: border-box;"><td style=3D"box-siz=
+ing: border-box;"><table class=3D"row-content stack" align=3D"center" borde=
+r=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"=
+box-sizing: border-box; mso-table-lspace: 0; mso-table-rspace: 0; backgroun=
+d-color: #fff; color: #000; width: 575px; margin: 0 auto;" width=3D"575" bg=
+color=3D"#fff"><tbody style=3D"box-sizing: border-box;"><tr style=3D"box-si=
+zing: border-box;"><td class=3D"column column-1" width=3D"100%" style=3D"bo=
+x-sizing: border-box; mso-table-lspace: 0; mso-table-rspace: 0; font-weight=
+: 400; text-align: left; padding-bottom: 5px; padding-top: 5px; vertical-al=
+ign: top;" align=3D"left" valign=3D"top"><table class=3D"text_block block-1=
+" width=3D"100%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"p=
+resentation" style=3D"box-sizing: border-box; mso-table-lspace: 0; mso-tabl=
+e-rspace: 0; word-break: break-word;"><tr style=3D"box-sizing: border-box;"=
+><td class=3D"pad" style=3D"box-sizing: border-box; padding-bottom: 5px; pa=
+dding-left: 25px; padding-right: 10px; padding-top: 10px;"><div style=3D"bo=
+x-sizing: border-box; font-family: sans-serif;"><div class=3D"" style=3D"bo=
+x-sizing: border-box; font-size: 12px; font-family: Lucida Sans Unicode,Luc=
+ida Grande,Lucida Sans,Geneva,Verdana,sans-serif; mso-line-height-alt: 14.3=
+99999999999999px; color: #000; line-height: 1.2;"><p style=3D"box-sizing: b=
+order-box; line-height: inherit; margin: 0; font-size: 14px; text-align: le=
+ft; mso-line-height-alt: 16.8px;"><span style=3D"box-sizing: border-box; wo=
+rd-break: break-word; color: #e9357b;"><span style=3D"box-sizing: border-bo=
+x; word-break: break-word; font-size: 16px; color: #000000;"><strong style=
+=3D"box-sizing: border-box;">Quick Hits<br style=3D"box-sizing: border-box;=
+"><br style=3D"box-sizing: border-box;"></strong></span></span></p><p style=
+=3D"box-sizing: border-box; line-height: inherit; margin: 0; font-size: 14p=
+x; mso-line-height-alt: 16.8px;"> <span style=3D"box-sizing: border-box; wo=
+rd-break: break-word; font-size: 14px;"><strong style=3D"box-sizing: border=
+-box;">Car talk:</strong> Nvidia builds <a href=3D"https://swe01.safelinks.=
+protection.outlook.com/?url=3Dhttps%3A%2F%2Flinks.wellfound.com%2Fs%2Fc%2FD=
+1YoUq7R_7NNbDQAulkKqg18Krp2PCs_BPXAbgTVzs2D86UNQs9PLQdHgdfOsea9U9chuenTkaOh=
+v6Qyi5K-6tWISaS5FL8E3Qgsfddz13v7adVblMnv9lJd9WJ04--qHw5DNW9sXj-DBVU_Gfy2Xoi=
+2au8A-0v9EvUk44rFr1bQNb1O1vZ69LhUPnsHq1IPnCaPuacAXShcXes3fX8NNIxOVeX0S6meMT=
+3BAMtXC8ABT7VDZn8yj1RwISw7GxtWEy-qgjokExySGSAL7i6bpo7pUo_ZmZMDtWLfGh1d-k3Mx=
+bwtOArIFW56OL78-yUSJfrx2aC5B37Uf1Br_SrJ6ZTFJf7TOuAnq6at76dsPN0KTSLRN4j12Tma=
+vyVLujVfHVtGG0Hr_sC1XyhnPn_oHUj7hqD7AcRB1xxZaNNqUSyNenfVXyZxT_I3RAqtAnAn7MT=
+FooAAlFQuMHdx5xKo3theV6_U22LUm0NbXHh38Q_yn73MutROvQ1U_ZVztatvrdPktoNjgg%2Ff=
+-vpFZMN8bCpnyKrqo2Aw8cJvgdhxvAm%2F16&amp;data=3D05%7C02%7C%7C82605745a55e4e=
+8e660508de4ed8823f%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C63903488895=
+8964830%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCI=
+sIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&amp;sdata=3D=
+KYnKlRYqfqF8fNLkauoVdwFzaRscMJ2Zu4IUJsGaRGU%3D&amp;reserved=3D0" originalsr=
+c=3D"https://links.wellfound.com/s/c/D1YoUq7R_7NNbDQAulkKqg18Krp2PCs_BPXAbg=
+TVzs2D86UNQs9PLQdHgdfOsea9U9chuenTkaOhv6Qyi5K-6tWISaS5FL8E3Qgsfddz13v7adVbl=
+Mnv9lJd9WJ04--qHw5DNW9sXj-DBVU_Gfy2Xoi2au8A-0v9EvUk44rFr1bQNb1O1vZ69LhUPnsH=
+q1IPnCaPuacAXShcXes3fX8NNIxOVeX0S6meMT3BAMtXC8ABT7VDZn8yj1RwISw7GxtWEy-qgjo=
+kExySGSAL7i6bpo7pUo_ZmZMDtWLfGh1d-k3MxbwtOArIFW56OL78-yUSJfrx2aC5B37Uf1Br_S=
+rJ6ZTFJf7TOuAnq6at76dsPN0KTSLRN4j12TmavyVLujVfHVtGG0Hr_sC1XyhnPn_oHUj7hqD7A=
+cRB1xxZaNNqUSyNenfVXyZxT_I3RAqtAnAn7MTFooAAlFQuMHdx5xKo3theV6_U22LUm0NbXHh3=
+8Q_yn73MutROvQ1U_ZVztatvrdPktoNjgg/f-vpFZMN8bCpnyKrqo2Aw8cJvgdhxvAm/16" sty=
+le=3D"box-sizing: border-box; text-decoration: underline; color: #e63223;">=
+self-driving</a> tech.<br style=3D"box-sizing: border-box;"><br style=3D"bo=
+x-sizing: border-box;"></span></p><p style=3D"box-sizing: border-box; line-=
+height: inherit; margin: 0; font-size: 14px; mso-line-height-alt: 16.8px;">=
+ <span style=3D"box-sizing: border-box; word-break: break-word; font-size: =
+14px;"><strong style=3D"box-sizing: border-box;">=E2=80=98China tiger=E2=80=
+=99:</strong> <a href=3D"https://swe01.safelinks.protection.outlook.com/?ur=
+l=3Dhttps%3A%2F%2Flinks.wellfound.com%2Fs%2Fc%2F2ef5GJYUrkNhCYc4zUTUffHeHbN=
+TEzwVVPlZdbKqJeWXVjKMuPUy4FBD3dw2OwX-PjQwRvy-nwYLTHjxSbehQ8rq1WfhEoPJPHCSva=
+MYp-J6agMjX1t2hoEW2fV2SaD4kJaW1WJ2GfOm4lOKaavQ_322XkOOas1oS2JE6vY1Rde2Yl2Pp=
+j6Z31R2jXP0TT3tHQykEhGVMKmgYsZM1v5Znzn8l8q0M0bZbFsLAIbTDpjeudG_XbZC_FYMrU7M=
+7BOTCtP0aagwhFVm993-8h0fbDZJaA21L8bkQ_5bfPuRPH4wes8gSg-9Sp2fla66Phebp2xvjrM=
+jtnazLfp6qPGeJ7E3CZdPU_GNJQaG4h1DHuPoxD9yCmoPB8xrKe8a1aitIe5v4egpPfPjklPmPy=
+gApBSSuVUbwlYhqoLG1ngzWLKb9oBR7FGyGXBtHOeSGXnenOtN71m_izpI8ek8p5mii8cSgs4Fa=
+t6fC2GznCaaU-2ZYUmTNdQ7GBD0S_ItPsiiYJg8DkmRvT-TJ-yGauUe-Yi-Q-QWDTv_jzCfo3su=
+Y4ZMYK-qBa0twlnlYuKos5ne1h5hf2bAXmLKti6-s7DA9OYR0Mplz8fS2nAuNtnt2G4I1XOG-BF=
+rvqqw4RViWQD1mSEKkO7TB7n5ZUlkLwgXIg_LqccjukRMH52vYtTk-xwS89uuQp1KSBQ43ZtKZV=
+38JvyMAY7XbpulwmL5L6-v1eGMl-cO57feMQ%2F0m2qbTKan-tSTWpOxeKbeABKtK5t-fx9%2F1=
+6&amp;data=3D05%7C02%7C%7C82605745a55e4e8e660508de4ed8823f%7C84df9e7fe9f640=
+afb435aaaaaaaaaaaa%7C1%7C0%7C639034888958978102%7CUnknown%7CTWFpbGZsb3d8eyJ=
+FbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIl=
+dUIjoyfQ%3D%3D%7C0%7C%7C%7C&amp;sdata=3DAEM0s65%2BUsT3NqOS9bLlDM5gYyOJNl797=
+YdJdkcCX1A%3D&amp;reserved=3D0" originalsrc=3D"https://links.wellfound.com/=
+s/c/2ef5GJYUrkNhCYc4zUTUffHeHbNTEzwVVPlZdbKqJeWXVjKMuPUy4FBD3dw2OwX-PjQwRvy=
+-nwYLTHjxSbehQ8rq1WfhEoPJPHCSvaMYp-J6agMjX1t2hoEW2fV2SaD4kJaW1WJ2GfOm4lOKaa=
+vQ_322XkOOas1oS2JE6vY1Rde2Yl2Ppj6Z31R2jXP0TT3tHQykEhGVMKmgYsZM1v5Znzn8l8q0M=
+0bZbFsLAIbTDpjeudG_XbZC_FYMrU7M7BOTCtP0aagwhFVm993-8h0fbDZJaA21L8bkQ_5bfPuR=
+PH4wes8gSg-9Sp2fla66Phebp2xvjrMjtnazLfp6qPGeJ7E3CZdPU_GNJQaG4h1DHuPoxD9yCmo=
+PB8xrKe8a1aitIe5v4egpPfPjklPmPygApBSSuVUbwlYhqoLG1ngzWLKb9oBR7FGyGXBtHOeSGX=
+nenOtN71m_izpI8ek8p5mii8cSgs4Fat6fC2GznCaaU-2ZYUmTNdQ7GBD0S_ItPsiiYJg8DkmRv=
+T-TJ-yGauUe-Yi-Q-QWDTv_jzCfo3suY4ZMYK-qBa0twlnlYuKos5ne1h5hf2bAXmLKti6-s7DA=
+9OYR0Mplz8fS2nAuNtnt2G4I1XOG-BFrvqqw4RViWQD1mSEKkO7TB7n5ZUlkLwgXIg_LqccjukR=
+MH52vYtTk-xwS89uuQp1KSBQ43ZtKZV38JvyMAY7XbpulwmL5L6-v1eGMl-cO57feMQ/0m2qbTK=
+an-tSTWpOxeKbeABKtK5t-fx9/16" style=3D"box-sizing: border-box; text-decorat=
+ion: underline; color: #e63223;">Zhipu</a> goes public.<br style=3D"box-siz=
+ing: border-box;"><br style=3D"box-sizing: border-box;"></span></p><p style=
+=3D"box-sizing: border-box; line-height: inherit; margin: 0; font-size: 14p=
+x; mso-line-height-alt: 16.8px;"> <span style=3D"box-sizing: border-box; wo=
+rd-break: break-word; font-size: 14px;"><strong style=3D"box-sizing: border=
+-box;">Ford Tough:</strong> Car maker develops <a href=3D"https://swe01.saf=
+elinks.protection.outlook.com/?url=3Dhttps%3A%2F%2Flinks.wellfound.com%2Fs%=
+2Fc%2F5wSGVJlUpDzh0X1TQGWLs2-uOpLdcK0WlYLMUA5RAuoShgKnQziD99li0ET5IlD-UoAIi=
+nt2sai0HNgX5Kxk1_Mi7aNh6GCv8MbJ9aedh-y3BI6sCTQV0U05zwgHys6XhYXEFiSlYomjJ22y=
+DWDzqjxqgCRjSVL_glGpMnAU4BYcyTxXxHB_MvqjX79MH9ch09G3r-xcz84j0xbXMQWXg6_PiLD=
+O_RZukAvsVRUSDkpHo8OmpBj41IxrxSVcJaeujlDR5GTJtHYQciaAWGxuqUioHdIo0J4bXrfFvp=
+q-pQvM2BTle1RPnTCzDle_9MDpWTTwmlTQMtCgjxSGYp-XHQ3OmsCNnjDGa-WiGpBtSMabl-jaC=
+4RTJbN9ImDhWygT8yrNOvqCRSIJZw7niDQ-BBO2vPkbhMtTOa9QKb77xHFT0FVYEOT9AvCQuFzg=
+hWcX7cwaIEsOCAK0SNXHnr2h301eHs5ruksnsMOE2eBHDRlDoKOkdkREhidYaSD1ODmzQCMUQtM=
+2fBIL40r1DlbzXc1tYv6Yt6b0iILac1lyztbK-q73FHaFBTn9gSjo2YolczJAXtxLSFJ1ihRJzs=
+Qs1EuVM-aLdiT6L3du3VFJMj0h8SCnOttxszcTEutDh6LTZWUPZ4ZMrFmZyYmB2prP3SqHnCxI7=
+jhnIMnePf8%2FIP66ACvFIHD-9Vl3zsOnFSF2Vm8w91Ez%2F16&amp;data=3D05%7C02%7C%7C=
+82605745a55e4e8e660508de4ed8823f%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0=
+%7C639034888958990874%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiO=
+iIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7=
+C&amp;sdata=3DskXozDLl9j6lexlvQ3h6urtQ%2FxcAFeZPtx%2BzH7lw%2BRM%3D&amp;rese=
+rved=3D0" originalsrc=3D"https://links.wellfound.com/s/c/5wSGVJlUpDzh0X1TQG=
+WLs2-uOpLdcK0WlYLMUA5RAuoShgKnQziD99li0ET5IlD-UoAIint2sai0HNgX5Kxk1_Mi7aNh6=
+GCv8MbJ9aedh-y3BI6sCTQV0U05zwgHys6XhYXEFiSlYomjJ22yDWDzqjxqgCRjSVL_glGpMnAU=
+4BYcyTxXxHB_MvqjX79MH9ch09G3r-xcz84j0xbXMQWXg6_PiLDO_RZukAvsVRUSDkpHo8OmpBj=
+41IxrxSVcJaeujlDR5GTJtHYQciaAWGxuqUioHdIo0J4bXrfFvpq-pQvM2BTle1RPnTCzDle_9M=
+DpWTTwmlTQMtCgjxSGYp-XHQ3OmsCNnjDGa-WiGpBtSMabl-jaC4RTJbN9ImDhWygT8yrNOvqCR=
+SIJZw7niDQ-BBO2vPkbhMtTOa9QKb77xHFT0FVYEOT9AvCQuFzghWcX7cwaIEsOCAK0SNXHnr2h=
+301eHs5ruksnsMOE2eBHDRlDoKOkdkREhidYaSD1ODmzQCMUQtM2fBIL40r1DlbzXc1tYv6Yt6b=
+0iILac1lyztbK-q73FHaFBTn9gSjo2YolczJAXtxLSFJ1ihRJzsQs1EuVM-aLdiT6L3du3VFJMj=
+0h8SCnOttxszcTEutDh6LTZWUPZ4ZMrFmZyYmB2prP3SqHnCxI7jhnIMnePf8/IP66ACvFIHD-9=
+Vl3zsOnFSF2Vm8w91Ez/16" style=3D"box-sizing: border-box; text-decoration: u=
+nderline; color: #e63223;">own AI</a>.<br style=3D"box-sizing: border-box;"=
+><br style=3D"box-sizing: border-box;"></span></p><p style=3D"box-sizing: b=
+order-box; line-height: inherit; margin: 0; font-size: 14px; mso-line-heigh=
+t-alt: 16.8px;"> <span style=3D"box-sizing: border-box; word-break: break-w=
+ord; font-size: 14px;"><strong style=3D"box-sizing: border-box;">Market fli=
+p:</strong> Alphabet skips past <a href=3D"https://swe01.safelinks.protecti=
+on.outlook.com/?url=3Dhttps%3A%2F%2Flinks.wellfound.com%2Fs%2Fc%2FbGdS8_HFo=
+r9ngOMslAMMg25xhpVnreO2wKiX0t9KBQxuajz_Y2bWDxmTkVVudXNlNkoiNuP2WQmTpjmajIKG=
+dxAV_Q4CjUmlMfR6QCuVXPoYU80DMwXu7_Eto4XkkVcqTIFu8_AEfMNKVC6CHhifRa55SZfDD4F=
+mFoIBdjX7wG4xnIKWb0nXfgaQshouxGuJ7XOo1EBSTSy-An0HiLGqQdoMKexI_mhsNYw8NMAz9G=
+k7f3xwk76M57lKfCxg8yLz91OyLSAyEe2gNgC8d-w1JVjwyL_RMbPn_ilWzZpcqwNQ6_8gXXz-D=
+IXH4Qs06SeLQqKCY5CAPKJ0InDrxWgKVa4AEqAnst4h2c4mv-YJ-ErvSfnYGuy12FWMuAgpbZJ7=
+8NtWVj-7l_cdhK47f_zSNWk4N72LhFW_HKH37k20XqRvoutaYUJXGuLFxHW5g4NwKy3djwT7-Iy=
+ZI5QtM54hF3ohLopFQdH-IKC-ZxfaaQ1nxEpfj-fSwvQQ9ZOK-x_82msYfa9kxDiGR70LM_Sk1I=
+SREYzBmDsiJz1coNhiPfONfSb8icE599LvVOZKoopUgis0dibJR0MhQtd_1XyOoZJE1kqBOFdY6=
+gQpYNFGOcIDF6q5g6MVVDfQQEUjeG2X34gkl0u3luK0oWgoEMoVAu1rRw%2FQicXS3gahTj5Tot=
+_zIV3MPQgN4BiaewR%2F16&amp;data=3D05%7C02%7C%7C82605745a55e4e8e660508de4ed8=
+823f%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C639034888959003242%7CUnkn=
+own%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zM=
+iIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&amp;sdata=3Drbe%2FnaIrfYDw=
+Q61v%2Fb%2BUnEc5HAd1yoZLoq6BQiInszk%3D&amp;reserved=3D0" originalsrc=3D"htt=
+ps://links.wellfound.com/s/c/bGdS8_HFor9ngOMslAMMg25xhpVnreO2wKiX0t9KBQxuaj=
+z_Y2bWDxmTkVVudXNlNkoiNuP2WQmTpjmajIKGdxAV_Q4CjUmlMfR6QCuVXPoYU80DMwXu7_Eto=
+4XkkVcqTIFu8_AEfMNKVC6CHhifRa55SZfDD4FmFoIBdjX7wG4xnIKWb0nXfgaQshouxGuJ7XOo=
+1EBSTSy-An0HiLGqQdoMKexI_mhsNYw8NMAz9Gk7f3xwk76M57lKfCxg8yLz91OyLSAyEe2gNgC=
+8d-w1JVjwyL_RMbPn_ilWzZpcqwNQ6_8gXXz-DIXH4Qs06SeLQqKCY5CAPKJ0InDrxWgKVa4AEq=
+Anst4h2c4mv-YJ-ErvSfnYGuy12FWMuAgpbZJ78NtWVj-7l_cdhK47f_zSNWk4N72LhFW_HKH37=
+k20XqRvoutaYUJXGuLFxHW5g4NwKy3djwT7-IyZI5QtM54hF3ohLopFQdH-IKC-ZxfaaQ1nxEpf=
+j-fSwvQQ9ZOK-x_82msYfa9kxDiGR70LM_Sk1ISREYzBmDsiJz1coNhiPfONfSb8icE599LvVOZ=
+KoopUgis0dibJR0MhQtd_1XyOoZJE1kqBOFdY6gQpYNFGOcIDF6q5g6MVVDfQQEUjeG2X34gkl0=
+u3luK0oWgoEMoVAu1rRw/QicXS3gahTj5Tot_zIV3MPQgN4BiaewR/16" style=3D"box-sizi=
+ng: border-box; text-decoration: underline; color: #e63223;">Apple</a>.<br =
+style=3D"box-sizing: border-box;"><br style=3D"box-sizing: border-box;"></s=
+pan></p><p style=3D"box-sizing: border-box; line-height: inherit; margin: 0=
+; font-size: 14px; mso-line-height-alt: 16.8px;"> <span style=3D"box-sizing=
+: border-box; word-break: break-word; font-size: 14px;"><strong style=3D"bo=
+x-sizing: border-box;">NIMBY:</strong> Microsoft faces <a href=3D"https://s=
+we01.safelinks.protection.outlook.com/?url=3Dhttps%3A%2F%2Flinks.wellfound.=
+com%2Fs%2Fc%2FptNdpOWJX5EmT4hU7ta3VzhajOT_Z-jvE0zhcq9AR3wohBnmt6FKeLU96qSJx=
+alm8hw-jz87moFbIs4f1g6i0grCDKbDKxwsCYn71Yg3tmRSr9aA6jTKxBfP2DbeCxocyaYjnOGG=
+m3uexLh9ALzCQhA72N4_WKLTzloeJYUZGv9QRWKTJlAAYB6UNavkGs4BhPkX_Czbj0RVnDRi8qV=
+CRCdxAziE3UFf3b3N400ZY7rcrVOEnxtybmPBcx72kwENWPAhx5cIjdLhy5veGGWQVEgtzcmIGa=
+o1z-zKo2037le8wVwC-a4lavJD7eYZb00sjNQY7wAjwCfMUI3EwNLpJ6V8RImOd2N8ubum2YkXU=
+CeWG66o1v-fNwMGhPK6RVwNmzMU4skL7MOZNupiP8VrTPjG93LtNgcwqOetLSbOkjANYQOoEIOb=
+rXxnGdNKDg1avQw15UW8fP_Kg3wl_ZMcKA_4VVaHaDNLQoQEucjjyF8SIAqMsaOa4sV66YJaT47=
+Zs3XFKCU4vRu-G9pXMo6k4HeObSdl45QliHkf_QG0pmSRUzIwZ_ApVIHgxg3MVGKI_zqOIFdG1c=
+XzTeWo-a7NmV42Lj4lmZ_G7a1zB4JI5s1fwq1USU6Zl1PrxN1b4tnZsVhlRo2M35Zz66fvi-8WY=
+i8agw%2FtdvcsF1n7AdRNo8up65wjld5qac56v-T%2F16&amp;data=3D05%7C02%7C%7C82605=
+745a55e4e8e660508de4ed8823f%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C63=
+9034888959015407%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLj=
+AuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&amp=
+;sdata=3DBqtO6Pti4F8WwcrTNYIcUgZQImDoMeg6jRKFy0rPbVQ%3D&amp;reserved=3D0" o=
+riginalsrc=3D"https://links.wellfound.com/s/c/ptNdpOWJX5EmT4hU7ta3VzhajOT_Z=
+-jvE0zhcq9AR3wohBnmt6FKeLU96qSJxalm8hw-jz87moFbIs4f1g6i0grCDKbDKxwsCYn71Yg3=
+tmRSr9aA6jTKxBfP2DbeCxocyaYjnOGGm3uexLh9ALzCQhA72N4_WKLTzloeJYUZGv9QRWKTJlA=
+AYB6UNavkGs4BhPkX_Czbj0RVnDRi8qVCRCdxAziE3UFf3b3N400ZY7rcrVOEnxtybmPBcx72kw=
+ENWPAhx5cIjdLhy5veGGWQVEgtzcmIGao1z-zKo2037le8wVwC-a4lavJD7eYZb00sjNQY7wAjw=
+CfMUI3EwNLpJ6V8RImOd2N8ubum2YkXUCeWG66o1v-fNwMGhPK6RVwNmzMU4skL7MOZNupiP8Vr=
+TPjG93LtNgcwqOetLSbOkjANYQOoEIObrXxnGdNKDg1avQw15UW8fP_Kg3wl_ZMcKA_4VVaHaDN=
+LQoQEucjjyF8SIAqMsaOa4sV66YJaT47Zs3XFKCU4vRu-G9pXMo6k4HeObSdl45QliHkf_QG0pm=
+SRUzIwZ_ApVIHgxg3MVGKI_zqOIFdG1cXzTeWo-a7NmV42Lj4lmZ_G7a1zB4JI5s1fwq1USU6Zl=
+1PrxN1b4tnZsVhlRo2M35Zz66fvi-8WYi8agw/tdvcsF1n7AdRNo8up65wjld5qac56v-T/16" =
+style=3D"box-sizing: border-box; text-decoration: underline; color: #e63223=
+;">backlash</a> in Michigan.<br style=3D"box-sizing: border-box;"><br style=
+=3D"box-sizing: border-box;"></span></p><p style=3D"box-sizing: border-box;=
+ line-height: inherit; margin: 0; font-size: 14px; mso-line-height-alt: 16.=
+8px;"> <span style=3D"box-sizing: border-box; word-break: break-word; font-=
+size: 14px;"><strong style=3D"box-sizing: border-box;">Factory robots:</str=
+ong> Hyundai unveils <a href=3D"https://swe01.safelinks.protection.outlook.=
+com/?url=3Dhttps%3A%2F%2Flinks.wellfound.com%2Fs%2Fc%2FXJnQP1pHCF8eRLGQN5_T=
+fxIsRmH3U89oxajKI75F1tW8fkrlHqi0ML0roQORZe0mJZm-OCNsPVhHXlVOyfa-tkiwS_orEIN=
+mgl1U3Zjiq15j8QGvpHXJuuKo5DfxlWygzY2S2EhMD_cA8NE4uECXp093vbrB3NsfoAJaBNEm-p=
+etmH4v64GbEUQ3vzUbCzAJbe6wcbNjh8Gpn42mGPVU8hT6zOZ-TkTYdwi347er27R2TNnTGcwMC=
+6lqGDEahMq0ZmlEGW-5ff4XRKE6e9g7vm6B5rvqb_aNnbHw90GOUVugCJjzWMdsVfKufEiytIkl=
+4E1Rm-nR-uRgCwpfzZ_Fz7cPOwwXAg3p96I7p7pUjhFUbBocQXEPAqJJe191fndpYjw3VoEJ2hh=
+HGjv4lz-sdnACZbNnaXa9hAZjxYm02MRnt1IdG5CJOubRP36eqJG6h0R1kM88G-Rmft-mu4lSN5=
+2upyJax_YDg15P0smYcMzg8lS6UAiRBRjmqGDNVh17hqwdd0zTzw%2FKe5Dnr7ocvE9cc8iN8tP=
+5nkpoXCoYgrC%2F16&amp;data=3D05%7C02%7C%7C82605745a55e4e8e660508de4ed8823f%=
+7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C639034888959027450%7CUnknown%7=
+CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIk=
+FOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&amp;sdata=3DUw8JDs43nERYSn9Ok1c=
+jU7HaS0dp6vTTfNZL4iJgctU%3D&amp;reserved=3D0" originalsrc=3D"https://links.=
+wellfound.com/s/c/XJnQP1pHCF8eRLGQN5_TfxIsRmH3U89oxajKI75F1tW8fkrlHqi0ML0ro=
+QORZe0mJZm-OCNsPVhHXlVOyfa-tkiwS_orEINmgl1U3Zjiq15j8QGvpHXJuuKo5DfxlWygzY2S=
+2EhMD_cA8NE4uECXp093vbrB3NsfoAJaBNEm-petmH4v64GbEUQ3vzUbCzAJbe6wcbNjh8Gpn42=
+mGPVU8hT6zOZ-TkTYdwi347er27R2TNnTGcwMC6lqGDEahMq0ZmlEGW-5ff4XRKE6e9g7vm6B5r=
+vqb_aNnbHw90GOUVugCJjzWMdsVfKufEiytIkl4E1Rm-nR-uRgCwpfzZ_Fz7cPOwwXAg3p96I7p=
+7pUjhFUbBocQXEPAqJJe191fndpYjw3VoEJ2hhHGjv4lz-sdnACZbNnaXa9hAZjxYm02MRnt1Id=
+G5CJOubRP36eqJG6h0R1kM88G-Rmft-mu4lSN52upyJax_YDg15P0smYcMzg8lS6UAiRBRjmqGD=
+NVh17hqwdd0zTzw/Ke5Dnr7ocvE9cc8iN8tP5nkpoXCoYgrC/16" style=3D"box-sizing: b=
+order-box; text-decoration: underline; color: #e63223;">humanoid helpers</a=
+>.<br style=3D"box-sizing: border-box;"><br style=3D"box-sizing: border-box=
+;"></span></p><p style=3D"box-sizing: border-box; line-height: inherit; mar=
+gin: 0; font-size: 14px; mso-line-height-alt: 16.8px;"> <span style=3D"box-=
+sizing: border-box; word-break: break-word; font-size: 14px;"><strong style=
+=3D"box-sizing: border-box;">Game changer:</strong> Threads adds <a href=3D=
+"https://swe01.safelinks.protection.outlook.com/?url=3Dhttps%3A%2F%2Flinks.=
+wellfound.com%2Fs%2Fc%2FhMGuI3p20C4XON29OVwb9jDSOzOq22jOwDoGKVMW1f7IGi6jczN=
+aHJLt6r7uuTo-7J4ZMuKEIQF1YEOc9JDEx-SCmHKF24s8q3dO-umkZaeGnrLmOWmdpPNzgw_rMX=
+foCcsjepR6knzEwcfF5ArfyIy39P0kVBd7mXRDMmRXhIijLHVyBgyHzkbrnip8KqrK8YQIJGLVU=
+0FXOrqrC5mfbCQXWVO0IqFcd9UuXp6mXb_ALOkI-BtWoOz_93qGnq2s20NyScOIqzataAYEakTs=
+lccqnnboZx7GuDHmIyCGVv_Gx10o-Pnp5oZtzrJpDpSQ9KCX95R587d_FvnQnLzvd--UKeaK8AS=
+j5fQ9hfzHlFjq3Sjwxox5Ql00suKbWRKdp8y1Fwp3JoY2u2rcRh9CLlLDc64mEi40s2eALuM24-=
+uYU52VUTxfDHLSXNlxVMq6UjO1iY3135opGZav9Sk3F8uq8BtEWAih5cmdRfSvz6QXYZU5D1pcw=
+RHJZpPCmRoxuNr_EkTfJ_GHSUrm08FaryP7NdNMWADH6CLawtHIDsm78uo3PNpWCvyRJpHXvuYh=
+MLS2V89Ht3T2kKJ1tg%2FyzmRDT_8Ssbo6PsXhHvxq6KfC_wlBlcN%2F16&amp;data=3D05%7C=
+02%7C%7C82605745a55e4e8e660508de4ed8823f%7C84df9e7fe9f640afb435aaaaaaaaaaaa=
+%7C1%7C0%7C639034888959039061%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRyd=
+WUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0=
+%7C%7C%7C&amp;sdata=3DziPJVj4xpCom%2F0q%2F0LpnNgigy2eIvmNd20uL9RGn8zs%3D&am=
+p;reserved=3D0" originalsrc=3D"https://links.wellfound.com/s/c/hMGuI3p20C4X=
+ON29OVwb9jDSOzOq22jOwDoGKVMW1f7IGi6jczNaHJLt6r7uuTo-7J4ZMuKEIQF1YEOc9JDEx-S=
+CmHKF24s8q3dO-umkZaeGnrLmOWmdpPNzgw_rMXfoCcsjepR6knzEwcfF5ArfyIy39P0kVBd7mX=
+RDMmRXhIijLHVyBgyHzkbrnip8KqrK8YQIJGLVU0FXOrqrC5mfbCQXWVO0IqFcd9UuXp6mXb_AL=
+OkI-BtWoOz_93qGnq2s20NyScOIqzataAYEakTslccqnnboZx7GuDHmIyCGVv_Gx10o-Pnp5oZt=
+zrJpDpSQ9KCX95R587d_FvnQnLzvd--UKeaK8ASj5fQ9hfzHlFjq3Sjwxox5Ql00suKbWRKdp8y=
+1Fwp3JoY2u2rcRh9CLlLDc64mEi40s2eALuM24-uYU52VUTxfDHLSXNlxVMq6UjO1iY3135opGZ=
+av9Sk3F8uq8BtEWAih5cmdRfSvz6QXYZU5D1pcwRHJZpPCmRoxuNr_EkTfJ_GHSUrm08FaryP7N=
+dNMWADH6CLawtHIDsm78uo3PNpWCvyRJpHXvuYhMLS2V89Ht3T2kKJ1tg/yzmRDT_8Ssbo6PsXh=
+Hvxq6KfC_wlBlcN/16" style=3D"box-sizing: border-box; text-decoration: under=
+line; color: #e63223;">in-message games</a>.<br style=3D"box-sizing: border=
+-box;"><br style=3D"box-sizing: border-box;"></span></p><p style=3D"box-siz=
+ing: border-box; line-height: inherit; margin: 0; font-size: 14px; mso-line=
+-height-alt: 16.8px;"> <span style=3D"box-sizing: border-box; word-break: b=
+reak-word; font-size: 14px;"><strong style=3D"box-sizing: border-box;">Grok=
+ infusion:</strong> xAI raises <a href=3D"https://swe01.safelinks.protectio=
+n.outlook.com/?url=3Dhttps%3A%2F%2Flinks.wellfound.com%2Fs%2Fc%2FYdZmu1SlJ2=
+8EXrkg20gHr9KZpM22rbYG8UN1nTLKi63yHnwBDGCiuOpcn2lSA-CyqLtDrc8RLxM842LgqcXNr=
+XMoqwNjS0JUF9kINF_3fbAhxYcrtBv9IsT_TTSf2T5WjBXB-lpDizwYbto7oDqtbEaFnqzC14av=
+9Yc2xL5WBMztMFEhl5QQIgI8TopOcUNI6ApPvyhBpml0sokTwcppCMEGyFiiyHoWCwvaGpXMpVG=
+S7crFSOXPbZkSfTABFdaAk3rIcv-A0HD3jdDMxjRC2b3bXWsVI7mKqBLw10_yyCzll88Wy1e0sj=
+Uizz-HlNOsiPbWSdpQmw54GyjG-wU8v2j3OS_CJ4qRzHavjPE2sXbpQgXwSUWXrNzslU8crYULi=
+_K4gu6xcqjvCbERR_8dMefXBfkVpaD_MuhTF9BG0bibFOJNz-KSJcD83UHgLW6FSF8QpmaD932D=
+i3C7oGmJSkId6GJuPxD2fS_DHYhZb1eVzqayrf-jLuxOky7qvBiEe0yA_Se6Eks2dsCdV6QPIVe=
+ozOKpEqGA2gCtO2HC2xlPIA%2FD_Hlogvrb-keQy-eytBS189wAGYmiwWJ%2F16&amp;data=3D=
+05%7C02%7C%7C82605745a55e4e8e660508de4ed8823f%7C84df9e7fe9f640afb435aaaaaaa=
+aaaaa%7C1%7C0%7C639034888959050569%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGki=
+OnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3=
+D%7C0%7C%7C%7C&amp;sdata=3Dkb0odqMf%2Fp%2B3ShHLPKMfd8pvEofh5LoVuVzHgRBOPzQ%=
+3D&amp;reserved=3D0" originalsrc=3D"https://links.wellfound.com/s/c/YdZmu1S=
+lJ28EXrkg20gHr9KZpM22rbYG8UN1nTLKi63yHnwBDGCiuOpcn2lSA-CyqLtDrc8RLxM842Lgqc=
+XNrXMoqwNjS0JUF9kINF_3fbAhxYcrtBv9IsT_TTSf2T5WjBXB-lpDizwYbto7oDqtbEaFnqzC1=
+4av9Yc2xL5WBMztMFEhl5QQIgI8TopOcUNI6ApPvyhBpml0sokTwcppCMEGyFiiyHoWCwvaGpXM=
+pVGS7crFSOXPbZkSfTABFdaAk3rIcv-A0HD3jdDMxjRC2b3bXWsVI7mKqBLw10_yyCzll88Wy1e=
+0sjUizz-HlNOsiPbWSdpQmw54GyjG-wU8v2j3OS_CJ4qRzHavjPE2sXbpQgXwSUWXrNzslU8crY=
+ULi_K4gu6xcqjvCbERR_8dMefXBfkVpaD_MuhTF9BG0bibFOJNz-KSJcD83UHgLW6FSF8QpmaD9=
+32Di3C7oGmJSkId6GJuPxD2fS_DHYhZb1eVzqayrf-jLuxOky7qvBiEe0yA_Se6Eks2dsCdV6QP=
+IVeozOKpEqGA2gCtO2HC2xlPIA/D_Hlogvrb-keQy-eytBS189wAGYmiwWJ/16" style=3D"bo=
+x-sizing: border-box; text-decoration: underline; color: #e63223;">$20B</a>=
+.<br style=3D"box-sizing: border-box;"><br style=3D"box-sizing: border-box;=
+"></span></p><p style=3D"box-sizing: border-box; line-height: inherit; marg=
+in: 0; font-size: 14px; mso-line-height-alt: 16.8px;"> <span style=3D"box-s=
+izing: border-box; word-break: break-word; font-size: 14px;"><strong style=
+=3D"box-sizing: border-box;">Raising Claude:</strong> Anthropic valued at <=
+a href=3D"https://swe01.safelinks.protection.outlook.com/?url=3Dhttps%3A%2F=
+%2Flinks.wellfound.com%2Fs%2Fc%2Fm5D_QSfW_SsdTCYbawTZJZ455K9yZm1cmQuDVX5-71=
+p35mSMThieNrU0vO945D1Zlqt8yfkCimbMxF9hjX09U94WtUzHesKoejd7lR32zZrkRzecVx7n8=
+rNe5Mx_ZCww-RnNvhf8ZlxQTejWuaVLVrMH-JgeKqMak_0uePi4bQx8OPL09q-gQXm0UMWtQ1-M=
+DYQTM2Sdj9Gzyd9f-nRrKy-D13VRkxfdgeamqwzQ7oXP2QRmV8TgEsDq5BAdqbBzoiTQh56e3qJ=
+RGjfP88gbzFu0nPtZjv31-R6iZGqqLI-671ONfEtlXwSJ9dLEDy8Y_bHyfC87ch4LujKyi4Xh0k=
+0eND0esaLbDsMvtXo9VoxJ7SXn1qY8p-WCYVUw9ilKb2yWRHlEkB8EwiEs-428L1WEI5gGTfCd6=
+AiYxZuiWrpZ489_bIMSYnLUbLtM1tFNYgtcM-KnqMxCWvlhWP0kY6XGpuWab2ESyrhvzMyf-fpd=
+UUvKl_0L-TZu3Y9obAIgZ8U7O_g1THRbpE2uZ_7mM33Qp-ArqF_M4a3zTRZupOBpYye_qbDN90M=
+cyUoIIO06n1ClxQxIfX51jocxOhnU0mYPzq7MGJyq%2FmOqt-Ptj1rvx-GkovCa5gV1PwXexTb8=
+t%2F16&amp;data=3D05%7C02%7C%7C82605745a55e4e8e660508de4ed8823f%7C84df9e7fe=
+9f640afb435aaaaaaaaaaaa%7C1%7C0%7C639034888959062274%7CUnknown%7CTWFpbGZsb3=
+d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpb=
+CIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&amp;sdata=3DNZq3%2FKT9oE4vfItStpbeqP1wIt2Q=
+d16AHS4BruGi%2BDE%3D&amp;reserved=3D0" originalsrc=3D"https://links.wellfou=
+nd.com/s/c/m5D_QSfW_SsdTCYbawTZJZ455K9yZm1cmQuDVX5-71p35mSMThieNrU0vO945D1Z=
+lqt8yfkCimbMxF9hjX09U94WtUzHesKoejd7lR32zZrkRzecVx7n8rNe5Mx_ZCww-RnNvhf8Zlx=
+QTejWuaVLVrMH-JgeKqMak_0uePi4bQx8OPL09q-gQXm0UMWtQ1-MDYQTM2Sdj9Gzyd9f-nRrKy=
+-D13VRkxfdgeamqwzQ7oXP2QRmV8TgEsDq5BAdqbBzoiTQh56e3qJRGjfP88gbzFu0nPtZjv31-=
+R6iZGqqLI-671ONfEtlXwSJ9dLEDy8Y_bHyfC87ch4LujKyi4Xh0k0eND0esaLbDsMvtXo9VoxJ=
+7SXn1qY8p-WCYVUw9ilKb2yWRHlEkB8EwiEs-428L1WEI5gGTfCd6AiYxZuiWrpZ489_bIMSYnL=
+UbLtM1tFNYgtcM-KnqMxCWvlhWP0kY6XGpuWab2ESyrhvzMyf-fpdUUvKl_0L-TZu3Y9obAIgZ8=
+U7O_g1THRbpE2uZ_7mM33Qp-ArqF_M4a3zTRZupOBpYye_qbDN90McyUoIIO06n1ClxQxIfX51j=
+ocxOhnU0mYPzq7MGJyq/mOqt-Ptj1rvx-GkovCa5gV1PwXexTb8t/16" style=3D"box-sizin=
+g: border-box; text-decoration: underline; color: #e63223;">$350B</a>.<br s=
+tyle=3D"box-sizing: border-box;"><br style=3D"box-sizing: border-box;"></sp=
+an></p><p style=3D"box-sizing: border-box; line-height: inherit; margin: 0;=
+ font-size: 14px; mso-line-height-alt: 16.8px;"> <span style=3D"box-sizing:=
+ border-box; word-break: break-word; font-size: 14px;"><strong style=3D"box=
+-sizing: border-box;">=E2=80=98Smart bricks=E2=80=99:</strong> Legos go <a =
+href=3D"https://swe01.safelinks.protection.outlook.com/?url=3Dhttps%3A%2F%2=
+Flinks.wellfound.com%2Fs%2Fc%2F5gGnhdH36bd01NjBvO2-Gn3vSO7be3HLtwCPsmKnRtTz=
+Mf-ozxQy9_PXDXIlQ2rWaGGFxYhLDgz1UqXzo9cWmtLUslyO7iaM2qet-boJLj6gq_7F-03bHD1=
+74L0IVp9LauOSmxg8VczIFQJOzDQk7x_ewRkWVR01TrAqal00uFcBSuCOxiasU83PrrXGWAzTrx=
+_t0l9lfW-cfB0FgUWNudCvKfKeHkMh7dnoygdiD97-Kd4zLSks_qv5-9-FKPmEFgjInfrRkKd22=
+oCpEWn_bbGdJKnuvUbxaVdHZMWK8qjHHJqN-fjJAJH0ZZG3YqyDVudtMYUx7bTclbW-mHM7SaPZ=
+yPukLS8lVEF6ZvNirAEmj-fsl5PAXFgAO-YYzbMdTGM94NgaHCuJg9cJyl5UvweXHjlAA-UBeYy=
+0rmR45NC7b0cohaf5TWzQaSug2lEn4tQi-2WAtrmKOcvpawopTjO2vM7wXMkwefSAAwyh30eTkL=
+OZcOq85UYKCq_5_G8Z6KpgZDA-p94%2F0bA4IVRx_2qY-uILSOjIx7uQpiExyGk8%2F16&amp;d=
+ata=3D05%7C02%7C%7C82605745a55e4e8e660508de4ed8823f%7C84df9e7fe9f640afb435a=
+aaaaaaaaaaa%7C1%7C0%7C639034888959073811%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU=
+1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyf=
+Q%3D%3D%7C0%7C%7C%7C&amp;sdata=3DZTPq2XDtCS3yPX8EQckOLrEyK1r3i5Lv6eaubiYJFh=
+s%3D&amp;reserved=3D0" originalsrc=3D"https://links.wellfound.com/s/c/5gGnh=
+dH36bd01NjBvO2-Gn3vSO7be3HLtwCPsmKnRtTzMf-ozxQy9_PXDXIlQ2rWaGGFxYhLDgz1UqXz=
+o9cWmtLUslyO7iaM2qet-boJLj6gq_7F-03bHD174L0IVp9LauOSmxg8VczIFQJOzDQk7x_ewRk=
+WVR01TrAqal00uFcBSuCOxiasU83PrrXGWAzTrx_t0l9lfW-cfB0FgUWNudCvKfKeHkMh7dnoyg=
+diD97-Kd4zLSks_qv5-9-FKPmEFgjInfrRkKd22oCpEWn_bbGdJKnuvUbxaVdHZMWK8qjHHJqN-=
+fjJAJH0ZZG3YqyDVudtMYUx7bTclbW-mHM7SaPZyPukLS8lVEF6ZvNirAEmj-fsl5PAXFgAO-YY=
+zbMdTGM94NgaHCuJg9cJyl5UvweXHjlAA-UBeYy0rmR45NC7b0cohaf5TWzQaSug2lEn4tQi-2W=
+AtrmKOcvpawopTjO2vM7wXMkwefSAAwyh30eTkLOZcOq85UYKCq_5_G8Z6KpgZDA-p94/0bA4IV=
+Rx_2qY-uILSOjIx7uQpiExyGk8/16" style=3D"box-sizing: border-box; text-decora=
+tion: underline; color: #e63223;">digital</a>.</span></p></div></div></td><=
+/tr></table></td></tr></tbody></table></td></tr></tbody></table><table clas=
+s=3D"row row-4" align=3D"center" width=3D"100%" border=3D"0" cellpadding=3D=
+"0" cellspacing=3D"0" role=3D"presentation" style=3D"box-sizing: border-box=
+; mso-table-lspace: 0; mso-table-rspace: 0;"><tbody style=3D"box-sizing: bo=
+rder-box;"><tr style=3D"box-sizing: border-box;"><td style=3D"box-sizing: b=
+order-box;"><table class=3D"row-content stack" align=3D"center" border=3D"0=
+" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"box-si=
+zing: border-box; mso-table-lspace: 0; mso-table-rspace: 0; background-colo=
+r: #fff; color: #000; width: 575px; margin: 0 auto;" width=3D"575" bgcolor=
+=3D"#fff"><tbody style=3D"box-sizing: border-box;"><tr style=3D"box-sizing:=
+ border-box;"><td class=3D"column column-1" width=3D"100%" style=3D"box-siz=
+ing: border-box; mso-table-lspace: 0; mso-table-rspace: 0; font-weight: 400=
+; text-align: left; padding-bottom: 5px; padding-top: 5px; vertical-align: =
+top;" align=3D"left" valign=3D"top"><table class=3D"text_block block-1" wid=
+th=3D"100%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presen=
+tation" style=3D"box-sizing: border-box; mso-table-lspace: 0; mso-table-rsp=
+ace: 0; word-break: break-word;"><tr style=3D"box-sizing: border-box;"><td =
+class=3D"pad" style=3D"box-sizing: border-box; padding-bottom: 5px; padding=
+-left: 25px; padding-right: 10px; padding-top: 10px;"><div style=3D"box-siz=
+ing: border-box; font-family: sans-serif;"><div class=3D"" style=3D"box-siz=
+ing: border-box; font-size: 12px; font-family: Lucida Sans Unicode,Lucida G=
+rande,Lucida Sans,Geneva,Verdana,sans-serif; mso-line-height-alt: 14.399999=
+999999999px; color: #555; line-height: 1.2;"><p style=3D"box-sizing: border=
+-box; line-height: inherit; margin: 0; font-size: 14px; mso-line-height-alt=
+: 16.8px;"> <strong style=3D"box-sizing: border-box;"><span style=3D"box-si=
+zing: border-box; word-break: break-word; color: #000000; font-size: 16px;"=
+>Founder Tip: You can't change someone.</span></strong></p><p style=3D"box-=
+sizing: border-box; line-height: inherit; margin: 0; font-size: 14px; mso-l=
+ine-height-alt: 14.399999999999999px;">&nbsp;</p><p style=3D"box-sizing: bo=
+rder-box; line-height: inherit; margin: 0; font-size: 14px; mso-line-height=
+-alt: 16.8px;"> <span style=3D"box-sizing: border-box; word-break: break-wo=
+rd; color: #000000; font-size: 14px;">This sounds obvious until you're actu=
+ally hiring. Then, suddenly, you're convincing yourself that the smart cand=
+idate who seems indifferent will get excited once they see the work. Or the=
+ talented person who only asks about comp will care about the mission later=
+.</span></p><p style=3D"box-sizing: border-box; line-height: inherit; margi=
+n: 0; font-size: 14px; mso-line-height-alt: 14.399999999999999px;">&nbsp;</=
+p><p style=3D"box-sizing: border-box; line-height: inherit; margin: 0; font=
+-size: 14px; mso-line-height-alt: 16.8px;"> <span style=3D"box-sizing: bord=
+er-box; word-break: break-word; color: #000000; font-size: 14px;">They won'=
+t.</span></p><p style=3D"box-sizing: border-box; line-height: inherit; marg=
+in: 0; font-size: 14px; mso-line-height-alt: 14.399999999999999px;">&nbsp;<=
+/p><p style=3D"box-sizing: border-box; line-height: inherit; margin: 0; fon=
+t-size: 14px; mso-line-height-alt: 16.8px;"> <span style=3D"box-sizing: bor=
+der-box; word-break: break-word; color: #000000; font-size: 14px;"><a href=
+=3D"https://swe01.safelinks.protection.outlook.com/?url=3Dhttps%3A%2F%2Flin=
+ks.wellfound.com%2Fs%2Fc%2FnGuoLN-CDwChbQzlqmGBnPDOvBfytI8rlA-6BuqUC2GMVMpk=
+BS4u74jULgr66_5jVyA9HEWfck2k_NtqmHvTZj6eCb1w1ocG31CwFl8RvWRIh6w_-FQAvJQoYFT=
+ewIAjzODnYYkNRH8b1Bw0bKKgcAQSqksowNSqO7cB33dQJTkIMgoqc7TPZJP8Zg3WLgb1x_22Bs=
+ms_zLFBc0Z27T5HMFs3Zt4vzOE_4NsWrQODqlGAWRkMHdGZ98-gcefcdAr8ZjDolqchzifTgm0w=
+qL8xcX-J14-vDg6wAONdpHuoo5Tx_spigc1m0BTdsDr6DqAekr5uuVFFSLFKAx5zaJ7F4u8uJHv=
+D9nAW2cQR00SsmonwKWyjxHAGhWiDDsvIhUjAWIPqtQiaar0fbwyh28iDjI1dgfHStEYpuY4xPD=
+pdqlKjl8p-opzl9zlURACl3akywz0VyLmiQr0Q8-g5jx1q5EIrCHDU6m0j_1n8gDu2-8ZM7V-Kq=
+i7jxxc%2FqbhHnlvWP5EhjqWmtsFdeYJ5-P8Nnz41%2F16&amp;data=3D05%7C02%7C%7C8260=
+5745a55e4e8e660508de4ed8823f%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C6=
+39034888959085256%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwL=
+jAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&am=
+p;sdata=3DPOiWM6aqkHIBlw1pMTPo6EMf9XqSWiWKhNkqGnUNtEE%3D&amp;reserved=3D0" =
+originalsrc=3D"https://links.wellfound.com/s/c/nGuoLN-CDwChbQzlqmGBnPDOvBfy=
+tI8rlA-6BuqUC2GMVMpkBS4u74jULgr66_5jVyA9HEWfck2k_NtqmHvTZj6eCb1w1ocG31CwFl8=
+RvWRIh6w_-FQAvJQoYFTewIAjzODnYYkNRH8b1Bw0bKKgcAQSqksowNSqO7cB33dQJTkIMgoqc7=
+TPZJP8Zg3WLgb1x_22Bsms_zLFBc0Z27T5HMFs3Zt4vzOE_4NsWrQODqlGAWRkMHdGZ98-gcefc=
+dAr8ZjDolqchzifTgm0wqL8xcX-J14-vDg6wAONdpHuoo5Tx_spigc1m0BTdsDr6DqAekr5uuVF=
+FSLFKAx5zaJ7F4u8uJHvD9nAW2cQR00SsmonwKWyjxHAGhWiDDsvIhUjAWIPqtQiaar0fbwyh28=
+iDjI1dgfHStEYpuY4xPDpdqlKjl8p-opzl9zlURACl3akywz0VyLmiQr0Q8-g5jx1q5EIrCHDU6=
+m0j_1n8gDu2-8ZM7V-Kqi7jxxc/qbhHnlvWP5EhjqWmtsFdeYJ5-P8Nnz41/16" target=3D"_=
+blank" style=3D"box-sizing: border-box; text-decoration: underline; color: =
+#e63223;" rel=3D"noopener">Shensi Ding</a>, Co-Founder of <a href=3D"https:=
+//swe01.safelinks.protection.outlook.com/?url=3Dhttps%3A%2F%2Flinks.wellfou=
+nd.com%2Fs%2Fc%2FR7lwMFnhWI5lQG-QJe8PUPOwmcCeKulwa1C5pVjCQpIXnp2_a4jRsjZeEd=
+Twp_RghTpEYzY9FTIIBktsc3ixGnx2GX-PgaCAxVH-QEFOKjwkKuxnGW9ngVwkYvHMyniAMKGyv=
+c9xR6I5_SjVrghxd4nYZSsCJqVpjQh_0bJF1r7U4sPLm_cyav02YnW3LIcViVN99vnmYZ0cSNPp=
+hPFXHHuEgCMZqbd1L3LCVwHub5jGDBDzcp2MRmzAxRp_8DCVY7-z7z7YKsvwo3lYl9uhFNu-gpP=
+DqQf6iopXcOEYQdGRECaUzUDksYutlbhjqdcWzYL7ZdCM_qzN_QRk8TQfJwqm28sFqShlceqB2T=
+scSNajF01cgHIiQy6oQSBT17SibWG8FpLEaLiid_jfoFWs57arpPDzaw6ASvIRurQuC74VEqRcZ=
+7h3M6ZW0ANU541SfhVRxAjlfm7kSjJwAFpp7hCztFvsCQkQoUhtUPB44JwFn-wqG-5qqg%2Fzl7=
+niZR6gVXpDLv_d6v-_G0eRc8f_4e6%2F16&amp;data=3D05%7C02%7C%7C82605745a55e4e8e=
+660508de4ed8823f%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C6390348889590=
+99719%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsI=
+lAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&amp;sdata=3DCt=
+9ekhTjaogAR8bnYOGwjCVLI9qqfIItPc%2FC72yA4dI%3D&amp;reserved=3D0" originalsr=
+c=3D"https://links.wellfound.com/s/c/R7lwMFnhWI5lQG-QJe8PUPOwmcCeKulwa1C5pV=
+jCQpIXnp2_a4jRsjZeEdTwp_RghTpEYzY9FTIIBktsc3ixGnx2GX-PgaCAxVH-QEFOKjwkKuxnG=
+W9ngVwkYvHMyniAMKGyvc9xR6I5_SjVrghxd4nYZSsCJqVpjQh_0bJF1r7U4sPLm_cyav02YnW3=
+LIcViVN99vnmYZ0cSNPphPFXHHuEgCMZqbd1L3LCVwHub5jGDBDzcp2MRmzAxRp_8DCVY7-z7z7=
+YKsvwo3lYl9uhFNu-gpPDqQf6iopXcOEYQdGRECaUzUDksYutlbhjqdcWzYL7ZdCM_qzN_QRk8T=
+QfJwqm28sFqShlceqB2TscSNajF01cgHIiQy6oQSBT17SibWG8FpLEaLiid_jfoFWs57arpPDza=
+w6ASvIRurQuC74VEqRcZ7h3M6ZW0ANU541SfhVRxAjlfm7kSjJwAFpp7hCztFvsCQkQoUhtUPB4=
+4JwFn-wqG-5qqg/zl7niZR6gVXpDLv_d6v-_G0eRc8f_4e6/16" target=3D"_blank" style=
+=3D"box-sizing: border-box; text-decoration: underline; color: #e63223;" re=
+l=3D"noopener">Merge</a>, says early-stage hiring is about selection, not t=
+ransformation. You're looking for people who already care, not people you c=
+an teach to care.</span> </p><p style=3D"box-sizing: border-box; line-heigh=
+t: inherit; margin: 0; font-size: 14px; mso-line-height-alt: 14.39999999999=
+9999px;">&nbsp;</p><p style=3D"box-sizing: border-box; line-height: inherit=
+; margin: 0; font-size: 14px; mso-line-height-alt: 16.8px;"><span style=3D"=
+box-sizing: border-box; word-break: break-word; color: #000000; font-size: =
+14px;">The mistake most founders make is hiring for potential and then spen=
+ding six months trying to instill drive that was never there to begin with.=
+&nbsp;</span></p><p style=3D"box-sizing: border-box; line-height: inherit; =
+margin: 0; font-size: 14px; mso-line-height-alt: 14.399999999999999px;">&nb=
+sp;</p><p style=3D"box-sizing: border-box; line-height: inherit; margin: 0;=
+ font-size: 14px; mso-line-height-alt: 16.8px;"><span style=3D"box-sizing: =
+border-box; word-break: break-word; color: #000000; font-size: 14px;">Watch=
+ the full interview <a href=3D"https://swe01.safelinks.protection.outlook.c=
+om/?url=3Dhttps%3A%2F%2Flinks.wellfound.com%2Fs%2Fc%2FmjNB7GfaBS2TWhZlJW4Du=
+BzAl6dXP6nLmiTNUQHJ_uGlqu8uWquSAohCjZHwhTmcF0F8mFSLEtqXCaKN0DoNcQCPaQVl4X5r=
+ALaVxG-Kw0x5jKH-3EJjwP2gghcFBRKt7q0DJ9n0Awc8iFlSkHr5tczQ5VALHh8f2LyKSaqsvD5=
+kPP7YSoSZp21GooxiJVqyvKiNLEJbgr2hIsfEcWAGHK1eSs1hmAYUeNxuY79byaq3fjWldQ6sDV=
+Koyb-2klWFJ4xjIZFY9SGP37nfmi0Vg4odI4omunNWVN6_u1Ac9cYIooTRk6wMGEdS497tuoJ4A=
+ROIBg8zggcapWLu-pcRTHQ0g9pM82qXpMkHkLCeBMSH5LUbFgSdXSwQ9PCwi09lc2j_pbF_3Q5h=
+s9M4SmYwiA3Kq43qpOPy0ad_bl31RsgRQsXpWtzKsm9yTco_58rFG2KoaPG7djjQ8UKCRSHIzlp=
+B%2F3y5pX2lsWcD6azEwTYGBOwpGv7Rqdhu6%2F16&amp;data=3D05%7C02%7C%7C82605745a=
+55e4e8e660508de4ed8823f%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C639034=
+888959112378%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMD=
+AwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&amp;sda=
+ta=3Dudq8T9%2BuGdEC3kh3JHRPtxRtkUWjUnMYtB4vCvQpQ8w%3D&amp;reserved=3D0" ori=
+ginalsrc=3D"https://links.wellfound.com/s/c/mjNB7GfaBS2TWhZlJW4DuBzAl6dXP6n=
+LmiTNUQHJ_uGlqu8uWquSAohCjZHwhTmcF0F8mFSLEtqXCaKN0DoNcQCPaQVl4X5rALaVxG-Kw0=
+x5jKH-3EJjwP2gghcFBRKt7q0DJ9n0Awc8iFlSkHr5tczQ5VALHh8f2LyKSaqsvD5kPP7YSoSZp=
+21GooxiJVqyvKiNLEJbgr2hIsfEcWAGHK1eSs1hmAYUeNxuY79byaq3fjWldQ6sDVKoyb-2klWF=
+J4xjIZFY9SGP37nfmi0Vg4odI4omunNWVN6_u1Ac9cYIooTRk6wMGEdS497tuoJ4AROIBg8zggc=
+apWLu-pcRTHQ0g9pM82qXpMkHkLCeBMSH5LUbFgSdXSwQ9PCwi09lc2j_pbF_3Q5hs9M4SmYwiA=
+3Kq43qpOPy0ad_bl31RsgRQsXpWtzKsm9yTco_58rFG2KoaPG7djjQ8UKCRSHIzlpB/3y5pX2ls=
+WcD6azEwTYGBOwpGv7Rqdhu6/16" target=3D"_blank" style=3D"box-sizing: border-=
+box; text-decoration: underline; color: #e63223;" rel=3D"noopener">here.</a=
+></span></p><p style=3D"box-sizing: border-box; line-height: inherit; margi=
+n: 0; font-size: 14px; mso-line-height-alt: 14.399999999999999px;">&nbsp;</=
+p><p style=3D"box-sizing: border-box; line-height: inherit; margin: 0; font=
+-size: 14px; mso-line-height-alt: 16.8px;"> <span style=3D"box-sizing: bord=
+er-box; word-break: break-word; color: #000000; font-size: 14px;">They're h=
+iring! <a href=3D"https://swe01.safelinks.protection.outlook.com/?url=3Dhtt=
+ps%3A%2F%2Flinks.wellfound.com%2Fs%2Fc%2FeDMLsERIa-uO8266uz6TdhOqkfRyXG7H7r=
+5F5Kez5u59wHZQ8iPG9DkMM3EdN9RWsRSh01QWbdNMUoc3_IWVGUYgOCI5MBEkbSmxQukO4lhjT=
+xwnxIizXC7GSvrJvIQEemifpK6IgPkLDDCFu8CnUEo-YyYhZOMGTXXVOr4bXyXQUDVT-7-nrKcT=
+OUbo7Kcc_CWfIBsmdlXLVkzK8XONe39YTKKqkLm4l4Do7cO8JJyQQOzWl4OjF0vc4C15NX4sHCz=
+qGNAP22mTx5STxheOWyT8BmTj7Hf8AoOxlbnVWlKDao4NufjrnncCJAj3gMfro-cAmbBOvBRbvq=
+i-Xv8ImOSLoBohh5BdzTcz5IOA6HSiCfcYbbSSm1rGiMNcjoApTkz3bnd4Od8529_iodj6FYBMd=
+A6cwJlK3tchhslpN1sSnHZXhe5VomS89XqtL28qe0v0rtuBsYXxzG4x0YFGgCemWCn7S3fK78Mj=
+NdnbU7pCboS-8P3s8g%2FEs3gFO8cdlW-ZzVR9MY9UzKJl9tl5oW-%2F16&amp;data=3D05%7C=
+02%7C%7C82605745a55e4e8e660508de4ed8823f%7C84df9e7fe9f640afb435aaaaaaaaaaaa=
+%7C1%7C0%7C639034888959124653%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRyd=
+WUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0=
+%7C%7C%7C&amp;sdata=3DTQ%2Fp4uP9iFMdaqyKBxHVRHLRGTSKaQ5zIFN6B19dwSs%3D&amp;=
+reserved=3D0" originalsrc=3D"https://links.wellfound.com/s/c/eDMLsERIa-uO82=
+66uz6TdhOqkfRyXG7H7r5F5Kez5u59wHZQ8iPG9DkMM3EdN9RWsRSh01QWbdNMUoc3_IWVGUYgO=
+CI5MBEkbSmxQukO4lhjTxwnxIizXC7GSvrJvIQEemifpK6IgPkLDDCFu8CnUEo-YyYhZOMGTXXV=
+Or4bXyXQUDVT-7-nrKcTOUbo7Kcc_CWfIBsmdlXLVkzK8XONe39YTKKqkLm4l4Do7cO8JJyQQOz=
+Wl4OjF0vc4C15NX4sHCzqGNAP22mTx5STxheOWyT8BmTj7Hf8AoOxlbnVWlKDao4NufjrnncCJA=
+j3gMfro-cAmbBOvBRbvqi-Xv8ImOSLoBohh5BdzTcz5IOA6HSiCfcYbbSSm1rGiMNcjoApTkz3b=
+nd4Od8529_iodj6FYBMdA6cwJlK3tchhslpN1sSnHZXhe5VomS89XqtL28qe0v0rtuBsYXxzG4x=
+0YFGgCemWCn7S3fK78MjNdnbU7pCboS-8P3s8g/Es3gFO8cdlW-ZzVR9MY9UzKJl9tl5oW-/16"=
+ target=3D"_blank" style=3D"box-sizing: border-box; text-decoration: underl=
+ine; color: #e63223;" rel=3D"noopener">See 2 open roles here.</a></span></p=
+></div></div></td></tr></table></td></tr></tbody></table></td></tr></tbody>=
+</table><table class=3D"row row-5" align=3D"center" width=3D"100%" border=
+=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"b=
+ox-sizing: border-box; mso-table-lspace: 0; mso-table-rspace: 0;"><tbody st=
+yle=3D"box-sizing: border-box;"><tr style=3D"box-sizing: border-box;"><td s=
+tyle=3D"box-sizing: border-box;"><table class=3D"row-content stack" align=
+=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presen=
+tation" style=3D"box-sizing: border-box; mso-table-lspace: 0; mso-table-rsp=
+ace: 0; background-color: #fff; color: #000; width: 575px; margin: 0 auto;"=
+ width=3D"575" bgcolor=3D"#fff"><tbody style=3D"box-sizing: border-box;"><t=
+r style=3D"box-sizing: border-box;"><td class=3D"column column-1" width=3D"=
+100%" style=3D"box-sizing: border-box; mso-table-lspace: 0; mso-table-rspac=
+e: 0; font-weight: 400; text-align: left; padding-bottom: 5px; padding-top:=
+ 5px; vertical-align: top;" align=3D"left" valign=3D"top"><table class=3D"v=
+ideo_block block-1" width=3D"100%" border=3D"0" cellpadding=3D"0" cellspaci=
+ng=3D"0" role=3D"presentation" style=3D"box-sizing: border-box; mso-table-l=
+space: 0; mso-table-rspace: 0;"><tr style=3D"box-sizing: content-box;"><td =
+class=3D"pad" style=3D"box-sizing: content-box; width: 100%; padding-left: =
+0; padding-right: 0;" width=3D"100%"><!--[if (mso)|(IE)]><table width=3D"57=
+5" align=3D"center" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentatio=
+n"><tr><td><![endif]--><div class=3D"sizer" align=3D"center" style=3D"box-s=
+izing: content-box; max-width: 575px; min-width: 320px;"><!--[if !vml]><!--=
+><a class=3D"video-preview" tabindex=3D"0" href=3D"https://swe01.safelinks.=
+protection.outlook.com/?url=3Dhttps%3A%2F%2Flinks.wellfound.com%2Fs%2Fc%2Fv=
+wmOvGf-8j3ZaYvbmq8kVqBlb3MDwHNo3B_r0iJvVPHYV4kPZ2GGt3mlWS6RdzhNCE8sB1Ot9AsT=
+tFjUhQx1G243DWFoLYmED_J-ifIZ0mzFfwrqzKaz1EQmX58Qs4UwPdFvx137d4_Qbh3Fl8nquYF=
+bFvr8EAVWQM3daYeupoYUKfOo4e8yPZbftT7xYCuE4lwfp_QIGLgq-MmVxZ-NcNMkG1eur0M2IM=
+dkuhj3vuHvQolHpXGfa5pK9kkeTP0hiF9LMBHiGHQ6_PuwKkgl2zoy6p_RHHPuy0HLxYZkSiFBq=
+tYTWPYePEZ2Xxy54rSnEuIQldi3PNN5yUJpSYR37rrbGxK5Kevj36vlvznhZx_B3JWHXH7bgSN9=
+p0_H09aPmhnbN-s0ZRQKLNGD5ylKBFG4z_3b-2HY2EL0Bg9g523WXFgiSWtgol9P6nvNSwem8z9=
+0RQpiWhk6dXs_yM6J4XPTlCsmswIuUVRcW0JuR8e0lMIN4e7yAn4IbNrjHwQUqEM%2FeeNdK5Cz=
+6AgGHGcvjAZqY7yKWuu11MIk%2F16&amp;data=3D05%7C02%7C%7C82605745a55e4e8e66050=
+8de4ed8823f%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C639034888959136173=
+%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOi=
+JXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&amp;sdata=3DWKQPxR%=
+2BLAnFCoEaaygzufW9CI3copLfvkv0GneyJg3o%3D&amp;reserved=3D0" originalsrc=3D"=
+https://links.wellfound.com/s/c/vwmOvGf-8j3ZaYvbmq8kVqBlb3MDwHNo3B_r0iJvVPH=
+YV4kPZ2GGt3mlWS6RdzhNCE8sB1Ot9AsTtFjUhQx1G243DWFoLYmED_J-ifIZ0mzFfwrqzKaz1E=
+QmX58Qs4UwPdFvx137d4_Qbh3Fl8nquYFbFvr8EAVWQM3daYeupoYUKfOo4e8yPZbftT7xYCuE4=
+lwfp_QIGLgq-MmVxZ-NcNMkG1eur0M2IMdkuhj3vuHvQolHpXGfa5pK9kkeTP0hiF9LMBHiGHQ6=
+_PuwKkgl2zoy6p_RHHPuy0HLxYZkSiFBqtYTWPYePEZ2Xxy54rSnEuIQldi3PNN5yUJpSYR37rr=
+bGxK5Kevj36vlvznhZx_B3JWHXH7bgSN9p0_H09aPmhnbN-s0ZRQKLNGD5ylKBFG4z_3b-2HY2E=
+L0Bg9g523WXFgiSWtgol9P6nvNSwem8z90RQpiWhk6dXs_yM6J4XPTlCsmswIuUVRcW0JuR8e0l=
+MIN4e7yAn4IbNrjHwQUqEM/eeNdK5Cz6AgGHGcvjAZqY7yKWuu11MIk/16" target=3D"_blan=
+k" title=3D"Founder Tip: " you=3D"" can?t=3D"" change=3D"" someone.??=3D"" =
+style=3D"box-sizing: content-box; background-color: #5b5f66; background-ima=
+ge: radial-gradient(circle at center, #5b5f66, #1d1f21); display: block; te=
+xt-decoration: none;"><div style=3D"box-sizing: content-box;"><table cellpa=
+dding=3D"0" cellspacing=3D"0" border=3D"0" width=3D"100%" background=3D"htt=
+ps://img.youtube.com/vi/5Cf3YmMX_JE/maxresdefault.jpg" role=3D"presentation=
+" style=3D"mso-table-lspace: 0; mso-table-rspace: 0; box-sizing: content-bo=
+x; background-image: url(https://img.youtube.com/vi/5Cf3YmMX_JE/maxresdefau=
+lt.jpg); background-size: cover; background-position: center; min-height: 1=
+80px; min-width: 320px;"><tr style=3D"box-sizing: content-box;"><td width=
+=3D"25%" style=3D"box-sizing: content-box;"><img src=3D"https://app-rsrc.ge=
+tbee.io/public/resources/multiparser/video_block/video_ratio_16-9.gif" widt=
+h=3D"100%" border=3D"0" alt=3D"" style=3D"display: block; box-sizing: conte=
+nt-box; height: auto; opacity: 0; visibility: hidden;" height=3D"auto"></td=
+><td width=3D"50%" align=3D"center" valign=3D"middle" style=3D"box-sizing: =
+content-box; vertical-align: middle;"><img src=3D"https://app-rsrc.getbee.i=
+o/public/resources/components/widgetBar/video-content-icon-sets/light/type-=
+01.png" width=3D"65" height=3D"auto" alt=3D"Play" style=3D"display: block; =
+height: auto; box-sizing: content-box;"></td><td width=3D"25%" style=3D"box=
+-sizing: content-box;">&nbsp;</td></tr></table></div></a><!--<![endif]--><!=
+--[if vml]><v:group xmlns:v=3D"urn:schemas-microsoft-com:vml" xmlns:w=3D"ur=
+n:schemas-microsoft-com:office:word" coordsize=3D"575,323" coordorigin=3D"0=
+,0" href=3D"https://links.wellfound.com/s/c/tcXvsfCeWKl6_9pT21mH9q90wyZt7IE=
+8uBzp-ItkQedWTGdgie29ft8dZ-1P9QTRU78H0VtYNhZfBkXhK362K51c3sBENaj9RbYaVhSJKK=
+EGsQuBpyD7locwpahJ-pf-beqyXU1SPhRLSwrmMc1Q0aBcUv9C36YYEWy_VKxuubegSbXsLV0x1=
+9YojKEQsxjbevKpQp0ugf3lIsQwdaixYq5_ISqHnN2EX9CPJO0LfdoNNQtTFs6LM1vOeSYulq2N=
+8urNLM5Rn-Pj9qrd7uhS3cLBBV_qL9Y3JGRMKyVVZ0Y_6JymdVrgfVZ6WTDeDJe1MkRKP2AMVSu=
+SAgklPPPVMkuRvzhUM4Ee0rI-AhxuL__nVjEV3CwhHAZ8KxA_LQ3lrM7wnzaB1j6IcGXXQh3B0z=
+ohy0GWWYdhTnoXch_szvuC0j4SPy34a370Y2t52rSa6LfOaQyxJWRM4isrbtw52mMSqU-sow4GC=
+DSadS3UP--VQhpeQyrl1et27pp7N4JwciY/9iHzuHhR_yTLxDDRngktbXiJ3AIvFpSC/16" sty=
+le=3D"width:575px;height:323px;"> <v:rect fill=3D"t" stroked=3D"f" style=3D=
+"position:absolute;width:575;height:323;"> <v:fill src=3D"https://img.youtu=
+be.com/vi/5Cf3YmMX_JE/maxresdefault.jpg" type=3D"frame"/> </v:rect> <v:oval=
+ fill=3D"t" strokecolor=3D"#ffffff" strokeweight=3D"3px" style=3D"position:=
+absolute;left:255;top:129;width:65;height:65"> <v:fill color=3D"#ffffff" op=
+acity=3D"100%"/> </v:oval> <v:shape coordsize=3D"24,32" path=3D"m,l,32,24,1=
+6,xe" fillcolor=3D"#000000" stroked=3D"f" style=3D"position:absolute;left:2=
+78;top:145;width:23;height:33;"/> </v:group><![endif]--></div><!--[if (mso)=
+|(IE)]></td></tr></table><![endif]--></td></tr></table><table class=3D"text=
+_block block-2" width=3D"100%" border=3D"0" cellpadding=3D"0" cellspacing=
+=3D"0" role=3D"presentation" style=3D"box-sizing: border-box; mso-table-lsp=
+ace: 0; mso-table-rspace: 0; word-break: break-word;"><tr style=3D"box-sizi=
+ng: border-box;"><td class=3D"pad" style=3D"box-sizing: border-box; padding=
+-bottom: 5px; padding-left: 25px; padding-right: 10px; padding-top: 10px;">=
+<div style=3D"box-sizing: border-box; font-family: sans-serif;"><div class=
+=3D"" style=3D"box-sizing: border-box; font-size: 12px; font-family: Lucida=
+ Sans Unicode,Lucida Grande,Lucida Sans,Geneva,Verdana,sans-serif; mso-line=
+-height-alt: 14.399999999999999px; color: #000; line-height: 1.2;"><p style=
+=3D"box-sizing: border-box; line-height: inherit; margin: 0; font-size: 14p=
+x; text-align: left; mso-line-height-alt: 16.8px;"> <span style=3D"box-sizi=
+ng: border-box; word-break: break-word; font-size: 16px;"><strong style=3D"=
+box-sizing: border-box;">Startups Hiring Now&nbsp;</strong></span><span sty=
+le=3D"box-sizing: border-box; word-break: break-word; font-size: 14px;"><a =
+href=3D"https://swe01.safelinks.protection.outlook.com/?url=3Dhttps%3A%2F%2=
+Flinks.wellfound.com%2Fs%2Fc%2FzNasNMkq-DU2SBFUNJgBsLinjCOTbY8FLsEjyxTzWr58=
+HKzRrKdwiC0EVNwqOxolUkyeQwlw8lcA4jAMHjsU6zHijw1Ced1JStz1aAoqiYIXiiQb-OkS9ts=
+3NYLie5qNpg7usKgsZSH-Cy7zam0IVby-7kKONO7QCVY5l3PicckJc_uCZMGiudXj08tYrPp4wK=
+mCVY2JzFRBBjG0GHjG5x_CXmzxSxB8i0pl5U_OchrtQQBPdT4116wsh-VRSedQxJi_Z0wT9mO8l=
+KgwT3pgt6shwVMXObCXCFa2zHXUAT1Aglh9KyPJv7xriWF7dN3cB6ImAAOFUrPpxuxGO50y-QeO=
+Tr-Seixa_KjE_f43cfzSDiU6vc_663JFsUZfBgJf_YQUlSshNiSavvovSSqGefWo7XK_7WZon19=
+0uvn-M7IvoUMmmxwQBuvHTfYS2BS0a-3el68soQa7QEsDL0g0ZPRDY4ZmCI3WSFtbhkU6Gxg%2F=
+VJQYGu_X-mi9LV1KYldfBY1GLtfqLOD1%2F16&amp;data=3D05%7C02%7C%7C82605745a55e4=
+e8e660508de4ed8823f%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C6390348889=
+59147810%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMC=
+IsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&amp;sdata=
+=3D81jNapOERSeyG2P8gkkFj9%2FLc6u9Qd1dQ7EfKj94v4E%3D&amp;reserved=3D0" origi=
+nalsrc=3D"https://links.wellfound.com/s/c/zNasNMkq-DU2SBFUNJgBsLinjCOTbY8FL=
+sEjyxTzWr58HKzRrKdwiC0EVNwqOxolUkyeQwlw8lcA4jAMHjsU6zHijw1Ced1JStz1aAoqiYIX=
+iiQb-OkS9ts3NYLie5qNpg7usKgsZSH-Cy7zam0IVby-7kKONO7QCVY5l3PicckJc_uCZMGiudX=
+j08tYrPp4wKmCVY2JzFRBBjG0GHjG5x_CXmzxSxB8i0pl5U_OchrtQQBPdT4116wsh-VRSedQxJ=
+i_Z0wT9mO8lKgwT3pgt6shwVMXObCXCFa2zHXUAT1Aglh9KyPJv7xriWF7dN3cB6ImAAOFUrPpx=
+uxGO50y-QeOTr-Seixa_KjE_f43cfzSDiU6vc_663JFsUZfBgJf_YQUlSshNiSavvovSSqGefWo=
+7XK_7WZon190uvn-M7IvoUMmmxwQBuvHTfYS2BS0a-3el68soQa7QEsDL0g0ZPRDY4ZmCI3WSFt=
+bhkU6Gxg/VJQYGu_X-mi9LV1KYldfBY1GLtfqLOD1/16" style=3D"box-sizing: border-b=
+ox; text-decoration: underline; color: #e63223;"></a></span></p><p style=3D=
+"box-sizing: border-box; line-height: inherit; margin: 0; font-size: 14px; =
+text-align: left; mso-line-height-alt: 14.399999999999999px;">&nbsp;</p><p =
+style=3D"box-sizing: border-box; line-height: inherit; margin: 0; font-size=
+: 14px; mso-line-height-alt: 16.8px;"> <span style=3D"box-sizing: border-bo=
+x; word-break: break-word; font-size: 14px;"><strong style=3D"box-sizing: b=
+order-box;">Current</strong></span></p><p style=3D"box-sizing: border-box; =
+line-height: inherit; margin: 0; font-size: 14px; mso-line-height-alt: 16.8=
+px;"><span style=3D"box-sizing: border-box; word-break: break-word; font-si=
+ze: 14px;">We're on a mission to change our members' lives by creating bett=
+er financial outcomes</span></p><p style=3D"box-sizing: border-box; line-he=
+ight: inherit; margin: 0; font-size: 14px; mso-line-height-alt: 16.8px;"> <=
+span style=3D"box-sizing: border-box; word-break: break-word; font-size: 14=
+px;"><a href=3D"https://swe01.safelinks.protection.outlook.com/?url=3Dhttps=
+%3A%2F%2Flinks.wellfound.com%2Fs%2Fc%2FVgCitahRbJwsViX1JD15hItToQMaPYUJMOb2=
+iRGnSG23OCaowgQlHEswdKEB3GZPwCy-LxCYDsZ0HohQkutz0BC786uVjS30hVB9X9WMj5bwqFn=
+9nBWVqS7eXi8pmTCsaTh3DCQWH1xb4JqGgErU6CIs5WK0oNl1-mCbpGe15EJ56Bm5SPAVv9W54F=
+QgZvXwBJL0VNj38CVn6vrbY-2sUhzmWyR08BUTI-7BMc7GE-I2PHVJgkhGY4wcfvdugzsM6VAIA=
+veUjF7Za2QKJ2f6bpg2uTyy9BHn915e6kjPE-koXKCji35X_LJz5ciVXz8XYxg-4pEzfdyc-Y3e=
+EX4XPjbHJcWAv9Pz0U2JVAPAQU69FqU6TAmtB_wK_RtIEYT3reIr2vPXs8gXD-6WvBMDVcJAJpW=
+e_gnKDD0lA6e2aE_57I1yhIC_5SiL3l61H3axB_AWtgD52VFW45-eO0g9l6bSNhV9xnnyzAew4z=
+xwmWRnrJAKFZQ%2FkgY6bmrvUgcE3WyFITaLbiy2r8EMcxLR%2F16&amp;data=3D05%7C02%7C=
+%7C82605745a55e4e8e660508de4ed8823f%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%=
+7C0%7C639034888959160872%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIl=
+YiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7=
+C%7C&amp;sdata=3DMpDqwPnEBJnCPlNj3fGk7kf3%2F3l7GYDK2X%2F3o9hSIM0%3D&amp;res=
+erved=3D0" originalsrc=3D"https://links.wellfound.com/s/c/VgCitahRbJwsViX1J=
+D15hItToQMaPYUJMOb2iRGnSG23OCaowgQlHEswdKEB3GZPwCy-LxCYDsZ0HohQkutz0BC786uV=
+jS30hVB9X9WMj5bwqFn9nBWVqS7eXi8pmTCsaTh3DCQWH1xb4JqGgErU6CIs5WK0oNl1-mCbpGe=
+15EJ56Bm5SPAVv9W54FQgZvXwBJL0VNj38CVn6vrbY-2sUhzmWyR08BUTI-7BMc7GE-I2PHVJgk=
+hGY4wcfvdugzsM6VAIAveUjF7Za2QKJ2f6bpg2uTyy9BHn915e6kjPE-koXKCji35X_LJz5ciVX=
+z8XYxg-4pEzfdyc-Y3eEX4XPjbHJcWAv9Pz0U2JVAPAQU69FqU6TAmtB_wK_RtIEYT3reIr2vPX=
+s8gXD-6WvBMDVcJAJpWe_gnKDD0lA6e2aE_57I1yhIC_5SiL3l61H3axB_AWtgD52VFW45-eO0g=
+9l6bSNhV9xnnyzAew4zxwmWRnrJAKFZQ/kgY6bmrvUgcE3WyFITaLbiy2r8EMcxLR/16" style=
+=3D"box-sizing: border-box; text-decoration: underline; color: #e63223;">Se=
+e 21 open roles</a></span></p><p style=3D"box-sizing: border-box; line-heig=
+ht: inherit; margin: 0; font-size: 14px; mso-line-height-alt: 14.3999999999=
+99999px;">&nbsp;</p><p style=3D"box-sizing: border-box; line-height: inheri=
+t; margin: 0; font-size: 14px; mso-line-height-alt: 16.8px;"><span style=3D=
+"box-sizing: border-box; word-break: break-word; font-size: 14px;"><strong =
+style=3D"box-sizing: border-box;">Industrious</strong></span></p><p style=
+=3D"box-sizing: border-box; line-height: inherit; margin: 0; font-size: 14p=
+x; mso-line-height-alt: 16.8px;"><span style=3D"box-sizing: border-box; wor=
+d-break: break-word; font-size: 14px;">Finding and creating workplace exper=
+iences that are optimized for your business needs</span></p><p style=3D"box=
+-sizing: border-box; line-height: inherit; margin: 0; font-size: 14px; mso-=
+line-height-alt: 16.8px;"><span style=3D"box-sizing: border-box; word-break=
+: break-word; font-size: 14px;"><a href=3D"https://swe01.safelinks.protecti=
+on.outlook.com/?url=3Dhttps%3A%2F%2Flinks.wellfound.com%2Fs%2Fc%2FTDTaShx2i=
+hjgQPI82FloZ1XWhhMFt80pLF9xVzqtMndGJmdx2a7PCEmihrexDzarotmn3cSk0BDcmyExJp_F=
+yNFAn_YIDMnQfJFrSPT_dn3zHtcTYxSHUz3udhRKNKUaMyU7CjBmCayVn_yzwze6QXVh4iylXkg=
+YOIxk8c5ATtwfgm_xwS9eNeuLh9gVgQlQFfX7TqIXLQxIQwdIoeeXe7JgDwbIUSFZBO6VnMFjf2=
+wvgvfDX-ebRUGuZiXBFDeWTfdUmiIOmNPiaVsNiTeMZuFocOKO_3qrADqw07hUO7cPptN_lw3tg=
+ide6q5nBKpYyCeKuTzxfn1d__xkgA03AWnP3YBbYBIOh1j91rQxaBQTQmZPR7k9Ut--kViH1b-R=
+C8vDorzIkwKy4aUsRiU4P2-sSAcnVNCpfeBQyjk7aleDQxsnFSIjh96Hdo3dPvCpc3MuLA5htDU=
+4YIvb-BkFkS3EduEEBey21aBX7wycMBNYknVhcM3nuUW8FYdcuQ%2FfsNQbf5atxujHs4CgK_KX=
+I6_w_m6syVf%2F16&amp;data=3D05%7C02%7C%7C82605745a55e4e8e660508de4ed8823f%7=
+C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C639034888959173328%7CUnknown%7C=
+TWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkF=
+OIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&amp;sdata=3DtRgS3lUidnb%2BS%2BcU=
+H0irWxD8E2R2%2FPqHngpa3ccEqo4%3D&amp;reserved=3D0" originalsrc=3D"https://l=
+inks.wellfound.com/s/c/TDTaShx2ihjgQPI82FloZ1XWhhMFt80pLF9xVzqtMndGJmdx2a7P=
+CEmihrexDzarotmn3cSk0BDcmyExJp_FyNFAn_YIDMnQfJFrSPT_dn3zHtcTYxSHUz3udhRKNKU=
+aMyU7CjBmCayVn_yzwze6QXVh4iylXkgYOIxk8c5ATtwfgm_xwS9eNeuLh9gVgQlQFfX7TqIXLQ=
+xIQwdIoeeXe7JgDwbIUSFZBO6VnMFjf2wvgvfDX-ebRUGuZiXBFDeWTfdUmiIOmNPiaVsNiTeMZ=
+uFocOKO_3qrADqw07hUO7cPptN_lw3tgide6q5nBKpYyCeKuTzxfn1d__xkgA03AWnP3YBbYBIO=
+h1j91rQxaBQTQmZPR7k9Ut--kViH1b-RC8vDorzIkwKy4aUsRiU4P2-sSAcnVNCpfeBQyjk7ale=
+DQxsnFSIjh96Hdo3dPvCpc3MuLA5htDU4YIvb-BkFkS3EduEEBey21aBX7wycMBNYknVhcM3nuU=
+W8FYdcuQ/fsNQbf5atxujHs4CgK_KXI6_w_m6syVf/16" style=3D"box-sizing: border-b=
+ox; text-decoration: underline; color: #e63223;">See 69 open roles</a></spa=
+n></p><p style=3D"box-sizing: border-box; line-height: inherit; margin: 0; =
+font-size: 14px; mso-line-height-alt: 14.399999999999999px;">&nbsp;</p><p s=
+tyle=3D"box-sizing: border-box; line-height: inherit; margin: 0; font-size:=
+ 14px; mso-line-height-alt: 16.8px;"><span style=3D"box-sizing: border-box;=
+ word-break: break-word; font-size: 14px;"><strong style=3D"box-sizing: bor=
+der-box;">Anything</strong></span></p><p style=3D"box-sizing: border-box; l=
+ine-height: inherit; margin: 0; font-size: 14px; mso-line-height-alt: 16.8p=
+x;"><span style=3D"box-sizing: border-box; word-break: break-word; font-siz=
+e: 14px;">Your AI product engineer</span></p><p style=3D"box-sizing: border=
+-box; line-height: inherit; margin: 0; font-size: 14px; mso-line-height-alt=
+: 16.8px;"> <span style=3D"box-sizing: border-box; word-break: break-word; =
+font-size: 14px;"><a href=3D"https://swe01.safelinks.protection.outlook.com=
+/?url=3Dhttps%3A%2F%2Flinks.wellfound.com%2Fs%2Fc%2FGRz8jSqPnlrBtaogXOie61k=
+9JFe-vKnELbxswM7-5PZfoyZfXxBxjaxUlMI_4u8H7-I_MsOLHy2w8x4EmMtM9s8rcbB0JT3AGU=
+TmvZTH68RU6tUu1PDgGN0Z_kKswrknpZrkeS0dVqDvQDb4Gbu2yhslhA1rbBw-2e8uHLnWpeqp0=
+pEY6ofwBYVf4I1ZzaXGmKwW7j4nzVX0AM6aC1W_uqrwUGYmZ8366v822xxyfKfCOslWkLZ-mh9z=
+D56iuSwkcEjJP0LksQuHzyQXU5HkvKkbr9SDFsp5liBWOGuweIuXo5EQXWjJpSerPV-SNqRFDXO=
+SSSDaS8-vZRMdn9Lwh3nYvKFBd5MMdkQIf-hpnLng7za3waNC00ZOvs_dTv97KNQZS_9UdBUTe1=
+RTpbWyBs06RKHie-hHRYa_9ELKmrKaX0RRKJyB5fvfh3luMeTvGg0bMNzurOtlakVbIjt_8Y0WS=
+7jnYaKYh7wtUYVM-nPNx8es3z7TlgyU49zeMEAuPUPe5A%2FJLmHOSvv5UQmmjHijtDlYS03hG6=
+qUKLm%2F16&amp;data=3D05%7C02%7C%7C82605745a55e4e8e660508de4ed8823f%7C84df9=
+e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C639034888959185422%7CUnknown%7CTWFpbG=
+Zsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiT=
+WFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&amp;sdata=3DTPdkvwmVnpnp3ml0Os%2Bdoq9A=
+lVXCGhkiN11jsa9poio%3D&amp;reserved=3D0" originalsrc=3D"https://links.wellf=
+ound.com/s/c/GRz8jSqPnlrBtaogXOie61k9JFe-vKnELbxswM7-5PZfoyZfXxBxjaxUlMI_4u=
+8H7-I_MsOLHy2w8x4EmMtM9s8rcbB0JT3AGUTmvZTH68RU6tUu1PDgGN0Z_kKswrknpZrkeS0dV=
+qDvQDb4Gbu2yhslhA1rbBw-2e8uHLnWpeqp0pEY6ofwBYVf4I1ZzaXGmKwW7j4nzVX0AM6aC1W_=
+uqrwUGYmZ8366v822xxyfKfCOslWkLZ-mh9zD56iuSwkcEjJP0LksQuHzyQXU5HkvKkbr9SDFsp=
+5liBWOGuweIuXo5EQXWjJpSerPV-SNqRFDXOSSSDaS8-vZRMdn9Lwh3nYvKFBd5MMdkQIf-hpnL=
+ng7za3waNC00ZOvs_dTv97KNQZS_9UdBUTe1RTpbWyBs06RKHie-hHRYa_9ELKmrKaX0RRKJyB5=
+fvfh3luMeTvGg0bMNzurOtlakVbIjt_8Y0WS7jnYaKYh7wtUYVM-nPNx8es3z7TlgyU49zeMEAu=
+PUPe5A/JLmHOSvv5UQmmjHijtDlYS03hG6qUKLm/16" style=3D"box-sizing: border-box=
+; text-decoration: underline; color: #e63223;">See 7 open roles</a></span><=
+/p><p style=3D"box-sizing: border-box; line-height: inherit; margin: 0; fon=
+t-size: 14px; mso-line-height-alt: 14.399999999999999px;">&nbsp;</p><p styl=
+e=3D"box-sizing: border-box; line-height: inherit; margin: 0; font-size: 14=
+px; mso-line-height-alt: 16.8px;"><span style=3D"box-sizing: border-box; wo=
+rd-break: break-word; font-size: 14px;"><strong style=3D"box-sizing: border=
+-box;">Parallel Learning</strong></span></p><p style=3D"box-sizing: border-=
+box; line-height: inherit; margin: 0; font-size: 14px; mso-line-height-alt:=
+ 16.8px;"><span style=3D"box-sizing: border-box; word-break: break-word; fo=
+nt-size: 14px;">We are the first human-centered care solution for students =
+with learning differences</span></p><p style=3D"box-sizing: border-box; lin=
+e-height: inherit; margin: 0; font-size: 14px; mso-line-height-alt: 16.8px;=
+"><span style=3D"box-sizing: border-box; word-break: break-word; font-size:=
+ 14px;"><a href=3D"https://swe01.safelinks.protection.outlook.com/?url=3Dht=
+tps%3A%2F%2Flinks.wellfound.com%2Fs%2Fc%2FLTYvu8xSG8viwToueNnHYew08joRBJjMN=
+yJtp_oDK4RyZpyZ3SPpgolwGckxXWmdI-dnVBcoHonYZVUpjapgGiS_46pKnwnoYfiTYlpYb2DM=
+_qIGKP6MLOdEhFU6OGc3xYi1C3C9ggYB4cjiCcDichFiTWm0tVjV0eFk-VzwBASyfnBts9_UEM8=
+2Tph9hKf4TxWkw8D6RafcegBiZeSs3v7p3MD65tLvTi5uMZ0BE43dIHUIZ9GyFmSI7RmghT9SXD=
+waZAGGalm2PzCl0WlaGisgUJzrRZbO06EFChyWiVS4FNJjoUG-4cmQ9ZaYpKKaRj0mQWbRFN5Gh=
+jfcQCHO61QO17T5aNcQuYuHVbPn4dBnx35MJPnvQbgbjo2dCK7VUHhwIBdHAJc9NAdQISxKGd-q=
+so6Vp4dgp71WT2AL4mVwr6bmfMnQJ6lUanyu3u0O9zV9CecnXJ3yr3i9dxXWvT6mvbU4gueV_j2=
+B1_3F8mnX0KQpOsgVUsIfb3e-7lFy8VJVcce81UwgtFWBPtQ%2FV76viq5aQRt_frMICCtYKTva=
+8b8WGIoE%2F16&amp;data=3D05%7C02%7C%7C82605745a55e4e8e660508de4ed8823f%7C84=
+df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C639034888959197236%7CUnknown%7CTWF=
+pbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIj=
+oiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&amp;sdata=3DSjgn%2FUlWhf2qR%2F6fgbN=
+jucbKNq35a1RLR8NPVmPG4Nk%3D&amp;reserved=3D0" originalsrc=3D"https://links.=
+wellfound.com/s/c/LTYvu8xSG8viwToueNnHYew08joRBJjMNyJtp_oDK4RyZpyZ3SPpgolwG=
+ckxXWmdI-dnVBcoHonYZVUpjapgGiS_46pKnwnoYfiTYlpYb2DM_qIGKP6MLOdEhFU6OGc3xYi1=
+C3C9ggYB4cjiCcDichFiTWm0tVjV0eFk-VzwBASyfnBts9_UEM82Tph9hKf4TxWkw8D6RafcegB=
+iZeSs3v7p3MD65tLvTi5uMZ0BE43dIHUIZ9GyFmSI7RmghT9SXDwaZAGGalm2PzCl0WlaGisgUJ=
+zrRZbO06EFChyWiVS4FNJjoUG-4cmQ9ZaYpKKaRj0mQWbRFN5GhjfcQCHO61QO17T5aNcQuYuHV=
+bPn4dBnx35MJPnvQbgbjo2dCK7VUHhwIBdHAJc9NAdQISxKGd-qso6Vp4dgp71WT2AL4mVwr6bm=
+fMnQJ6lUanyu3u0O9zV9CecnXJ3yr3i9dxXWvT6mvbU4gueV_j2B1_3F8mnX0KQpOsgVUsIfb3e=
+-7lFy8VJVcce81UwgtFWBPtQ/V76viq5aQRt_frMICCtYKTva8b8WGIoE/16" style=3D"box-=
+sizing: border-box; text-decoration: underline; color: #e63223;">See 22 ope=
+n roles</a></span></p></div></div></td></tr> </table></td></tr></tbody></ta=
+ble></td></tr></tbody></table><table class=3D"row row-6" align=3D"center" w=
+idth=3D"100%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"pres=
+entation" style=3D"box-sizing: border-box; mso-table-lspace: 0; mso-table-r=
+space: 0;"><tbody style=3D"box-sizing: border-box;"><tr style=3D"box-sizing=
+: border-box;"><td style=3D"box-sizing: border-box;"><table class=3D"row-co=
+ntent stack" align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D=
+"0" role=3D"presentation" style=3D"box-sizing: border-box; mso-table-lspace=
+: 0; mso-table-rspace: 0; background-color: #fff; color: #000; width: 575px=
+; margin: 0 auto;" width=3D"575" bgcolor=3D"#fff"><tbody style=3D"box-sizin=
+g: border-box;"><tr style=3D"box-sizing: border-box;"><td class=3D"column c=
+olumn-1" width=3D"100%" style=3D"box-sizing: border-box; mso-table-lspace: =
+0; mso-table-rspace: 0; font-weight: 400; text-align: left; padding-bottom:=
+ 5px; padding-top: 5px; vertical-align: top;" align=3D"left" valign=3D"top"=
+><table class=3D"text_block block-1" width=3D"100%" border=3D"0" cellpaddin=
+g=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"box-sizing: border=
+-box; mso-table-lspace: 0; mso-table-rspace: 0; word-break: break-word;"><t=
+r style=3D"box-sizing: border-box;"><td class=3D"pad" style=3D"box-sizing: =
+border-box; padding-bottom: 5px; padding-left: 25px; padding-right: 10px; p=
+adding-top: 10px;"><div style=3D"box-sizing: border-box; font-family: sans-=
+serif;"><div class=3D"" style=3D"box-sizing: border-box; font-size: 12px; f=
+ont-family: Lucida Sans Unicode,Lucida Grande,Lucida Sans,Geneva,Verdana,sa=
+ns-serif; mso-line-height-alt: 14.399999999999999px; color: #000; line-heig=
+ht: 1.2;"><p style=3D"box-sizing: border-box; line-height: inherit; margin:=
+ 0; font-size: 14px; mso-line-height-alt: 16.8px;"><strong style=3D"box-siz=
+ing: border-box;"><span style=3D"box-sizing: border-box; word-break: break-=
+word; font-size: 16px;">Job Search Tip: Show you can build with AI, not jus=
+t talk about it</span></strong></p><p style=3D"box-sizing: border-box; line=
+-height: inherit; margin: 0; font-size: 14px; mso-line-height-alt: 16.8px;"=
+> <span style=3D"box-sizing: border-box; word-break: break-word; font-size:=
+ 14px;"><br style=3D"box-sizing: border-box;"> <a href=3D"https://swe01.saf=
+elinks.protection.outlook.com/?url=3Dhttps%3A%2F%2Flinks.wellfound.com%2Fs%=
+2Fc%2F2PHzlFZglA6uEMCYgs3X_QC5VtNP-SFcvp-y--U6vHamC8HK0J6zk3K7udKi_MXQSsFGE=
+kAZ0C2AAUAcjYIQz4xFMKNuVHE1tR4WZEi7R0iWv9eXHX57bVQ1eX5HjbEbQVi3qRcJOBqTLWmG=
+xHFJP1jEi9jR-boEzMdPksB8fWvOknVnUirdzfUiEsDG55WsgI8eNAzwuGkZczZ3Gh1tjJ1SSCp=
+rAOQfGZKmrvhGJh5Ketltn52K-IMHcaHolZTSPRXfNz9vCHoe2LMEeEL-rGODTPtlgGyGh-Kr8u=
+zBqG6OR-oOardSv95XWimHAPSWL8DMafEZG0Y3LRUuU6kj3KSJdNj193qfVPxHyPLWshTQkOEPh=
+su1v_8cfyWCRWercfgEIgmz2S25AnMWqFQ5YvfxVsz4No5sYDFv8KSp1VuSGDahNgdfhfZMRQKJ=
+ACNCHxgaSMWoT-0w6I_g5U4trjWNtBYzezsoAGbdow1xwCbJISl1wtYjjnjfWL8%2FKbGYUMs1W=
+DkawVoAsmZ98Qib5u7Ghd-G%2F16&amp;data=3D05%7C02%7C%7C82605745a55e4e8e660508=
+de4ed8823f%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C639034888959209472%=
+7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJ=
+XaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&amp;sdata=3Dt1qolbTm=
+QIADIsR1e6d2pd5q1xQ%2BT16XBac15WHthOA%3D&amp;reserved=3D0" originalsrc=3D"h=
+ttps://links.wellfound.com/s/c/2PHzlFZglA6uEMCYgs3X_QC5VtNP-SFcvp-y--U6vHam=
+C8HK0J6zk3K7udKi_MXQSsFGEkAZ0C2AAUAcjYIQz4xFMKNuVHE1tR4WZEi7R0iWv9eXHX57bVQ=
+1eX5HjbEbQVi3qRcJOBqTLWmGxHFJP1jEi9jR-boEzMdPksB8fWvOknVnUirdzfUiEsDG55WsgI=
+8eNAzwuGkZczZ3Gh1tjJ1SSCprAOQfGZKmrvhGJh5Ketltn52K-IMHcaHolZTSPRXfNz9vCHoe2=
+LMEeEL-rGODTPtlgGyGh-Kr8uzBqG6OR-oOardSv95XWimHAPSWL8DMafEZG0Y3LRUuU6kj3KSJ=
+dNj193qfVPxHyPLWshTQkOEPhsu1v_8cfyWCRWercfgEIgmz2S25AnMWqFQ5YvfxVsz4No5sYDF=
+v8KSp1VuSGDahNgdfhfZMRQKJACNCHxgaSMWoT-0w6I_g5U4trjWNtBYzezsoAGbdow1xwCbJIS=
+l1wtYjjnjfWL8/KbGYUMs1WDkawVoAsmZ98Qib5u7Ghd-G/16" target=3D"_blank" style=
+=3D"box-sizing: border-box; text-decoration: underline; color: #e63223;" re=
+l=3D"noopener">Chase Johnson</a>, now at <a href=3D"https://swe01.safelinks=
+.protection.outlook.com/?url=3Dhttps%3A%2F%2Flinks.wellfound.com%2Fs%2Fc%2F=
+nCpiI0RpnHeUcXdVCi1TN8ksUfqGy_OGXq8EXImrgXIF7IWSjYpokK9s5KdapmMM4Ctr7QjT_nh=
+k3X2trBRLkmVJNSHHPnAxkTsH4RS5GLFRIhgDH9ikKVagdlpy1i1p458NxeBhTLeGxkZCa77t9o=
+UPZKC-7lG7zaFeviFn2yLeIXwgj5Ta4ooTZxeg7P7lKsun-TuwDeeoZ8i8VNud1mnTGzO41x5Rf=
+nTMr0XkvCwwpmuc1qaeZ1R1OVJre5k9GQT2FnIJhp_Ds-yCjy8QitXy-2GeJz0eYryf0o2p-pfN=
+DmcZ0JdCz8LuD2k_mOBX-x4Ho3AWT6BPP8XS1RJilK0hOd8crQNxpEUAKfXbd5CpUCWtdgvzVzF=
+2bZ5dTKnLDJUY-o97uXG1NV9m7ck3Z0u_MzK9JvruVCcBInzWKxXuLFOLp7IrXvsFDIUgF_Ohvm=
+1Iaxnsk8zzJVhKojotvuPvbiO4Iam7kk_A4o_cTrablUzhvKUrKZzJXI8%2FsKacbsMftZbcZgY=
+EBLuk7bg-TW-Kzx8V%2F16&amp;data=3D05%7C02%7C%7C82605745a55e4e8e660508de4ed8=
+823f%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C639034888959221412%7CUnkn=
+own%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zM=
+iIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&amp;sdata=3DYxlJrHiTZ566dG=
+u5sZV5Cv7swlGiHhaXDbcCqWjeQfY%3D&amp;reserved=3D0" originalsrc=3D"https://l=
+inks.wellfound.com/s/c/nCpiI0RpnHeUcXdVCi1TN8ksUfqGy_OGXq8EXImrgXIF7IWSjYpo=
+kK9s5KdapmMM4Ctr7QjT_nhk3X2trBRLkmVJNSHHPnAxkTsH4RS5GLFRIhgDH9ikKVagdlpy1i1=
+p458NxeBhTLeGxkZCa77t9oUPZKC-7lG7zaFeviFn2yLeIXwgj5Ta4ooTZxeg7P7lKsun-TuwDe=
+eoZ8i8VNud1mnTGzO41x5RfnTMr0XkvCwwpmuc1qaeZ1R1OVJre5k9GQT2FnIJhp_Ds-yCjy8Qi=
+tXy-2GeJz0eYryf0o2p-pfNDmcZ0JdCz8LuD2k_mOBX-x4Ho3AWT6BPP8XS1RJilK0hOd8crQNx=
+pEUAKfXbd5CpUCWtdgvzVzF2bZ5dTKnLDJUY-o97uXG1NV9m7ck3Z0u_MzK9JvruVCcBInzWKxX=
+uLFOLp7IrXvsFDIUgF_Ohvm1Iaxnsk8zzJVhKojotvuPvbiO4Iam7kk_A4o_cTrablUzhvKUrKZ=
+zJXI8/sKacbsMftZbcZgYEBLuk7bg-TW-Kzx8V/16" target=3D"_blank" style=3D"box-s=
+izing: border-box; text-decoration: underline; color: #e63223;" rel=3D"noop=
+ener">Primer</a> after scaling <a href=3D"https://swe01.safelinks.protectio=
+n.outlook.com/?url=3Dhttps%3A%2F%2Flinks.wellfound.com%2Fs%2Fc%2FLyd-0YU5u1=
+ErChEj0eJSzpmuontSKU2M1XNGyy3gXW2Nrd2qh5PLLHn2qkfPpgjSuJlIUMpgz56Qbz1IkihB8=
+_LXpvTafYprxmNhZKtKR-U71tT9pchkKFJwHk1G_vcum3lA_43oJiwOTgT8XcWksT3s9z3C3rN0=
+zJtIREVvI-0cAGygHvxGKsvvYcLhr8LvgetJfs--fE64COqn7bYzPFbKNry70iiiuNFwDIOxyRt=
+9DWTDqJZs9yHrGybSj5cS6WrlKVOyJmBWx1kjv3wgPwM6eGUvRNHYMfrvZBj6c6nSjUZoy2ghw9=
+e_uq9DNBePAmoNmF2ouuB7iNJGRZ5JV5206stu-menBvfMsFEeYC6rzrQrpGb374hrUPMw8O40a=
+F7nrS5cwZnhU5FDMGmbo5yfh_qta_7fAB4dC1TLS52o5EaYEaLUEPbXrAiE_u1E8u_gDBIh2Wy5=
+n8C3ohGyGFsW2BmGG0DDNNPN7lNxz_ie9yw7_T8%2Fz_oxkIG-cUfI_WVVro5FagSyZAtRPA22%=
+2F16&amp;data=3D05%7C02%7C%7C82605745a55e4e8e660508de4ed8823f%7C84df9e7fe9f=
+640afb435aaaaaaaaaaaa%7C1%7C0%7C639034888959233311%7CUnknown%7CTWFpbGZsb3d8=
+eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCI=
+sIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&amp;sdata=3DO8iP%2FR9zHfrDu%2BYo4H93nHPGY65R=
+togNaq0pe1MLu9I%3D&amp;reserved=3D0" originalsrc=3D"https://links.wellfound=
+.com/s/c/Lyd-0YU5u1ErChEj0eJSzpmuontSKU2M1XNGyy3gXW2Nrd2qh5PLLHn2qkfPpgjSuJ=
+lIUMpgz56Qbz1IkihB8_LXpvTafYprxmNhZKtKR-U71tT9pchkKFJwHk1G_vcum3lA_43oJiwOT=
+gT8XcWksT3s9z3C3rN0zJtIREVvI-0cAGygHvxGKsvvYcLhr8LvgetJfs--fE64COqn7bYzPFbK=
+Nry70iiiuNFwDIOxyRt9DWTDqJZs9yHrGybSj5cS6WrlKVOyJmBWx1kjv3wgPwM6eGUvRNHYMfr=
+vZBj6c6nSjUZoy2ghw9e_uq9DNBePAmoNmF2ouuB7iNJGRZ5JV5206stu-menBvfMsFEeYC6rzr=
+QrpGb374hrUPMw8O40aF7nrS5cwZnhU5FDMGmbo5yfh_qta_7fAB4dC1TLS52o5EaYEaLUEPbXr=
+AiE_u1E8u_gDBIh2Wy5n8C3ohGyGFsW2BmGG0DDNNPN7lNxz_ie9yw7_T8/z_oxkIG-cUfI_WVV=
+ro5FagSyZAtRPA22/16" target=3D"_blank" style=3D"box-sizing: border-box; tex=
+t-decoration: underline; color: #e63223;" rel=3D"noopener">Replit</a>'s tea=
+m, says recruiters don't want to hear you explain how models work. They wan=
+t proof you built something that solved a real problem.</span> </p><p style=
+=3D"box-sizing: border-box; line-height: inherit; margin: 0; font-size: 14p=
+x; mso-line-height-alt: 16.8px;"><span style=3D"box-sizing: border-box; wor=
+d-break: break-word; font-size: 14px;"><br style=3D"box-sizing: border-box;=
+">Chase's take: &quot;If you're not using AI to tinker and solve problems i=
+n your daily work, you're probably behind.&quot;</span></p><p style=3D"box-=
+sizing: border-box; line-height: inherit; margin: 0; font-size: 14px; mso-l=
+ine-height-alt: 16.8px;"><span style=3D"box-sizing: border-box; word-break:=
+ break-word; font-size: 14px;"><br style=3D"box-sizing: border-box;">He's a=
+ recruiter, not an engineer. He built an equity calculator because he kept =
+needing one. </span></p><p style=3D"box-sizing: border-box; line-height: in=
+herit; margin: 0; font-size: 14px; mso-line-height-alt: 14.399999999999999p=
+x;">&nbsp;</p><p style=3D"box-sizing: border-box; line-height: inherit; mar=
+gin: 0; font-size: 14px; mso-line-height-alt: 16.8px;"><span style=3D"box-s=
+izing: border-box; word-break: break-word; font-size: 14px;">That's the bar=
+: you saw a problem, you learned enough to fix it, you shipped something. T=
+he companies hiring right now want people who already think that way.</span=
+></p><p style=3D"box-sizing: border-box; line-height: inherit; margin: 0; f=
+ont-size: 14px; mso-line-height-alt: 16.8px;"><span style=3D"box-sizing: bo=
+rder-box; word-break: break-word; font-size: 14px;"><br style=3D"box-sizing=
+: border-box;"> Watch Chase's full Ask a Recruiter session <a href=3D"https=
+://swe01.safelinks.protection.outlook.com/?url=3Dhttps%3A%2F%2Flinks.wellfo=
+und.com%2Fs%2Fc%2FiIenYRXKNanO8o3anvYVIXyfC7JV_FYdXB7CHhhTTerV14hxZ61iGuc7E=
+T6EH7eF47qtttki3ErX60u-3cCvmaXdhyfyGYjfAIuseZQUUw0EAz1hIGc-ln4vmAwT2E42SmG4=
+oY9e6nqNM4ydEGQeSLeWB-8gtbWOp7pDvGGzph31PU74s6Lk3HXMCKaA8y3WDEgoPbl7D7tPRlA=
+CO_zxCov5cGJdb3-ibtwgpSKPIOnoBHoGeMInfDreFkCs_TEEe2u558Tsu1ugIlmccFMmhK_cEN=
+VPZacKFs_L8v5Zdc0bzqxZ5J8NRTLm64xW0oZgxqxTL2HYPlgTH0-S5ZxbFkszFsc_93T-hn5eI=
+o-4Ten3S4bGpKUdvx4a9_1fiRIn0RGqpxpSlYoGmdm7vDOptEn6fR5wDjoTfaApAvomudoY2N7Y=
+wj6EYfJUhLEujqXJRVk_P03vmfzF9mObTZ-xFl2l%2F5GsUuptSTtp0diD_8hBEjzjxnTgGPf8_=
+%2F16&amp;data=3D05%7C02%7C%7C82605745a55e4e8e660508de4ed8823f%7C84df9e7fe9=
+f640afb435aaaaaaaaaaaa%7C1%7C0%7C639034888959245253%7CUnknown%7CTWFpbGZsb3d=
+8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbC=
+IsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&amp;sdata=3DokJSaEasg%2BV1qi5EIz%2FfziIqAvg=
+zKiBOhbnzcccYrFE%3D&amp;reserved=3D0" originalsrc=3D"https://links.wellfoun=
+d.com/s/c/iIenYRXKNanO8o3anvYVIXyfC7JV_FYdXB7CHhhTTerV14hxZ61iGuc7ET6EH7eF4=
+7qtttki3ErX60u-3cCvmaXdhyfyGYjfAIuseZQUUw0EAz1hIGc-ln4vmAwT2E42SmG4oY9e6nqN=
+M4ydEGQeSLeWB-8gtbWOp7pDvGGzph31PU74s6Lk3HXMCKaA8y3WDEgoPbl7D7tPRlACO_zxCov=
+5cGJdb3-ibtwgpSKPIOnoBHoGeMInfDreFkCs_TEEe2u558Tsu1ugIlmccFMmhK_cENVPZacKFs=
+_L8v5Zdc0bzqxZ5J8NRTLm64xW0oZgxqxTL2HYPlgTH0-S5ZxbFkszFsc_93T-hn5eIo-4Ten3S=
+4bGpKUdvx4a9_1fiRIn0RGqpxpSlYoGmdm7vDOptEn6fR5wDjoTfaApAvomudoY2N7Ywj6EYfJU=
+hLEujqXJRVk_P03vmfzF9mObTZ-xFl2l/5GsUuptSTtp0diD_8hBEjzjxnTgGPf8_/16" targe=
+t=3D"_blank" style=3D"box-sizing: border-box; text-decoration: underline; c=
+olor: #e63223;" rel=3D"noopener">here.</a><br style=3D"box-sizing: border-b=
+ox;"></span></p><p style=3D"box-sizing: border-box; line-height: inherit; m=
+argin: 0; font-size: 14px; mso-line-height-alt: 16.8px;"><span style=3D"box=
+-sizing: border-box; word-break: break-word; font-size: 14px;"><br style=3D=
+"box-sizing: border-box;"> </span><span style=3D"box-sizing: border-box; wo=
+rd-break: break-word; font-size: 14px;"><strong style=3D"box-sizing: border=
+-box;">Next week:</strong> Interview Red &amp; Green Flags for Engineers, D=
+ata Scientists &amp; PMs with <a href=3D"https://swe01.safelinks.protection=
+.outlook.com/?url=3Dhttps%3A%2F%2Flinks.wellfound.com%2Fs%2Fc%2FcLWttCAUhvo=
+-_DAzjL2soZIG8qmKDE8bxChrsWNhbdiuxfwxj_L6g-UOHciv44-on43lU8rVG6j00vt3bBu8vk=
+zEjRZvdhdy9F-r512MOld059MjurjNsFCf0encp2pYPg12amOUcTlmR4eofeDIWpXaggmxBETe6=
+u3rvQh_sVR-Ol4-YGLNZqv-5VLqPSKs_i9rmm79To81qK443BvTG_Z9clcFbdf0ZGA0ZM6iYNFp=
+8X0Jjy6CNCou8v2vyqWh8iUY_-r-dFAIKCx9kTIIHy7lr9QWeuJA4jpgBPxPtSR72xekZLe6cGq=
+BUnudEK3uylLFSvl_S7LTidU8e1g0tdwbY1ZU464mAk0KCpTfcONje8W1tLAG4xZuCv--KT65Z6=
+2AK--kRsXpyhP2zpGPtHDUC2sGlL32di9KBZkDdj-o4pCE4fUfVza-7dlG54kEDjh2fOY2X5S5h=
+Bvesn0thZ1nbqztwOUi8Mpy_YJ4c_tjAmNbDzVL7vE25PUaKg%2Fkd3yIo_iOgEENNitsFWh9wm=
+tNTXWOHgg%2F16&amp;data=3D05%7C02%7C%7C82605745a55e4e8e660508de4ed8823f%7C8=
+4df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C639034888959261015%7CUnknown%7CTW=
+FpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOI=
+joiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&amp;sdata=3DPnk3puhoSY9%2BDbC6uFcp=
+ok3IglNM2TYLJcAMxd42k8I%3D&amp;reserved=3D0" originalsrc=3D"https://links.w=
+ellfound.com/s/c/cLWttCAUhvo-_DAzjL2soZIG8qmKDE8bxChrsWNhbdiuxfwxj_L6g-UOHc=
+iv44-on43lU8rVG6j00vt3bBu8vkzEjRZvdhdy9F-r512MOld059MjurjNsFCf0encp2pYPg12a=
+mOUcTlmR4eofeDIWpXaggmxBETe6u3rvQh_sVR-Ol4-YGLNZqv-5VLqPSKs_i9rmm79To81qK44=
+3BvTG_Z9clcFbdf0ZGA0ZM6iYNFp8X0Jjy6CNCou8v2vyqWh8iUY_-r-dFAIKCx9kTIIHy7lr9Q=
+WeuJA4jpgBPxPtSR72xekZLe6cGqBUnudEK3uylLFSvl_S7LTidU8e1g0tdwbY1ZU464mAk0KCp=
+TfcONje8W1tLAG4xZuCv--KT65Z62AK--kRsXpyhP2zpGPtHDUC2sGlL32di9KBZkDdj-o4pCE4=
+fUfVza-7dlG54kEDjh2fOY2X5S5hBvesn0thZ1nbqztwOUi8Mpy_YJ4c_tjAmNbDzVL7vE25PUa=
+Kg/kd3yIo_iOgEENNitsFWh9wmtNTXWOHgg/16" target=3D"_blank" rel=3D"noopener" =
+style=3D"box-sizing: border-box; text-decoration: underline; color: #e63223=
+;">Matt Glickman</a> (Live Q&amp;A) =C2=B7 Jan 13, 4 PM ET =E2=86=92 <a hre=
+f=3D"https://swe01.safelinks.protection.outlook.com/?url=3Dhttps%3A%2F%2Fli=
+nks.wellfound.com%2Fs%2Fc%2FYsdM7KBkKKdz7X9JK-x7J89X4UJB4P6q--FElmhpmR6T_lQ=
+GReYXxz9aGTXgxwbdd_08zgkexEPY4YkNQYsR11nrKbzMqgLfVumVvKs66V2U39Ftl4LPBP-3Fw=
+7STTZBqFh95Uir6fIMS8agVsG-rFU6iAi0iTgnHvzbcgKZuuE7vNfPScI80uqKTROQm7RPEn2P2=
+swKJzLl4DTU4gWpQFPtGAVm_xA44rcS2RhkJB7HpVs-Bzk9ueJ6pKc9Gu1L6lOAmk9yuVEMnuCb=
+Mx5f3OUArMEjDk-T1x_wNdad1ojXceqnSGdgiQJy2TOd4Bk6L-lzZXXhRaDgJ5XY0Fdl8nUuoYV=
+r1VCaOK_rZO417T3afHYGliW-Vf_N2dYNCNqamcJJVFDQ2WvNcH_FLlM5TJ4CzDmJ7fSbPz0BR1=
+Lh8Jz_Hpf6wUrBZLVKGiXRjCK6E4LSOOnQtTqnBTMxNLSvXCbKtksxXizt_icgOajZGa5kJFcD3=
+R7Z5OnhfsrfqU0VV3U%2FfkrxxkezyNEo3GDvNohIw9kSKZb4JF6l%2F16&amp;data=3D05%7C=
+02%7C%7C82605745a55e4e8e660508de4ed8823f%7C84df9e7fe9f640afb435aaaaaaaaaaaa=
+%7C1%7C0%7C639034888959273710%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRyd=
+WUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0=
+%7C%7C%7C&amp;sdata=3DjLlJGOKPayYe%2B0NPkRJ%2BYiz4nJOoQ2UlKaGJ5eW34t4%3D&am=
+p;reserved=3D0" originalsrc=3D"https://links.wellfound.com/s/c/YsdM7KBkKKdz=
+7X9JK-x7J89X4UJB4P6q--FElmhpmR6T_lQGReYXxz9aGTXgxwbdd_08zgkexEPY4YkNQYsR11n=
+rKbzMqgLfVumVvKs66V2U39Ftl4LPBP-3Fw7STTZBqFh95Uir6fIMS8agVsG-rFU6iAi0iTgnHv=
+zbcgKZuuE7vNfPScI80uqKTROQm7RPEn2P2swKJzLl4DTU4gWpQFPtGAVm_xA44rcS2RhkJB7Hp=
+Vs-Bzk9ueJ6pKc9Gu1L6lOAmk9yuVEMnuCbMx5f3OUArMEjDk-T1x_wNdad1ojXceqnSGdgiQJy=
+2TOd4Bk6L-lzZXXhRaDgJ5XY0Fdl8nUuoYVr1VCaOK_rZO417T3afHYGliW-Vf_N2dYNCNqamcJ=
+JVFDQ2WvNcH_FLlM5TJ4CzDmJ7fSbPz0BR1Lh8Jz_Hpf6wUrBZLVKGiXRjCK6E4LSOOnQtTqnBT=
+MxNLSvXCbKtksxXizt_icgOajZGa5kJFcD3R7Z5OnhfsrfqU0VV3U/fkrxxkezyNEo3GDvNohIw=
+9kSKZb4JF6l/16" target=3D"_blank" style=3D"box-sizing: border-box; text-dec=
+oration: underline; color: #e63223;" rel=3D"noopener">Sign up</a><strong st=
+yle=3D"box-sizing: border-box;"> </strong></span> </p></div></div></td></tr=
+></table></td></tr></tbody></table></td></tr></tbody></table><table class=
+=3D"row row-7" align=3D"center" width=3D"100%" border=3D"0" cellpadding=3D"=
+0" cellspacing=3D"0" role=3D"presentation" style=3D"box-sizing: border-box;=
+ mso-table-lspace: 0; mso-table-rspace: 0;"><tbody style=3D"box-sizing: bor=
+der-box;"><tr style=3D"box-sizing: border-box;"><td style=3D"box-sizing: bo=
+rder-box;"><table class=3D"row-content stack" align=3D"center" border=3D"0"=
+ cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"box-siz=
+ing: border-box; mso-table-lspace: 0; mso-table-rspace: 0; background-color=
+: #fff; color: #000; border-radius: 0; border-top: 1px dotted transparent; =
+width: 575px; margin: 0 auto;" width=3D"575" bgcolor=3D"#fff"><tbody style=
+=3D"box-sizing: border-box;"><tr style=3D"box-sizing: border-box;"><td clas=
+s=3D"column column-1" width=3D"100%" style=3D"box-sizing: border-box; mso-t=
+able-lspace: 0; mso-table-rspace: 0; font-weight: 400; text-align: left; pa=
+dding-bottom: 5px; padding-top: 15px; vertical-align: top;" align=3D"left" =
+valign=3D"top"><table class=3D"video_block block-1" width=3D"100%" border=
+=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"b=
+ox-sizing: border-box; mso-table-lspace: 0; mso-table-rspace: 0;"><tr style=
+=3D"box-sizing: content-box;"><td class=3D"pad" style=3D"box-sizing: conten=
+t-box; width: 100%; padding-left: 0; padding-right: 0;" width=3D"100%"><!--=
+[if (mso)|(IE)]><table width=3D"575" align=3D"center" cellpadding=3D"0" cel=
+lspacing=3D"0" role=3D"presentation"><tr><td><![endif]--><div class=3D"size=
+r" align=3D"center" style=3D"box-sizing: content-box; max-width: 575px; min=
+-width: 320px;"><!--[if !vml]><!--> <a class=3D"video-preview" tabindex=3D"=
+0" href=3D"https://swe01.safelinks.protection.outlook.com/?url=3Dhttps%3A%2=
+F%2Flinks.wellfound.com%2Fs%2Fc%2FXQzAm2Yj0pKBdBxpDPYRJq-Qcb3V6vL0sL9krNFx5=
+cwardE3L2scc4iuYGLsm03vYX6jgYhxvDE6zFqvCM04TJ8RLJQ4TxLjzHNFts_oDNaI5sszJfC-=
+I4OJe0l4ZDVswXwDqRCJS7ADpACxx8Ab90Fgoo9iJQkSwId-wmXe8q9Ie7D39D0Nomzz-uzCeP7=
+4P28EexzIVdJo3iYrSrjZls0MqpRoviAh0B60BE5SWqgwDJYjXcmt-F2Yjd7gJy_T9Ee5VAdeBk=
+KyCtBNTGFncsPz6pCEwU0RpbQLYw1mKxesIR5yptTp6lJOZdUQncwbsXEb9hoRva3lg3JrWpbsB=
+hQLY_br2wSeYiwrysCQTEvlDiKlJljsRcOitgwH8OJ_4t7mxTYMXb0AqlL9LjnKeBIR5UvTztG7=
+hafn7Bu7Is5wl3oCWWgTLk9g5sTwboU0lb7VRw7mVje0DQuHJIQjgSJydvpFgRoxyAF_NY7DHfa=
+7xSkf8-qJY34CfJqH5haIFUg%2FJqAdXBJLCina1HvFC3jZWCQ69e3y6bD7%2F16&amp;data=
+=3D05%7C02%7C%7C82605745a55e4e8e660508de4ed8823f%7C84df9e7fe9f640afb435aaaa=
+aaaaaaaa%7C1%7C0%7C639034888959286163%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hc=
+GkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3=
+D%3D%7C0%7C%7C%7C&amp;sdata=3D4UBRibYZkSGNCwNxYGWG9fN2eJI0AQCU2X6oVd%2Byewg=
+%3D&amp;reserved=3D0" originalsrc=3D"https://links.wellfound.com/s/c/XQzAm2=
+Yj0pKBdBxpDPYRJq-Qcb3V6vL0sL9krNFx5cwardE3L2scc4iuYGLsm03vYX6jgYhxvDE6zFqvC=
+M04TJ8RLJQ4TxLjzHNFts_oDNaI5sszJfC-I4OJe0l4ZDVswXwDqRCJS7ADpACxx8Ab90Fgoo9i=
+JQkSwId-wmXe8q9Ie7D39D0Nomzz-uzCeP74P28EexzIVdJo3iYrSrjZls0MqpRoviAh0B60BE5=
+SWqgwDJYjXcmt-F2Yjd7gJy_T9Ee5VAdeBkKyCtBNTGFncsPz6pCEwU0RpbQLYw1mKxesIR5ypt=
+Tp6lJOZdUQncwbsXEb9hoRva3lg3JrWpbsBhQLY_br2wSeYiwrysCQTEvlDiKlJljsRcOitgwH8=
+OJ_4t7mxTYMXb0AqlL9LjnKeBIR5UvTztG7hafn7Bu7Is5wl3oCWWgTLk9g5sTwboU0lb7VRw7m=
+Vje0DQuHJIQjgSJydvpFgRoxyAF_NY7DHfa7xSkf8-qJY34CfJqH5haIFUg/JqAdXBJLCina1Hv=
+FC3jZWCQ69e3y6bD7/16" target=3D"_blank" title=3D"Job Search Tip: " if=3D"" =
+you?re=3D"" not=3D"" using=3D"" ai=3D"" to=3D"" tinker=3D"" and=3D"" solve=
+=3D"" problems=3D"" in=3D"" your=3D"" work,=3D"" behind.??=3D"" style=3D"bo=
+x-sizing: content-box; background-color: #5b5f66; background-image: radial-=
+gradient(circle at center, #5b5f66, #1d1f21); display: block; text-decorati=
+on: none;"><div style=3D"box-sizing: content-box;"><table cellpadding=3D"0"=
+ cellspacing=3D"0" border=3D"0" width=3D"100%" background=3D"https://img.yo=
+utube.com/vi/fSTMt3r7sgc/maxresdefault.jpg" role=3D"presentation" style=3D"=
+mso-table-lspace: 0; mso-table-rspace: 0; box-sizing: content-box; backgrou=
+nd-image: url(https://img.youtube.com/vi/fSTMt3r7sgc/maxresdefault.jpg); ba=
+ckground-size: cover; background-position: center; min-height: 180px; min-w=
+idth: 320px;"><tr style=3D"box-sizing: content-box;"><td width=3D"25%" styl=
+e=3D"box-sizing: content-box;"><img src=3D"https://app-rsrc.getbee.io/publi=
+c/resources/multiparser/video_block/video_ratio_16-9.gif" width=3D"100%" bo=
+rder=3D"0" alt=3D"" style=3D"display: block; box-sizing: content-box; heigh=
+t: auto; opacity: 0; visibility: hidden;" height=3D"auto"></td><td width=3D=
+"50%" align=3D"center" valign=3D"middle" style=3D"box-sizing: content-box; =
+vertical-align: middle;"><img src=3D"https://app-rsrc.getbee.io/public/reso=
+urces/components/widgetBar/video-content-icon-sets/light/type-01.png" width=
+=3D"65" height=3D"auto" alt=3D"Play" style=3D"display: block; height: auto;=
+ box-sizing: content-box;"></td><td width=3D"25%" style=3D"box-sizing: cont=
+ent-box;">&nbsp;</td></tr></table></div></a><!--<![endif]--><!--[if vml]><v=
+:group xmlns:v=3D"urn:schemas-microsoft-com:vml" xmlns:w=3D"urn:schemas-mic=
+rosoft-com:office:word" coordsize=3D"575,323" coordorigin=3D"0,0" href=3D"h=
+ttps://links.wellfound.com/s/c/zTb3NNC8I0gaTkgU7DpYtNlLZXxtkFH7j5D2gWfwbDMF=
+L6CDAAdXcqVPt7lbZYwq9GHXBzuKre2-fL5NOVX9sahb5_DmlTzb9IXD_kr2ZnsfcWHZ8Q9kWKY=
+XPbYH6k7WYvY3wRAIL6LLdOKZzqNshy1zxd50IRWoVjVpP22ZI_hTi0Aj3pjbYhFlL_CPGmb2JR=
+o13cPQCJUb7o4BrekWwvDvCzleEUUTAPVK2JWTYAhxNjhbyG419CLJX1IXe54EJZADDFPmCev8W=
+mjIyi3qviOFvFvKXmoAuxiV-td3ulO-C3QSBjahcIfdEav9UEKlDWHLfCD__f61lq_y7LoEp38h=
+VamwI_Rm_kUQyWZ5F4a3vuD3cBKfu-auaOO1eUaFxqko5HOFRLxhxq0is44SvlrxoMuIoqBVKwe=
+o6W2DFgCXroF-9COIcl3dEV-JURiXr__zopd9WVwmhjoit2AngeZohFThJCwd23pefmJeaxDpwq=
+ylOBX-BSOWiBSjG3TUkK8/muWAGPmROzxIkk9QH8Jl1P9mivtVUH4m/16" style=3D"width:5=
+75px;height:323px;"> <v:rect fill=3D"t" stroked=3D"f" style=3D"position:abs=
+olute;width:575;height:323;"> <v:fill src=3D"https://img.youtube.com/vi/fST=
+Mt3r7sgc/maxresdefault.jpg" type=3D"frame"/> </v:rect> <v:oval fill=3D"t" s=
+trokecolor=3D"#ffffff" strokeweight=3D"3px" style=3D"position:absolute;left=
+:255;top:129;width:65;height:65"> <v:fill color=3D"#ffffff" opacity=3D"100%=
+"/> </v:oval> <v:shape coordsize=3D"24,32" path=3D"m,l,32,24,16,xe" fillcol=
+or=3D"#000000" stroked=3D"f" style=3D"position:absolute;left:278;top:145;wi=
+dth:23;height:33;"/> </v:group><![endif]--></div><!--[if (mso)|(IE)]></td><=
+/tr></table><![endif]--></td></tr></table></td></tr></tbody></table></td></=
+tr></tbody></table><table class=3D"row row-8" align=3D"center" width=3D"100=
+%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" s=
+tyle=3D"box-sizing: border-box; mso-table-lspace: 0; mso-table-rspace: 0;">=
+<tbody style=3D"box-sizing: border-box;"><tr style=3D"box-sizing: border-bo=
+x;"><td style=3D"box-sizing: border-box;"><table class=3D"row-content stack=
+" align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D=
+"presentation" style=3D"box-sizing: border-box; mso-table-lspace: 0; mso-ta=
+ble-rspace: 0; background-color: #fff; color: #000; width: 575px; margin: 0=
+ auto;" width=3D"575" bgcolor=3D"#fff"><tbody style=3D"box-sizing: border-b=
+ox;"><tr style=3D"box-sizing: border-box;"><td class=3D"column column-1" wi=
+dth=3D"100%" style=3D"box-sizing: border-box; mso-table-lspace: 0; mso-tabl=
+e-rspace: 0; font-weight: 400; text-align: left; padding-bottom: 5px; paddi=
+ng-top: 5px; vertical-align: top;" align=3D"left" valign=3D"top"><table cla=
+ss=3D"text_block block-1" width=3D"100%" border=3D"0" cellpadding=3D"0" cel=
+lspacing=3D"0" role=3D"presentation" style=3D"box-sizing: border-box; mso-t=
+able-lspace: 0; mso-table-rspace: 0; word-break: break-word;"><tr style=3D"=
+box-sizing: border-box;"><td class=3D"pad" style=3D"box-sizing: border-box;=
+ padding-bottom: 5px; padding-left: 25px; padding-right: 10px; padding-top:=
+ 10px;"><div style=3D"box-sizing: border-box; font-family: sans-serif;"><di=
+v class=3D"" style=3D"box-sizing: border-box; font-size: 12px; font-family:=
+ Lucida Sans Unicode,Lucida Grande,Lucida Sans,Geneva,Verdana,sans-serif; m=
+so-line-height-alt: 14.399999999999999px; color: #000; line-height: 1.2;"><=
+p style=3D"box-sizing: border-box; line-height: inherit; margin: 0; font-si=
+ze: 14px; mso-line-height-alt: 14.399999999999999px;">&nbsp;</p><p style=3D=
+"box-sizing: border-box; line-height: inherit; margin: 0; font-size: 14px; =
+mso-line-height-alt: 16.8px;"> <span style=3D"box-sizing: border-box; word-=
+break: break-word; color: #e9357b;"><span style=3D"box-sizing: border-box; =
+word-break: break-word; font-size: 16px; color: #000000;"><strong style=3D"=
+box-sizing: border-box;">What We're Reading<br style=3D"box-sizing: border-=
+box;"><br style=3D"box-sizing: border-box;"></strong></span></span></p><p s=
+tyle=3D"box-sizing: border-box; line-height: inherit; margin: 0; font-size:=
+ 14px; mso-line-height-alt: 16.8px;"><span style=3D"box-sizing: border-box;=
+ word-break: break-word; font-size: 14px;"><strong style=3D"box-sizing: bor=
+der-box;">Claude=E2=80=99s =E2=80=98do more with less=E2=80=99 workflow</st=
+rong></span></p><p style=3D"box-sizing: border-box; line-height: inherit; m=
+argin: 0; font-size: 14px; mso-line-height-alt: 16.8px;"> <span style=3D"bo=
+x-sizing: border-box; word-break: break-word; font-size: 14px;">Claude=E2=
+=80=99s creator revealed a <a href=3D"https://swe01.safelinks.protection.ou=
+tlook.com/?url=3Dhttps%3A%2F%2Flinks.wellfound.com%2Fs%2Fc%2FakJLGEiGKQoFRs=
+o5vB_s3PL8-dAuUzpynUN-SxK-QIAuYW8H4iDunU15QvfGiI-cgPwacAsdJU8Y0K6cz9yNFF9kg=
+Ki4lH6w8695salKWHgKlqxq0vnfo362e-R1JhTMwPv0nY9rFAhm-FzKh5uk8XlJuREKVHC5ccwY=
+rFeG-d1BTsGcWtga-8UoQrZgd7x0yATeRQAexjHqlsHT-VtyFXLP6iN2dCM1HfnZcEGNwwVqirs=
+fzljpfo0nz8vg2uSrJbWmN2Vpnm4X0vrVd5psMWCbqUVdvFmU5ueVKADusLRs5UI2JKwPoWwFbF=
+v3jWzF0uAjNHiCHaJp0C0WtORAZyxFXM7hrPfpfFgdMw9rHsdhLRxVpA8zp8qVtYCiyHF7zVSLB=
+_1zZEVdlmljmRM6V9Uq214okXC8MHrOnThU7itvHkER8mlXNtW2yY_SCdfYvZmFT7z5kuiOyt44=
+pgkehB06_ERUThOxkHU26YXBzAt35gjssqUyS6G7DlipKRulcc33otGxDY5jAoPwmkNIQCMC1M4=
+FT0FUJjO-jJZtAFHENsVi9t-IsFskAEv7kdaULLJOgrqoWTiNbl18RF1owC2S1T7i78TPuxNt7U=
+-lY4yzGgRdtMTOcyiiBKKcW2X0TJNXf-IFw6f0EmiP4WM0_4afFb1h3f6riboR8Z8NqlBGBQ%2F=
+h6CTMyPyIUeJm9QKYQLT2hI8XkQyyshO%2F16&amp;data=3D05%7C02%7C%7C82605745a55e4=
+e8e660508de4ed8823f%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C6390348889=
+59298198%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMC=
+IsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&amp;sdata=
+=3DU2bSid9QZuMcLUujIEzBe2%2Bl3hC9yqDn2DHUVCRbw%2BU%3D&amp;reserved=3D0" ori=
+ginalsrc=3D"https://links.wellfound.com/s/c/akJLGEiGKQoFRso5vB_s3PL8-dAuUzp=
+ynUN-SxK-QIAuYW8H4iDunU15QvfGiI-cgPwacAsdJU8Y0K6cz9yNFF9kgKi4lH6w8695salKWH=
+gKlqxq0vnfo362e-R1JhTMwPv0nY9rFAhm-FzKh5uk8XlJuREKVHC5ccwYrFeG-d1BTsGcWtga-=
+8UoQrZgd7x0yATeRQAexjHqlsHT-VtyFXLP6iN2dCM1HfnZcEGNwwVqirsfzljpfo0nz8vg2uSr=
+JbWmN2Vpnm4X0vrVd5psMWCbqUVdvFmU5ueVKADusLRs5UI2JKwPoWwFbFv3jWzF0uAjNHiCHaJ=
+p0C0WtORAZyxFXM7hrPfpfFgdMw9rHsdhLRxVpA8zp8qVtYCiyHF7zVSLB_1zZEVdlmljmRM6V9=
+Uq214okXC8MHrOnThU7itvHkER8mlXNtW2yY_SCdfYvZmFT7z5kuiOyt44pgkehB06_ERUThOxk=
+HU26YXBzAt35gjssqUyS6G7DlipKRulcc33otGxDY5jAoPwmkNIQCMC1M4FT0FUJjO-jJZtAFHE=
+NsVi9t-IsFskAEv7kdaULLJOgrqoWTiNbl18RF1owC2S1T7i78TPuxNt7U-lY4yzGgRdtMTOcyi=
+iBKKcW2X0TJNXf-IFw6f0EmiP4WM0_4afFb1h3f6riboR8Z8NqlBGBQ/h6CTMyPyIUeJm9QKYQL=
+T2hI8XkQyyshO/16" style=3D"box-sizing: border-box; text-decoration: underli=
+ne; color: #e63223;">do-more-with-less workflow</a> running 5 agents at onc=
+e. &quot;If you're not reading the Claude Code best practices straight from=
+ its creator, you're behind as a programmer,&quot; one developer says.</spa=
+n></p><p style=3D"box-sizing: border-box; line-height: inherit; margin: 0; =
+font-size: 14px; mso-line-height-alt: 14.399999999999999px;">&nbsp;</p><p s=
+tyle=3D"box-sizing: border-box; line-height: inherit; margin: 0; font-size:=
+ 14px; mso-line-height-alt: 16.8px;"><span style=3D"box-sizing: border-box;=
+ word-break: break-word; font-size: 14px;"><strong style=3D"box-sizing: bor=
+der-box;">Seeking: =E2=80=98AI forward=E2=80=99 candidates</strong></span><=
+/p><p style=3D"box-sizing: border-box; line-height: inherit; margin: 0; fon=
+t-size: 14px; mso-line-height-alt: 16.8px;"> <span style=3D"box-sizing: bor=
+der-box; word-break: break-word; font-size: 14px;">AI isn=E2=80=99t slowing=
+ hiring but is changing who they look for, says the CEO of GPU maker AMD. =
+=E2=80=9CWe=E2=80=99re hiring people who are <a href=3D"https://swe01.safel=
+inks.protection.outlook.com/?url=3Dhttps%3A%2F%2Flinks.wellfound.com%2Fs%2F=
+c%2F3SPhZoy2eI7AfLWop0JbpJFP4f6jgsAK4k6b3pBJmhrQ4Xo-bt1-FoIa49ZCw56MBg88A0w=
+vMupaPopwHqkHiZTmmj6-mT1Kp8uieSQoirxpaKSmhbodwZuWXQU6B5Y6N7TQ9_K0Bcw13qtki9=
+1IZghHjzolHRs3kBbKisnsno9ZlaPISKmjrHP09xv9jRNy2nkf-g48RjrZCdCDYi-ovn_iCxmqF=
+-jLFIudtUV1_zjfVCSdAYoM0tRfAAOpgY2BijGq98eQiU3elaa_Ch8HGJ2l87x1gWwglAQ0hLMy=
+4U77oiQCZKo_bKeqNp04Hq3yl9SsJUJm1iPZM7iavkusZGp-JVR4qWx_mJpRFETG3AtlSHztajr=
+Hfoi9H7ilwbog9btIKCf7UyDtuoJrvmQsHl4Lu9roaYY1V_mKs-ICwu4NcGbkjhf482g669qsS9=
+0j3fkpPNVlFGkxgsVawkTa8BdXN2mfnGRGerI1jYD3OJpcA_3UEbOmtkFpVL_qKZqYDV9Dr6i_W=
+AM4o9-IsrXoEyEwl1dlHrm0Cdc8Ew8HFmyKaWlgcMRUfVYU%2FOUySKjrj6Z6MrZOnMw-eU6cUx=
+Bka2dOP%2F16&amp;data=3D05%7C02%7C%7C82605745a55e4e8e660508de4ed8823f%7C84d=
+f9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C639034888959310073%7CUnknown%7CTWFp=
+bGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjo=
+iTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&amp;sdata=3Dix%2F%2FCx6%2BQ0B19jG7F6=
+LHbXVEveg9EUkBqypyhbyb9to%3D&amp;reserved=3D0" originalsrc=3D"https://links=
+.wellfound.com/s/c/3SPhZoy2eI7AfLWop0JbpJFP4f6jgsAK4k6b3pBJmhrQ4Xo-bt1-FoIa=
+49ZCw56MBg88A0wvMupaPopwHqkHiZTmmj6-mT1Kp8uieSQoirxpaKSmhbodwZuWXQU6B5Y6N7T=
+Q9_K0Bcw13qtki91IZghHjzolHRs3kBbKisnsno9ZlaPISKmjrHP09xv9jRNy2nkf-g48RjrZCd=
+CDYi-ovn_iCxmqF-jLFIudtUV1_zjfVCSdAYoM0tRfAAOpgY2BijGq98eQiU3elaa_Ch8HGJ2l8=
+7x1gWwglAQ0hLMy4U77oiQCZKo_bKeqNp04Hq3yl9SsJUJm1iPZM7iavkusZGp-JVR4qWx_mJpR=
+FETG3AtlSHztajrHfoi9H7ilwbog9btIKCf7UyDtuoJrvmQsHl4Lu9roaYY1V_mKs-ICwu4NcGb=
+kjhf482g669qsS90j3fkpPNVlFGkxgsVawkTa8BdXN2mfnGRGerI1jYD3OJpcA_3UEbOmtkFpVL=
+_qKZqYDV9Dr6i_WAM4o9-IsrXoEyEwl1dlHrm0Cdc8Ew8HFmyKaWlgcMRUfVYU/OUySKjrj6Z6M=
+rZOnMw-eU6cUxBka2dOP/16" style=3D"box-sizing: border-box; text-decoration: =
+underline; color: #e63223;">AI forward</a>,=E2=80=9D she says.</span></p><p=
+ style=3D"box-sizing: border-box; line-height: inherit; margin: 0; font-siz=
+e: 14px; mso-line-height-alt: 14.399999999999999px;">&nbsp;</p><p style=3D"=
+box-sizing: border-box; line-height: inherit; margin: 0; font-size: 14px; m=
+so-line-height-alt: 16.8px;"> <span style=3D"box-sizing: border-box; word-b=
+reak: break-word; font-size: 14px;"><strong style=3D"box-sizing: border-box=
+;">OpenAI unveils ChatGPT Health</strong></span></p><p style=3D"box-sizing:=
+ border-box; line-height: inherit; margin: 0; font-size: 14px; mso-line-hei=
+ght-alt: 16.8px;"><span style=3D"box-sizing: border-box; word-break: break-=
+word; font-size: 14px;">230M+ people ask ChatGPT health questions each week=
+, leading OpenAI to roll out <a href=3D"https://swe01.safelinks.protection.=
+outlook.com/?url=3Dhttps%3A%2F%2Flinks.wellfound.com%2Fs%2Fc%2F-A12XRDe432R=
+b6jhlTgvBa8RGUjzbUmtDxPb-Rm0Bt5SOOA-lXfoixvPTlcixNlyssGl-HfVkbMIGh9JSEk8npH=
+R_N0x_tef2Mc4c-wG6QUDrlusBH6wBSltUcLI4851PHG176z1EGjCPNxCnwIWCn3XgxnxyC_Ot9=
+WKN7q4xLwBRiGWEtFlabqQjxv2TtlRkhG8E3SzNow0wgrFajCx1kl351Ut1oiJ0idmtH9yQ_3-n=
+SOcAxgYAR7GxMNsLiMSnr99yPuxJP5fKcLz6MbPuoYrA6zX_qG8PFsptHpJY9vH22T5mAS-UdOO=
+S9t2w0rWqT4yTt68sBCUgvJ-E7NtL43qjVdpxyD9UKByLqZN7nx-cE173Y8JWo7pzV6hTw-pzlb=
+VuGsscGeeE8OzvndJ4MPRhB07AsceTTSaLCd1izJc1rJfwxQmFwF0NGjdYx39MFxn3OJogW_HTG=
+cz6NKt6_PXwmSKdbOzGDapT_J0aaHkP3r7MF6GWVzINHna0BpU3e01Egg46kRbp5m68lCF2z04P=
+yusgM8V0NbvZCLvuMZziAq4XSHoVOQLzwY2vITFKSmRlWg50Ebh9dEpcej5FE7huy916FIO3r6L=
+X9uJ7nGEtWLTlfTOZKLSD79VCW-DcwaEMdZuIkaA9k4RFwrHRW1IlYie2xC-2XuV4bSIzHE-Uz5=
+t4j_JWmolVXrRsQff%2FReQeOKHU57BlVFrpkznEs3CZo1oXfZjr%2F16&amp;data=3D05%7C0=
+2%7C%7C82605745a55e4e8e660508de4ed8823f%7C84df9e7fe9f640afb435aaaaaaaaaaaa%=
+7C1%7C0%7C639034888959321564%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydW=
+UsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%=
+7C%7C%7C&amp;sdata=3D%2B5nPKhE8KXRBBsOJGAchArECxlmJArEQUA0ScYqsZjs%3D&amp;r=
+eserved=3D0" originalsrc=3D"https://links.wellfound.com/s/c/-A12XRDe432Rb6j=
+hlTgvBa8RGUjzbUmtDxPb-Rm0Bt5SOOA-lXfoixvPTlcixNlyssGl-HfVkbMIGh9JSEk8npHR_N=
+0x_tef2Mc4c-wG6QUDrlusBH6wBSltUcLI4851PHG176z1EGjCPNxCnwIWCn3XgxnxyC_Ot9WKN=
+7q4xLwBRiGWEtFlabqQjxv2TtlRkhG8E3SzNow0wgrFajCx1kl351Ut1oiJ0idmtH9yQ_3-nSOc=
+AxgYAR7GxMNsLiMSnr99yPuxJP5fKcLz6MbPuoYrA6zX_qG8PFsptHpJY9vH22T5mAS-UdOOS9t=
+2w0rWqT4yTt68sBCUgvJ-E7NtL43qjVdpxyD9UKByLqZN7nx-cE173Y8JWo7pzV6hTw-pzlbVuG=
+sscGeeE8OzvndJ4MPRhB07AsceTTSaLCd1izJc1rJfwxQmFwF0NGjdYx39MFxn3OJogW_HTGcz6=
+NKt6_PXwmSKdbOzGDapT_J0aaHkP3r7MF6GWVzINHna0BpU3e01Egg46kRbp5m68lCF2z04Pyus=
+gM8V0NbvZCLvuMZziAq4XSHoVOQLzwY2vITFKSmRlWg50Ebh9dEpcej5FE7huy916FIO3r6LX9u=
+J7nGEtWLTlfTOZKLSD79VCW-DcwaEMdZuIkaA9k4RFwrHRW1IlYie2xC-2XuV4bSIzHE-Uz5t4j=
+_JWmolVXrRsQff/ReQeOKHU57BlVFrpkznEs3CZo1oXfZjr/16" style=3D"box-sizing: bo=
+rder-box; text-decoration: underline; color: #e63223;">ChatGPT Health</a> t=
+o connect medical records.</span></p><p style=3D"box-sizing: border-box; li=
+ne-height: inherit; margin: 0; font-size: 14px; mso-line-height-alt: 14.399=
+999999999999px;">&nbsp;</p><p style=3D"box-sizing: border-box; line-height:=
+ inherit; margin: 0; font-size: 14px; mso-line-height-alt: 16.8px;"><span s=
+tyle=3D"box-sizing: border-box; word-break: break-word; font-size: 14px;"><=
+strong style=3D"box-sizing: border-box;">Power Ranger hacktivist steals sho=
+w</strong></span></p><p style=3D"box-sizing: border-box; line-height: inher=
+it; margin: 0; font-size: 14px; mso-line-height-alt: 16.8px;"> <span style=
+=3D"box-sizing: border-box; word-break: break-word; font-size: 14px;">A <a =
+href=3D"https://swe01.safelinks.protection.outlook.com/?url=3Dhttps%3A%2F%2=
+Flinks.wellfound.com%2Fs%2Fc%2Fkgn7gGS-QuRpz-y7NDcv1UrlJTNZyJFaxB1iR73lDK8x=
+EcwxN1pTpT8LdJ8a59WKvmhU9q4mxTKqgsbpLBjb1vx9RD-i6bsDe4ZSmNmH4LKyP1RV2LtBX_3=
+0Zr1FzfdfGDWUP6uuOwKUqdTOAMtKsOOyiFnEwH4A9aSPUpc5_fkr1F_OboK3ay-z2UuLDqHu3Q=
+x70ckqltSpHnmpNOVcaqRmwJrbw5aDZCtlUURfUoj8Wv5ketDk7dBqHZabdDQECSWbUllVyEJzC=
+2C3rVPbCluHXln0z329IQl9U5FVdRayNIArMNmcyGUaKiEGYh61H3pFNqCccSxytb-lRyaVGbzM=
+y5DcdAF5R0HcVrbNv4H_Pk-X1vwZnyad6hvb6o-raQSWVZAWYXR5JjcSdr-WWoHSY2QaT0gA06e=
+YCMjYQeCndF_m2Rd08H3jvIgkD0R54SPM--0n3cu9gT3tFj258eNvh5SNMwz9EYuYTzB40ncQ90=
+RJAhlQasG2qrbsKVD1DiiufWe8LwDR357InvJ8agXEZynmmIKqkxWnkFg_c1_-5VCCYqiQz2Ocw=
+wcFQ6V1vHCA8g%2Fk8Ai9M-39vMD2Bm8N_vUVNbFxBDZBNEc%2F16&amp;data=3D05%7C02%7C=
+%7C82605745a55e4e8e660508de4ed8823f%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%=
+7C0%7C639034888959333228%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIl=
+YiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7=
+C%7C&amp;sdata=3DLBOTBbHtqopqs%2Bv%2BaTjp84WVGsIKs4mgiFA4ifRAxVE%3D&amp;res=
+erved=3D0" originalsrc=3D"https://links.wellfound.com/s/c/kgn7gGS-QuRpz-y7N=
+Dcv1UrlJTNZyJFaxB1iR73lDK8xEcwxN1pTpT8LdJ8a59WKvmhU9q4mxTKqgsbpLBjb1vx9RD-i=
+6bsDe4ZSmNmH4LKyP1RV2LtBX_30Zr1FzfdfGDWUP6uuOwKUqdTOAMtKsOOyiFnEwH4A9aSPUpc=
+5_fkr1F_OboK3ay-z2UuLDqHu3Qx70ckqltSpHnmpNOVcaqRmwJrbw5aDZCtlUURfUoj8Wv5ket=
+Dk7dBqHZabdDQECSWbUllVyEJzC2C3rVPbCluHXln0z329IQl9U5FVdRayNIArMNmcyGUaKiEGY=
+h61H3pFNqCccSxytb-lRyaVGbzMy5DcdAF5R0HcVrbNv4H_Pk-X1vwZnyad6hvb6o-raQSWVZAW=
+YXR5JjcSdr-WWoHSY2QaT0gA06eYCMjYQeCndF_m2Rd08H3jvIgkD0R54SPM--0n3cu9gT3tFj2=
+58eNvh5SNMwz9EYuYTzB40ncQ90RJAhlQasG2qrbsKVD1DiiufWe8LwDR357InvJ8agXEZynmmI=
+KqkxWnkFg_c1_-5VCCYqiQz2OcwwcFQ6V1vHCA8g/k8Ai9M-39vMD2Bm8N_vUVNbFxBDZBNEc/1=
+6" style=3D"box-sizing: border-box; text-decoration: underline; color: #e63=
+223;">hacker dressed as a Power Ranger</a> deleted 3 white supremacist webs=
+ites live onstage and used bots to gather data on its users.</span></p></di=
+v></div></td></tr></table></td></tr></tbody></table></td></tr></tbody></tab=
+le><table class=3D"row row-9" align=3D"center" width=3D"100%" border=3D"0" =
+cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"box-sizi=
+ng: border-box; mso-table-lspace: 0; mso-table-rspace: 0;"><tbody style=3D"=
+box-sizing: border-box;"><tr style=3D"box-sizing: border-box;"><td style=3D=
+"box-sizing: border-box;"><table class=3D"row-content stack" align=3D"cente=
+r" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" s=
+tyle=3D"box-sizing: border-box; mso-table-lspace: 0; mso-table-rspace: 0; b=
+ackground-color: #fff; border-radius: 0; color: #000; width: 575px; margin:=
+ 0 auto;" width=3D"575" bgcolor=3D"#fff"><tbody style=3D"box-sizing: border=
+-box;"><tr style=3D"box-sizing: border-box;"><td class=3D"column column-1" =
+width=3D"100%" style=3D"box-sizing: border-box; mso-table-lspace: 0; mso-ta=
+ble-rspace: 0; font-weight: 400; text-align: left; padding-bottom: 5px; pad=
+ding-top: 5px; vertical-align: top;" align=3D"left" valign=3D"top"><table c=
+lass=3D"divider_block block-1" width=3D"100%" border=3D"0" cellpadding=3D"0=
+" cellspacing=3D"0" role=3D"presentation" style=3D"box-sizing: border-box; =
+mso-table-lspace: 0; mso-table-rspace: 0;"><tr style=3D"box-sizing: border-=
+box;"><td class=3D"pad" style=3D"box-sizing: border-box; padding-bottom: 10=
+px; padding-left: 10px; padding-right: 10px; padding-top: 20px;"><div class=
+=3D"alignment" align=3D"center" style=3D"box-sizing: border-box;"><table bo=
+rder=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" width=
+=3D"100%" style=3D"box-sizing: border-box; mso-table-lspace: 0; mso-table-r=
+space: 0;"><tr style=3D"box-sizing: border-box;"><td class=3D"divider_inner=
+" style=3D"box-sizing: border-box; font-size: 1px; line-height: 1px; border=
+-top: 1px dotted #000;"><span style=3D"box-sizing: border-box; word-break: =
+break-word;">=E2=80=8A</span></td></tr></table></div></td></tr></table></td=
+></tr></tbody></table></td></tr></tbody></table><table class=3D"row row-10"=
+ align=3D"center" width=3D"100%" border=3D"0" cellpadding=3D"0" cellspacing=
+=3D"0" role=3D"presentation" style=3D"box-sizing: border-box; mso-table-lsp=
+ace: 0; mso-table-rspace: 0;"><tbody style=3D"box-sizing: border-box;"><tr =
+style=3D"box-sizing: border-box;"><td style=3D"box-sizing: border-box;"> <t=
+able class=3D"row-content stack" align=3D"center" border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"box-sizing: border-=
+box; mso-table-lspace: 0; mso-table-rspace: 0; background-color: #fff; bord=
+er-radius: 0; color: #000; width: 575px; margin: 0 auto;" width=3D"575" bgc=
+olor=3D"#fff"><tbody style=3D"box-sizing: border-box;"><tr style=3D"box-siz=
+ing: border-box;"><td class=3D"column column-1" width=3D"100%" style=3D"box=
+-sizing: border-box; mso-table-lspace: 0; mso-table-rspace: 0; font-weight:=
+ 400; text-align: left; padding-bottom: 5px; padding-top: 5px; vertical-ali=
+gn: top;" align=3D"left" valign=3D"top"><table class=3D"text_block block-1"=
+ width=3D"100%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"pr=
+esentation" style=3D"box-sizing: border-box; mso-table-lspace: 0; mso-table=
+-rspace: 0; word-break: break-word;"><tr style=3D"box-sizing: border-box;">=
+<td class=3D"pad" style=3D"box-sizing: border-box; padding-bottom: 5px; pad=
+ding-left: 30px; padding-top: 5px;"><div style=3D"box-sizing: border-box; f=
+ont-family: sans-serif;"><div class=3D"" style=3D"box-sizing: border-box; f=
+ont-size: 12px; font-family: Lucida Sans Unicode,Lucida Grande,Lucida Sans,=
+Geneva,Verdana,sans-serif; mso-line-height-alt: 18px; color: #fff; line-hei=
+ght: 1.5;"><p style=3D"box-sizing: border-box; line-height: inherit; margin=
+: 0; font-size: 14px; text-align: center; mso-line-height-alt: 21px;"> <spa=
+n style=3D"box-sizing: border-box; word-break: break-word; color: #000000;"=
+><span style=3D"box-sizing: border-box; word-break: break-word; font-size: =
+16px;"><span style=3D"box-sizing: border-box; word-break: break-word;"><str=
+ong style=3D"box-sizing: border-box;">Know of a company looking to hire?</s=
+trong><br style=3D"box-sizing: border-box;"></span></span></span></p><p sty=
+le=3D"box-sizing: border-box; line-height: inherit; margin: 0; text-align: =
+center; font-size: 14px; mso-line-height-alt: 18px;">&nbsp;</p><p style=3D"=
+box-sizing: border-box; line-height: inherit; margin: 0; text-align: center=
+; font-size: 14px; mso-line-height-alt: 21px;"> <span style=3D"box-sizing: =
+border-box; word-break: break-word; color: #000000; font-size: 14px;">When =
+a new customer joins <a href=3D"https://swe01.safelinks.protection.outlook.=
+com/?url=3Dhttps%3A%2F%2Flinks.wellfound.com%2Fs%2Fc%2F5QuCbHpq2UQ_s4SK8z8g=
+uPYAJjHiUTzvzGrFZp2j8rcP71M7k5si4h8M0mlNohVYt_udjsj2TvBt1vbl0IwuotfkLucd1x1=
+vgK_fh6_Y33_Rb6q9KScjuQgm90WSzQlFA8h8UDjvtg6WQWTFtIohVge1RL3KVjKxqP38iId4iZ=
+tZwKjjg3u4KF6XHwKoRcEt1NARS1yvWyo8zXCl8UuVfIItfHw3aZXKCpshGpRCjjSphMdrOZpi2=
+WOi0Z1XuHnuWiHzkVXjtTjENSnb4ug_yRbuaZZE_hScOSl49JL3h8Wh9lu9qQqsBeD1tmR47OKd=
+klYqudeq10IkTTgTg1beNQ3Ed2FoRYzTQure6ASMkp7F3uhhb6fLAb2PZQxaBVyjhtRyqqsoVi-=
+-VMY3agqBRWLyVzvkUUt7H8fASLcfeg4nt37bCItcDixTvXbTYQfZM4c%2FzweTkG_YbSssap_v=
+57FHNoGHrZUoZMI3%2F16&amp;data=3D05%7C02%7C%7C82605745a55e4e8e660508de4ed88=
+23f%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C639034888959344531%7CUnkno=
+wn%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMi=
+IsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&amp;sdata=3DZfd79GIqo2HYRUa=
+80o3MYhCX%2BMfhj4qJADT3EYdOWww%3D&amp;reserved=3D0" originalsrc=3D"https://=
+links.wellfound.com/s/c/5QuCbHpq2UQ_s4SK8z8guPYAJjHiUTzvzGrFZp2j8rcP71M7k5s=
+i4h8M0mlNohVYt_udjsj2TvBt1vbl0IwuotfkLucd1x1vgK_fh6_Y33_Rb6q9KScjuQgm90WSzQ=
+lFA8h8UDjvtg6WQWTFtIohVge1RL3KVjKxqP38iId4iZtZwKjjg3u4KF6XHwKoRcEt1NARS1yvW=
+yo8zXCl8UuVfIItfHw3aZXKCpshGpRCjjSphMdrOZpi2WOi0Z1XuHnuWiHzkVXjtTjENSnb4ug_=
+yRbuaZZE_hScOSl49JL3h8Wh9lu9qQqsBeD1tmR47OKdklYqudeq10IkTTgTg1beNQ3Ed2FoRYz=
+TQure6ASMkp7F3uhhb6fLAb2PZQxaBVyjhtRyqqsoVi--VMY3agqBRWLyVzvkUUt7H8fASLcfeg=
+4nt37bCItcDixTvXbTYQfZM4c/zweTkG_YbSssap_v57FHNoGHrZUoZMI3/16" target=3D"_b=
+lank" style=3D"box-sizing: border-box; text-decoration: underline; color: #=
+e63223;" rel=3D"noopener"><span style=3D"box-sizing: border-box; word-break=
+: break-word; color: #e63223; text-decoration: underline;">wellfound:ai</sp=
+an></a> and becomes a paying customer, you'll get credits toward your futur=
+e hiring needs.&nbsp;</span></p><p style=3D"box-sizing: border-box; line-he=
+ight: inherit; margin: 0; text-align: center; font-size: 14px; mso-line-hei=
+ght-alt: 18px;">&nbsp;</p><p style=3D"box-sizing: border-box; line-height: =
+inherit; margin: 0; text-align: center; font-size: 14px; mso-line-height-al=
+t: 21px;"><span style=3D"box-sizing: border-box; word-break: break-word; co=
+lor: #000000; font-size: 14px;"><strong style=3D"box-sizing: border-box;">$=
+300&nbsp;</strong>to you and <strong style=3D"box-sizing: border-box;">$</s=
+trong><strong style=3D"box-sizing: border-box;">500&nbsp;</strong>for your =
+referral</span></p><p style=3D"box-sizing: border-box; line-height: inherit=
+; margin: 0; text-align: center; font-size: 14px; mso-line-height-alt: 21px=
+;"> <span style=3D"box-sizing: border-box; word-break: break-word; color: #=
+000000; font-size: 14px;">And<strong style=3D"box-sizing: border-box;"> $1,=
+000 </strong>when they make their first Autopilot hire.</span></p></div></d=
+iv></td></tr></table></td></tr></tbody></table></td></tr></tbody></table><t=
+able class=3D"row row-11" align=3D"center" width=3D"100%" border=3D"0" cell=
+padding=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"box-sizing: =
+border-box; mso-table-lspace: 0; mso-table-rspace: 0;"><tbody style=3D"box-=
+sizing: border-box;"><tr style=3D"box-sizing: border-box;"><td style=3D"box=
+-sizing: border-box;"><table class=3D"row-content stack" align=3D"center" b=
+order=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" style=
+=3D"box-sizing: border-box; mso-table-lspace: 0; mso-table-rspace: 0; backg=
+round-color: #fff; border-radius: 0; color: #000; width: 575px; margin: 0 a=
+uto;" width=3D"575" bgcolor=3D"#fff"><tbody style=3D"box-sizing: border-box=
+;"><tr style=3D"box-sizing: border-box;"><td class=3D"column column-1" widt=
+h=3D"100%" style=3D"box-sizing: border-box; mso-table-lspace: 0; mso-table-=
+rspace: 0; font-weight: 400; text-align: left; padding-bottom: 5px; padding=
+-top: 5px; vertical-align: top;" align=3D"left" valign=3D"top"><table class=
+=3D"button_block block-1" width=3D"100%" border=3D"0" cellpadding=3D"0" cel=
+lspacing=3D"0" role=3D"presentation" style=3D"box-sizing: border-box; mso-t=
+able-lspace: 0; mso-table-rspace: 0;"><tr style=3D"box-sizing: border-box;"=
+><td class=3D"pad" style=3D"box-sizing: border-box; padding-bottom: 10px; p=
+adding-left: 10px; padding-right: 10px; text-align: center;" align=3D"cente=
+r"><div class=3D"alignment" align=3D"center" style=3D"box-sizing: border-bo=
+x;"><a href=3D"https://swe01.safelinks.protection.outlook.com/?url=3Dhttps%=
+3A%2F%2Flinks.wellfound.com%2Fs%2Fc%2F-mO6VtwX84HWKSbcTWXpL8As02Iob2PycksKI=
+tNlYi18Nqn94tu53wiPXN4UR4F85by4OdO1pBLtfQOW4dHl9pftRxVAJzb5HRFrQ44m_AwtJlb5=
+Ne1FK0_G3cKqAMDG2u2zFstBXi1_hlqOtZGSP-O99kOt2Z_J-A8z9gICGtssNbPJzpzj5-SxkVx=
+lOPswdL9MWUd256ow-TUN_LfcGV2QKfN6quKHMzRxEH0gOjrAEFfEiFzKvsCT9_tKNuhM3v-jdi=
+SypPqfQiLKzpfEuTt-0_943zu_WjUY1ru_GxXd0OIK4Q2vMAjIVE3rwv_w1EVJ0ZuTtDZ7vg3hY=
+Ix64m7BePeQYHu_PYm5Ud3Hf5nFhF5kdeNl7A3UPIMrbY3AnftkNOP9_SZXMczOu5d-tKCsnJd8=
+tQxeaqSIv9frFqu4Xwq6W0mOH20FjkIrVv2B6zuek2tw7B6V6wu6mBCxsFAPVuz-MoX-H3UMPqJ=
+nQAdZVkmnXL_IZZQek4JGGLpF0i-h4dcFq6tj72rBj7OwiZp3oTfVm6xGnUFPmk7TVy7qQ5DQyr=
+0VhoxZYPsRafBJgcXKeQH7zBo%2FTABD6UMK8G3O9JGJWHV2vaksRVhd1Fmy%2F16&amp;data=
+=3D05%7C02%7C%7C82605745a55e4e8e660508de4ed8823f%7C84df9e7fe9f640afb435aaaa=
+aaaaaaaa%7C1%7C0%7C639034888959355718%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hc=
+GkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3=
+D%3D%7C0%7C%7C%7C&amp;sdata=3DgGaM%2F%2BZSl8IWYSQdCdCDuaLZnf0yBDCF%2BI6dV9L=
+D13w%3D&amp;reserved=3D0" originalsrc=3D"https://links.wellfound.com/s/c/-m=
+O6VtwX84HWKSbcTWXpL8As02Iob2PycksKItNlYi18Nqn94tu53wiPXN4UR4F85by4OdO1pBLtf=
+QOW4dHl9pftRxVAJzb5HRFrQ44m_AwtJlb5Ne1FK0_G3cKqAMDG2u2zFstBXi1_hlqOtZGSP-O9=
+9kOt2Z_J-A8z9gICGtssNbPJzpzj5-SxkVxlOPswdL9MWUd256ow-TUN_LfcGV2QKfN6quKHMzR=
+xEH0gOjrAEFfEiFzKvsCT9_tKNuhM3v-jdiSypPqfQiLKzpfEuTt-0_943zu_WjUY1ru_GxXd0O=
+IK4Q2vMAjIVE3rwv_w1EVJ0ZuTtDZ7vg3hYIx64m7BePeQYHu_PYm5Ud3Hf5nFhF5kdeNl7A3UP=
+IMrbY3AnftkNOP9_SZXMczOu5d-tKCsnJd8tQxeaqSIv9frFqu4Xwq6W0mOH20FjkIrVv2B6zue=
+k2tw7B6V6wu6mBCxsFAPVuz-MoX-H3UMPqJnQAdZVkmnXL_IZZQek4JGGLpF0i-h4dcFq6tj72r=
+Bj7OwiZp3oTfVm6xGnUFPmk7TVy7qQ5DQyr0VhoxZYPsRafBJgcXKeQH7zBo/TABD6UMK8G3O9J=
+GJWHV2vaksRVhd1Fmy/16" target=3D"_blank" style=3D"box-sizing: border-box; c=
+olor: #ffffff; text-decoration: none;"><!--[if mso]><v:roundrect xmlns:v=3D=
+"urn:schemas-microsoft-com:vml" xmlns:w=3D"urn:schemas-microsoft-com:office=
+:word" href=3D"https://swe01.safelinks.protection.outlook.com/?url=3Dhttps%=
+3A%2F%2Flinks.wellfound.com%2Fs%2Fc%2FOEHqpnDs4N080uvM9MRwCPC2UIVoiJtvcLd8U=
+HYP3oTo0lEQAyIgLkExEL5hQf8cVD7CcN8DJF1tNBHmni-7uTfjEJgARRNNRr6QNWyVsLFiC1Hx=
+9q-HjWoNaAos9IwrVMZDQYzSRF-mt6q3J1RYfvuMIWuyIPbPQxtG15Uv-4g67LUrIw_DUFO62EZ=
+BVPfx4GOqFGyOHAtKs6HGa9Iz3cTQtL3DovOXLpuDL349eznV1Tgd4y46xXsHOKmCooQilzx1Pn=
+WX2_Gcl8seZWgFzZcwYGfgpwcdh1xnIqBG5gWFx4OZxRsQKnwDbSi1Zx1Axb65MTNQ6PEGembCY=
+bouu7MFcGePL3LQ5FfSBmM6QC1r1nreCSlj2bi6zBtctwmFAcFJ6-is-Ucw9J0HT0U7ivUJQpdf=
+pXnE4uS3fIcnpDLYxBTBQQ7iAzZKOx2V1mtOy_4F2msmQGMYiEq_EO3Oo2fA6D6v-Y9O7QJZrLf=
+Z6faGd22U9RB0lxTcmL_xy8-_GHZfmBU4iMPcE4A5YAT2eEuLeSl42yaUpE3_fWDuCuJJoQXS1D=
+0LeNFiVmk0zdE06GYKtLVdK1Y%2FIMOo3b2PIx6KMSO2mI48ozv9SegaD21K%2F16&amp;data=
+=3D05%7C02%7C%7C82605745a55e4e8e660508de4ed8823f%7C84df9e7fe9f640afb435aaaa=
+aaaaaaaa%7C1%7C0%7C639034888959367131%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hc=
+GkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3=
+D%3D%7C0%7C%7C%7C&amp;sdata=3Dy%2B%2B%2BVoA7JFW1hD%2B%2BM50DmJ6WOzJbI6OtKMB=
+qHapY4uc%3D&amp;reserved=3D0" originalSrc=3D"https://links.wellfound.com/s/=
+c/OEHqpnDs4N080uvM9MRwCPC2UIVoiJtvcLd8UHYP3oTo0lEQAyIgLkExEL5hQf8cVD7CcN8DJ=
+F1tNBHmni-7uTfjEJgARRNNRr6QNWyVsLFiC1Hx9q-HjWoNaAos9IwrVMZDQYzSRF-mt6q3J1RY=
+fvuMIWuyIPbPQxtG15Uv-4g67LUrIw_DUFO62EZBVPfx4GOqFGyOHAtKs6HGa9Iz3cTQtL3DovO=
+XLpuDL349eznV1Tgd4y46xXsHOKmCooQilzx1PnWX2_Gcl8seZWgFzZcwYGfgpwcdh1xnIqBG5g=
+WFx4OZxRsQKnwDbSi1Zx1Axb65MTNQ6PEGembCYbouu7MFcGePL3LQ5FfSBmM6QC1r1nreCSlj2=
+bi6zBtctwmFAcFJ6-is-Ucw9J0HT0U7ivUJQpdfpXnE4uS3fIcnpDLYxBTBQQ7iAzZKOx2V1mtO=
+y_4F2msmQGMYiEq_EO3Oo2fA6D6v-Y9O7QJZrLfZ6faGd22U9RB0lxTcmL_xy8-_GHZfmBU4iMP=
+cE4A5YAT2eEuLeSl42yaUpE3_fWDuCuJJoQXS1D0LeNFiVmk0zdE06GYKtLVdK1Y/IMOo3b2PIx=
+6KMSO2mI48ozv9SegaD21K/16" style=3D"height:40px;width:443px;v-text-anchor:m=
+iddle;" arcsize=3D"10%" fillcolor=3D"#000000"> <v:stroke dashstyle=3D"Solid=
+" weight=3D"0px" color=3D"#000000"/> <w:anchorlock/> <v:textbox inset=3D"0p=
+x,0px,0px,0px"> <center dir=3D"false" style=3D"color:#ffffff;font-family:Ve=
+rdana, sans-serif;font-size:14px"><![endif]--> <span class=3D"button" style=
+=3D"box-sizing: border-box; background-color: #000000; mso-shading: transpa=
+rent; border-bottom: 3px solid #E9357B; border-left: 3px solid #B3ECF1; bor=
+der-radius: 4px; border-right: 0px solid transparent; border-top: 0px solid=
+ transparent; color: #ffffff; display: inline-block; font-family: 'Lucida S=
+ans Unicode', 'Lucida Grande', 'Lucida Sans', Geneva, Verdana, sans-serif; =
+font-size: 14px; font-weight: 400; mso-border-alt: none; padding-bottom: 5p=
+x; padding-top: 5px; padding-left: 20px; padding-right: 20px; text-align: c=
+enter; width: 80%; word-break: keep-all; letter-spacing: normal;"><span sty=
+le=3D"box-sizing: border-box; word-break: break-word; line-height: 28px;">R=
+efer &amp; Earn</span></span> <!--[if mso]></center></v:textbox></v:roundre=
+ct><![endif]--></a></div></td></tr></table></td></tr></tbody></table></td><=
+/tr></tbody></table><table class=3D"row row-12" align=3D"center" width=3D"1=
+00%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation"=
+ style=3D"box-sizing: border-box; mso-table-lspace: 0; mso-table-rspace: 0;=
+"><tbody style=3D"box-sizing: border-box;"><tr style=3D"box-sizing: border-=
+box;"><td style=3D"box-sizing: border-box;"><table class=3D"row-content sta=
+ck" align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=
+=3D"presentation" style=3D"box-sizing: border-box; mso-table-lspace: 0; mso=
+-table-rspace: 0; background-color: #fff; color: #000; width: 575px; margin=
+: 0 auto;" width=3D"575" bgcolor=3D"#fff"><tbody style=3D"box-sizing: borde=
+r-box;"><tr style=3D"box-sizing: border-box;"><td class=3D"column column-1"=
+ width=3D"100%" style=3D"box-sizing: border-box; mso-table-lspace: 0; mso-t=
+able-rspace: 0; font-weight: 400; text-align: left; padding-bottom: 5px; pa=
+dding-top: 5px; vertical-align: top;" align=3D"left" valign=3D"top"><table =
+class=3D"social_block block-1" width=3D"100%" border=3D"0" cellpadding=3D"0=
+" cellspacing=3D"0" role=3D"presentation" style=3D"box-sizing: border-box; =
+mso-table-lspace: 0; mso-table-rspace: 0;"><tr style=3D"box-sizing: border-=
+box;"><td class=3D"pad" style=3D"box-sizing: border-box; padding-bottom: 5p=
+x; padding-left: 5px; padding-right: 5px; padding-top: 10px; text-align: ce=
+nter;" align=3D"center"><div class=3D"alignment" align=3D"center" style=3D"=
+box-sizing: border-box;"><table class=3D"social-table" width=3D"144px" bord=
+er=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D=
+"box-sizing: border-box; mso-table-lspace: 0; mso-table-rspace: 0; display:=
+ inline-block;"><tr style=3D"box-sizing: border-box;"><td style=3D"box-sizi=
+ng: border-box; padding: 0 2px 0 2px;"><a href=3D"https://swe01.safelinks.p=
+rotection.outlook.com/?url=3Dhttps%3A%2F%2Flinks.wellfound.com%2Fs%2Fc%2FfG=
+SdjhpJlAA17VULx8ki9x5THG4kh280NMiTp3wM4c97MsQk8fyi1etsrUG5J0FHHz034Jpn1YwBP=
+as_MfIy9rUzcQZ8HvlVZfyT4MU7vF740IvyjxHug5Evqrf958iq36v0Af8J23Uu6sIXb7Kwfyni=
+wLNFdGbNhV0CgBCs3ZTAK86M4ce9Oc3dRqKpGCAT3DzkQq-KgwwtkxkRJBjsmeyZM4Gv8sXvoo3=
+3yrvjngzpJia-v9y5ES8zsCjmG7z-8AudBqgenX8ywNrUiJiZpgaOzm4z7UZob8BLuCPw2MsAd1=
+xESpF0kjl6kNRbqHBS9_jTNgcEzDYtHk3ixUzYwxg99RXGC8UVu864dcUtAt45q84LtD4fVyJZ6=
+SPsWqHjmK4n4YnN8CkNv6wx2JRNRHmTupD0B2d_uFxteVPo3GZyrZtd70FG1btvYwgGwHUI0qe4=
+n2S3rGUp8cxG7ZPzBHw4Z9e_-Eh0%2F4xxy7MDbgB5bYJ6r8Pgw5yBO8SVgfiqd%2F16&amp;da=
+ta=3D05%7C02%7C%7C82605745a55e4e8e660508de4ed8823f%7C84df9e7fe9f640afb435aa=
+aaaaaaaaaa%7C1%7C0%7C639034888959378219%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1=
+hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ=
+%3D%3D%7C0%7C%7C%7C&amp;sdata=3DVyIKlLRkFkSKQf7ONBwJN5dk5t79mQaVWJoaAib6o9I=
+%3D&amp;reserved=3D0" originalsrc=3D"https://links.wellfound.com/s/c/fGSdjh=
+pJlAA17VULx8ki9x5THG4kh280NMiTp3wM4c97MsQk8fyi1etsrUG5J0FHHz034Jpn1YwBPas_M=
+fIy9rUzcQZ8HvlVZfyT4MU7vF740IvyjxHug5Evqrf958iq36v0Af8J23Uu6sIXb7KwfyniwLNF=
+dGbNhV0CgBCs3ZTAK86M4ce9Oc3dRqKpGCAT3DzkQq-KgwwtkxkRJBjsmeyZM4Gv8sXvoo33yrv=
+jngzpJia-v9y5ES8zsCjmG7z-8AudBqgenX8ywNrUiJiZpgaOzm4z7UZob8BLuCPw2MsAd1xESp=
+F0kjl6kNRbqHBS9_jTNgcEzDYtHk3ixUzYwxg99RXGC8UVu864dcUtAt45q84LtD4fVyJZ6SPsW=
+qHjmK4n4YnN8CkNv6wx2JRNRHmTupD0B2d_uFxteVPo3GZyrZtd70FG1btvYwgGwHUI0qe4n2S3=
+rGUp8cxG7ZPzBHw4Z9e_-Eh0/4xxy7MDbgB5bYJ6r8Pgw5yBO8SVgfiqd/16" target=3D"_bl=
+ank" style=3D"box-sizing: border-box;"><img src=3D"https://app-rsrc.getbee.=
+io/public/resources/social-networks-icon-sets/circle-dark-gray/twitter@2x.p=
+ng" width=3D"32" height=3D"auto" alt=3D"Twitter" title=3D"Twitter" style=3D=
+"box-sizing: border-box; display: block; height: auto; border: 0;"></a></td=
+><td style=3D"box-sizing: border-box; padding: 0 2px 0 2px;"><a href=3D"htt=
+ps://swe01.safelinks.protection.outlook.com/?url=3Dhttps%3A%2F%2Flinks.well=
+found.com%2Fs%2Fc%2FgPUqw7ojsxvG0LpfAe3ur6bqjlU1wX6m7f0RF0RmbA6D_g2SUU9Ld_e=
+cQNNb9MWhwuicGvchcHoKalK5wtIPefhN8TMeTdUhtVJiRvHWn7do13bDuz2jgkyicoVmfRcvxi=
+aLjRra5zMzPaAXDxxGtdmqq7B0PVbT8cH84PnK4U7N2bnh07uaqnwyEzcecY5Z4ReD40YQ2K-Fd=
+4Q9CdaZqe3tWRZXI1vT2-DcW7PPKDL9jzOXL-hSBw5s_eQ9P-_48n5FvftwU8OSaBn8JAQkPXGs=
+1zKVqF0Q6A24T0wpEAKUkxPfav6X2MzWTbPeekkECJtkF1nL8XMr3OTEvZlQD-QwxLnXczaAGfK=
+Qa_ILqWkwpxeDwqEM7oi6klOEKek964GcfTgDv-sCKyNpOYbkcl5E5NZngcHt1yyhuGRw_VPy9V=
+HC6sK-ndHAodwOeNGi49whVVIbtwPeyToVb_-T0_G_RPlIG8cvtlOqhtrggkVQ8Q560uEDXw%2F=
+uGec-Z5WkFaN2dL6efveRv3UGOMppiUh%2F16&amp;data=3D05%7C02%7C%7C82605745a55e4=
+e8e660508de4ed8823f%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C6390348889=
+59389283%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMC=
+IsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&amp;sdata=
+=3DYWyr%2BbwUUUfb3nI4ZSec77p4T58GH5ilSLpileJIwbY%3D&amp;reserved=3D0" origi=
+nalsrc=3D"https://links.wellfound.com/s/c/gPUqw7ojsxvG0LpfAe3ur6bqjlU1wX6m7=
+f0RF0RmbA6D_g2SUU9Ld_ecQNNb9MWhwuicGvchcHoKalK5wtIPefhN8TMeTdUhtVJiRvHWn7do=
+13bDuz2jgkyicoVmfRcvxiaLjRra5zMzPaAXDxxGtdmqq7B0PVbT8cH84PnK4U7N2bnh07uaqnw=
+yEzcecY5Z4ReD40YQ2K-Fd4Q9CdaZqe3tWRZXI1vT2-DcW7PPKDL9jzOXL-hSBw5s_eQ9P-_48n=
+5FvftwU8OSaBn8JAQkPXGs1zKVqF0Q6A24T0wpEAKUkxPfav6X2MzWTbPeekkECJtkF1nL8XMr3=
+OTEvZlQD-QwxLnXczaAGfKQa_ILqWkwpxeDwqEM7oi6klOEKek964GcfTgDv-sCKyNpOYbkcl5E=
+5NZngcHt1yyhuGRw_VPy9VHC6sK-ndHAodwOeNGi49whVVIbtwPeyToVb_-T0_G_RPlIG8cvtlO=
+qhtrggkVQ8Q560uEDXw/uGec-Z5WkFaN2dL6efveRv3UGOMppiUh/16" target=3D"_blank" =
+style=3D"box-sizing: border-box;"><img src=3D"https://app-rsrc.getbee.io/pu=
+blic/resources/social-networks-icon-sets/circle-dark-gray/instagram@2x.png"=
+ width=3D"32" height=3D"auto" alt=3D"Instagram" title=3D"Instagram" style=
+=3D"box-sizing: border-box; display: block; height: auto; border: 0;"></a><=
+/td><td style=3D"box-sizing: border-box; padding: 0 2px 0 2px;"><a href=3D"=
+https://swe01.safelinks.protection.outlook.com/?url=3Dhttps%3A%2F%2Flinks.w=
+ellfound.com%2Fs%2Fc%2FT_qwvCNypUCTBhA7k1sIYSSWTs5ca7unfr6Oceol2fyR7tChstUf=
+4cOUs_KK33C0yOEs24u7pjoeFewrDmlvNk7WVx73-hb9sdc92G463ZKyM7CB7MYrJlqAbyAlegW=
+dr0QTTTo1pstgO1LDb7SPwYw1wOACMLiAtcXgRHxPSQbe2GwRByICJgxrT8FZ3luwoTQcOD3EqM=
+vavurAqq7XsHhuIw9UPxFw-EhqlvilALIjmHxuIM5hqAur3skaZ_kmqC-Bjxl5tsE-MfqPMfeTf=
+megFBkZyofCLnOpzlX6YafJos0fj5SvTSVTAgiwL4zC5ddvxWIO8toKrmxbJqQq-IaKVpExiKdN=
+LpQf_483oQw45AHGt2T6ALE5vMfi4ksyTtO4FzHcPhe_n5WiqA3x8uRUFYVvu4jj5PfdFQWnjd2=
+bRLYV-xRIx-n964R4uxT2VuuBXazIq0qBv4bkfjd12rMnaQyQz2Cydd3_wQ1hNiXWRZEdBLk1Nv=
+tcIg95s2BbdnlW2w%2Fd3Rrtd85-NQjV8Oc9qlOH3zUfs3ql_GY%2F16&amp;data=3D05%7C02=
+%7C%7C82605745a55e4e8e660508de4ed8823f%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7=
+C1%7C0%7C639034888959400447%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWU=
+sIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7=
+C%7C%7C&amp;sdata=3D48I6EcAqxtKsCwZfvKGq7ESXatYqrL4YPobjELr3uAM%3D&amp;rese=
+rved=3D0" originalsrc=3D"https://links.wellfound.com/s/c/T_qwvCNypUCTBhA7k1=
+sIYSSWTs5ca7unfr6Oceol2fyR7tChstUf4cOUs_KK33C0yOEs24u7pjoeFewrDmlvNk7WVx73-=
+hb9sdc92G463ZKyM7CB7MYrJlqAbyAlegWdr0QTTTo1pstgO1LDb7SPwYw1wOACMLiAtcXgRHxP=
+SQbe2GwRByICJgxrT8FZ3luwoTQcOD3EqMvavurAqq7XsHhuIw9UPxFw-EhqlvilALIjmHxuIM5=
+hqAur3skaZ_kmqC-Bjxl5tsE-MfqPMfeTfmegFBkZyofCLnOpzlX6YafJos0fj5SvTSVTAgiwL4=
+zC5ddvxWIO8toKrmxbJqQq-IaKVpExiKdNLpQf_483oQw45AHGt2T6ALE5vMfi4ksyTtO4FzHcP=
+he_n5WiqA3x8uRUFYVvu4jj5PfdFQWnjd2bRLYV-xRIx-n964R4uxT2VuuBXazIq0qBv4bkfjd1=
+2rMnaQyQz2Cydd3_wQ1hNiXWRZEdBLk1NvtcIg95s2BbdnlW2w/d3Rrtd85-NQjV8Oc9qlOH3zU=
+fs3ql_GY/16" target=3D"_blank" style=3D"box-sizing: border-box;"><img src=
+=3D"https://app-rsrc.getbee.io/public/resources/social-networks-icon-sets/c=
+ircle-dark-gray/linkedin@2x.png" width=3D"32" height=3D"auto" alt=3D"Linked=
+In" title=3D"LinkedIn" style=3D"box-sizing: border-box; display: block; hei=
+ght: auto; border: 0;"></a></td><td style=3D"box-sizing: border-box; paddin=
+g: 0 2px 0 2px;"><a href=3D"https://swe01.safelinks.protection.outlook.com/=
+?url=3Dhttps%3A%2F%2Flinks.wellfound.com%2Fs%2Fc%2FFC0MldcZAXX11MyKcx49CDBg=
+XeSNMMMuqFKB7uJmSpeIdNBK4i75s8s7CJxlVdpVtaol9hr2rmvk64mqmt7XegfLQRBYsWHRYkD=
+hddOCkBRxxGVhS2gm6f1HjuF7XlgmClGsYVLVw4KZgzf5pZB4R2pYlNWuVZL3UHF2oeIip1Qr1l=
+kIIKCmZ7_F362V6UVAj0bXP0NdvzZARZe57HYa2N7MOkfYL77hPkKw4r8KQrQ-I2uGtOIpVirhP=
+PnMid_YYJnu0GFlfnhZ0ZXfnx1_gCyrb6KuQYm4gX3A7CSxQttRxpixTV0vVYxNwwV9CZXMV9lc=
+_8i1SnGmDJLFp8x82ctOCyzikrfhL09NTQ_kLTVxuOOelrzpQefERfq5kj3iCdkoj2v0Tb-nyNQ=
+hy31764c3gfOXjIqV5EigeJD5aepNskUDg3hGpPkttCIK-gXFZwXiDT2Bb-8RG_bT229j9ji-YY=
+JFqlEj182Gl8Vi0eK3wfkqmOw%2FJrfb498CSkJrONtq-j_dhXFIy-9r2BeC%2F16&amp;data=
+=3D05%7C02%7C%7C82605745a55e4e8e660508de4ed8823f%7C84df9e7fe9f640afb435aaaa=
+aaaaaaaa%7C1%7C0%7C639034888959417566%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hc=
+GkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3=
+D%3D%7C0%7C%7C%7C&amp;sdata=3DMDxomr5zUYYrl275X51bz9n27BbTbtbOz7pVgbQFxVw%3=
+D&amp;reserved=3D0" originalsrc=3D"https://links.wellfound.com/s/c/FC0MldcZ=
+AXX11MyKcx49CDBgXeSNMMMuqFKB7uJmSpeIdNBK4i75s8s7CJxlVdpVtaol9hr2rmvk64mqmt7=
+XegfLQRBYsWHRYkDhddOCkBRxxGVhS2gm6f1HjuF7XlgmClGsYVLVw4KZgzf5pZB4R2pYlNWuVZ=
+L3UHF2oeIip1Qr1lkIIKCmZ7_F362V6UVAj0bXP0NdvzZARZe57HYa2N7MOkfYL77hPkKw4r8KQ=
+rQ-I2uGtOIpVirhPPnMid_YYJnu0GFlfnhZ0ZXfnx1_gCyrb6KuQYm4gX3A7CSxQttRxpixTV0v=
+VYxNwwV9CZXMV9lc_8i1SnGmDJLFp8x82ctOCyzikrfhL09NTQ_kLTVxuOOelrzpQefERfq5kj3=
+iCdkoj2v0Tb-nyNQhy31764c3gfOXjIqV5EigeJD5aepNskUDg3hGpPkttCIK-gXFZwXiDT2Bb-=
+8RG_bT229j9ji-YYJFqlEj182Gl8Vi0eK3wfkqmOw/Jrfb498CSkJrONtq-j_dhXFIy-9r2BeC/=
+16" target=3D"_blank" style=3D"box-sizing: border-box;"> <img src=3D"https:=
+//app-rsrc.getbee.io/public/resources/social-networks-icon-sets/circle-dark=
+-gray/youtube@2x.png" width=3D"32" height=3D"auto" alt=3D"YouTube" title=3D=
+"YouTube" style=3D"box-sizing: border-box; display: block; height: auto; bo=
+rder: 0;"></a></td></tr></table></div></td></tr></table></td></tr></tbody><=
+/table></td></tr></tbody></table><table class=3D"row row-13" align=3D"cente=
+r" width=3D"100%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"=
+presentation" style=3D"box-sizing: border-box; mso-table-lspace: 0; mso-tab=
+le-rspace: 0;"><tbody style=3D"box-sizing: border-box;"><tr style=3D"box-si=
+zing: border-box;"><td style=3D"box-sizing: border-box;"><table class=3D"ro=
+w-content stack" align=3D"center" border=3D"0" cellpadding=3D"0" cellspacin=
+g=3D"0" role=3D"presentation" style=3D"box-sizing: border-box; mso-table-ls=
+pace: 0; mso-table-rspace: 0; background-color: #fff; color: #000; width: 5=
+75px; margin: 0 auto;" width=3D"575" bgcolor=3D"#fff"><tbody style=3D"box-s=
+izing: border-box;"><tr style=3D"box-sizing: border-box;"><td class=3D"colu=
+mn column-1" width=3D"100%" style=3D"box-sizing: border-box; mso-table-lspa=
+ce: 0; mso-table-rspace: 0; font-weight: 400; text-align: left; padding-bot=
+tom: 20px; padding-top: 20px; vertical-align: top;" align=3D"left" valign=
+=3D"top"><table class=3D"text_block block-1" width=3D"100%" border=3D"0" ce=
+llpadding=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"box-sizing=
+: border-box; mso-table-lspace: 0; mso-table-rspace: 0; word-break: break-w=
+ord;"><tr style=3D"box-sizing: border-box;"><td class=3D"pad" style=3D"box-=
+sizing: border-box; padding-bottom: 20px; padding-left: 10px; padding-right=
+: 10px; padding-top: 10px;"><div style=3D"box-sizing: border-box; font-fami=
+ly: sans-serif;"><div class=3D"" style=3D"box-sizing: border-box; font-size=
+: 12px; font-family: Lucida Sans Unicode,Lucida Grande,Lucida Sans,Geneva,V=
+erdana,sans-serif; mso-line-height-alt: 21.6px; color: #676c73; line-height=
+: 1.8;"><p style=3D"box-sizing: border-box; line-height: inherit; margin: 0=
+; font-size: 14px; text-align: center; mso-line-height-alt: 21.6px;"> <span=
+ style=3D"box-sizing: border-box; word-break: break-word; font-size: 12px; =
+color: #000000;">Wellfound Weekly</span></p><p style=3D"box-sizing: border-=
+box; line-height: inherit; margin: 0; font-size: 14px; text-align: center; =
+mso-line-height-alt: 21.6px;"><span style=3D"box-sizing: border-box; word-b=
+reak: break-word; font-size: 12px; color: #000000;">228 Park Ave S, PMB 405=
+33</span></p><p style=3D"box-sizing: border-box; line-height: inherit; marg=
+in: 0; font-size: 14px; text-align: center; mso-line-height-alt: 21.6px;"><=
+span style=3D"box-sizing: border-box; word-break: break-word; font-size: 12=
+px; color: #000000;">New York, NY 10003</span></p><p style=3D"box-sizing: b=
+order-box; line-height: inherit; margin: 0; font-size: 14px; text-align: ce=
+nter; mso-line-height-alt: 21.6px;"><span style=3D"box-sizing: border-box; =
+word-break: break-word; font-size: 12px;"><a style=3D"box-sizing: border-bo=
+x; text-decoration: underline; color: #e9357b;" href=3D"https://swe01.safel=
+inks.protection.outlook.com/?url=3Dhttps%3A%2F%2Flinks.wellfound.com%2Fs%2F=
+u%2FvRTjOGbDGMdkvNoiizhNV2X2xxa49NZ_KxUZNQ4J82HY5k2eaW9BV2GilYFU4aYrPTaZaFq=
+r9KOgjc2WKz3HWAZRFJSOWMuAXE37bwiXaOpkrDomqDKqiAKhhylgzJAoWBBGMXkcBt7k-sSD1B=
+qI27MMMzwT4c3qdyNRjz26ZVPt_yUTBQ9r8ddHDQ256ieGdHiCZ97WdiaJvWv8u3ByOSe-FBDOt=
+xmyUbFtCj0v4U5d%2FSORtM9fKG3PYoRn4N5U5j7zGSqHnv-U_%2F16&amp;data=3D05%7C02%=
+7C%7C82605745a55e4e8e660508de4ed8823f%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C=
+1%7C0%7C639034888959430845%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUs=
+IlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C=
+%7C%7C&amp;sdata=3Deg7QEBLgshgWR89iesp%2BNq91%2BbWUM692ZAJAeLa9ZOU%3D&amp;r=
+eserved=3D0" originalsrc=3D"https://links.wellfound.com/s/u/vRTjOGbDGMdkvNo=
+iizhNV2X2xxa49NZ_KxUZNQ4J82HY5k2eaW9BV2GilYFU4aYrPTaZaFqr9KOgjc2WKz3HWAZRFJ=
+SOWMuAXE37bwiXaOpkrDomqDKqiAKhhylgzJAoWBBGMXkcBt7k-sSD1BqI27MMMzwT4c3qdyNRj=
+z26ZVPt_yUTBQ9r8ddHDQ256ieGdHiCZ97WdiaJvWv8u3ByOSe-FBDOtxmyUbFtCj0v4U5d/SOR=
+tM9fKG3PYoRn4N5U5j7zGSqHnv-U_/16" target=3D"_blank" rel=3D"noopener">Unsubs=
+cribe</a> | <a href=3D"https://swe01.safelinks.protection.outlook.com/?url=
+=3Dhttps%3A%2F%2Flinks.wellfound.com%2Fs%2Fc%2FII-o9kXmH8YgAgtUmIRtBtA86mtD=
+N2Rp9lGhaoGSPExqIPDD7rw73KnZi3rzO6yghXDlcADiN94KmjkE-7qucDICVvZtb1Lk3VQIQA-=
+c8erQrhK1VPOq8s-6mOPNLLgsRBgkth7fP5_y74YoITyQG6PcdzhxTVMY9M6k7Gsqss9aJ31ipP=
+bG9tqEI3WR4-V2TyrhYrPlBOszfVoUezQSuwfbC1CYUEcXm17CVYKl42xChTooOgxLgrJmiXO0q=
+CSTNkOvMHi7tkVdaN1zPGOwgzCRz-1KXxVxDt3t0bPds4g1Us6feqIB67OgOPPzGDEEXQWtIb0e=
+_yn8Dt8ZvnQPPUFrfaZbJZpfLE3miMQ-0RZJgWn-E1yGZ0gHoM4_oJDFxpDPS24SY5K4BOPOYfg=
+qkGQx4DuC3aAgkskyESSHpzlCXlvmB2pZRi6pwMXjmUNP4D5oeHV1ombJ_Iojup8I9GEbTL3_CS=
+oW_1aYI68cJJdUDXUA0pWqOQ%2Ff1kex_mDa83D3Kr5OoCSn4zUT4P2J3Gu%2F16&amp;data=
+=3D05%7C02%7C%7C82605745a55e4e8e660508de4ed8823f%7C84df9e7fe9f640afb435aaaa=
+aaaaaaaa%7C1%7C0%7C639034888959442803%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hc=
+GkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3=
+D%3D%7C0%7C%7C%7C&amp;sdata=3DqraFSg58com5B8oy1LMdfXr%2F%2FfAgp3aeHnWFPQptc=
+N0%3D&amp;reserved=3D0" originalsrc=3D"https://links.wellfound.com/s/c/II-o=
+9kXmH8YgAgtUmIRtBtA86mtDN2Rp9lGhaoGSPExqIPDD7rw73KnZi3rzO6yghXDlcADiN94Kmjk=
+E-7qucDICVvZtb1Lk3VQIQA-c8erQrhK1VPOq8s-6mOPNLLgsRBgkth7fP5_y74YoITyQG6Pcdz=
+hxTVMY9M6k7Gsqss9aJ31ipPbG9tqEI3WR4-V2TyrhYrPlBOszfVoUezQSuwfbC1CYUEcXm17CV=
+YKl42xChTooOgxLgrJmiXO0qCSTNkOvMHi7tkVdaN1zPGOwgzCRz-1KXxVxDt3t0bPds4g1Us6f=
+eqIB67OgOPPzGDEEXQWtIb0e_yn8Dt8ZvnQPPUFrfaZbJZpfLE3miMQ-0RZJgWn-E1yGZ0gHoM4=
+_oJDFxpDPS24SY5K4BOPOYfgqkGQx4DuC3aAgkskyESSHpzlCXlvmB2pZRi6pwMXjmUNP4D5oeH=
+V1ombJ_Iojup8I9GEbTL3_CSoW_1aYI68cJJdUDXUA0pWqOQ/f1kex_mDa83D3Kr5OoCSn4zUT4=
+P2J3Gu/16" target=3D"_blank" style=3D"box-sizing: border-box; text-decorati=
+on: underline; color: #e9357b;" rel=3D"noopener">Update preferences</a></sp=
+an></p></div></div></td></tr></table></td></tr></tbody></table></td></tr></=
+tbody></table></td></tr></tbody></table><!-- End -->
+<img border=3D"0" width=3D"1" height=3D"1" alt=3D"" src=3D"https://post.spm=
+ailtechnol.com/q/sL9X2H0_M6IvKBzrNmydPw~~/AARTlRA~/tT4sr_xPqa9pibMErfv0o8ug=
+1Skx9yJJCZQgKJxtUDnivi38G2MBskm7yw0a7SVeU0w7BNvpbYlJoODDzKdeaA~~">
+</body></html>=
+
+--_----W++UVC4uwqkHI6tE1Tt/+A===_6B/69-37368-B74EF596--

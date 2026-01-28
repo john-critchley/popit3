@@ -1,7 +1,6 @@
 if __name__ != "__main__": print("Module:", __name__)
 import gdata
 import os
-import pdb
 import email
 import email.utils
 import email.header
@@ -23,16 +22,36 @@ import js_email
 #import analyze_jobs_openai
 
 KEY_PATH = "~/py/popit3/.openai"
-CV_PATH = os.environ.get('CV_PATH', "~/Downloads/cv_llm_optimized.md")
+CV_PATH = os.environ.get('CV_PATH', "~/CV/cv_llm_optimized.md")
 
 MODEL='gpt-4o-mini'
 SYSTEM_CONTENT = (
     "You are a career assistant helping with job application suitability analysis. "
     "You have expertise in matching CVs to job requirements and providing realistic assessments. "
-    "You analyze technical skills, experience relevance, and overall job fit. "
+    "You analyze technical skills, experience relevance, location feasibility, and overall job fit. "
+    
     "BE DISCRIMINATING with scores - use the full 0-10 range and avoid grade inflation. "
-    "Respond with clear reasoning and finish with a line that exactly matches:\n"
-    "Score: N\n"
+    "Scores 0-3: Poor fit or critical blockers. "
+    "Scores 4-6: Moderate fit with notable gaps. "
+    "Scores 7-8: Strong fit with minor gaps. "
+    "Scores 9-10: Exceptional fit. "
+    
+    "CRITICAL BLOCKERS (score 0-2): "
+    "- Job requires ACTIVE/CURRENT security clearance (SC/DV) and candidate has none "
+    "- Job location requires regular commute >2.5 hours and is not remote/hybrid "
+    "- Candidate fundamentally lacks core required skills (not desirable/nice-to-have) "
+    
+    "LOCATION ASSESSMENT: "
+    "Candidate is based near Bristol. Commutable locations include: Bristol, Bath, Swindon (local); "
+    "London, Reading, Guildford (2hrs, acceptable for 2-3 days/week hybrid); "
+    "Birmingham, Cardiff (1-1.5hrs, good for hybrid). "
+    "Roles in Scotland, Northern England (Leeds/Sheffield/Manchester), or requiring daily onsite are NOT suitable. "
+    
+    "Respond with clear reasoning covering: "
+    "1. Technical skills match (distinguish must-have vs nice-to-have) "
+    "2. Experience relevance and seniority fit "
+    "3. Location/commute feasibility "
+    "4. Any critical blockers (clearance, location, fundamental skill gaps)"
 )
 
 DATABASE_FILENAME = ('~/.jobserve.gdbm')
@@ -62,6 +81,41 @@ def classify_job(subj):
         print(f"Skipping non-job email: {subj}")
         return None
 
+def should_skip_job(parsed_job, location_str):
+    """
+    Pre-filter jobs before expensive LLM analysis.
+    Returns (should_skip, reason)
+    """
+    description = parsed_job.get('description', '').lower()
+    location_lower = location_str.lower() if location_str else ''
+    
+    # Security clearance check
+    clearance_patterns = [
+        'active sc', 'current sc', 'sc cleared', 'dv cleared',
+        'must have sc', 'must hold sc', 'existing sc clearance',
+        'valid sc clearance', 'active dv', 'security cleared'
+    ]
+    if any(pattern in description for pattern in clearance_patterns):
+        # Allow if mentions "willing to sponsor" or "obtainable"
+        if not any(phrase in description for phrase in ['sponsor', 'obtainable', 'willing to obtain']):
+            return True, "Requires active security clearance"
+    
+    # Location check - unreachable cities
+    unreachable_locations = [
+        'edinburgh', 'glasgow', 'scotland', 'manchester', 'leeds', 
+        'sheffield', 'liverpool', 'newcastle', 'nottingham', 'york',
+        'belfast', 'northern ireland'
+    ]
+    
+    # Check if it's NOT remote/hybrid AND in unreachable location
+    is_remote = any(word in description for word in ['remote', 'hybrid', 'home', 'wfh'])
+    is_unreachable = any(city in location_lower for city in unreachable_locations)
+    
+    if is_unreachable and not is_remote:
+        return True, f"Location not commutable: {location_str}"
+    
+    return False, None
+
 def process_js_mails(js_emails):
     print('process_js_mails')
     print(f'len js_emails {len(js_emails)}')
@@ -69,7 +123,7 @@ def process_js_mails(js_emails):
     js_gd=gdata.gdata(gdbm_path) # I cleanup at the end
     uids_to_delete=set()
     for uid, msg in js_emails:
-        uid=int(uid)
+        uid=int(uid) #Assumption here!
         msg_id=msg['Message-ID']
         print("Mail UID:", uid, "Message:", msg_id)
         if not ( msg_id.startswith('<') and msg_id.endswith('>') ):
@@ -88,7 +142,7 @@ def process_js_mails(js_emails):
             if 'Date' in msg:
                 sent_date=email.utils.parsedate_to_datetime(msg['Date'])
                 rec.date=sent_date.isoformat()
-            rec.unclassified = {}
+            rec.unclassified = {} # XXX Should possibly be True
             js_gd[msg_id]=rec.to_dict()
             print("Stored unclassified email")
             continue
@@ -169,6 +223,24 @@ def process_js_mails(js_emails):
                 else:
                     print("job_url is", rec.parsed_job.job_url)
             if 'scored_job' not in rec:
+                # PRE-FILTER before expensive LLM call
+                should_skip, skip_reason = should_skip_job(
+                    rec.parsed_job, 
+                    rec.parsed_job.get('location', '')
+                )
+                
+                if should_skip:
+                    print(f"SKIPPING job (pre-filter): {skip_reason}")
+                    rec.score = 0
+                    rec.score_reason = f"Pre-filtered: {skip_reason}"
+                    rec.scored_job = json.dumps({
+                        "score": 0,
+                        "reason": skip_reason
+                    })
+                    js_gd[msg_id] = rec.to_dict()
+                    continue  # Skip to next email
+                
+                # If we get here, proceed with LLM analysis
                 if 'cv' not in vars():
                     cv_file = os.path.expanduser(CV_PATH)
                     with open(cv_file, 'r') as fd:

@@ -54,6 +54,7 @@ js_webdav_client = create_webdav_client_with_retry(f'https://{host}/mail/john.js
 # Create MailSpool instances for different email addresses
 mail_spool = mailspool.MailSpool(os.path.expanduser('~/Mail'), webdav_client)
 js_mail_spool = mailspool.MailSpool(os.path.expanduser('~/py/popit3/jsMail'), js_webdav_client, delete=False)
+wf_mail_spool = mailspool.MailSpool(os.path.expanduser('~/py/popit3/wfMail'), webdav_client, delete=False)
 # Note - using webdav_client not js_webdav_client
 # Keep the MyJobserveJobs processor available under a distinct name, but use the
 # `jobserve_parser` module (the jobserve parser) for processing so it benefits
@@ -75,6 +76,7 @@ map= [
 ###        ("john.js@critchley.biz", jobserve_parser.process_js_mails),
         ("john.js@critchley.biz", newparser_jobserve.process_js_mails),
         ("john.js@critchley.biz", js_mail_spool.store_messages),
+        ("john.wellfound@critchley.biz", wf_mail_spool.store_messages),
        
         ("john-medium@critchley.biz", mail_spool.store_messages),
         ("john.boots_advantage_card@critchley.biz", mail_spool.store_messages),

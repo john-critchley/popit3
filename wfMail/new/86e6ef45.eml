@@ -1,0 +1,209 @@
+Received: from GVYP280MB0862.SWEP280.PROD.OUTLOOK.COM (2603:10a6:150:ed::6) by
+ GV3P280MB1286.SWEP280.PROD.OUTLOOK.COM with HTTPS; Sun, 4 Jan 2026 11:22:43
+ +0000
+Received: from AS4P191CA0026.EURP191.PROD.OUTLOOK.COM (2603:10a6:20b:5d9::17)
+ by GVYP280MB0862.SWEP280.PROD.OUTLOOK.COM (2603:10a6:150:ed::6) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9478.4; Sun, 4 Jan
+ 2026 11:22:42 +0000
+Received: from AM4PEPF00025F97.EURPRD83.prod.outlook.com
+ (2603:10a6:20b:5d9:cafe::e0) by AS4P191CA0026.outlook.office365.com
+ (2603:10a6:20b:5d9::17) with Microsoft SMTP Server (version=TLS1_3,
+ cipher=TLS_AES_256_GCM_SHA384) id 15.20.9478.4 via Frontend Transport; Sun, 4
+ Jan 2026 11:22:35 +0000
+Authentication-Results: spf=pass (sender IP is 64.68.198.23)
+ smtp.mailfrom=srszone.org; dkim=pass (signature was verified)
+ header.d=wellfound.com;dmarc=pass action=none
+ header.from=wellfound.com;compauth=pass reason=100
+Received-SPF: Pass (protection.outlook.com: domain of srszone.org designates
+ 64.68.198.23 as permitted sender) receiver=protection.outlook.com;
+ client-ip=64.68.198.23; helo=mxc03.zoneedit.com; pr=C
+Received: from mxc03.zoneedit.com (64.68.198.23) by
+ AM4PEPF00025F97.mail.protection.outlook.com (10.167.16.6) with Microsoft SMTP
+ Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384) id 15.20.9520.0 via
+ Frontend Transport; Sun, 4 Jan 2026 11:22:42 +0000
+X-IncomingTopHeaderMarker: OriginalChecksum:B254F982ABDB6D1FBBD3C702A3FDC7308EB2984ACF0FBE9A52F6836EFCED4099;UpperCasedChecksum:8DE2AD656AA4FBE997FAAACDE1589320A601F56CB5FDB2E35B65BD61717029A0;SizeAsReceived:2230;Count:18
+Received: from localhost (localhost [127.0.0.1])
+	by mxc03.zoneedit.com (Postfix) with ESMTP id 6DAD82CDD5C
+	for <jsr_critchley@hotmail.com>; Sun,  4 Jan 2026 11:22:41 +0000 (UTC)
+Received: from mxc03.zoneedit.com ([127.0.0.1])
+	by localhost (mxc03-zpc.zoneedit.vpn [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id cTXcMinEYEQV for <jsr_critchley@hotmail.com>;
+	Sun,  4 Jan 2026 11:22:41 +0000 (UTC)
+Received: from mta-70-4-31.sparkpostmail.com (mta-70-4-31.sparkpostmail.com [156.70.4.31])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+	(No client certificate requested)
+	by mxc03.zoneedit.com (Postfix) with ESMTPS id 2C6362CDCFF
+	for <john.wellfound@critchley.biz>; Sun,  4 Jan 2026 11:22:40 +0000 (UTC)
+X-MSFBL: JEGYdRWBoS4Mqkkmsl4+AofwHgw4YSvx0vSjbwvaK5s=|eyJ0ZW5hbnRfaWQiOiJ
+	zcGMiLCJzdWJhY2NvdW50X2lkIjoiMiIsImN1c3RvbWVyX2lkIjoiMjgzNTQxIiw
+	ibWVzc2FnZV9pZCI6IjY5NTY3ZjRkNWE2OWEwZGU3YmFkIiwiciI6ImpvaG4ud2V
+	sbGZvdW5kQGNyaXRjaGxleS5iaXoifQ==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wellfound.com;
+	s=scph1122; t=1767525759; i=@wellfound.com;
+	bh=UYDaTlti91y9fNsfr2B5pV6r4ooEnLaNCOo0i7sAKgc=;
+	h=To:Message-ID:Date:Content-Type:From:Subject:From:To:Cc:Subject;
+	b=qWATQsGJ/LYIdifgf9GO4mwoJCdWJ5SngjUx9aggqNHLUbIttUz0sG/9NwtRd/Cag
+	 bSsXTkebyllgSJTpnaDJTRCDaUVYbEcjrXjingCjw0JNw+Vy+EELC+dmGygeuJDSsp
+	 KPDmLO06EDyqazIT4sIyHUn9mbu7G+6FuyL8gUjg=
+Received: from [10.90.45.189] ([10.90.45.189])
+	by i-09cab0fcb860b3d71.mta1vrest.sd.prd.sparkpost (ecelerity 5.1.0.74856 r(msys-ecelerity:tags/5.1.0.29)) with REST
+	id DA/B7-23327-F7D4A596; Sun, 04 Jan 2026 11:22:39 +0000
+To: john.wellfound@critchley.biz
+Message-ID: <DA.B7.23327.F7D4A596@i-09cab0fcb860b3d71.mta1vrest.sd.prd.sparkpost>
+Date: Sun, 04 Jan 2026 11:22:39 +0000
+Content-Type: multipart/alternative; boundary="_----8Tfblqjbecbqbm9tmRtq1w===_AA/B7-23327-F7D4A596"
+Reply-To: team@wellfound.com
+X-Campaign-ID: 11333755
+From: "Wellfound" <team@wellfound.com>
+Subject: Action Required: Verify Your Account Email to Use Wellfound
+X-Message-ID: 53ead3e84ebd4c8ea834c9d9e8a18480
+X-Feedback-ID: 14906459:11333755:76030:iterable
+Feedback-ID: 14906459:11333755:76030:iterable
+X-IncomingHeaderCount: 18
+Return-Path: SRS0=K5mt=7J=bounce.wellfound.com=msprvs1=20464zIvwcZ3v=bounces-283541-2@srszone.org
+X-MS-Exchange-Organization-ExpirationStartTime: 04 Jan 2026 11:22:42.5447
+ (UTC)
+X-MS-Exchange-Organization-ExpirationStartTimeReason: OriginalSubmit
+X-MS-Exchange-Organization-ExpirationInterval: 1:00:00:00.0000000
+X-MS-Exchange-Organization-ExpirationIntervalReason: OriginalSubmit
+X-MS-Exchange-Organization-Network-Message-Id: 6c767b0c-8cd5-43d8-8cab-08de4b8393c9
+X-EOPAttributedMessage: 0
+X-EOPTenantAttributedMessage: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa:0
+X-MS-Exchange-Organization-MessageDirectionality: Incoming
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: AM4PEPF00025F97:EE_|GVYP280MB0862:EE_|GV3P280MB1286:EE_
+X-MS-Exchange-Organization-AuthSource: AM4PEPF00025F97.EURPRD83.prod.outlook.com
+X-MS-Exchange-Organization-AuthAs: Anonymous
+X-MS-UserLastLogonTime: 1/4/2026 11:21:12 AM
+X-MS-Office365-Filtering-Correlation-Id: 6c767b0c-8cd5-43d8-8cab-08de4b8393c9
+X-MS-Exchange-EOPDirect: true
+X-Sender-IP: 64.68.198.23
+X-SID-PRA: TEAM@WELLFOUND.COM
+X-SID-Result: PASS
+X-MS-Exchange-AtpMessageProperties: SA|SL
+X-MS-Exchange-Organization-SCL: 1
+X-Microsoft-Antispam: BCL:0;ARA:1444111002|36140799009|461199028|58200799021|47200799024|35120799006|970799060|10300799038|4302099013|3412199025|440099028|26104999006|30041999003|1370799030|1380799030|1360799030|1602099012|56899033;
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 04 Jan 2026 11:22:42.2682
+ (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 6c767b0c-8cd5-43d8-8cab-08de4b8393c9
+X-MS-Exchange-CrossTenant-Id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
+X-MS-Exchange-CrossTenant-AuthSource: AM4PEPF00025F97.EURPRD83.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: Internet
+X-MS-Exchange-CrossTenant-RMS-PersistedConsumerOrg: 00000000-0000-0000-0000-000000000000
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: GVYP280MB0862
+X-MS-Exchange-Transport-EndToEndLatency: 00:00:01.6582276
+X-MS-Exchange-Processed-By-BccFoldering: 15.20.9478.004
+X-Microsoft-Antispam-Mailbox-Delivery: 
+	ucf:0;jmr:0;ex:0;auth:1;dest:I;ENG:(5062000311)(920221119095)(90000117)(920221120095)(90005022)(91005020)(91035115)(9050020)(9100341)(944500132)(2008001181)(2008121020)(4810010)(4910033)(9575002)(10195002)(9320005)(120001)(1110175);
+X-Message-Delivery: Vj0xLjE7dXM9MDtsPTA7YT0wO0Q9MTtHRD0xO1NDTD0z
+X-Microsoft-Antispam-Message-Info: 
+	=?utf-8?B?aE93ajJqMmhSL25keXZxdk1DZ2RNWC9sN1F6a2FQZEFDeWRnUldVeVdHSzZa?=
+ =?utf-8?B?UHhqZzZrSktieWxXUFdrd0ZKalJHRmFsa2wvWmxmbHZzR1R5WTR2TzZIUHdq?=
+ =?utf-8?B?NnJzV2Y2eEhyeDUyU01KQlBnZStYSE93QW85OWdGd2VFMFdKSGpLMVptMlRl?=
+ =?utf-8?B?U3VGNWhjVS90ZGpNc3pHMFUwRVNmK0JzaXNDSXJDWmJtMjhMbkZOZEd4ZU1Y?=
+ =?utf-8?B?U3AxT0p0cWdlZVNMOWt0K2czU0Z5MTdSVS9lK1ZOMlBDSTJYc3lMK1h2YUxy?=
+ =?utf-8?B?QkVnVlgzVmNlVktqKzVzNHovdURhVFdGeDdDYUl1VmhmaGhMTXhQMnRMVFRP?=
+ =?utf-8?B?VnJRaGtiY2srbUQyTG85akJvWVovZWhjL3hIelFScEVjbEZqMnBPbjBxK0hB?=
+ =?utf-8?B?dTFjUURnN2JpOVdKb1o3eUdEQ1d4b2hPYWd3eDk0OHJ5bTdzWXMyS1BtUkVv?=
+ =?utf-8?B?WGZCTlVHdjlsek03aEpDQUk5akNvRkJrRmZKVXhQR2FTOG5jY3RGa3h3czZB?=
+ =?utf-8?B?bFcvd2FleTNUTitLNXN5aVFNaG12Qm5rUEhIcFozVjMxRDQvNGpLcGN0RGZE?=
+ =?utf-8?B?TC9rbHg1YlpKVWdGdThhUkgyNGNJZG0wMHQ4bXpkaVJnWjZPYXZxZFBPRWRK?=
+ =?utf-8?B?V2kxcWdYZVVWV2JGbXlLYmFtK1lrYVdSeUd2RWEyQXhtb0JSc1MvdWIrOHFP?=
+ =?utf-8?B?bDRWdFVwTW1NazJ0NUFzWXMyWXVJd1lxaGpaYlF6b1Rsc2RocVo1V2Q4RkNn?=
+ =?utf-8?B?ZC9qTFJYTnpLWitwSUhaak9HTlJuOUdWNmlDR1hNSjhtWWFwT2k5bjlOdHRQ?=
+ =?utf-8?B?d0FtU3lXNVpDYlVjam5qTGRlRnd3KzZuRlJTSHR2UmNpQmxzdVdMaFNaOXFK?=
+ =?utf-8?B?NzNMeUtuQW52SWFTQW5IRlBnNzVhSEZmSk40aDhaU0hUczdKNWd3cjE4djgr?=
+ =?utf-8?B?Q0g0NjkzRXZ4L1dpa3hyNzNweVpMOGsvWDdHSzlGU05lZjR3bWE0MkM4b0ps?=
+ =?utf-8?B?cElMZkZUOGlKVS9ZYnc4MjMxNDhUL1VSV0dnaHFWVUtwdThCN3lPMHlZcThh?=
+ =?utf-8?B?UkxKNko5NkFyTExocG94OVZ5QWpKdFA4elBJZTFjQy90QUNTMFNPdXRLQjVU?=
+ =?utf-8?B?K0pobG5IbWJzV3BXYThRV0FPZUdTVHJESXQ1Z3RtR2daTnRyd2dkaWlzUkJ5?=
+ =?utf-8?B?NnBaMHNWdFlHUzZzMXkrcjFWWDBqbnUzakV5MWdtSGlHY28xRG1TQkp2SzFh?=
+ =?utf-8?B?NE5wTzVSdytQZ1NzZS9FOEp3UUZ5SUhRTW1hNzBncWRreitnYVptSTVBZE94?=
+ =?utf-8?B?QnhMVFJNSlpsZ3I4SFJzbVUva0t6dXVhVjBxVDU3NEhKd3c0SnZKdDF4ZFNl?=
+ =?utf-8?B?SU1lTThJRWxWK2NCakhwcTlUeWVjdTBWcm9RZUdYeWJieXFGTHRxd2F3ZVJF?=
+ =?utf-8?B?ZHVoZExHTlFNbHBQYUdrZkNYUjFWYzFpcURlaG5KQkoxSmkwTHZrbTlRaE1Y?=
+ =?utf-8?B?UkF5SnVvenp2SWVkenAwN3hsQ3VUdmJiWG5VT0FxMkVmWTJlc2ZRWWtncmcv?=
+ =?utf-8?B?cFFxOWFTM0hBczN3R2V0S1VqV1VLQkFVNjFRRmwvR3NGNGM4Z2FrZlFpNkdh?=
+ =?utf-8?B?OHBwT0UyVlpYaGt5K2t0SGNJRnVrRDEvY3pmTUlvaGdYcityN2V2MTJDMkw3?=
+ =?utf-8?B?V0FWMk5mM3Vlem85VVZqMHFWd3lpM2RMblFhdnp4emxNWUhNVVo2UDBSVUNx?=
+ =?utf-8?B?bHBRUzFSNmNGZ0I0cGZLb0lrME9nT3ROMk83TmV1dDIvTkpYMHVCQnlvdmo2?=
+ =?utf-8?B?UE93Z0k2ZmR5N2ZtclVxektDWmZFdkd5L04zdE42QnJyZHNIcFZCVzZqeDFy?=
+ =?utf-8?B?NkFZRkhibWlSeUFSRUdPYVM2UnprTDRVUkFBRVI4NHM5U2g2TDdVa3Z5WXFV?=
+ =?utf-8?B?elI3U2JTZzhQMThBalNrUmszbGFoK3ROK0FEQVdudmpJRmNzdGl3MTE4SmJz?=
+ =?utf-8?B?Nzl1SDVVOFpEdHl3dmF4NnhQV2hVR050TnkxdnV2L1VUZ3oraUtJelpTelVp?=
+ =?utf-8?B?MFR6NG9VdVVqUTB3aFZMUVVXNUdLZ1lOMXVZSlVDTlgrOVJzOFB4a1BVd3FU?=
+ =?utf-8?B?djFJK0xhOEY1ampua0hSSHRVcXExeWZQdmtOZCt1bCtvTzQ3WHNpbENFdkl0?=
+ =?utf-8?B?TXVmbXFLVzFQTjI3Tlp3UXhQZ0RzZkYxMVZaYXgrdENicjZuMitmOW8xaS9S?=
+ =?utf-8?B?QkVFaGZxOUh6WG5oNDFmVTJBNi81RzdHQWJmMi90d0YvQSs5WjdabDdBK3Ft?=
+ =?utf-8?B?S0lFM0xrM0FlU21TaG40K0IvMWVKc1FFMDkvbFlteVg5ZWk2U2llVzZvSUhO?=
+ =?utf-8?B?WE50ZG16d0NmUFpveVpzeEI3NGxUK2E1MUxQQWJ1Z01rYTE4RGRsRjMrckdY?=
+ =?utf-8?B?ZXdMUElUN3R3K3Q3RGw2TGJvK2piUTVHcXNOZ05reG5XYzhMZjVxS0tHY1cr?=
+ =?utf-8?B?QU5hcEZMZVpkLzR3K3lWYkdFK0Y1ZmJiS2duMnNZeGJBamJrWDUxMEhuMHps?=
+ =?utf-8?B?Z3ZrOVdoSVMzS3hscjh6elI1NDJnSHBTS3NZRCtxdkgwbVkrSEJ3UXRic283?=
+ =?utf-8?B?T21XdTNpa015d21ZUlZGSlBQczhtQS9yOVRIN0pJMjljTjdqT3NVa0tCZFZI?=
+ =?utf-8?B?MlpkQmd2RGFDQjJyaGdVYU9HRmd5TnpmK1E9PQ==?=
+MIME-Version: 1.0
+
+--_----8Tfblqjbecbqbm9tmRtq1w===_AA/B7-23327-F7D4A596
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+Hey John, =0A=0A Welcome to Wellfound! You must verify your email to get st=
+arted. =0A=0A Your verification code is:  458571  (valid 15 minutes) =0A=0A=
+ If you didn't sign up for Wellfound, you can ignore this message. However,=
+ if =0Ayou have questions or concerns, feel free to reply, and we'll be hap=
+py to =0Aassist.=0A=0A Thanks, =0A The Wellfound Team
+--_----8Tfblqjbecbqbm9tmRtq1w===_AA/B7-23327-F7D4A596
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset="UTF-8"
+
+<html><head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8"><t=
+itle></title> </head> <body>
+<div style=3D"color:transparent;visibility:hidden;opacity:0;font-size:0px;b=
+order:0;max-height:1px;width:1px;margin:0px;padding:0px;border-width:0px!im=
+portant;display:none!important;line-height:0px!important;"><img border=3D"0=
+" width=3D"1" height=3D"1" src=3D"https://post.spmailtechnol.com/q/GKGUtTDT=
+9vwHGej1gK0hTA~~/AARTlRA~/NpMjjYln151QK9CzVvT0jBy1tYSYJH6vLKcRbK2RkMEWTb_4G=
+mAkXHLe_bzsg09OYetf1pe2Scv-mOSw2wrHxg~~" alt=3D""></div>
+<span style=3D"color:transparent;visibility:hidden;display:none;opacity:0;h=
+eight:0;width:0;font-size:0;"></span><img src=3D"https://links.wellfound.co=
+m/s/eo/WfTYj9J-CN8S3rnan0LRKTFarBTGcbfzsUb-vpsLD3sc0VIIDOaEdaIkE4TPkQod_-gm=
+o7enhLLyauwrUt-RLffCWp0dwmEU5QpOrbjHxFFT0xDQQRyKfKffYB5Gk5X43A-s33IitlJgPNg=
+XGSlDGnW_2E3zklW5sx2FTkGeyA_QJRCrYxaY-IjtDtFp-qNTMWSmvU8pdTzQPi5F_SoVd4I/jZ=
+IljKQTZ0EGB6uvdG-bFNa6FRjbOvex/16" style=3D"border:0;width:1px;height:1px;b=
+order-width:0px!important;display:none!important;line-height:0!important;" =
+width=3D"1" height=3D"1"> <p><html> <head>  <meta content=3D"width=3Ddevice=
+-width, initial-scale=3D1.0" name=3D"viewport"> <meta name=3D"x-apple-disab=
+le-message-reformatting"> <meta content=3D"IE=3Dedge" http-equiv=3D"X-UA-Co=
+mpatible"> <style>html,body,td{font-family:-apple-system,system-ui,BlinkMac=
+SystemFont,&#39;Helvetica Neue&#39;,Helvetica,&#39;Segoe UI&#39;,Roboto,Ubu=
+ntu,sans-serif;font-size:14px}.second-container{padding:20px}@media screen =
+and (max-width:520px){body{width:100%!important}img{max-width:100%!importan=
+t;height:auto!important}a{word-break:break-word}.second-container{padding-l=
+eft:0!important;padding-right:0!important}}</style> <style>@media only scre=
+en and (min-device-width:601px){.container{width:600px!important}}</style> =
+<!--[if (gte mso 9)|(IE)]><style>li{text-indent:-1em}</style><![endif]--> <=
+/head> <body> <!--[if (gte mso 9)|(IE)]><table width=3D"600" cellpadding=3D=
+"0" cellspacing=3D"0" border=3D"0"> <tr> <td><![endif]--> <table border=3D"=
+0" cellpadding=3D"0" cellspacing=3D"0" class=3D"container" style=3D"max-wid=
+th: 520px; width: 100%;"> <tr> <td style=3D"padding-bottom: 16px;"></td> </=
+tr> <tr> <td> <p> Hey John, </p> <p> Welcome to Wellfound! You must verify =
+your email to get started. </p> <p> Your verification code is: <strong> 458=
+571 </strong> <em> (valid 15 minutes) </em> </p> <p> If you didn't sign up =
+for Wellfound, you can ignore this message. However, if you have questions =
+or concerns, feel free to reply, and we'll be happy to assist. </p> <p> Tha=
+nks, <br> The Wellfound Team </p> </td> </tr> </table> <!--[if (gte mso 9)|=
+(IE)]></td> </tr> </table><![endif]--> </body> </html> </p> <!-- https://li=
+nks.wellfound.com/s/u/JGZ1G-Hr1MjOpIK4pDJM-JwwjlVrC_Ss6GKjXAMUMDMiLBaH-hoNq=
+8HYWTgI0VCc3F9MN_nxiN97IDQ9pDV17w0qw501uoTlVoD8CAT-lApUFswO9dfmx4WMiL59-euE=
+B8dS12RADK3OYT37ioocP3eGH1WR9xYNlJH3Y2hO6W75D669mHKDQD03s-ujqlO8XpY/ukG4pRx=
+_nUtrlPGtjgZNxXoRnOAdhl_G/16 -->
+<img border=3D"0" width=3D"1" height=3D"1" alt=3D"" src=3D"https://post.spm=
+ailtechnol.com/q/XxePJXtMBPjsgFm1J02kmg~~/AARTlRA~/GBMqLs7_9HaV232Zw0klXVQv=
+tzLNH-vaWhixK8EI38qrj9sI7nYDbqtCKFkXHqrqrsfXVirDOr9UGJ0MbpGTkQ~~">
+</body> </html>=
+
+--_----8Tfblqjbecbqbm9tmRtq1w===_AA/B7-23327-F7D4A596--
