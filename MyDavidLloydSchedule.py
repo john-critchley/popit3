@@ -15,7 +15,6 @@ import netrc
 import webdav4.client
 import io
 import requests
-import yaml
 
 home=os.environ['HOME']
 datetime_fileds=['start','end','Sent']
@@ -100,28 +99,24 @@ def _schedule_to_jsonhtl(df1, now):
     def loc(dt):
         return (dt if dt.tzinfo else dt.replace(tzinfo=tzinfo)).astimezone(tzinfo)
 
-    records = df1.to_dict("records")
-    bookings = []
-    for r in records:
+    columns = ['Activity', 'Start', 'End', 'Coach', 'Venue', 'Club', 'Ref']
+    rows = []
+    for r in df1.to_dict("records"):
         start = loc(r['start'])
         end = loc(r['end'])
-        bookings.append({
-            'activity': r.get('activity', ''),
-            'start':    start.strftime('%a %d %b %Y %H:%M'),
-            'end':      end.strftime('%H:%M'),
-            'coach':    r.get('coach', ''),
-            'venue':    r.get('venue', ''),
-            'club':     r.get('club', ''),
-            'ref':      r.get(booking_reference, ''),
-        })
+        rows.append([
+            r.get('activity', ''),
+            start.strftime('%a %d %b %Y %H:%M'),
+            end.strftime('%H:%M'),
+            r.get('coach', ''),
+            r.get('venue', ''),
+            r.get('club', ''),
+            r.get(booking_reference, ''),
+        ])
 
-    body = yaml.dump(
-        {'bookings': bookings},
-        sort_keys=False, allow_unicode=True, default_flow_style=False,
-    )
     content = [
         {"heading": {"level": 1, "text": "David Lloyd Schedule"}},
-        {"codeblock": {"lang": "yaml", "body": body.rstrip()}},
+        {"table": {"columns": columns, "rows": rows}},
         {"para": [f"updated: {now.strftime('%a %d %b %Y %H:%M')}"]},
     ]
     return {"title": "David Lloyd Schedule", "updated": now.strftime('%Y-%m-%d'), "content": content}
