@@ -115,19 +115,16 @@ class Pop3TLS:
     def expect_ok(self, resp, what=""):
         if not resp.startswith(b"+OK"):
             msg = resp.decode("utf-8", "replace").rstrip()
-            raise SystemExit(f"{what} failed: {msg}")
+            raise RuntimeError(f"{what} failed: {msg}")
 
 def read_netrc(machine):
     nrc_path = os.path.expanduser("~/.netrc")
-    try:
-        auth = netrc.netrc(nrc_path).authenticators(machine)
-    except FileNotFoundError:
-        raise SystemExit(f"No ~/.netrc found at {nrc_path}")
+    auth = netrc.netrc(nrc_path).authenticators(machine)
     if not auth:
-        raise SystemExit(f"No entry for machine '{machine}' in ~/.netrc")
+        raise RuntimeError(f"No entry for machine '{machine}' in ~/.netrc")
     login, account, password = auth
     if not login or not password:
-        raise SystemExit(f"~/.netrc entry for '{machine}' missing login or password")
+        raise RuntimeError(f"~/.netrc entry for '{machine}' missing login or password")
     return login, account, password
 
 
@@ -158,14 +155,14 @@ def acquire_access_token_via_refresh(client_id, refresh_token, authority, scope)
         raise
     if r.status_code != 200 or "access_token" not in js:
         err = js.get("error_description") or js
-        raise SystemExit(f"Refresh-token exchange failed: {err}")
+        raise RuntimeError(f"Refresh-token exchange failed: {err}")
     return r.text,js["access_token"]
 
 
 def auth_xoauth2(pop, user, access_token):
     resp = pop.send_cmd("AUTH XOAUTH2")
     if not resp.startswith(b"+"):
-        raise SystemExit(f"Server rejected AUTH XOAUTH2: {resp!r}")
+        raise RuntimeError(f"Server rejected AUTH XOAUTH2: {resp!r}")
     xoauth = f"user={user}\x01auth=Bearer {access_token}\x01\x01".encode()
     pop._sendline(base64.b64encode(xoauth).decode())
     resp = pop._readline()
@@ -216,65 +213,74 @@ def main(
     if machine is None:
         machine = host
 
-    login_name, account, secret = read_netrc(machine)
-    if user is None:
-        user = login_name
-    if client_id is None:
-        client_id = parse_client_id_from_account(account)
-    if not client_id:
-        raise SystemExit("client_id not provided. Pass --client-id or set account 'MSAL:<client_id>' in ~/.netrc")
-    refresh_token = secret
-    
-    access_token_file=os.path.expanduser(f'~/.{machine}_token')
-    token=None
-    if os.path.isfile(access_token_file):
-        with open(access_token_file, "r") as token_fd:
-            token_data=json.load(token_fd)
-        if time.time() - os.stat(access_token_file)[stat.ST_MTIME]<token_data['expires_in']:
-            token=token_data["access_token"] 
-    # Mint an access token via refresh token
-    if token is None:
-        r_text,token = acquire_access_token_via_refresh(client_id, refresh_token, authority, POP_SCOPE)
-        with open(access_token_file, "w") as token_fd:
-            token_fd.write(r_text)
+    processing_done = False
+    try:
+        login_name, account, secret = read_netrc(machine)
+        if user is None:
+            user = login_name
+        if client_id is None:
+            client_id = parse_client_id_from_account(account)
+        if not client_id:
+            raise RuntimeError("client_id not provided. Pass --client-id or set account 'MSAL:<client_id>' in ~/.netrc")
+        refresh_token = secret
 
-    with gdata.gdata_raw(gdbm_file=dbfile) as maildb, Pop3TLS(host=host, port=port, show=show) as pop:
-        auth_xoauth2(pop, user, token)
+        access_token_file=os.path.expanduser(f'~/.{machine}_token')
+        token=None
+        if os.path.isfile(access_token_file):
+            with open(access_token_file, "r") as token_fd:
+                token_data=json.load(token_fd)
+            if time.time() - os.stat(access_token_file)[stat.ST_MTIME]<token_data['expires_in']:
+                token=token_data["access_token"]
+        # Mint an access token via refresh token
+        if token is None:
+            r_text,token = acquire_access_token_via_refresh(client_id, refresh_token, authority, POP_SCOPE)
+            with open(access_token_file, "w") as token_fd:
+                token_fd.write(r_text)
 
-        # Build current server view
-        uidl_map = get_uidl_map(pop)           # {uidl: num}
+        with gdata.gdata_raw(gdbm_file=dbfile) as maildb, Pop3TLS(host=host, port=port, show=show) as pop:
+            auth_xoauth2(pop, user, token)
 
-        # Fetch new mail
-        mails_to_process = []
-        for uidl, num in uidl_map.items():
-            if uidl in maildb:
-                if reprocess:
-                    raw=maildb[uidl]
+            # Build current server view
+            uidl_map = get_uidl_map(pop)           # {uidl: num}
+
+            # Fetch new mail
+            mails_to_process = []
+            for uidl, num in uidl_map.items():
+                if uidl in maildb:
+                    if reprocess:
+                        raw=maildb[uidl]
+                    else:
+                        continue
                 else:
-                    continue
-            else:
-                raw = fetch_message_bytes(pop, num)  # bytes
+                    raw = fetch_message_bytes(pop, num)  # bytes
 
-                maildb[uidl] = raw  # store raw bytes
-            mails_to_process.append((uidl, raw))
-        # Call processing function for new emails
-        todelete=process_emails.do_processing(mails_to_process, maildb)
+                    maildb[uidl] = raw  # store raw bytes
+                mails_to_process.append((uidl, raw))
+            # Call processing function for new emails
+            todelete=process_emails.do_processing(mails_to_process, maildb)
+            processing_done = True
 
-        print(uidl_map)
-        for delmsg in todelete:
-            if isinstance(delmsg, int):
-                delmsg=bytes(str(delmsg), 'ascii')
-            elif isinstance(delmsg, str):
-                delmsg=bytes(str(delmsg), 'utf-8')
-            print(delmsg,type(delmsg))
-            assert isinstance(delmsg, bytes)
-            msgno=uidl_map[delmsg]
-            print("delete:", delmsg, msgno)
-            del_message(pop, msgno)
-        # WILL NOT DELE
-        # if QUIT not sent
-        # so comment for testing
-        pop.send_cmd("QUIT")
+            print(uidl_map)
+            for delmsg in todelete:
+                if isinstance(delmsg, int):
+                    delmsg=bytes(str(delmsg), 'ascii')
+                elif isinstance(delmsg, str):
+                    delmsg=bytes(str(delmsg), 'utf-8')
+                print(delmsg,type(delmsg))
+                assert isinstance(delmsg, bytes)
+                msgno=uidl_map[delmsg]
+                print("delete:", delmsg, msgno)
+                del_message(pop, msgno)
+            # WILL NOT DELE
+            # if QUIT not sent
+            # so comment for testing
+            pop.send_cmd("QUIT")
+
+    except Exception as e:
+        print(f"ERROR: {e}")
+
+    if not processing_done:
+        process_emails.do_processing([])
 
 
 if __name__ == "__main__":
