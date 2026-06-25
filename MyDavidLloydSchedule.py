@@ -94,25 +94,34 @@ def uidl_encode(uid):
 def uidl_decode(uid):
     return int(uid) # will raise something sensible (ValueError) if not valid
 
-def _schedule_to_jsonhtl(df1, now):
-    tzinfo = zoneinfo.ZoneInfo("Europe/London")
+def _prep_display_records(records, tz="Europe/London"):
+    tzinfo = zoneinfo.ZoneInfo(tz)
     def loc(dt):
         return (dt if dt.tzinfo else dt.replace(tzinfo=tzinfo)).astimezone(tzinfo)
+    out = []
+    for r in records:
+        start = loc(r['start']) if r.get('start') else None
+        end   = loc(r['end'])   if r.get('end')   else None
+        out.append({
+            'Ref':      r.get(booking_reference, ''),
+            'Day':      r.get('day', ''),
+            'Activity': r.get('activity', ''),
+            'Coach':    r.get('coach', ''),
+            'Times':    f"{start.strftime('%H:%M')} - {end.strftime('%H:%M')}" if start and end else '',
+            'Date':     start.strftime('%a %d %b %Y') if start else '',
+            'Venue':    r.get('venue', ''),
+            'Club':     r.get('club', ''),
+        })
+    return out
 
-    columns = ['Activity', 'Start', 'End', 'Coach', 'Venue', 'Club', 'Ref']
-    rows = []
-    for r in df1.to_dict("records"):
-        start = loc(r['start'])
-        end = loc(r['end'])
-        rows.append([
-            r.get('activity', ''),
-            start.strftime('%a %d %b %Y %H:%M'),
-            end.strftime('%H:%M'),
-            r.get('coach', ''),
-            r.get('venue', ''),
-            r.get('club', ''),
-            r.get(booking_reference, ''),
-        ])
+
+def _schedule_to_jsonhtl(df1, now):
+    columns = ['Ref', 'Day', 'Activity', 'Coach', 'Times', 'Date', 'Venue', 'Club']
+    records = _prep_display_records(df1.to_dict("records"))
+    def _safe(v):
+        # NaN (float) is not JSON serialisable; replace with empty string
+        return '' if isinstance(v, float) and v != v else v
+    rows = [[_safe(r[c]) for c in columns] for r in records]
 
     content = [
         {"heading": {"level": 1, "text": "David Lloyd Schedule"}},
@@ -129,15 +138,19 @@ def publish_dl_schedule(df1, now):
 
 
 _gcal_svc = None
+_run_errors = []
+
 def _gcal():
     global _gcal_svc
     if _gcal_svc is None:
         try:
-            sys.path.insert(0, os.path.expanduser('~/py'))
             import google_services
             _gcal_svc = google_services.calendar()
         except Exception as e:
-            print(f'Google Calendar unavailable: {e}')
+            msg = f'Google Calendar unavailable: {e}'
+            print(msg)
+            if msg not in _run_errors:
+                _run_errors.append(msg)
     return _gcal_svc
 
 def _event_body(bo):
@@ -159,7 +172,11 @@ def _gcal_create(bo):
         print(f'GCal created: {ev["id"]}')
         return ev['id']
     except Exception as e:
-        print(f'GCal create failed: {e}')
+        ref = bo.get(booking_reference, "")
+        print(f'GCal create failed ({ref}): {e}')
+        msg = f'GCal create failed: {e}'
+        if msg not in _run_errors:
+            _run_errors.append(msg)
         return None
 
 def _gcal_update(event_id, bo):
@@ -169,7 +186,10 @@ def _gcal_update(event_id, bo):
         svc.events().update(calendarId='primary', eventId=event_id, body=_event_body(bo)).execute()
         print(f'GCal updated: {event_id}')
     except Exception as e:
-        print(f'GCal update failed {event_id}: {e}')
+        print(f'GCal update failed ({event_id}): {e}')
+        msg = f'GCal update failed: {e}'
+        if msg not in _run_errors:
+            _run_errors.append(msg)
 
 def _gcal_delete(event_id):
     svc = _gcal()
@@ -178,7 +198,10 @@ def _gcal_delete(event_id):
         svc.events().delete(calendarId='primary', eventId=event_id).execute()
         print(f'GCal deleted: {event_id}')
     except Exception as e:
-        print(f'GCal delete failed {event_id}: {e}')
+        print(f'GCal delete failed ({event_id}): {e}')
+        msg = f'GCal delete failed: {e}'
+        if msg not in _run_errors:
+            _run_errors.append(msg)
 
 def _sync_gcal(mail_dbm, gcal_ids):
     for ref, val in mail_dbm.items():
@@ -190,6 +213,8 @@ def _sync_gcal(mail_dbm, gcal_ids):
 
 
 def process_dl_mails(segregated_dl_emails):
+    global _run_errors
+    _run_errors = []
     #keys=None
     verbose=False
     all=[]
@@ -234,6 +259,10 @@ def process_dl_mails(segregated_dl_emails):
                     if not aox(booking_map, bo[booking_reference], bo.msg_id, uidl_decode(bo.UIDL)):
                         if 'verbose' in vars() and bool(verbose) and verbose:
                             print('Skipping', bo[booking_reference], bo.msg_id, "because already processed")
+                        continue
+
+                    if bo[booking_reference].upper().startswith('FT-'):
+                        print(f'PT session (not tracked): {bo.get("activity","?")} with {bo.get("coach","?")} on {bo.get("start","?")} [{bo[booking_reference]}]')
                         continue
 
                     # State check: booking should NOT exist yet; cancellation/update should exist
@@ -287,6 +316,15 @@ def process_dl_mails(segregated_dl_emails):
 #            usegmt=True
 #        )
 
+    error_banner = ''
+    if _run_errors:
+        unique_errors = list(dict.fromkeys(_run_errors))  # deduplicate, preserve order
+        items = ''.join(f'<li>{html.escape(e)}</li>' for e in unique_errors)
+        error_banner = (
+            '<div class="err-banner">'
+            '<strong>&#9888; Pipeline errors</strong><ul>' + items + '</ul></div>\n'
+        )
+
     bookings_html=(
         '<!DOCTYPE html>\n'
         '<html><head><title>David Lloyd Bookings</title>'
@@ -300,12 +338,15 @@ def process_dl_mails(segregated_dl_emails):
 .bks th{{background:#222;color:#fff}}
 .bks caption{{text-align:left;font-weight:600;padding:8px 0;font-size:1.05rem}}
 .bks .c-booking-reference{{font-size: smaller;}}
+.err-banner{{background:#fff3cd;border:1px solid #ffc107;border-radius:4px;padding:10px 14px;margin-bottom:12px;font-family:system-ui,sans-serif}}
+.err-banner ul{{margin:4px 0 0 0;padding-left:18px}}
+.err-banner li{{font-size:0.85rem;color:#555;word-break:break-all}}
 </style>"""
-        #f'<meta http-equiv="expires" content="{rfc2822_gmt()}">'
         '</head>\n'
         f'<body><h1>David Lloyd Bookings</h1>\n'
-        f'<p>{render_events_table_html(df1.to_dict("records"), title="My bookings")}</p>\n'
-        f'<p><em>{now.strftime('%Y/%m/%d %H:%M:%S')}</em><p>\n'
+        + error_banner +
+        f'<p>{render_events_table_html(_prep_display_records(df1.to_dict("records")), title="My bookings")}</p>\n'
+        f'<p><em>{now.strftime("%Y/%m/%d %H:%M:%S")}</em><p>\n'
         '</body></html>'
         )
 
