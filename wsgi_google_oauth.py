@@ -5,16 +5,18 @@ WSGI OAuth handler for Google token renewal via authorization code flow.
 GET /authorize-google/          → redirect to Google consent page
 GET /authorize-google/callback  → exchange code, write ~/.google_token.json
 
-Environment variables:
-  GOOGLE_TOKEN_FILE    Path to write token JSON (default: ~/. google_token.json)
-  GOOGLE_SECRETS_FILE  Path to ansible secrets.yml  (default: ~/ansible/secrets.yml)
-  REDIRECT_URI         Callback URL registered in Google Cloud Console (recommended: set in Apache)
+Apache SetEnv (goes into per-request WSGI environ, not os.environ):
+  REDIRECT_URI         Callback URL registered in Google Cloud Console
+  GOOGLE_TOKEN_FILE    Path to write token JSON  (default: /home/john/.google_token.json)
+  GOOGLE_SECRETS_FILE  Path to ansible secrets.yml (default: /home/john/ansible/secrets.yml)
 
 Register https://www.critchley.biz/authorize-google/callback as an authorized
 redirect URI in Google Cloud Console under the OAuth 2.0 client credentials.
 """
 
 import json
+import logging
+import logging.handlers
 import os
 import re
 import secrets
@@ -23,6 +25,23 @@ import urllib.request
 from datetime import datetime, timedelta, timezone
 
 import yaml
+
+# ---------------------------------------------------------------------------
+# Logging — file + stderr so errors appear in Apache log too
+# ---------------------------------------------------------------------------
+
+LOG_FILE = '/tmp/wsgi_google_oauth.log'
+
+_log_handler = logging.handlers.RotatingFileHandler(
+    LOG_FILE, maxBytes=1_000_000, backupCount=3
+)
+_log_handler.setFormatter(logging.Formatter('%(asctime)s %(levelname)s %(message)s'))
+
+logger = logging.getLogger('wsgi_google_oauth')
+logger.setLevel(logging.INFO)
+if not logger.handlers:
+    logger.addHandler(_log_handler)
+    logger.addHandler(logging.StreamHandler())  # also → Apache error log
 
 # ---------------------------------------------------------------------------
 # Config
@@ -39,26 +58,28 @@ TOKEN_URI = 'https://oauth2.googleapis.com/token'
 
 STATE_DIR = '/tmp/google_auth_states'
 
+_DEFAULT_TOKEN_FILE   = '/home/john/.google_token.json'
+_DEFAULT_SECRETS_FILE = '/home/john/ansible/secrets.yml'
 
-def _token_file():
-    return os.environ.get('GOOGLE_TOKEN_FILE', os.path.expanduser('~/.google_token.json'))
 
-
-def _secrets_file():
-    return os.environ.get('GOOGLE_SECRETS_FILE', os.path.expanduser('~/ansible/secrets.yml'))
+def _cfg(wsgi_environ, key, default):
+    """Read config from per-request WSGI environ (where Apache SetEnv lives)."""
+    return wsgi_environ.get(key) or os.environ.get(key) or default
 
 
 # ---------------------------------------------------------------------------
 # Secrets / token helpers
 # ---------------------------------------------------------------------------
 
-def _load_secrets():
-    with open(_secrets_file()) as f:
+def _load_secrets(wsgi_environ):
+    path = _cfg(wsgi_environ, 'GOOGLE_SECRETS_FILE', _DEFAULT_SECRETS_FILE)
+    logger.info('Loading secrets from %s', path)
+    with open(path) as f:
         return yaml.safe_load(f)
 
 
-def _save_refresh_token(refresh_token):
-    path = _secrets_file()
+def _save_refresh_token(wsgi_environ, refresh_token):
+    path = _cfg(wsgi_environ, 'GOOGLE_SECRETS_FILE', _DEFAULT_SECRETS_FILE)
     with open(path) as f:
         text = f.read()
     text = re.sub(
@@ -68,13 +89,16 @@ def _save_refresh_token(refresh_token):
     )
     with open(path, 'w') as f:
         f.write(text)
+    logger.info('Refresh token saved to %s', path)
 
 
-def _write_token_file(token_data):
-    path = _token_file()
+def _write_token_file(wsgi_environ, token_data):
+    path = _cfg(wsgi_environ, 'GOOGLE_TOKEN_FILE', _DEFAULT_TOKEN_FILE)
     with open(path, 'w') as f:
         json.dump(token_data, f, indent=2)
     os.chmod(path, 0o600)
+    logger.info('Token written to %s', path)
+    return path
 
 
 # ---------------------------------------------------------------------------
@@ -98,13 +122,13 @@ def _consume_state(state):
 # OAuth helpers
 # ---------------------------------------------------------------------------
 
-def _redirect_uri(environ):
-    override = os.environ.get('REDIRECT_URI')
+def _redirect_uri(wsgi_environ):
+    override = _cfg(wsgi_environ, 'REDIRECT_URI', None)
     if override:
         return override
-    scheme = environ.get('wsgi.url_scheme', 'https')
-    host   = environ.get('HTTP_HOST', 'www.critchley.biz')
-    script = environ.get('SCRIPT_NAME', '/authorize-google')
+    scheme = wsgi_environ.get('wsgi.url_scheme', 'https')
+    host   = wsgi_environ.get('HTTP_HOST', 'www.critchley.biz')
+    script = wsgi_environ.get('SCRIPT_NAME', '/authorize-google')
     return f'{scheme}://{host}{script}/callback'
 
 
@@ -122,7 +146,6 @@ def _auth_url(client_id, redirect_uri, state):
 
 
 def _exchange_code(client_id, client_secret, redirect_uri, code):
-    """POST code to token endpoint, return parsed JSON."""
     body = urllib.parse.urlencode({
         'code':          code,
         'client_id':     client_id,
@@ -178,15 +201,17 @@ def _page(title, body_html):
 def application(environ, start_response):
     path = environ.get('PATH_INFO', '/')
     qs   = urllib.parse.parse_qs(environ.get('QUERY_STRING', ''))
+    logger.info('Request: %s %s', environ.get('REQUEST_METHOD'), path)
 
     try:
         # ── Initiate flow ──────────────────────────────────────────────────
         if path in ('/', ''):
-            sec         = _load_secrets()
-            state       = secrets.token_urlsafe(16)
-            redir       = _redirect_uri(environ)
-            url         = _auth_url(sec['google_client_id'], redir, state)
+            sec   = _load_secrets(environ)
+            state = secrets.token_urlsafe(16)
+            redir = _redirect_uri(environ)
+            url   = _auth_url(sec['google_client_id'], redir, state)
             _store_state(state)
+            logger.info('Redirecting to Google consent, redirect_uri=%s', redir)
             start_response('302 Found', [('Location', url), ('Cache-Control', 'no-store')])
             return [b'']
 
@@ -194,6 +219,7 @@ def application(environ, start_response):
         elif path == '/callback':
             error = qs.get('error', [None])[0]
             if error:
+                logger.warning('Google returned error: %s', error)
                 start_response('400 Bad Request', [('Content-Type', 'text/html; charset=utf-8')])
                 return [_page('Auth Error', f'<h1>Google Auth</h1>'
                               f'<p class="err">Error: {_h(error)}</p>')]
@@ -207,16 +233,18 @@ def application(environ, start_response):
                               '<p class="err">Missing code or state parameter.</p>')]
 
             if not _consume_state(state):
+                logger.warning('Invalid or expired state: %s', state)
                 start_response('400 Bad Request', [('Content-Type', 'text/html; charset=utf-8')])
                 return [_page('Bad Request', '<h1>Google Auth</h1>'
                               '<p class="err">Invalid or expired state. Try again.</p>')]
 
-            sec   = _load_secrets()
-            redir = _redirect_uri(environ)
+            sec    = _load_secrets(environ)
+            redir  = _redirect_uri(environ)
             result = _exchange_code(sec['google_client_id'], sec['google_client_secret'], redir, code)
 
             if 'error' in result:
                 msg = result.get('error_description', result['error'])
+                logger.error('Token exchange failed: %s', msg)
                 start_response('502 Bad Gateway', [('Content-Type', 'text/html; charset=utf-8')])
                 return [_page('Token Error', f'<h1>Google Auth</h1>'
                               f'<p class="err">Token exchange failed: {_h(msg)}</p>')]
@@ -235,14 +263,15 @@ def application(environ, start_response):
                 'scopes':        SCOPES,
                 'expiry':        expiry,
             }
-            _write_token_file(token_data)
+            token_path = _write_token_file(environ, token_data)
             if refresh_token:
-                _save_refresh_token(refresh_token)
+                _save_refresh_token(environ, refresh_token)
 
+            logger.info('Auth complete. Token saved to %s', token_path)
             body_html = f"""
 <h1>Google Auth</h1>
 <p class="ok">&#10003; Token saved successfully.</p>
-<p>Written to: <code>{_h(_token_file())}</code></p>
+<p>Written to: <code>{_h(token_path)}</code></p>
 <p>Scopes authorised:</p>
 <pre>{_h(chr(10).join(SCOPES))}</pre>
 <p style="margin-top:20px;">You can close this tab.</p>
@@ -255,9 +284,10 @@ def application(environ, start_response):
             start_response('404 Not Found', [('Content-Type', 'text/plain')])
             return [b'Not found']
 
-    except Exception as exc:
+    except Exception:
         import traceback
         tb = traceback.format_exc()
+        logger.exception('Unhandled exception in %s', path)
         start_response('500 Internal Server Error', [('Content-Type', 'text/html; charset=utf-8')])
         return [_page('Server Error', f'<h1>Google Auth</h1>'
                       f'<p class="err">Unexpected error:</p><pre>{_h(tb)}</pre>')]
