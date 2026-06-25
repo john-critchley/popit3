@@ -1,0 +1,767 @@
+Received: from GVZP280MB0785.SWEP280.PROD.OUTLOOK.COM (2603:10a6:150:f6::10)
+ by GV3P280MB1286.SWEP280.PROD.OUTLOOK.COM with HTTPS; Sat, 1 Nov 2025
+ 09:03:09 +0000
+Received: from PS2PR02CA0076.apcprd02.prod.outlook.com (2603:1096:300:5c::16)
+ by GVZP280MB0785.SWEP280.PROD.OUTLOOK.COM (2603:10a6:150:f6::10) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9275.15; Sat, 1 Nov
+ 2025 09:03:07 +0000
+Received: from OSA0EPF000000CD.apcprd02.prod.outlook.com
+ (2603:1096:300:5c:cafe::9c) by PS2PR02CA0076.outlook.office365.com
+ (2603:1096:300:5c::16) with Microsoft SMTP Server (version=TLS1_3,
+ cipher=TLS_AES_256_GCM_SHA384) id 15.20.9275.15 via Frontend Transport; Sat,
+ 1 Nov 2025 09:03:07 +0000
+Authentication-Results: spf=pass (sender IP is 64.68.198.23)
+ smtp.mailfrom=srszone.org; dkim=pass (signature was verified)
+ header.d=stagescloud.com;dmarc=pass action=none
+ header.from=stagescloud.com;compauth=pass reason=100
+Received-SPF: Pass (protection.outlook.com: domain of srszone.org designates
+ 64.68.198.23 as permitted sender) receiver=protection.outlook.com;
+ client-ip=64.68.198.23; helo=mxc03.zoneedit.com; pr=C
+Received: from mxc03.zoneedit.com (64.68.198.23) by
+ OSA0EPF000000CD.mail.protection.outlook.com (10.167.240.59) with Microsoft
+ SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384) id 15.20.9298.6
+ via Frontend Transport; Sat, 1 Nov 2025 09:03:05 +0000
+X-IncomingTopHeaderMarker: OriginalChecksum:ACBA6CDD6FC3FE22277ED30368A8C232C0C0C44E164EF78BEE2A8F87AD4E4E51;UpperCasedChecksum:4C31CE6482F56DAE0E67FDF80E23FEA9D42833AFB528F1804C03AA28A8244D91;SizeAsReceived:2372;Count:16
+Received: from localhost (localhost [127.0.0.1])
+	by mxc03.zoneedit.com (Postfix) with ESMTP id 24CF22074BB
+	for <jsr_critchley@hotmail.com>; Sat,  1 Nov 2025 09:03:04 +0000 (UTC)
+Received: from mxc03.zoneedit.com ([127.0.0.1])
+	by localhost (mxc03-zpc.zoneedit.vpn [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id Wh13mLACy1Jb for <jsr_critchley@hotmail.com>;
+	Sat,  1 Nov 2025 09:03:04 +0000 (UTC)
+Received: from wrqvqzbp.outbound-mail.sendgrid.net (wrqvqzbp.outbound-mail.sendgrid.net [149.72.78.179])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mxc03.zoneedit.com (Postfix) with ESMTPS id EBB20207652
+	for <john.dl@critchley.biz>; Sat,  1 Nov 2025 09:03:03 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=stagescloud.com;
+	h=content-transfer-encoding:content-type:date:from:mime-version:subject:
+	to:cc:content-type:date:from:subject:to;
+	s=s1; bh=Jm6+MnBeX0YCKge3rQdcOL9Lpp0DcFsyv2aMTeWuYIc=;
+	b=uC9YNlQrgZ97EE42qZdhgTfA+V+MKAgJQ9emFMHR1zr0s1xDc1j1udXsrfxp/uWHIxfU
+	mtsIwtuu7+7A6L8UdJpuqEBpmC1oF7IRpNTg6pYEQ2jd3IKQFjTr+8gc3bh8pcfCzC2mgi
+	L9xfv1glNPlr9wzPpFm2jxPHG2xid0vQU=
+Received: by recvd-57884d8d65-jr7nb with SMTP id recvd-57884d8d65-jr7nb-1-6905CCC6-62
+	2025-11-01 09:03:02.616198729 +0000 UTC m=+5132976.724273320
+Received: from MTYwMjY4MjA (unknown)
+	by geopod-ismtpd-31 (SG) with HTTP
+	id pBPd6Q1sSqyJRJPOde21Aw
+	Sat, 01 Nov 2025 09:03:02.585 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset=iso-8859-1
+Date: Sat, 01 Nov 2025 09:03:02 +0000 (UTC)
+From: StagesStudio <stagesstudio@stagescloud.com>
+Message-ID: <pBPd6Q1sSqyJRJPOde21Aw@geopod-ismtpd-31>
+Subject: DLL Bristol Emersons Green workout summary
+X-SG-EID: =?us-ascii?Q?u001=2E6TDjmOvfZuuBHGvWbbyljDqmixvVo=2FEkJ1qwpVJC00cImXyZ=2F9an6uKM5?=
+ =?us-ascii?Q?zlTJn412baFjlB6OVaITagYToheOs=2FKW9GYFq=2FH?=
+ =?us-ascii?Q?pdq=2FPex3gTo=2F4fNG2lGpTS+2DqBLQhKxos1kcy1?=
+ =?us-ascii?Q?BxHx+JwmElumxbApG=2FiXID+fxeLi7w27gB5ln1f?=
+ =?us-ascii?Q?fjD8smPTjvtXBj3hb1uYDb3iuOi97MiTYnX=2FeFY?=
+ =?us-ascii?Q?8JwNWgvK=2F6c7EuHh29ARoYKvjR5CcK92t6nJzBR?= =?us-ascii?Q?8s59?=
+To: John <john.dl@critchley.biz>
+X-Entity-ID: u001.kgXzW4E1dOa8OuEFWvGurw==
+X-IncomingHeaderCount: 16
+Return-Path: SRS0=wP3B=5J=em5527.stagescloud.com=bounces+16026820-a9df-john.dl=critchley.biz@srszone.org
+X-MS-Exchange-Organization-ExpirationStartTime: 01 Nov 2025 09:03:06.1594
+ (UTC)
+X-MS-Exchange-Organization-ExpirationStartTimeReason: OriginalSubmit
+X-MS-Exchange-Organization-ExpirationInterval: 1:00:00:00.0000000
+X-MS-Exchange-Organization-ExpirationIntervalReason: OriginalSubmit
+X-MS-Exchange-Organization-Network-Message-Id: 32147e32-53dd-401a-975d-08de192578a2
+X-EOPAttributedMessage: 0
+X-EOPTenantAttributedMessage: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa:0
+X-MS-Exchange-Organization-MessageDirectionality: Incoming
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: OSA0EPF000000CD:EE_|GVZP280MB0785:EE_|GV3P280MB1286:EE_
+X-MS-Exchange-Organization-AuthSource: OSA0EPF000000CD.apcprd02.prod.outlook.com
+X-MS-Exchange-Organization-AuthAs: Anonymous
+X-MS-UserLastLogonTime: 11/1/2025 8:21:05 AM
+X-MS-Office365-Filtering-Correlation-Id: 32147e32-53dd-401a-975d-08de192578a2
+X-MS-Exchange-EOPDirect: true
+X-Sender-IP: 64.68.198.23
+X-SID-PRA: STAGESSTUDIO@STAGESCLOUD.COM
+X-SID-Result: PASS
+X-MS-Exchange-AtpMessageProperties: SA|SL
+X-MS-Exchange-Organization-SCL: 1
+X-Microsoft-Antispam: BCL:4;ARA:1444111002|9000799056|58200799018|47200799021|1680799066|9400799040|461199028|10300799035|15092099004|3412199025|4302099013|440099028|1122599019|26104999006|1602099012|30041999003|1360799030|1380799030|1370799030;
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 01 Nov 2025 09:03:05.5459
+ (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 32147e32-53dd-401a-975d-08de192578a2
+X-MS-Exchange-CrossTenant-Id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
+X-MS-Exchange-CrossTenant-AuthSource: OSA0EPF000000CD.apcprd02.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: Internet
+X-MS-Exchange-CrossTenant-RMS-PersistedConsumerOrg: 00000000-0000-0000-0000-000000000000
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: GVZP280MB0785
+X-MS-Exchange-Transport-EndToEndLatency: 00:00:03.9841482
+X-MS-Exchange-Processed-By-BccFoldering: 15.20.9275.012
+X-Microsoft-Antispam-Mailbox-Delivery:
+	ucf:0;jmr:0;ex:0;auth:1;dest:I;ENG:(5062000311)(920221119095)(90000117)(920221120095)(90012020)(91020020)(91040095)(9050020)(9100341)(944500132)(2008001181)(4810010)(4910033)(9575002)(10195002)(9320005)(120001)(1110175);
+X-Message-Delivery: Vj0xLjE7dXM9MDtsPTA7YT0wO0Q9MTtHRD0xO1NDTD0z
+X-Microsoft-Antispam-Message-Info:
+	=?iso-8859-1?Q?zHZtKB/ZSCgYhlhtKmqfv7g6JIuuYwQJR5oVuWDegda8IWy7FoHltrBIxc?=
+ =?iso-8859-1?Q?AzT4+nyTMMqQvpkBB6sZiV09ehzXMtxLF8CtPXKPCIUA4kYn2bMiCuyQ1N?=
+ =?iso-8859-1?Q?Us/BRfvCc7b/biXqYQA01PxMuyCuG/K7lr4lWBbOqhXohsxvQUhIppEcPE?=
+ =?iso-8859-1?Q?+yqKe0h1lN28Nmz491p3D8294K1v3XvbmiYHsQJRfjmDi7UQEhJPDXz7Hd?=
+ =?iso-8859-1?Q?9HSzulWFascKZ9hZCmL3RA05SbS1ShFJeIWPHnP60pRYEVLVeJmaCHC3lj?=
+ =?iso-8859-1?Q?YkIahxHSnOOsiCU2dFPMQCcWpV6yqp9DxCbep9NlsJai2hyyk/cQat825D?=
+ =?iso-8859-1?Q?hFdZ0bFuRXleWFTIsB72qu3E3L8Ad+oUhhB9o/y4sCb/7rXVGnvGYWY2sS?=
+ =?iso-8859-1?Q?3xfMw0iKN5yl4zII3UiwTUnFwT6oeatFpQFmNAtdW9SzW17kmS2/6NEHTq?=
+ =?iso-8859-1?Q?LGfkeWCG7IKHuDLSgUBZKTa0wfXLxvaZ/LEolGhkZSRDRyDXt56PzLNOPH?=
+ =?iso-8859-1?Q?oJ5Jv7wtT9ffVfEUoUSOIaUkiyq59lODpGKQX4ieQOcxvzg5pefb24MP5P?=
+ =?iso-8859-1?Q?RVlodmUROPOC+AC8v1g78qKOC7OzjLgGpCcgRp/bWotcr5izZWEM2TiArC?=
+ =?iso-8859-1?Q?qgXy4FRAy4czw6qDw4kdne2+n1y9mnmL/GdO9+ykEAhSJCB7CKjEdR9puy?=
+ =?iso-8859-1?Q?Mw+SSNfVnJ623hE4yOXh8lGzoMagV7jtpVDhhNKy1BJ+r1hRVR4e+01W7V?=
+ =?iso-8859-1?Q?RyNRvulxVgPU3sI65482S9oROB/76FCZMlGYCZNz4RozGXKMxljYIE8YD0?=
+ =?iso-8859-1?Q?7bpkrNt0ePVvq9JwkVWl54sVNFfUZO8u0lycI6l7s4DhIsvNlzHXX5TIHs?=
+ =?iso-8859-1?Q?pg8Jo272TWZcmztlC51jHNT3qX5udf+QVXObpeyzW/W0+we9RUSUs/cSWC?=
+ =?iso-8859-1?Q?baeuY4yWMw/vq+idHuJ324QhMzgYNPU+wCNWM0CwOTU5ndpIVZ/sHgR+yK?=
+ =?iso-8859-1?Q?q0YLs2Mep0W2z6kiU9ljOm9ZoBYLcyaoCZY6kea/6AvGnItO0fSFQrDdgV?=
+ =?iso-8859-1?Q?o1iBBaqYZdlufnGqTjpascVeLzaz8y3Lcpr6OMzrsUA+zawFXEl3046CFi?=
+ =?iso-8859-1?Q?KivBKaD1+JjmEgV81NCD3dI8XF1pnlFMXhPsCDoCOC5EvQZ3Fjw2tioI+d?=
+ =?iso-8859-1?Q?pZt969ZI7ywkgzXYz8HfMUrXF11DTh9U0GZaEPIheZigQFrbEGcHZkNdob?=
+ =?iso-8859-1?Q?TcMAg1EPItghvNzwC+F4celYbFd2g7TZns3+NTtZXQxc2Hw04RQEjOj/TV?=
+ =?iso-8859-1?Q?6RE58KpXA9lKo3ZVpp2Cjy6m5pLmRi70UMBP/Pwvwlk29m7Ub+9siB/HUH?=
+ =?iso-8859-1?Q?gjtLu3carhOFnOsbqllX4Tkb6yvpPfyVH9rpeAXxooJ5eldn88STZcJjep?=
+ =?iso-8859-1?Q?K5ferIdhhyM8u8rp2qYYPXyLU/LqBvUrsy09s/Qzf8D/tVL4RZPXopxPwo?=
+ =?iso-8859-1?Q?4BkKeAy4yMY4qOxaMBn6+U7RL6Sk/CSCVdm8FLPacPG//tdZbc/zbG4fBq?=
+ =?iso-8859-1?Q?ixPouMMJRxFznGTcYU51yx1t90fUo+43+a1dNLwbpXPhwJgjUOJbqJes5i?=
+ =?iso-8859-1?Q?sdUvGsGwYBt8BUV3xk++zpT/Nvo9f/Jwf7zCpCaNp9NkKaTBPry+2hTS2Q?=
+ =?iso-8859-1?Q?j01Q9ALy5xvvWe7/MJNwoKUcCpqCfsjvBHAl1HUDprWHLwmFO/Ia3HT+51?=
+ =?iso-8859-1?Q?/6IPv5B8E4N7Gs2gs9/+D33fqgKjW6niP2nLKNAMF2BFhQw9cIon9tCInx?=
+ =?iso-8859-1?Q?qMLVKZ7HSGTnsYslJIL3od3SyYTD4fjWMRbDqcHkrAHxWfWcKfToUvhV4P?=
+ =?iso-8859-1?Q?VVLQaRcPP0eB3uLcPeckIG0Ht9/u9HxSJvFE4FUkx+1LseG+zAXbO/9u9+?=
+ =?iso-8859-1?Q?79q+K1lqP6BDpP5EUluTTzeI0CvUhNUnlyyJ4SK99HYBMZLaUdWsJUUohv?=
+ =?iso-8859-1?Q?Vx/7ez2E6zBxKSHTNI3Xv50dsTjL+eM+N6IWWtYmMqUpvrde7SB/at7sFu?=
+ =?iso-8859-1?Q?fuQt4TADNMGUaSRs62CCN54uNqTsZrfy3xLRemZw8nTt1j+/KLTV7ZEne6?=
+ =?iso-8859-1?Q?GFjgTcT6mytyoKJBo2DgmO387W5ujFVDPE+HAqovM2E47t2o3Vu+SKQikv?=
+ =?iso-8859-1?Q?CEAdzTOHdMCUB9/vOCdt6uEaMSFD+KGhUnncHJSTv0ULdg=3D=3D?=
+MIME-Version: 1.0
+
+<!doctype html><html xmlns=3D"http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Diso-8859-=
+1"><title>
+    </title>
+   =20
+    <meta http-equiv=3D"X-UA-Compatible" content=3D"IE=3Dedge">
+   =20
+   =20
+    <meta name=3D"viewport" content=3D"width=3Ddevice-width, initial-scale=
+=3D1">
+    <style type=3D"text/css">
+        #outlook a {
+            padding: 0;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            -webkit-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+        }
+
+        table,
+        td {
+            border-collapse: collapse;
+            mso-table-lspace: 0pt;
+            mso-table-rspace: 0pt;
+        }
+
+        img {
+            border: 0;
+            height: auto;
+            line-height: 100%;
+            outline: none;
+            text-decoration: none;
+            -ms-interpolation-mode: bicubic;
+        }
+
+        p {
+            display: block;
+            margin: 13px 0;
+        }
+    </style>
+   =20
+   =20
+   =20
+    <link href=3D"https://fonts.googleapis.com/css?family=3DRoboto:300,400,=
+500,700" rel=3D"stylesheet" type=3D"text/css">
+    <link href=3D"https://fonts.googleapis.com/css?family=3DUbuntu:300,400,=
+500,700" rel=3D"stylesheet" type=3D"text/css">
+    <style type=3D"text/css">
+        @import url(https://fonts.googleapis.com/css?family=3DRoboto:300,40=
+0,500,700);
+        @import url(https://fonts.googleapis.com/css?family=3DUbuntu:300,40=
+0,500,700);
+    </style>
+   =20
+    <style type=3D"text/css">
+        @media only screen and (min-width: 480px) {
+            .mj-column-per-100 {
+                width: 100% !important;
+                max-width: 100%;
+            }
+
+            .mj-column-per-50 {
+                width: 50% !important;
+                max-width: 50%;
+            }
+        }
+    </style>
+    <style media=3D"screen and (min-width:480px)">
+        .moz-text-html .mj-column-per-100 {
+            width: 100% !important;
+            max-width: 100%;
+        }
+
+        .moz-text-html .mj-column-per-50 {
+            width: 50% !important;
+            max-width: 50%;
+        }
+    </style>
+    <style type=3D"text/css">
+        @media only screen and (max-width: 480px) {
+            table.mj-full-width-mobile {
+                width: 100% !important;
+            }
+
+            td.mj-full-width-mobile {
+                width: auto !important;
+            }
+
+            .main-value {
+                font-size: 34px !important;
+                line-height: 34px !important;
+            }
+
+            .units-img {
+                margin-bottom: 8px !important;
+            }
+
+            .sf-data-value {
+                font-size: 24px !important;
+            }
+        }
+    </style>
+</head>
+
+<body style=3D"word-spacing:normal;">
+<div style=3D"">
+   =20
+    <div style=3D"margin:0px auto;max-width:750px;">
+        <table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=
+=3D"0" role=3D"presentation" style=3D"width:100%;">
+            <tbody>
+            <tr>
+                <td style=3D"direction:ltr;font-size:0px;padding:0;text-ali=
+gn:center;">
+                   =20
+                    <div class=3D"mj-column-per-100 mj-outlook-group-fix" s=
+tyle=3D"font-size:0px;text-align:left;direction:ltr;display:inline-block;ve=
+rtical-align:top;width:100%;">
+                        <table border=3D"0" cellpadding=3D"0" cellspacing=
+=3D"0" role=3D"presentation" style=3D"vertical-align:top;" width=3D"100%">
+                            <tbody>
+                            <tr>
+                                <td align=3D"center" style=3D"font-size:0px=
+;padding:10px 25px;padding-top:51px;padding-bottom:35px;word-break:break-wo=
+rd;">
+                                    <table border=3D"0" cellpadding=3D"0" c=
+ellspacing=3D"0" role=3D"presentation" style=3D"border-collapse:collapse;bo=
+rder-spacing:0px;">
+                                        <tbody>
+                                        <tr>
+                                            <td style=3D"width:250px;">
+                                               =20
+
+                                               =20
+                                                   =20
+                                               =20
+                                                <img height=3D"auto" src=3D=
+"https://stagesdevstorage.blob.core.windows.net/dev-location-logo/CYCLONE-L=
+OGO-3.png" style=3D"border:0;display:block;outline:none;text-decoration:non=
+e;height:auto;width:100%;font-size:13px;" width=3D"250">
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align=3D"center" style=3D"font-size:0px=
+;padding:5px;word-break:break-word;">
+                                    <div style=3D"font-family:Roboto;font-s=
+ize:15px;line-height:20px;text-align:center;color:#7E869A;">
+                                        11/01/2025 8:18 AM
+                                    </div>
+                                </td>
+                            </tr>
+                           =20
+                            <tr>
+                                <td align=3D"center" style=3D"font-size:0px=
+;padding:10px 25px;word-break:break-word;">
+                                    <div style=3D"font-family:Roboto;font-s=
+ize:15px;line-height:20px;text-align:center;color:#7E869A;text-transform:up=
+percase;">
+                                        CYCLONE,
+                                        WITH Rachel J
+                                       =20
+                                    </div>
+                                </td>
+                            </tr>
+                           =20
+                            <tr>
+                                <td align=3D"center" style=3D"font-size:0px=
+;padding:10px 25px;word-break:break-word;">
+                                    <div style=3D"font-family:Roboto;font-s=
+ize:24px;font-weight:600;line-height:1;text-align:center;color:#0066AB;">
+                                        AVERAGE WATTS
+                                    </div>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                   =20
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+   =20
+    <div style=3D"margin:0px auto;max-width:750px;">
+        <table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=
+=3D"0" role=3D"presentation" style=3D"width:100%;">
+            <tbody>
+            <tr>
+                <td style=3D"direction:ltr;font-size:0px;padding:0;text-ali=
+gn:center;">
+                   =20
+                    <div class=3D"mj-column-per-100 mj-outlook-group-fix" s=
+tyle=3D"font-size:0px;text-align:left;direction:ltr;display:inline-block;ve=
+rtical-align:top;width:100%;">
+                        <table border=3D"0" cellpadding=3D"0" cellspacing=
+=3D"0" role=3D"presentation" style=3D"vertical-align:top;" width=3D"100%">
+                            <tbody>
+                            <tr>
+                                <td align=3D"center" style=3D"font-size:0px=
+;padding:0px 25px;padding-bottom:20px;word-break:break-word;">
+                                    <table border=3D"0" cellpadding=3D"0" c=
+ellspacing=3D"0" role=3D"presentation" style=3D"border-collapse:collapse;bo=
+rder-spacing:0px;">
+                                        <tbody>
+                                        <tr>
+                                            <td style=3D"width:450px">
+                                                <img height=3D"auto" src=3D=
+"https://stages-prod-cloud.centralus.cloudapp.azure.com/images/api/v1/Mail/=
+workout-summary/main-section?workoutId=3D6711700&amp;workoutTypeId=3D1&amp;=
+userImageUrl=3D&amp;userInitials=3DJC&amp;value=3D138&amp;additionalWorkout=
+DataId=3Da6ac717c-6e36-46aa-8311-b575bfef6805" style=3D"border:0;display:bl=
+ock;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px=
+;" width=3D"450">
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                   =20
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+   =20
+   =20
+    <div style=3D"margin:0px auto;max-width:750px;">
+        <table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=
+=3D"0" role=3D"presentation" style=3D"width:100%;">
+            <tbody>
+           =20
+
+           =20
+           =20
+
+           =20
+           =20
+           =20
+               =20
+           =20
+            <tr>
+                <td style=3D"direction:ltr;font-size:0px;padding:0;text-ali=
+gn:center;">
+                   =20
+                    <div class=3D"mj-column-per-100 mj-outlook-group-fix" s=
+tyle=3D"font-size:0;line-height:0;text-align:left;display:inline-block;widt=
+h:100%;direction:ltr;">
+                       =20
+                       =20
+                        <div class=3D"mj-column-per-50 mj-outlook-group-fix=
+" style=3D"font-size:0px;text-align:left;direction:ltr;display:inline-block=
+;vertical-align:middle;width:50%">
+                            <table border=3D"0" cellpadding=3D"0" cellspaci=
+ng=3D"0" role=3D"presentation" width=3D"100%">
+                                <tbody>
+                                <tr>
+                                    <td style=3D"vertical-align:middle;padd=
+ing:0;">
+                                        <table border=3D"0" cellpadding=3D"=
+0" cellspacing=3D"0" role=3D"presentation" style=3D"" width=3D"100%">
+                                            <tbody>
+                                            <tr>
+                                                <td align=3D"center" style=
+=3D"font-size:0px;padding:10px 25px;word-break:break-word;">
+                                                    <div style=3D"font-fami=
+ly:Roboto, Ubuntu, Helvetica, Arial, sans-serif;font-size:13px;line-height:=
+1;text-align:center;color:#000000;">
+                                                        <p style=3D"color: =
+#7E869A; font-size:15px">Time</p>
+                                                        <p class=3D"sf-data=
+-value" style=3D"color: #7E869A; font-size:36px; font-weight:500; margin-bo=
+ttom:0">
+                                                           =20
+                                                                00:45
+                                                           =20
+
+                                                           =20
+                                                        </p>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                       =20
+                       =20
+                       =20
+                        <div class=3D"mj-column-per-50 mj-outlook-group-fix=
+" style=3D"font-size: 0px; text-align: left; direction: ltr; display: inlin=
+e-block; vertical-align: middle; width: 50%;">
+                            <table border=3D"0" cellpadding=3D"0" cellspaci=
+ng=3D"0" role=3D"presentation" width=3D"100%">
+                                <tbody>
+                                <tr>
+                                    <td style=3D"border-left:2px solid #7E8=
+69A;vertical-align:middle;padding:0;">
+                                        <table border=3D"0" cellpadding=3D"=
+0" cellspacing=3D"0" role=3D"presentation" style=3D"" width=3D"100%">
+                                            <tbody>
+                                            <tr>
+                                                <td align=3D"center" style=
+=3D"font-size:0px;padding:10px 25px;word-break:break-word;">
+                                                    <div style=3D"font-fami=
+ly:Roboto, Ubuntu, Helvetica, Arial, sans-serif;font-size:13px;line-height:=
+1;text-align:center;color:#000000;">
+                                                        <p style=3D"color: =
+#7E869A; font-size:15px">Distance</p>
+                                                        <p class=3D"sf-data=
+-value" style=3D"color: #7E869A; font-size:36px; font-weight:500; margin-bo=
+ttom:0">
+                                                           =20
+                                                                13.46
+                                                           =20
+
+                                                           =20
+                                                            <span style=3D"=
+color: #7E869A; font-size:15px">
+                                                                mi
+                                                            </span>
+                                                           =20
+                                                        </p>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                       =20
+                       =20
+
+                       =20
+                    </div>
+                   =20
+                </td>
+            </tr>
+           =20
+
+           =20
+           =20
+
+           =20
+           =20
+           =20
+               =20
+           =20
+            <tr>
+                <td style=3D"direction:ltr;font-size:0px;padding:0;text-ali=
+gn:center;">
+                   =20
+                    <div class=3D"mj-column-per-100 mj-outlook-group-fix" s=
+tyle=3D"font-size:0;line-height:0;text-align:left;display:inline-block;widt=
+h:100%;direction:ltr;">
+                       =20
+                       =20
+                        <div class=3D"mj-column-per-50 mj-outlook-group-fix=
+" style=3D"font-size:0px;text-align:left;direction:ltr;display:inline-block=
+;vertical-align:middle;width:50%">
+                            <table border=3D"0" cellpadding=3D"0" cellspaci=
+ng=3D"0" role=3D"presentation" width=3D"100%">
+                                <tbody>
+                                <tr>
+                                    <td style=3D"vertical-align:middle;padd=
+ing:0;">
+                                        <table border=3D"0" cellpadding=3D"=
+0" cellspacing=3D"0" role=3D"presentation" style=3D"" width=3D"100%">
+                                            <tbody>
+                                            <tr>
+                                                <td align=3D"center" style=
+=3D"font-size:0px;padding:10px 25px;word-break:break-word;">
+                                                    <div style=3D"font-fami=
+ly:Roboto, Ubuntu, Helvetica, Arial, sans-serif;font-size:13px;line-height:=
+1;text-align:center;color:#000000;">
+                                                        <p style=3D"color: =
+#7E869A; font-size:15px">Calories</p>
+                                                        <p class=3D"sf-data=
+-value" style=3D"color: #7E869A; font-size:36px; font-weight:500; margin-bo=
+ttom:0">
+                                                           =20
+                                                                394
+                                                           =20
+
+                                                           =20
+                                                            <span style=3D"=
+color: #7E869A; font-size:15px">
+                                                                KCal
+                                                            </span>
+                                                           =20
+                                                        </p>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                       =20
+                       =20
+                       =20
+                        <div class=3D"mj-column-per-50 mj-outlook-group-fix=
+" style=3D"font-size: 0px; text-align: left; direction: ltr; display: inlin=
+e-block; vertical-align: middle; width: 50%;">
+                            <table border=3D"0" cellpadding=3D"0" cellspaci=
+ng=3D"0" role=3D"presentation" width=3D"100%">
+                                <tbody>
+                                <tr>
+                                    <td style=3D"border-left:2px solid #7E8=
+69A;vertical-align:middle;padding:0;">
+                                        <table border=3D"0" cellpadding=3D"=
+0" cellspacing=3D"0" role=3D"presentation" style=3D"" width=3D"100%">
+                                            <tbody>
+                                            <tr>
+                                                <td align=3D"center" style=
+=3D"font-size:0px;padding:10px 25px;word-break:break-word;">
+                                                    <div style=3D"font-fami=
+ly:Roboto, Ubuntu, Helvetica, Arial, sans-serif;font-size:13px;line-height:=
+1;text-align:center;color:#000000;">
+                                                        <p style=3D"color: =
+#7E869A; font-size:15px">Average Cadence</p>
+                                                        <p class=3D"sf-data=
+-value" style=3D"color: #7E869A; font-size:36px; font-weight:500; margin-bo=
+ttom:0">
+                                                           =20
+                                                                79
+                                                           =20
+
+                                                           =20
+                                                            <span style=3D"=
+color: #7E869A; font-size:15px">
+                                                                RPM
+                                                            </span>
+                                                           =20
+                                                        </p>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                       =20
+                       =20
+
+                       =20
+                    </div>
+                   =20
+                </td>
+            </tr>
+           =20
+            </tbody>
+        </table>
+    </div>
+   =20
+
+    <p style=3D"border-top: solid 2px #7E869A; font-size: 1px; margin: 0px =
+auto; width: 90%; margin-top: 21px;"></p>
+
+   =20
+
+   =20
+   =20
+    <div style=3D"margin:0px auto;max-width:750px;">
+        <table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=
+=3D"0" role=3D"presentation" style=3D"width:100%;">
+            <tbody>
+            <tr>
+                <td style=3D"direction:ltr;font-size:0px;padding:20px 0;tex=
+t-align:center;">
+                   =20
+                    <div class=3D"mj-column-per-100 mj-outlook-group-fix" s=
+tyle=3D"font-size:0px;text-align:left;direction:ltr;display:inline-block;ve=
+rtical-align:top;width:100%;">
+                        <table border=3D"0" cellpadding=3D"0" cellspacing=
+=3D"0" role=3D"presentation" style=3D"vertical-align:top;" width=3D"100%">
+                            <tbody>
+                            <tr>
+                                <td align=3D"center" vertical-align=3D"midd=
+le" class=3D"responsive-btn" style=3D"font-size:0px;padding:0;word-break:br=
+eak-word;">
+                                    <table border=3D"0" cellpadding=3D"0" c=
+ellspacing=3D"0" role=3D"presentation" style=3D"border-collapse:separate;wi=
+dth:369px;line-height:100%;">
+                                        <tr>
+                                            <td align=3D"center" bgcolor=3D=
+"transparent" role=3D"presentation" style=3D"border:none;border-radius:3px;=
+cursor:auto;height:66px;mso-padding-alt:10px 25px;background:transparent;" =
+valign=3D"middle">
+                                                <a href=3D"https://swe01.sa=
+felinks.protection.outlook.com/?url=3Dhttps%3A%2F%2Fstagescloud.com%2Fhome%=
+2Fworkouts%2F6711700%2Fdetails&amp;data=3D05%7C02%7C%7C32147e3253dd401a975d=
+08de192578a2%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C63897584589763840=
+9%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiO=
+iJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&amp;sdata=3DahgDpi=
+5AtoJ%2BOu8rrvDFaveEJKBI8djNnJYDyJBtKTg%3D&amp;reserved=3D0" originalsrc=3D=
+"https://stagescloud.com/home/workouts/6711700/details" style=3D"display:in=
+line-block;width:319px;background:transparent;color:#012169;font-family:Rob=
+oto;font-size:14px;font-weight:500;line-height:33px;margin:0;text-decoratio=
+n:none;text-transform:none;padding:10px 25px;mso-padding-alt:0px;border-rad=
+ius:3px;" target=3D"_blank">
+                                                    <img height=3D"auto" sr=
+c=3D"https://stagescloud.com/assets/images/email-template/arrow-right-blue.=
+png" style=3D"border: 0; display: inline; outline: none; text-decoration: n=
+one; height: auto; height: 13px; font-size: 13px;" height=3D"12">
+                                                    <span style=3D"text-dec=
+oration: underline;">VIEW WORKOUT DETAILS</span>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                   =20
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+   =20
+    <div style=3D"margin:0px auto;max-width:750px;">
+        <table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=
+=3D"0" role=3D"presentation" style=3D"width:100%;">
+            <tbody>
+            <tr>
+                <td style=3D"direction:ltr;font-size:0px;padding:20px 0;pad=
+ding-top:18px;text-align:center;">
+                   =20
+                    <div class=3D"mj-column-per-100 mj-outlook-group-fix" s=
+tyle=3D"font-size:0px;text-align:left;direction:ltr;display:inline-block;ve=
+rtical-align:top;width:100%;">
+                        <table border=3D"0" cellpadding=3D"0" cellspacing=
+=3D"0" role=3D"presentation" style=3D"vertical-align:top;" width=3D"100%">
+                            <tbody>
+                            <tr>
+                                <td align=3D"center" style=3D"font-size:0px=
+;padding:10px;word-break:break-word;">
+                                    <div style=3D"font-family:Roboto;font-s=
+ize:14px;line-height:1;text-align:center;color:#7E869A;">
+                                        You are receiving this email becaus=
+e you opted in to
+                                        <br>
+                                        emails from Stages products after w=
+orkouts.
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align=3D"center" style=3D"font-size:0px=
+;padding:10px;word-break:break-word;">
+                                    <div style=3D"font-family:Roboto;font-s=
+ize:14px;line-height:1;text-align:center;color:#0066AB;">
+                                        <a href=3D"https://swe01.safelinks.=
+protection.outlook.com/?url=3Dhttps%3A%2F%2Fstagescloud.com%2Fsettings%2Fno=
+tifications&amp;data=3D05%7C02%7C%7C32147e3253dd401a975d08de192578a2%7C84df=
+9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C638975845897663528%7CUnknown%7CTWFpb=
+GZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoi=
+TWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&amp;sdata=3DdHWem3W3jPGmc7Ea6r4%2BMNo=
+3gEgJSrgcLdIiX9mgF6Q%3D&amp;reserved=3D0" originalsrc=3D"https://stagesclou=
+d.com/settings/notifications">Manage email preferences</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align=3D"center" style=3D"font-size:0px=
+;padding:10px;word-break:break-word;">
+                                    <div style=3D"font-family:Roboto;font-s=
+ize:14px;line-height:1;text-align:center;color:#7E869A;">
+                                        =A9 Stages Cycling, LLC 2022. All R=
+ights Reserved.
+                                        <br>
+                                        5335 Sterling Drive, Boulder, CO 80=
+301
+                                    </div>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                   =20
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+   =20
+</div>
+<img src=3D"http://url987.stagescloud.com/wf/open?upn=3Du001.gO0-2B6aX3X2bi=
+EcM67B2wJI97rL-2BMewCTMQYwrFn8oFqd39IVuqEgrN6LPVfm3PRO9hKfkCWLvXYv5-2F0yIlL=
+HTALBdpbSbs8PJrOckZLCnhSSdlNJoZZDLOxyjS9HbrAjnl1X0EkJtGlCEb50hgkJaRMA7sdwpJ=
+nLvTGj6n20joRRFMruK3V-2BvoW2C5I88BSMtvClvrnOCfPLxy05Vt6Jfg-3D-3D" alt=3D"" =
+width=3D"1" height=3D"1" border=3D"0" style=3D"height:1px !important;width:=
+1px !important;border-width:0 !important;margin-top:0 !important;margin-bot=
+tom:0 !important;margin-right:0 !important;margin-left:0 !important;padding=
+-top:0 !important;padding-bottom:0 !important;padding-right:0 !important;pa=
+dding-left:0 !important;"></body>
+
+</html>

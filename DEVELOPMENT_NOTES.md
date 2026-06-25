@@ -116,3 +116,84 @@ None currently. All three classification types working correctly.
 2. Consider different scoring strategy for borderline cases
 3. Add application follow-up reminders (check back in N days)
 4. Feedback loop: track outcomes vs scores
+
+---
+
+## OCR Pipeline Session (30 Apr 2026)
+
+### Objective
+
+Build a reliable OCR path for RS-encoded Base64 notes shown in the notes browser:
+
+1. render encoded line
+2. capture screenshot
+3. detect line bounds
+4. segment fixed-width glyphs
+5. build sample set for OCR matching
+
+### Root Cause and Rendering Fix
+
+- Problem: encoded text was rendered in proportional font (stored as `para`), which broke fixed-stride segmentation.
+- Fixes applied:
+   - note content changed from `para` to `codeblock` (renders as `<pre><code>`)
+   - notes browser font setup changed from `SetStandardFonts(...)` to `SetFonts("", "Courier", [size]*7)` so fixed-width text actually uses Courier
+- Notes browser was stopped/restarted via socket API and revalidated with fresh screenshots.
+
+### Verified Courier Geometry
+
+- Working line image: `tmp/rs_note_courier_line_inv_tight.png`
+- Width: 1440 px
+- Encoded length: 180 chars
+- Confirmed pitch: exactly 8 px/char (`180 * 8 = 1440`)
+
+### Vertical Glyph Bounds (Final)
+
+- Initial row-sum method clipped ascenders/tails.
+- Final method uses row max brightness and row p99 on the unmarked source line.
+- Final accepted bounds:
+   - top row: 4
+   - bottom row: 17
+   - glyph height: 14 px
+
+Validation artifact:
+
+- `tmp/rs_note_courier_line_inv_tight_marked_red_stride8_ybounds_max.png`
+
+### Sample Collection and Coverage Expansion
+
+- First extraction set (`tmp/courier_glyphs`) had 60 unique symbols and missed 4 Base64 chars: `H`, `L`, `n`, `v`.
+- Created and loaded a dedicated coverage note with full Base64 alphabet repeated 3 times:
+   - key: `john/ocr_glyph_coverage_b64`
+- Captured new screenshot and performed stricter dark-text row-band detection + 8 px boundary alignment.
+- Merged prior and new extractions into a curated sample corpus:
+   - `ocr/glyph_samples/courier10_full`
+
+### Final Coverage Status
+
+- Base64 coverage: 64/64
+- Missing symbols: none
+- Total samples: 372
+- Per-class sample count range: 3 to 17
+- Lowest-count classes: `H`, `L`, `n`, `v` (3 each)
+
+Summary report:
+
+- `tmp/glyph_sample_coverage_report_v2.json`
+
+### Important Artifacts Produced
+
+- `tmp/rs_note_courier_screenshot.png`
+- `tmp/rs_note_courier_line_inv.png`
+- `tmp/rs_note_courier_line_inv_tight.png`
+- `tmp/rs_note_courier_line_inv_tight_marked_red_stride8.png`
+- `tmp/rs_note_courier_line_inv_tight_marked_red_stride8_ybounds_max.png`
+- `tmp/coverage_b64_screenshot.png`
+- `tmp/coverage_b64_line_inv_tight_aligned.png`
+- `tmp/glyph_sample_coverage_report_v2.json`
+- `ocr/glyph_samples/courier10_full/`
+
+### Current Status
+
+- Rendering is now reliably monospace (Courier fixed-width path confirmed).
+- Horizontal stride and vertical bounds are established and reproducible.
+- Sample library is complete for full Base64 OCR matching.

@@ -1,0 +1,417 @@
+Received: from GV1PR08MB8305.eurprd08.prod.outlook.com (2603:10a6:150:a2::16)
+ by PAWPR08MB9068.eurprd08.prod.outlook.com with HTTPS; Sat, 20 Jun 2026
+ 18:29:33 +0000
+Received: from DU2PR04CA0173.eurprd04.prod.outlook.com (2603:10a6:10:2b0::28)
+ by GV1PR08MB8305.eurprd08.prod.outlook.com (2603:10a6:150:a2::16) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.139.13; Sat, 20 Jun
+ 2026 18:29:32 +0000
+Received: from DB1PEPF00039233.eurprd03.prod.outlook.com
+ (2603:10a6:10:2b0:cafe::5a) by DU2PR04CA0173.outlook.office365.com
+ (2603:10a6:10:2b0::28) with Microsoft SMTP Server (version=TLS1_3,
+ cipher=TLS_AES_256_GCM_SHA384) id 15.21.139.16 via Frontend Transport; Sat,
+ 20 Jun 2026 18:29:32 +0000
+Authentication-Results: spf=pass (sender IP is 64.68.198.24)
+ smtp.mailfrom=srszone.org; dkim=pass (signature was verified)
+ header.d=mybookings.davidlloyd.co.uk;dmarc=pass action=none
+ header.from=mybookings.davidlloyd.co.uk;compauth=pass reason=100
+Received-SPF: Pass (protection.outlook.com: domain of srszone.org designates
+ 64.68.198.24 as permitted sender) receiver=protection.outlook.com;
+ client-ip=64.68.198.24; helo=mxc04.zoneedit.com; pr=C
+Received: from mxc04.zoneedit.com (64.68.198.24) by
+ DB1PEPF00039233.mail.protection.outlook.com (10.167.8.106) with Microsoft
+ SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384) id 15.21.159.10
+ via Frontend Transport; Sat, 20 Jun 2026 18:29:31 +0000
+X-IncomingTopHeaderMarker: OriginalChecksum:7F2309ACAA040BC183093B9516F1D109BABA60016704E0B9C390E015BDABB3B5;UpperCasedChecksum:891C5C550DA92547B3B26FE85314C8A38B1926214F5D6B9B5E7293F43E0EC9F4;SizeAsReceived:2151;Count:18
+Received: from localhost (localhost [127.0.0.1])
+	by mxc04.zoneedit.com (Postfix) with ESMTP id EC6628237B
+	for <jsr_critchley@hotmail.com>; Sat, 20 Jun 2026 18:29:30 +0000 (UTC)
+Received: from mxc04.zoneedit.com ([127.0.0.1])
+	by localhost (mxc04-zpc.zoneedit.vpn [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id yBbr8-hAZrVt for <jsr_critchley@hotmail.com>;
+	Sat, 20 Jun 2026 18:29:30 +0000 (UTC)
+Received: from mta1.mybookings.davidlloyd.co.uk (mta1.mybookings.davidlloyd.co.uk [81.92.116.95])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mxc04.zoneedit.com (Postfix) with ESMTPS id 9B6D682328
+	for <john.dl@critchley.biz>; Sat, 20 Jun 2026 18:29:30 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=emv; d=mybookings.davidlloyd.co.uk;
+ h=From:Reply-To:To:Message-ID:Subject:MIME-Version:Content-Type:List-Id:Date;
+ i=noreply@mybookings.davidlloyd.co.uk;
+ bh=ZF+xVErk/VyH+psNsy8ZXhadbkPNy21uhy56Wdwj5RU=;
+ b=tezDN5BJKMg7YZmYKELtTFhuo8JjtTY9O6+9nNPdww4cg4MD6tbYO6Ds3HC8M751xnIfYxrWFXmn
+   QqMjzGUpW784OjH9HcuNVqeJ8WEilvTZxwZjeA4pRKQ+rI3vYwpRVtLl5xH8Qys1UaGqcc66Y9vG
+   cfaJgPV+nKCReqaL1Wc=
+Received: by mta1.mybookings.davidlloyd.co.uk id h6re0g37eror for <john.dl@critchley.biz>; Sat, 20 Jun 2026 20:29:28 +0200 (envelope-from <noreply@mybookings.davidlloyd.co.uk>)
+From: David Lloyd Clubs <noreply@mybookings.davidlloyd.co.uk>
+Reply-To: David Lloyd Clubs <noreply@mybookings.davidlloyd.co.uk>
+To: <john.dl@critchley.biz>
+Message-ID: <2.2.1.1101072161.1771181.3563960337418@mybookings.davidlloyd.co.uk>
+Subject: Your class cancellation confirmation (Ref:
+ DL-E816AF9-7212/995499669)
+Content-Type: multipart/alternative; boundary=17711813563960337418
+X-EMV-Platform: p7cce.campaigncommander.com$
+X-EMV-NotificationId: 1771181$
+X-EMV-SendRequestId: 3563960337418$
+X-Feedback-ID: 1101072161:NM_1_1771181:100:sfocus
+List-Id: <1101072161.1.2.1.list-id.mybookings.davidlloyd.co.uk>
+Date: Sat, 20 Jun 2026 20:29:28 +0200
+X-IncomingHeaderCount: 18
+Return-Path: SRS0=LOns=EQ=mybookings.davidlloyd.co.uk=noreply@srszone.org
+X-MS-Exchange-Organization-ExpirationStartTime: 20 Jun 2026 18:29:31.9216
+ (UTC)
+X-MS-Exchange-Organization-ExpirationStartTimeReason: OriginalSubmit
+X-MS-Exchange-Organization-ExpirationInterval: 1:00:00:00.0000000
+X-MS-Exchange-Organization-ExpirationIntervalReason: OriginalSubmit
+X-MS-Exchange-Organization-Network-Message-Id: d1066246-1d3d-4c93-9866-08decef9df26
+X-EOPAttributedMessage: 0
+X-EOPTenantAttributedMessage: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa:0
+X-MS-Exchange-Organization-MessageDirectionality: Incoming
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: DB1PEPF00039233:EE_|GV1PR08MB8305:EE_|PAWPR08MB9068:EE_
+X-MS-Exchange-Organization-AuthSource: DB1PEPF00039233.eurprd03.prod.outlook.com
+X-MS-Exchange-Organization-AuthAs: Anonymous
+X-MS-UserLastLogonTime: 6/20/2026 6:18:52 PM
+X-MS-Office365-Filtering-Correlation-Id: d1066246-1d3d-4c93-9866-08decef9df26
+X-MS-Exchange-EOPDirect: true
+X-Sender-IP: 64.68.198.24
+X-SID-PRA: NOREPLY@MYBOOKINGS.DAVIDLLOYD.CO.UK
+X-SID-Result: PASS
+X-MS-Exchange-AtpMessageProperties: SA|SL
+X-MS-Exchange-Organization-SCL: 1
+X-Microsoft-Antispam: BCL:2;ARA:1444111002|1680799066|5139299004|35120799006|36140799009|58200799025|7059299006|47200799027|9400799043|10300799038|2120399003|9000799056|30041999003|56899033|1380799030|1370799030|1360799030|1602099012|440099028|4302099013|3412199025|5090599003;
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 20 Jun 2026 18:29:31.6755
+ (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: d1066246-1d3d-4c93-9866-08decef9df26
+X-MS-Exchange-CrossTenant-Id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
+X-MS-Exchange-CrossTenant-AuthSource: DB1PEPF00039233.eurprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: Internet
+X-MS-Exchange-CrossTenant-RMS-PersistedConsumerOrg: 00000000-0000-0000-0000-000000000000
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: GV1PR08MB8305
+X-MS-Exchange-Transport-EndToEndLatency: 00:00:02.0125692
+X-MS-Exchange-Processed-By-BccFoldering: 15.21.0139.008
+X-Microsoft-Antispam-Mailbox-Delivery:
+	ucf:0;jmr:0;ex:0;auth:1;dest:I;ENG:(5062000311)(920221119095)(920221120095)(90000117)(90012020)(91020020)(91040095)(9050020)(9100341)(944500132)(4810010)(4910033)(9575002)(10195002)(9320005)(120001)(1110175);
+X-Message-Delivery: Vj0xLjE7dXM9MDtsPTA7YT0wO0Q9MTtHRD0xO1NDTD0z
+X-Microsoft-Antispam-Message-Info:
+	=?iso-8859-1?Q?gCVIWmT+lHX/UqMnxrfX+Jvu87Btc+lXGhcQyxXjcpxxeKEr7DmS0CgEIp?=
+ =?iso-8859-1?Q?PApxZiKGrI47rsCfihsuxGB2lZv1eG0lBmLFhya4jb5Wx1L1GHkyfiaQ1J?=
+ =?iso-8859-1?Q?pQlQPae22db6wFH2Rsod6XVMCZavlJoIIyK0DXqtI/8DkTymmpJr4e8BYW?=
+ =?iso-8859-1?Q?3RMoMApuUiVzroEvfOJjUT3K/1mRQUpZD+3yK64Bsbs7iOQzFG1tP4j/ae?=
+ =?iso-8859-1?Q?3jX916QnsavbUgDcB2nreY5hLL7rJ3q1lgQmKUqwM5oJqyI6Uzdd6GCnlQ?=
+ =?iso-8859-1?Q?ir77Wmu2R3pgYj+v92fA5x5TaiD66d7rmZ6WsPFACABTYAM2DN5ZoAG7fA?=
+ =?iso-8859-1?Q?Knng7qnXepEbXana9KyDQYXjz9BuC+vxymSP+zSqI+SP1LZCGk0dvlN4hh?=
+ =?iso-8859-1?Q?hhvph94aBkPw3YDc4GdJhmxxGwtbP1x5LSPExeetIwxdrdQHCFNPJtpfqD?=
+ =?iso-8859-1?Q?gF+WkVmgYy8L5lr+7DSkfwiJCf0a/AYwpa1PE4nekAm6+C7Idl/TVkGqu6?=
+ =?iso-8859-1?Q?PSgsMNnEN3fNBWlaXAOEQb12Gyp42NLbyPmEDvhHuvoBsSEsh9iPDCodmn?=
+ =?iso-8859-1?Q?SSdpl6csM1GAvuOkL4CeSRT5WdA6N8P5LzineAOY547qx6gMgMhifWK7Jx?=
+ =?iso-8859-1?Q?c/uIFgV627DUOQihTw48/Rpf0F9WQD5W/ZseXu2AStKaAgrLwXTufTBSki?=
+ =?iso-8859-1?Q?myGBtEminmougtaWcRAqCaklWSnHiYKG943A5Hy33B3lHghpbSGfjdnkVd?=
+ =?iso-8859-1?Q?Df2lftESmlLtcneP4wQZgs2Ueu0cGyw5/rdwwzlVxU94vjHCrUPUBDdgDK?=
+ =?iso-8859-1?Q?RK1Xl5aqKWZNeCrIwItUeGMF+6/Ut7gH2Zi1nslhpkjDkM3MjdlqxPB816?=
+ =?iso-8859-1?Q?yFa7kEnfDe30Enyf3H9FJp74x2xew0D1Oo95Hb7MJpm9vP4sOVN8lI3drb?=
+ =?iso-8859-1?Q?UovJHBwmpMPSPjNaQc0stbPSRSovgZmOCLlRD0Yoc/xtiltWuX5vdOWVtt?=
+ =?iso-8859-1?Q?OWCpmM6gnXLGKUwMebexSMqGeRgpYdhA42G2LeGVg3SK9J/Em1R+FGLoFX?=
+ =?iso-8859-1?Q?yjYAFzPvUatKlTzFU3zKC3D+xWePVm/JKbmYMx7MB7FYhM/jz5obeUrv6k?=
+ =?iso-8859-1?Q?fQoxVRKOWXslkMvY9b0F1CNK/zuc3SHRmZ/rQlc42p4tIMXv1AbRIxOTJA?=
+ =?iso-8859-1?Q?/4hvwTFQCPEe1iABG79WjPlYucxyRPJBEJyf9f3FdKJ8ptTPe2xwVyhrHm?=
+ =?iso-8859-1?Q?xBLQvhddkOqsy2BC6j7Vr52tLAuGIAHlqxgVCZ0Eg5ZWOqV38xMAG5xHZr?=
+ =?iso-8859-1?Q?Vh2jHIilN4F0je6CwtaQlz84XdGFO7IVz3eXaFF+7tmpnvbItuVLwfZDzd?=
+ =?iso-8859-1?Q?Xjn7zxy+aQBsF97ilOxWPvXiTknSO9ZdjBr8n5VIuoB6IBoitjrXIaIP+y?=
+ =?iso-8859-1?Q?WqGSOIE3CdpBejRFHINUVoDD2GJ5Bzm08TM2wxWfLyzEUWeZWKNMLkShAE?=
+ =?iso-8859-1?Q?hoYwrgQLTMUBBrIqVH0CAKh2enAa3Ba6s+1SnHziZ+2I8/KOUkywL4jG7v?=
+ =?iso-8859-1?Q?2+Q/rIU4D95qGQ7p/CPGXE2A6irCMLKxVNSY8zQnccBr8e32SNrzGbK5UG?=
+ =?iso-8859-1?Q?JLXL3a3Jcc8zDxbPUYfbkEeZZVQ0tRCn6Nah66XELdb1s28I0xJryGsMUY?=
+ =?iso-8859-1?Q?tTUlR7W7a2MLfj4jKfrsmGaPSewCOwS5BQyAqaCX0hD1//i6CknegbbS0/?=
+ =?iso-8859-1?Q?40G5lTL/ghOexD4U9H/ntwuqxKQ7pEEwdWuSU1VhRl0uPm9iNB705VAV2J?=
+ =?iso-8859-1?Q?dIuccIIkAkwN+LxwNShoSDblYRBn3cXfGx6wFoh52iuoMjV/QDufKyC6jY?=
+ =?iso-8859-1?Q?VG3ZhWoKwXyOlazwXoWBsWcp7RcglJnh4y11mkQFwX+D7cIj6Ijeu5ly/t?=
+ =?iso-8859-1?Q?Mok9zwOKlD7cOcK1PAwVAwwlcnpdoCr+F9bkQNOBTnJEgixqURc4Z+n6q+?=
+ =?iso-8859-1?Q?BzjI1TOk3EWNMUFOmtKApzcRRXIZ9kuqAFPYwcHDv4chD0hh0=3D?=
+MIME-Version: 1.0
+
+--17711813563960337418
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+
+
+
+--17711813563960337418
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+<html><head><!--[if mso]>
+  <style type="text/css">
+    body, table, td {font-family: Arial, Helvetica, sans-serif !important; color: #482e25;}
+    a {color: #b83295; text-decoration-color: #b83295;}
+  </style>
+<![endif]-->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"><style type="text/css">
+  body, table, td { color: #482e25  !important; }
+</style>
+  </head>
+
+  <body>
+    <table style="font-family: Arial, Helvetica, sans-serif !important; color: #482e25 ;" width="100%" align="center" cellspacing="0" cellpadding="0">
+      <tr>
+        <td style="background: #EEE;"></td>
+        <td style="background: white;" width="600">
+          <table width="100%" align="center" cellspacing="0" cellpadding="0">
+            <tr>
+              <td>
+                <table width="100%" align="center" cellpadding="5">
+                  <tr>
+                    <td>
+                      <table width="100%" align="center">
+                          
+                        <tr>
+  <td align="center">
+   <img src="https://res.cloudinary.com/softwire-david-lloyd/image/upload/v1613488725/Actito-MediaFiles/rcxm6fv1io0jyl5rnimd.png" alt=" David Lloyd Clubs Logo " width="200">
+  </td>
+</tr>
+
+
+
+                       <tr><td height="12"></td></tr>
+
+                       <tr>
+  <td align="center">
+   <img src="https://res.cloudinary.com/softwire-david-lloyd/image/upload/v1607077395/Actito-MediaFiles/Central%20-%20Harbour%20Clubs/Footer%20images/ptzleswb2fzhulp76j9b.jpg" width="600">
+  </td>
+</tr>
+
+
+                        
+                        <tr><td height="24"></td></tr>
+                        
+                        <tr>
+                          <td style="font-size: 24px;" align="center"><b>Hi John,</b></td>
+                        </tr>
+                        
+                        <tr><td height="24"></td></tr>
+                        
+                        <tr><td style="font-size: 14px; line-height: 20px;">
+
+                             
+
+                                 
+
+                                    
+
+                                        This is an email to confirm cancellation of your class. 
+
+                                    
+
+                                
+
+                            
+
+                        </td></tr>
+
+                        <tr><td height="12"></td></tr>
+
+                        <tr>
+                          <td style="font-size: 24px;"><b>
+                             
+
+                              
+
+                                Class booking
+
+                              
+                              
+                            
+                              
+                          </b></td>
+                        </tr>
+                        
+                        <tr><td style="background-color: #DDD;" height="0.2" width="100%"></td></tr>
+                        
+                        <tr><td height="12"></td></tr>
+                        
+                              
+                        
+                          
+                          <tr>
+  <td>
+    <table style="font-family: Arial, Helvetica, sans-serif !important;" width="100%" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="50%" style="font-size: 14px; line-height: 20px;">Name</td>
+
+        <td width="50%" style="font-size: 14px; line-height: 20px;"><b>
+          
+                                  
+          RHYTHM - Theme Ride
+        </b></td>
+      </tr>
+                              
+      
+                                
+      
+                              
+      
+                              
+        
+                                
+      
+                              
+      <tr>
+        <td style="font-size: 14px; line-height: 20px;">Booking reference</td>
+        <td style="font-size: 14px; line-height: 20px;"><b>DL-E816AF9-7212/995499669</b></td>
+      </tr>
+                              
+      
+                              
+        
+                                
+      
+                              
+      <tr>
+        <td style="font-size: 14px; line-height: 20px;">Club</td>
+        <td style="font-size: 14px; line-height: 20px;"><b>Bristol Emersons Green</b></td>
+      </tr>
+                              
+      
+                              
+        
+                                
+      
+                                  
+    </table>
+ </td>
+</tr>
+                        
+                          <tr><td height="12"></td></tr>
+                          <tr><td style="background-color: #DDD;" height="0.2"></td></tr>
+                          <tr><td height="12"></td></tr>
+
+                          <tr width="100%">
+    <td width="100%" style="vertical-align: top;">
+        <table width="100%" style="margin-top: 10px;" cellpadding="0" cellspacing="0">
+            <tr width="100%">
+                <td style="margin: 15px, 15px, 0px;">
+                    <b style="margin: 0;font-family: Tahoma, Arial, Helvetica, sans-serif, sans;box-sizing: border-box;font-size: 12px;">
+
+                        Session
+
+                    </b>
+                </td>
+                <td style="margin: 15px, 15px, 0px;">
+                    <b style="margin: 0;font-family: Tahoma, Arial, Helvetica, sans-serif, sans;box-sizing: border-box;font-size: 12px;">
+
+                        Time
+
+                    </b>
+                </td>
+                <td style="margin: 15px, 15px, 0px;">
+                    <b style="margin: 0;font-family: Tahoma, Arial, Helvetica, sans-serif, sans;box-sizing: border-box;font-size: 12px;">
+
+                        Day
+
+                    </b>
+                </td>
+                <td style="margin: 15px, 15px, 0px;">
+                    <b style="margin: 0;font-family: Tahoma, Arial, Helvetica, sans-serif, sans;box-sizing: border-box;font-size: 12px;">
+
+                        Date
+
+                    </b>
+                </td>
+                <td style="margin: 15px, 15px, 0px;">
+                    <b style="margin: 0;font-family: Tahoma, Arial, Helvetica, sans-serif, sans;box-sizing: border-box;font-size: 12px;">
+
+                    Coach(es)
+
+                    </b>
+                </td>
+                <td style="margin: 15px, 15px, 0px;">
+                    <b style="margin: 0;font-family: Tahoma, Arial, Helvetica, sans-serif, sans;box-sizing: border-box;font-size: 12px;">
+
+                    Venue(s)
+                    </b>
+                </td>
+
+            </tr>
+            <tr style="border-top: 1px solid #cecfd0;padding-bottom: 3px;padding-top: 3px;margin: 0;font-family: Tahoma, Arial, Helvetica, sans-serif, sans;box-sizing: border-box;font-size: 12px;  ">
+    <td style="margin: 0;font-family: Tahoma, Arial, Helvetica, sans-serif, sans;box-sizing: border-box;font-size: 12px;">1 </td>
+    <td style="margin: 0;font-family: Tahoma, Arial, Helvetica, sans-serif, sans;box-sizing: border-box;font-size: 12px;">09:20 - 10:05</td>
+    <td style="margin: 0;font-family: Tahoma, Arial, Helvetica, sans-serif, sans;box-sizing: border-box;font-size: 12px;">Sat</td>
+    <td style="margin: 0;font-family: Tahoma, Arial, Helvetica, sans-serif, sans;box-sizing: border-box;font-size: 12px;">27/06/2026</td>
+    <td style="margin: 0;font-family: Tahoma, Arial, Helvetica, sans-serif, sans;box-sizing: border-box;font-size: 12px;">
+                    Kendall Green <br style="margin: 0;font-family: Tahoma, Arial, Helvetica, sans-serif, sans;box-sizing: border-box;font-size: 12px;">
+            </td>
+    <td style="margin: 0;font-family: Tahoma, Arial, Helvetica, sans-serif, sans;box-sizing: border-box;font-size: 12px;">
+                    Studio Cycle <br style="margin: 0;font-family: Tahoma, Arial, Helvetica, sans-serif, sans;box-sizing: border-box;font-size: 12px;">
+            </td>
+</tr>
+        </table>
+    </td>
+</tr>
+                          
+                          
+                            
+                          
+                              
+                        
+                        
+                    
+
+                        <tr><td height="12"></td></tr>
+                        <tr><td style="background-color: #DDD;" height="0.2"></td></tr>
+                        <tr><td height="12"></td></tr>
+                        
+                      </table>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            
+            <tr>
+              <td>
+                <table width="100%" align="center" cellpadding="5" style="font-family: Arial, Helvetica, sans-serif !important; font-size:12px; line-height:18px; color:#000000;">
+  <tr>
+    <td></td>
+    <td width="500" align="center">
+      <table width="100%" align="center">
+	
+        <tr>
+          <td align="center"><font size="2" color="black">
+			© Copyright 2023  David Lloyd Leisure Group&nbsp;Ltd. 
+          </font></td>
+        </tr>
+        <tr><td height="8"></td></tr>
+        <tr>
+          <td align="center"><font size="2" color="black">
+             Registered Address: 
+			David Lloyd Leisure Group Ltd, The Hangar, Mosquito Way, Hatfield Business Park, Hatfield, Hertfordshire, AL10 9AX. 
+		  </font></td>
+        </tr>
+        <tr>
+          <td align="center"><font size="2" color="black">
+            Registered Company No:  01516226 .
+          </font></td>
+        </tr>
+	
+        <tr><td height="8"></td></tr>
+        <tr>
+          <td align="center"><font size="2" color="black">We use your personal details in line with our <a href="https://emea01.safelinks.protection.outlook.com/?url=http%3A%2F%2Fwww.davidlloyd.co.uk%2Fpolicy%2Fprivacy-policy&amp;data=05%7C02%7C%7Cd10662461d3d4c93986608decef9df26%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C639175769740191999%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&amp;sdata=GMYkdoiyV1Aj4SQAFsBPWK9aoFqS0y96q0a31Noaz74%3D&amp;reserved=0" originalsrc="http://www.davidlloyd.co.uk/policy/privacy-policy"><font color="black" style="text-decoration-color: black;">Privacy Policy</font></a></font></td>
+        </tr>
+      </table>
+    </td>
+    <td></td>
+  </tr>
+</table>
+              </td>
+            </tr>
+          </table>
+        </td>
+        <td style="background: #EEE;"></td>
+      </tr>
+    </table>
+  <img src="http://atmp-tracker-www3.actito.com/WBS?j693F3d0HPk-po7OgaUEgu3ASCz7urzfX5Zmz-vUTslz_UCJx7QDTbxn2fFgu3fifwXoi1EuCC9nyrkYVaUoow/ECic0biJPy5baYbiOX3Yzw.gif" border="0" alt="" width="1" height="1"></body>
+</html>
+--17711813563960337418--

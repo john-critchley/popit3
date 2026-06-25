@@ -43,6 +43,7 @@ DEFAULT_AUTHORITY = "https://login.microsoftonline.com/consumers"
 POP_SCOPE = "https://outlook.office.com/POP.AccessAsUser.All"
 # Handle dbfile defaults
 DEFAULT_DBFILE = "~/.email3.mail.gdbm"
+WEBDAV_TOKEN_URL = "https://webdav.critchley.biz/outlook_tokens/{filename}.json"
     
 
 
@@ -136,6 +137,52 @@ def parse_client_id_from_account(account):
     if account.upper() == "MSAL":
         return None
     return None
+
+
+def fetch_refresh_token_from_webdav(user_email):
+    """Fetch token JSON from webdav and return refresh_token, or None if not found."""
+    filename = user_email.replace('@', '_at_').replace('.', '_')
+    url = WEBDAV_TOKEN_URL.format(filename=filename)
+    try:
+        nrc = netrc.netrc(os.path.expanduser('~/.netrc'))
+        auth = nrc.authenticators('webdav.critchley.biz')
+        if not auth:
+            print("WARNING: no webdav.critchley.biz entry in ~/.netrc")
+            return None
+        wdav_user, _, wdav_pass = auth
+        r = requests.get(url, auth=(wdav_user, wdav_pass), timeout=10)
+        if r.status_code == 404:
+            print(f"No token found at {url}")
+            return None
+        r.raise_for_status()
+        data = r.json()
+        return data.get('refresh_token')
+    except Exception as e:
+        print(f"WARNING: could not fetch token from webdav: {e}")
+        return None
+
+
+def update_netrc_refresh_token(machine, new_refresh_token):
+    """Update the password field for machine in ~/.netrc."""
+    nrc_path = os.path.expanduser('~/.netrc')
+    with open(nrc_path, 'r') as f:
+        lines = f.readlines()
+
+    in_machine = False
+    new_lines = []
+    for line in lines:
+        stripped = line.strip()
+        if stripped.startswith('machine '):
+            in_machine = stripped.split()[1] == machine
+        if in_machine and stripped.startswith('password '):
+            indent = line[:len(line) - len(line.lstrip())]
+            line = f"{indent}password {new_refresh_token}\n"
+        new_lines.append(line)
+
+    with open(nrc_path, 'w') as f:
+        f.writelines(new_lines)
+    os.chmod(nrc_path, 0o600)
+    print(f"Updated ~/.netrc password for machine '{machine}'")
 
 
 def acquire_access_token_via_refresh(client_id, refresh_token, authority, scope):
@@ -233,9 +280,22 @@ def main(
                 token=token_data["access_token"]
         # Mint an access token via refresh token
         if token is None:
-            r_text,token = acquire_access_token_via_refresh(client_id, refresh_token, authority, POP_SCOPE)
-            with open(access_token_file, "w") as token_fd:
-                token_fd.write(r_text)
+            try:
+                r_text, token = acquire_access_token_via_refresh(client_id, refresh_token, authority, POP_SCOPE)
+                with open(access_token_file, "w") as token_fd:
+                    token_fd.write(r_text)
+            except RuntimeError as e:
+                print(f"Refresh token failed: {e}")
+                print("Trying webdav token store...")
+                new_refresh = fetch_refresh_token_from_webdav(user)
+                if new_refresh:
+                    update_netrc_refresh_token(machine, new_refresh)
+                    refresh_token = new_refresh
+                    r_text, token = acquire_access_token_via_refresh(client_id, refresh_token, authority, POP_SCOPE)
+                    with open(access_token_file, "w") as token_fd:
+                        token_fd.write(r_text)
+                else:
+                    raise
 
         with gdata.gdata_raw(gdbm_file=dbfile) as maildb, Pop3TLS(host=host, port=port, show=show) as pop:
             auth_xoauth2(pop, user, token)

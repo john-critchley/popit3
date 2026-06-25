@@ -1,0 +1,331 @@
+{
+  "title": "Avoiding Orphaned Notes and Information Loss",
+  "version": 1,
+  "created": "2026-02-10",
+  "content": [
+    {
+      "heading": {
+        "level": 1,
+        "text": "Avoiding Orphaned Notes and Information Loss"
+      }
+    },
+    {
+      "para": [
+        "This document explains critical practices for maintaining the integrity of the notes system."
+      ]
+    },
+    {
+      "heading": {
+        "level": 2,
+        "text": "What is an Orphaned Note?"
+      }
+    },
+    {
+      "para": [
+        "An orphaned note is one that exists in the system but has no links pointing to it from any other page. It is effectively hidden and undiscoverable unless you know its exact key and use ",
+        {
+          "code": "notes read <key>"
+        },
+        " directly."
+      ]
+    },
+    {
+      "para": [
+        "Example: A note created at key ",
+        {
+          "code": "envoy/design-spec"
+        },
+        " with valuable architectural information, but no link from the ",
+        {
+          "code": "envoy"
+        },
+        " parent page, remains undiscovered even though it contains important documentation."
+      ]
+    },
+    {
+      "heading": {
+        "level": 2,
+        "text": "How Orphaned Notes Happen"
+      }
+    },
+    {
+      "para": [
+        "1. Create a child note but forget to link it: You create ",
+        {
+          "code": "project/design"
+        },
+        " but forget to add a link from the ",
+        {
+          "code": "project"
+        },
+        " page."
+      ]
+    },
+    {
+      "para": [
+        "2. Delete a link without reviewing content: You remove a link from the parent page thinking the document is no longer needed, but valuable information was in that child note."
+      ]
+    },
+    {
+      "para": [
+        "3. Update a parent page and accidentally omit child links: You edit the ",
+        {
+          "code": "envoy"
+        },
+        " page but don't preserve links to ",
+        {
+          "code": "envoy/design-spec"
+        },
+        " and ",
+        {
+          "code": "envoy/design-supplement"
+        },
+        "."
+      ]
+    },
+    {
+      "heading": {
+        "level": 2,
+        "text": "Why This Matters"
+      }
+    },
+    {
+      "para": [
+        "Discoverability: LLMs, tools, and humans rely on navigating from linked pages. Orphaned notes become lost knowledge."
+      ]
+    },
+    {
+      "para": [
+        "Information Loss: Valuable architectural decisions, design discussions, and domain knowledge can disappear from active use, even if the data technically exists in the database."
+      ]
+    },
+    {
+      "para": [
+        "System Integrity: The notes system depends on explicit links. Orphaned documents indicate gaps in the linking structure."
+      ]
+    },
+    {
+      "heading": {
+        "level": 2,
+        "text": "Best Practices"
+      }
+    },
+    {
+      "heading": {
+        "level": 3,
+        "text": "When Creating a Child Note"
+      }
+    },
+    {
+      "para": [
+        "1. Create the child note with ",
+        {
+          "code": "notes load -d <child_key> /tmp/file.json"
+        }
+      ]
+    },
+    {
+      "para": [
+        "2. IMMEDIATELY read the parent page: ",
+        {
+          "code": "notes read <parent_key>"
+        }
+      ]
+    },
+    {
+      "para": [
+        "3. Update the parent page to include a link to the child"
+      ]
+    },
+    {
+      "para": [
+        "4. Verify the link resolves correctly"
+      ]
+    },
+    {
+      "heading": {
+        "level": 3,
+        "text": "When Editing a Parent Page"
+      }
+    },
+    {
+      "para": [
+        "Before you overwrite a page:"
+      ]
+    },
+    {
+      "para": [
+        "1. Read the current content: ",
+        {
+          "code": "notes read <key>"
+        }
+      ]
+    },
+    {
+      "para": [
+        "2. Review it for child links you might accidentally remove"
+      ]
+    },
+    {
+      "para": [
+        "3. Use ",
+        {
+          "code": "notes list"
+        },
+        " to check if child notes exist (keys with your page as a prefix)"
+      ]
+    },
+    {
+      "para": [
+        "4. Preserve all existing links when you update"
+      ]
+    },
+    {
+      "heading": {
+        "level": 3,
+        "text": "When Deleting a Link"
+      ]
+    },
+    {
+      "para": [
+        "Before removing a link:"
+      ]
+    },
+    {
+      "para": [
+        "1. Verify the target still has value",
+        "2. Check if anyone depends on it",
+        "3. If deleting, consider archiving instead of removing",
+        "4. Document why the link was removed"
+      ]
+    },
+    {
+      "heading": {
+        "level": 3,
+        "text": "Before Deleting a Note Entirely"
+      ]
+    },
+    {
+      "para": [
+        "Use ",
+        {
+          "code": "notes delete"
+        },
+        " only after:"
+      ]
+    },
+    {
+      "para": [
+        "1. Verifying the note has no value for future reference",
+        "2. Checking that no links point to it",
+        "3. Confirming no child notes exist under it",
+        "4. Optionally backing up the content first"
+      ]
+    },
+    {
+      "heading": {
+        "level": 2,
+        "text": "Auditing for Orphaned Notes"
+      ]
+    },
+    {
+      "para": [
+        "Use the ",
+        {
+          "code": "notes list"
+        },
+        " command regularly to audit the system:"
+      ]
+    },
+    {
+      "para": [
+        "1. Run ",
+        {
+          "code": "notes list"
+        },
+        " to see all keys"
+      ]
+    },
+    {
+      "para": [
+        "2. For each key, use ",
+        {
+          "code": "notes read"
+        },
+        " to check its content"
+      ]
+    },
+    {
+      "para": [
+        "3. Verify that parent-child relationships are properly linked"
+      ]
+    },
+    {
+      "para": [
+        "4. If you find an orphaned note, either link it from a parent or delete it with confidence"
+      ]
+    },
+    {
+      "heading": {
+        "level": 2,
+        "text": "Real Example: The Envoy Documentation Issue"
+      }
+    },
+    {
+      "para": [
+        "On 2026-02-09, two important design documents were created:"
+      ]
+    },
+    {
+      "para": [
+        "- ",
+        {
+          "code": "envoy/design-spec"
+        },
+        " (architectural specification)"
+      ]
+    },
+    {
+      "para": [
+        "- ",
+        {
+          "code": "envoy/design-supplement"
+        },
+        " (design decisions)"
+      ]
+    },
+    {
+      "para": [
+        "However, the main ",
+        {
+          "code": "envoy"
+        },
+        " page was not updated to include links to these notes. They remained orphaned and undiscoverable until explicitly searched for using ",
+        {
+          "code": "notes list"
+        },
+        ". This valuable architectural guidance was effectively hidden despite existing in the system."
+      ]
+    },
+    {
+      "para": [
+        "Lesson: Always link new child notes immediately from their parent pages."
+      ]
+    },
+    {
+      "heading": {
+        "level": 2,
+        "text": "Summary"
+      ]
+    },
+    {
+      "para": [
+        "- Create + Link must happen together",
+        "- Never remove links without reviewing the target",
+        "- Use notes list to audit regularly",
+        "- Preserve information by keeping links intact",
+        "- Document deletions if you must remove content"
+      ]
+    }
+  ]
+}

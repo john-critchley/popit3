@@ -182,3 +182,90 @@ So this is not necessarily a “fairly major rewrite”, but it is a meaningful 
 - Separately, we discovered BOM-prefixed stored messages while trying to locate a specific `Message-ID`.
 
 Those are distinct issues, but the BOM discovery directly impacts any future Message-ID indexing.
+
+---
+
+# State of play (30 Apr 2026)
+
+This snapshot captures the OCR work on RS-encoded Base64 lines rendered in the notes browser.
+
+## 1) Rendering and screenshot baseline
+
+- Notes browser fixed-width rendering is now correct for OCR:
+  - content stored as `codeblock` instead of `para`
+  - HtmlWindow configured with `SetFonts("", "Courier", sizes)` for fixed-width face
+- Browser control performed via Unix socket RPC (`status.ping`, `navigate.go_to_page`, `ui.capture_screenshot`, `ui.quit`).
+- Stable source line image in use:
+  - `tmp/rs_note_courier_line_inv_tight.png`
+
+## 2) Geometry used for segmentation
+
+- Horizontal pitch is exact and verified:
+  - 1440 px line width
+  - 180 characters
+  - stride = 8 px/char
+- Final vertical glyph band (using unmarked source, row max + p99 heuristic):
+  - top = 4
+  - bottom = 17
+  - height = 14 px
+
+Validation overlays:
+
+- `tmp/rs_note_courier_line_inv_tight_marked_red_stride8.png`
+- `tmp/rs_note_courier_line_inv_tight_marked_red_stride8_ybounds_max.png`
+
+## 3) Glyph sample corpus status
+
+- Initial extraction had partial Base64 coverage (missing `H`, `L`, `n`, `v`).
+- Added dedicated coverage note (`john/ocr_glyph_coverage_b64`) containing Base64 alphabet repeated.
+- New screenshot was captured and aligned to exact 8 px boundaries.
+- Final merged sample corpus:
+  - `ocr/glyph_samples/courier10_full`
+
+Coverage summary:
+
+- Base64 covered: 64/64
+- Missing: none
+- Total samples: 372
+- Per-class counts: min 3, max 17
+- Lowest count classes: `H`, `L`, `n`, `v` (3 each)
+
+Machine-readable summary:
+
+- `tmp/glyph_sample_coverage_report_v2.json`
+
+## 4) What this means for next OCR steps
+
+- The project now has a reproducible Courier-10 segmentation baseline.
+- Full Base64 class coverage is available for hash/template matching.
+- Next practical step is classifier pass + RS decode verification using these samples.
+
+## 5) Row-sum segmentation of the full screenshot (30 Apr 2026 — second session)
+
+Row-sum segmentation was applied to the full-page screenshot `tmp/rs_note_courier_screenshot.png` (1920×1010 px) to locate horizontal text bands automatically:
+
+- Script: inline Python using Pillow / numpy
+- Method: column-sum per row → Gaussian smooth → threshold at bg_p20 + 14% of dynamic range → gap fill → group merge
+- Result: **2 groups detected**
+  - Group 0: rows 0–66 (browser toolbar / UI chrome)
+  - Group 1: rows 152–163 (encoded codeblock text line)
+
+Output files:
+
+- `tmp/rs_note_courier_screenshot_row_segments.png` — full overlay with colour-coded rectangles
+- `tmp/rs_note_courier_screenshot_row_segments_stacked.png` — stacked bands
+- `tmp/rs_note_courier_screenshot_row_segments.txt` — machine-readable report
+
+## 6) Stride-8 crop overlay on the text band
+
+The text band (rows 152–163) was cropped from the screenshot and scaled 6× vertically, then overlaid with vertical red lines every 8 px to show character cell alignment.
+
+Output file: `tmp/rs_note_courier_screenshot_band_stride8.png`
+
+This confirms the character grid aligns with the stride-8 model in the full-page screenshot, not just the isolated line crop.
+
+## 7) Handover notes — next steps
+
+1. **OCR pass**: slice `tmp/rs_note_courier_screenshot.png` at rows 152–163, divide into 8 px columns, extract glyph strips at rows 4–17 within the band, hash-match against `ocr/glyph_samples/courier10_full/`.
+2. **RS decode**: run `ocr/rs_decode.py` (or equivalent) on the recovered Base64 string and verify against the original encoded value stored in note `john/rs_screenshot_test_b64`.
+3. **Phase check**: if glyph boundaries feel misaligned in the screenshot crop, cross-check the left margin offset — the 1440 px text area starts at x=240 in the 1920 px screenshot (240 px left sidebar/margin).

@@ -6,6 +6,8 @@ import email
 import scanmailheaders
 
 import MyDavidLloydSchedule
+import github_ci_handler
+import zoneedit_handler
 ## import MyJobserveJobs
 ##import jobserve_parser
 ## import mailspool  # re-enable when other handlers are restored
@@ -13,15 +15,11 @@ import MyDavidLloydSchedule
 import json
 import traceback
 
-## import netrc        # re-enable with webdav clients
-## import webdav4.client
-## import time
-## import httpx
+## import netrc        # re-enable with webdav clients (now handled inside MailSpool)
 
 mode="w" # change to "n" for going from clean
 
-## host='webdav.critchley.biz'
-## user, account, password=netrc.netrc().authenticators(host)
+## host='webdav.critchley.biz'  # passed to MailSpool(webdav_host=) when re-enabling routes
 
 def _norm(v): # skip crap unicode identifier which we now get
     i=0
@@ -29,29 +27,12 @@ def _norm(v): # skip crap unicode identifier which we now get
         i+=1
     return v[i:]
 
-## def create_webdav_client_with_retry(url, auth, max_retries=3):
-##     for attempt in range(max_retries):
-##         try:
-##             client = webdav4.client.Client(url, auth=auth)
-##             client.ls('/', detail=False)
-##             return client
-##         except (ConnectionError, TimeoutError, OSError, httpx.ConnectTimeout) as e:
-##             if attempt < max_retries - 1:
-##                 print(f"WebDAV connection attempt {attempt + 1} failed: {e}")
-##                 print(f"Retrying in {2 ** attempt} seconds...")
-##                 time.sleep(2 ** attempt)
-##             else:
-##                 print(f"WebDAV connection failed after {max_retries} attempts: {e}")
-##                 raise
-
-## webdav_client = create_webdav_client_with_retry(f'https://{host}/mail/john', (user, password))
-## js_webdav_client = create_webdav_client_with_retry(f'https://{host}/mail/john.js', (user, password))
-## mail_spool = mailspool.MailSpool(os.path.expanduser('~/Mail'), webdav_client)
-## js_mail_spool = mailspool.MailSpool(os.path.expanduser('~/py/popit3/jsMail'), js_webdav_client, delete=False)
-## reddit_mail_spool = mailspool.MailSpool(os.path.expanduser('~/.reddit_mail'), delete=False)
-## wf_mail_spool = mailspool.MailSpool(os.path.expanduser('~/py/popit3/wfMail'), webdav_client, delete=False)
-## envoy_webdav_client = create_webdav_client_with_retry(f'https://{host}/mail/envoy', (user, password))
-## envoy_mail_spool = mailspool.MailSpool(os.path.expanduser('~/py/envoy/requests'), envoy_webdav_client, delete=True)
+## host='webdav.critchley.biz'
+## mail_spool         = mailspool.MailSpool(os.path.expanduser('~/Mail'),                   webdav_host=host, webdav_path='/mail/john')
+## js_mail_spool      = mailspool.MailSpool(os.path.expanduser('~/py/popit3/jsMail'),       webdav_host=host, webdav_path='/mail/john.js', delete=False)
+## reddit_mail_spool  = mailspool.MailSpool(os.path.expanduser('~/.reddit_mail'),           delete=False)
+## wf_mail_spool      = mailspool.MailSpool(os.path.expanduser('~/py/popit3/wfMail'),       webdav_host=host, webdav_path='/mail/john', delete=False)
+## envoy_mail_spool   = mailspool.MailSpool(os.path.expanduser('~/py/envoy/requests'),      webdav_host=host, webdav_path='/mail/envoy', delete=True)
 ## envoy_responses_mail_spool = mailspool.MailSpool(os.path.expanduser('~/py/envoy/responses'), delete=True)
 ## import newparser_jobserve
 
@@ -66,7 +47,9 @@ map= [
         #("john.od@critchley.biz", lambda x: [ uidl for uidl, eb in x ]),
         #("readingreddit@critchley.biz", reddit_mail_spool.store_messages),
         #("o_f@critchley.biz", lambda x: [ uidl for uidl, eb in x ]),
+        #("jsr_critchley@hotmail.com", zoneedit_handler.process_zoneedit_mails),
         ("john.dl@critchley.biz", MyDavidLloydSchedule.process_dl_mails),
+        ("john.github@critchley.biz", github_ci_handler.process_github_mails),
 #        ("john.js@critchley.biz", MyJobserveJobs.process_js_mails),
 ###        ("john.js@critchley.biz", jobserve_parser.process_js_mails),
         #("john.js@critchley.biz", newparser_jobserve.process_js_mails),

@@ -3,9 +3,16 @@ if __name__ != "__main__": print("Module:", __name__)
 from datetime import datetime
 from html.parser import HTMLParser
 
-BOOKING_REF_RE = re.compile(r"\bDL-[A-Z0-9]+-[A-Z0-9]+(?:/\d+)?\b", re.I)
-# Avoid false positives from phrases like "you can cancel your booking" in confirmations.
-CANCEL_RE      = re.compile(r"\b(cancelled|canceled|cancellation)\b|\bhas been cancel(?:led|ed)\b", re.I)
+BOOKING_REF_RE = re.compile(r"\b(?:DL|FT)-[A-Z0-9]+-[A-Z0-9]+(?:/\d+)?\b", re.I)
+# Avoid "cancellation" in PT refund policy ("notice of cancellation is given").
+# Match past-tense forms and phrases that only appear in actual cancellation notifications.
+CANCEL_RE      = re.compile(
+    r"\b(cancelled|canceled)\b"
+    r"|\bhas been cancel(?:led|ed)\b"
+    r"|\bconfirm\s+cancellation\b"        # "confirm cancellation of your class"
+    r"|\bcancellation\s+confirmation\b",   # subject: "class cancellation confirmation"
+    re.I
+)
 BOOK_RE        = re.compile(r"\b(book(?:ing|ed)?|reserved|confirmation)\b", re.I)
 UPDATE_RE      = re.compile(
     r"(?:\b(class|session|booking)\b.{0,40}\bhas been (?:changed|amended)\b)"
@@ -28,21 +35,31 @@ def parse_david_lloyd_email_part(html_part: str) -> dict:
     def _parse_flex_date(s):
         if not s: return None
         t = re.sub(r"(\d{1,2})(st|nd|rd|th)", r"\1", s.strip())
-        for fmt in ("%A %d %B %Y","%a %d %B %Y","%d %B %Y","%d %b %Y","%d/%m/%Y","%d/%m/%y"):
+        t = re.sub(r"^\w{3,9},\s*", "", t)  # strip "Tue, " prefix
+        for fmt in ("%A %d %B %Y", "%a %d %B %Y", "%d %B %Y",
+                    "%A %d %b %Y", "%a %d %b %Y", "%d %b %Y",
+                    "%d/%m/%Y", "%d/%m/%y"):
             try: return datetime.strptime(t, fmt).date()
             except ValueError: pass
         return None
 
     def _parse_time_range(s):
         m = TIME_RANGE_RE.search(s or "")
-        if not m: return (None, None)
-        try:
-            t1 = m.group(1).replace(".", ":")
-            t2 = m.group(2).replace(".", ":")
-            return (datetime.strptime(t1, "%H:%M").time(),
-                    datetime.strptime(t2, "%H:%M").time())
-        except ValueError:
-            return (None, None)
+        if m:
+            try:
+                t1 = m.group(1).replace(".", ":")
+                t2 = m.group(2).replace(".", ":")
+                return (datetime.strptime(t1, "%H:%M").time(),
+                        datetime.strptime(t2, "%H:%M").time())
+            except ValueError:
+                return (None, None)
+        sm = re.match(r"^\s*(\d{1,2}[:.]\d{2})\s*$", s or "")
+        if sm:
+            try:
+                return (datetime.strptime(sm.group(1).replace(".", ":"), "%H:%M").time(), None)
+            except ValueError:
+                pass
+        return (None, None)
 
     class _Sniffer(HTMLParser):
         """Collect visible text, kv pairs, and table rows. Skip struck-out text."""
@@ -174,22 +191,29 @@ def parse_david_lloyd_email_part(html_part: str) -> dict:
 
     else:
         d  = _parse_flex_date(kv("date") or "")
-        t1,t2 = _parse_time_range(kv("time") or "")
-        if d and t1: start = datetime.combine(d, t1)
-        if d and t2: end   = datetime.combine(d, t2)
+        t1, t2 = _parse_time_range(kv("time") or "")
+        if d and t1:
+            start = datetime.combine(d, t1)
+            if t2:
+                end = datetime.combine(d, t2)
+            else:
+                import datetime as _dt
+                end = start + _dt.timedelta(minutes=45)
         day = d.strftime("%a") if d else None
 
         court = kv("court")
         venue = court or kv("venue","venues","location") or None
 
-        activity = kv("name","class","activity")
+        activity = kv("name","class","activity","session")
+        if not activity and kv("trainer"):
+            activity = "Personal Training"
         if not activity:
             sm = SPORT_RE.search(full)
             activity = (sm.group(1).title() if sm else None)
         if not activity:
             activity = "Court" if "court" in full.lower() else ("Class" if "class" in full.lower() else None)
 
-        raw_coach = kv("coach","coaches","instructor")
+        raw_coach = kv("coach","coaches","instructor","trainer")
         coach = (raw_coach.split("\n")[0].strip() if raw_coach else None)
 
     return {

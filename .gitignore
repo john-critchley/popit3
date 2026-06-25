@@ -97,6 +97,15 @@ tmp/
 text/
 random/
 TO_DELETE/
+wfMail/
+notes-browser/
+run.txt
+
+# OCR data directories (large generated/binary data)
+ocr/glyphs/
+ocr/by_cluster/
+ocr/glyph_samples/
+ocr/OLD/
 
 # Backup files
 cv_llm_optimized_save.md

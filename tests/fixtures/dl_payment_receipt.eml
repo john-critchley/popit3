@@ -1,0 +1,575 @@
+Received: from AS5PR07MB10499.eurprd07.prod.outlook.com
+ (2603:10a6:20b:6c6::13) by AMBPR07MB11950.eurprd07.prod.outlook.com with
+ HTTPS; Mon, 1 Jun 2026 16:40:56 +0000
+Received: from SJ0PR05CA0157.namprd05.prod.outlook.com (2603:10b6:a03:339::12)
+ by AS5PR07MB10499.eurprd07.prod.outlook.com (2603:10a6:20b:6c6::13) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.71.16; Mon, 1 Jun 2026
+ 16:40:55 +0000
+Received: from SJ5PEPF000001F4.namprd05.prod.outlook.com
+ (2603:10b6:a03:339:cafe::79) by SJ0PR05CA0157.outlook.office365.com
+ (2603:10b6:a03:339::12) with Microsoft SMTP Server (version=TLS1_3,
+ cipher=TLS_AES_256_GCM_SHA384) id 15.21.92.5 via Frontend Transport; Mon, 1
+ Jun 2026 16:40:54 +0000
+Authentication-Results: spf=pass (sender IP is 64.68.198.23)
+ smtp.mailfrom=srszone.org; dkim=pass (signature was verified)
+ header.d=info.davidlloydclubs.co.uk;dmarc=pass action=none
+ header.from=info.davidlloydclubs.co.uk;compauth=pass reason=100
+Received-SPF: Pass (protection.outlook.com: domain of srszone.org designates
+ 64.68.198.23 as permitted sender) receiver=protection.outlook.com;
+ client-ip=64.68.198.23; helo=mxc03.zoneedit.com; pr=C
+Received: from mxc03.zoneedit.com (64.68.198.23) by
+ SJ5PEPF000001F4.mail.protection.outlook.com (10.167.242.72) with Microsoft
+ SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384) id 15.21.92.5 via
+ Frontend Transport; Mon, 1 Jun 2026 16:40:54 +0000
+X-IncomingTopHeaderMarker: OriginalChecksum:E2F7CAC105A6AED503171E2E5E767A8BA829ED51CC0723C7EE4229CB9F0A8F02;UpperCasedChecksum:6233F25E4DEFF22206715B7C0A55D82E990B2CABD495DC051DC29377676B944C;SizeAsReceived:2067;Count:18
+Received: from localhost (localhost [127.0.0.1])
+	by mxc03.zoneedit.com (Postfix) with ESMTP id 84140206091
+	for <jsr_critchley@hotmail.com>; Mon,  1 Jun 2026 16:40:53 +0000 (UTC)
+Received: from mxc03.zoneedit.com ([127.0.0.1])
+	by localhost (mxc03-zpc.zoneedit.vpn [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id ftH19mW96i2W for <jsr_critchley@hotmail.com>;
+	Mon,  1 Jun 2026 16:40:53 +0000 (UTC)
+Received: from mta1.mybookings.davidlloyd.co.uk (mta1.mybookings.davidlloyd.co.uk [81.92.116.95])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mxc03.zoneedit.com (Postfix) with ESMTPS id 2F6FE206027
+	for <john.dl@critchley.biz>; Mon,  1 Jun 2026 16:40:52 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=emv; d=info.davidlloydclubs.co.uk;
+ h=From:Reply-To:To:Message-ID:Subject:MIME-Version:Content-Type:List-Id:Date;
+ i=info@info.davidlloydclubs.co.uk;
+ bh=2jNOunC4nysqAM3G+CKPlj3UCRLiL0N4isLACcdTKn0=;
+ b=nPRIpa6ZwHevn3o0uW3IBRe2+r2SxZHrIinFaYrE8LeR1PKrhiA+UV9hC0vovu7D1isGIiJttPhk
+   4Qj/ILZB5VJWhuINlwt/5nKWyxLlFQzUhAgx6fM1j3oEh2yj6S9ekvX5iyKT1acuJbUt5tvXNzDM
+   71JMHSK55Hh5zec+aaI=
+Received: by mta1.mybookings.davidlloyd.co.uk id h3mr1637eroh for <john.dl@critchley.biz>; Mon, 1 Jun 2026 18:40:51 +0200 (envelope-from <info@info.davidlloydclubs.co.uk>)
+From: David Lloyd Clubs <info@info.davidlloydclubs.co.uk>
+Reply-To: David Lloyd Clubs <info@info.davidlloydclubs.co.uk>
+To: <john.dl@critchley.biz>
+Message-ID: <2.2.1.1101072161.1771742.1780332051331@info.davidlloydclubs.co.uk>
+Subject: Your Payment Receipt
+Content-Type: multipart/alternative; boundary=17717421780332051331
+X-EMV-Platform: p7cce.campaigncommander.com$
+X-EMV-NotificationId: 1771742$
+X-EMV-SendRequestId: 1780332051331$
+X-Feedback-ID: 1101072161:NM_1_1771742:100:sfocus
+List-Id: <1101072161.1.2.1.list-id.info.davidlloydclubs.co.uk>
+Date: Mon, 1 Jun 2026 18:40:51 +0200
+X-IncomingHeaderCount: 18
+Return-Path: SRS0=hu5P=D5=info.davidlloydclubs.co.uk=info@srszone.org
+X-MS-Exchange-Organization-ExpirationStartTime: 01 Jun 2026 16:40:54.2660
+ (UTC)
+X-MS-Exchange-Organization-ExpirationStartTimeReason: OriginalSubmit
+X-MS-Exchange-Organization-ExpirationInterval: 1:00:00:00.0000000
+X-MS-Exchange-Organization-ExpirationIntervalReason: OriginalSubmit
+X-MS-Exchange-Organization-Network-Message-Id: 26ab8810-dccb-40c8-05e9-08debffc8c7a
+X-EOPAttributedMessage: 0
+X-EOPTenantAttributedMessage: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa:0
+X-MS-Exchange-Organization-MessageDirectionality: Incoming
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: SJ5PEPF000001F4:EE_|AS5PR07MB10499:EE_|AMBPR07MB11950:EE_
+X-MS-Exchange-Organization-AuthSource: SJ5PEPF000001F4.namprd05.prod.outlook.com
+X-MS-Exchange-Organization-AuthAs: Anonymous
+X-MS-UserLastLogonTime: 6/1/2026 4:12:10 PM
+X-MS-Office365-Filtering-Correlation-Id: 26ab8810-dccb-40c8-05e9-08debffc8c7a
+X-MS-Exchange-EOPDirect: true
+X-Sender-IP: 64.68.198.23
+X-SID-PRA: INFO@INFO.DAVIDLLOYDCLUBS.CO.UK
+X-SID-Result: PASS
+X-MS-Exchange-AtpMessageProperties: SA|SL
+X-MS-Exchange-Organization-SCL: 1
+X-Microsoft-Antispam: BCL:3;ARA:1444111002|20103052901057|35120799006|20103052903057|36140799009|58200799025|5139299004|10300799038|2120399003|9400799043|47200799027|1680799066|6019299003|9000799056|20103052904057|20103052914048|56899033|1370799030|1360799030|1380799030|1602099012|3412199025|440099028|4302099013|5090599003|18021999003|22062799003|30041999003;
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 01 Jun 2026 16:40:54.0531
+ (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 26ab8810-dccb-40c8-05e9-08debffc8c7a
+X-MS-Exchange-CrossTenant-Id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
+X-MS-Exchange-CrossTenant-AuthSource: SJ5PEPF000001F4.namprd05.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: Internet
+X-MS-Exchange-CrossTenant-RMS-PersistedConsumerOrg: 00000000-0000-0000-0000-000000000000
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: AS5PR07MB10499
+X-MS-Exchange-Transport-EndToEndLatency: 00:00:02.0590170
+X-MS-Exchange-Processed-By-BccFoldering: 15.21.0071.015
+X-Microsoft-Antispam-Mailbox-Delivery:
+	ucf:0;jmr:0;ex:0;auth:1;dest:I;ENG:(5062000311)(920221119095)(90000117)(920221120095)(90010023)(91010020)(91040095)(9050020)(9100341)(944500132)(4810010)(4910033)(9575002)(10195002)(9320005)(120001)(1110175);
+X-Message-Delivery: Vj0xLjE7dXM9MDtsPTA7YT0wO0Q9MTtHRD0xO1NDTD0z
+X-Microsoft-Antispam-Message-Info:
+	=?iso-8859-1?Q?TI8A0xke2WpLPyahLf9bBW0HmLU43i+VKLfJ5U07yHHJDzVkuyENPEBooH?=
+ =?iso-8859-1?Q?cGerQe6+cV0HnZfvzOgxuTC0q110mH4PpbO2Is5+d1Okw+lEEDN3Nh7He3?=
+ =?iso-8859-1?Q?PyGxQyMzFKJ51C14ZPp9sH7Me27GjaXwtFiBn/gptIGJUxCqds8GvAkTMU?=
+ =?iso-8859-1?Q?VHbiyvS7wWidAXOIJwvD+keuDG44Vjhrs/UjTsvKsYyCrllv5jfWjonfKi?=
+ =?iso-8859-1?Q?s+pl3js6fwDrg/WRE867oeGSS5Tw16t+zjrKylN6aB3rDecLjbbxJ99VI/?=
+ =?iso-8859-1?Q?E9LzK9ADeGs0hnJU/hv/GjmI7OwtsYnbvgOGMkvurmjCdO8fb5unYfepNq?=
+ =?iso-8859-1?Q?2YXYhu9i+AqYFVt5Y2VhoStrnddsn0sMxp6u966E9zPZUMGSnfK53bmUKe?=
+ =?iso-8859-1?Q?nbu2B1nBeNlCXt90UfK2kdBjBg+PvGUGq8Qi8O9fUjg/dcLr/bU9V9xQjL?=
+ =?iso-8859-1?Q?94AARJzznMiDRYZfAM3pk+G28N59AJ1u+b+T+1hm8+CUL1auCXeszSvX12?=
+ =?iso-8859-1?Q?zC/Lo/AqF+YolMT/bqOwulV2svkpuou2/MqU7YMbRA/wUh+coOi1Nrr16f?=
+ =?iso-8859-1?Q?kkhWiFjpesPfsu1T0eyo5i+qMnC+HViInQsWStxV0nSUJS4TnqwwwTHK6J?=
+ =?iso-8859-1?Q?SLTUXmvggd3o73O/pSOzSPgwfc0Yp2VNiAzXpqwbiUfhhSw6tsNTQOjsTY?=
+ =?iso-8859-1?Q?FTmhnTPrTy1olbVJKOARa6CDbSW0YpTfBNrutferZexdU712GQIlJE+joQ?=
+ =?iso-8859-1?Q?ozI8VbfdK5Jx6yy2dZDH6z4b3n5moan4sl1ENO+H706HzqtRX2MuQir1WM?=
+ =?iso-8859-1?Q?eeO5bPX2iRpGxO+3pyVSZgj7R8ES5Jx+lpcVrMXAOu8N+r11a2DZM6fsSP?=
+ =?iso-8859-1?Q?40mZaaDz1kEMUcootsE9cCn+GXFriw8MLbIfaa7UCdlEFx/rAi5A6CeDmG?=
+ =?iso-8859-1?Q?i7e11EFpj0gU7dBHEIeBB+S2FdsqYtb7rbZUpoX59YO+nAuZHDnuyI0jP3?=
+ =?iso-8859-1?Q?BnqeT22mBPbl8KdUtXbGcUHroZY4N4960iw7A8x7HqIVkqUHrkvHZgaZl4?=
+ =?iso-8859-1?Q?VeO/xlucXc+8NxxGSSCDdLXBCTIPtDquIFGVdYjVuqvOAuLfBSu/aFBp2b?=
+ =?iso-8859-1?Q?TYTfe+2iCxItyRS5QDuEo0SjToqKFqvxKZAhz4fNbBkDO3aR03D3lk6D2I?=
+ =?iso-8859-1?Q?GTHJF2xMrrd2wtTkUPr3rgrcmjuS2+0BjA6HSclDBNoqE/i14xm8tZRUHx?=
+ =?iso-8859-1?Q?HMHQyCahFWz8dTTHuXM9OBWplNYrsckYZZFzwieu4mw2CMOLPn/pXLWBNa?=
+ =?iso-8859-1?Q?8CA5N0b4vBU1JAzCARGifDyLrtSoyIcxfFk6TUcxHhBDJ9kjEbi1D50i8t?=
+ =?iso-8859-1?Q?ntK9dGvd28RsXwqa/XtyIPsmEsejOIA2Nuw8/SDDmd/37IgrNBRbPqD7yn?=
+ =?iso-8859-1?Q?lVcM+geyGY8jCKH8rVaxrLrjcahuJRJB9Fa4kq2f1EU1SXxZAZJCotLKXg?=
+ =?iso-8859-1?Q?/ByISGIbujUC+lhNAgJffXvv/bSIAJyOVBy20bf60Ir9KkphMPMKu8/LM0?=
+ =?iso-8859-1?Q?FqnwWp2zC22BFHVe+52Glkg1+8J/0LyJgTRq+QN/b1zujTgySrbLOGbRS3?=
+ =?iso-8859-1?Q?y+MjTTCQHZ1wtFptsLgpaLp2mGNOO2ycSbTEFcEGaviFvIkskcTwpCfrke?=
+ =?iso-8859-1?Q?Ic6t2NpBHtV7RwWdZMtNbj9UfMWqeqJFNvHBUFmOMm0o1EY0mVR/0mZmcy?=
+ =?iso-8859-1?Q?ItQ4UsYH4VrAanS/adq0hOsiBtt07qW0lffB/TdpEE9jN8By4TI6pWnrkH?=
+ =?iso-8859-1?Q?tiXgAIrg1/4SFvbpvR51+GenZYfVGTTgLKltin/2jiy92vaO8Ylz08NJpZ?=
+ =?iso-8859-1?Q?o6+CYDv2UPtCaNLCNK+BqUYCiRRrsMJUVA3JJQN+vBBmlq5dZiQgEOcAQQ?=
+ =?iso-8859-1?Q?UTTc58HUmnUT2RlklsraQbx6ui3ElPnPxb/IbOQ3ZQvsAuo7xAmrHtkYRc?=
+ =?iso-8859-1?Q?s0mJDJlTzZmSRJzwf9PCay0VZidg=3D=3D?=
+MIME-Version: 1.0
+
+--17717421780332051331
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+
+
+
+--17717421780332051331
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"></head>
+<body>
+        <!doctype html>
+<html lang="und" dir="auto" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+
+<head>
+  <title></title>
+  <!--[if !mso]><!-->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!--<![endif]-->
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style type="text/css">
+    #outlook a {
+      padding: 0;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      -webkit-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
+    }
+
+    table,
+    td {
+      border-collapse: collapse;
+      mso-table-lspace: 0pt;
+      mso-table-rspace: 0pt;
+    }
+
+    img {
+      border: 0;
+      height: auto;
+      line-height: 100%;
+      outline: none;
+      text-decoration: none;
+      -ms-interpolation-mode: bicubic;
+    }
+
+    p {
+      display: block;
+      margin: 13px 0;
+    }
+
+  </style>
+  <!--[if mso]>
+    <noscript>
+    <xml>
+    <o:OfficeDocumentSettings>
+      <o:AllowPNG/>
+      <o:PixelsPerInch>96</o:PixelsPerInch>
+    </o:OfficeDocumentSettings>
+    </xml>
+    </noscript>
+    <![endif]-->
+  <!--[if lte mso 11]>
+    <style type="text/css">
+      .mj-outlook-group-fix { width:100% !important; }
+    </style>
+    <![endif]-->
+  <!--[if !mso]><!-->
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700" rel="stylesheet" type="text/css">
+  <style type="text/css">
+    @import url(https://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700);
+
+  </style>
+  <!--<![endif]-->
+  <style type="text/css">
+    @media only screen and (min-width:480px) {
+      .mj-column-per-30 {
+        width: 30% !important;
+        max-width: 30%;
+      }
+
+      .mj-column-per-70 {
+        width: 70% !important;
+        max-width: 70%;
+      }
+
+      .mj-column-per-100 {
+        width: 100% !important;
+        max-width: 100%;
+      }
+
+      .mj-column-per-50 {
+        width: 50% !important;
+        max-width: 50%;
+      }
+    }
+
+  </style>
+  <style media="screen and (min-width:480px)">
+    .moz-text-html .mj-column-per-30 {
+      width: 30% !important;
+      max-width: 30%;
+    }
+
+    .moz-text-html .mj-column-per-70 {
+      width: 70% !important;
+      max-width: 70%;
+    }
+
+    .moz-text-html .mj-column-per-100 {
+      width: 100% !important;
+      max-width: 100%;
+    }
+
+    .moz-text-html .mj-column-per-50 {
+      width: 50% !important;
+      max-width: 50%;
+    }
+
+  </style>
+  <style type="text/css">
+    @media only screen and (max-width:479px) {
+      table.mj-full-width-mobile {
+        width: 100% !important;
+      }
+
+      td.mj-full-width-mobile {
+        width: auto !important;
+      }
+    }
+
+  </style>
+</head>
+
+<body style="word-spacing:normal;">
+  <div style="" lang="und" dir="auto">
+    <!-- Company header -->
+    <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="" role="presentation" style="width:600px;" width="600" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+    <div style="margin:0px auto;max-width:600px;">
+      <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;">
+        <tbody>
+          <tr>
+            <td style="direction:ltr;font-size:0px;padding:20px 0;text-align:center;">
+              <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:180px;" ><![endif]-->
+              <div class="mj-column-per-30 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+                <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                  <tbody>
+                    <tr>
+                      <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;">
+                        <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;border-spacing:0px;">
+                          <tbody>
+                            <tr>
+                              <td style="width:130px;">
+                                <img alt="" src="https://imagelibrary.davidlloyd.co.uk/m/111afdc8c41adfe9/original/DL-Clubs-Logo_RGB_Black.png" style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;" width="130" height="auto">
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <!--[if mso | IE]></td><td class="" style="vertical-align:top;width:420px;" ><![endif]-->
+              <div class="mj-column-per-70 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+                <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                  <tbody>
+                    <tr>
+                      <td align="right" style="font-size:0px;padding:10px 25px;word-break:break-word;">
+                        <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:13px;line-height:1;text-align:right;color:#000000;">
+                          <p><b>David Lloyd - Bristol Emersons Green</b></p>  <p>David Lloyd Leisure Limited</p>
+                          <p>The Hangar<br>Mosquito Way<br>Hatfield Business Park<br>Hatfield<br>Herts<br>AL10 0AX</p>
+                          <p>VAT number 740 5477 34</p>                         </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <!--[if mso | IE]></td></tr></table><![endif]-->
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <!--[if mso | IE]></td></tr></table><![endif]-->
+    <!-- Introduction text -->
+    <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="" role="presentation" style="width:600px;" width="600" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+    <div style="margin:0px auto;max-width:600px;">
+      <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;">
+        <tbody>
+          <tr>
+            <td style="direction:ltr;font-size:0px;padding:20px 0;text-align:center;">
+              <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:600px;" ><![endif]-->
+              <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+                <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                  <tbody>  <tr>
+                      <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;">
+                        <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:13px;line-height:1;text-align:left;color:#000000;">
+                          <p>Hi John,</p>
+                          <p>Your card's been charged £200.00.</p>
+                          <p>Here's your VAT receipt to keep safe for your records.</p>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <!--[if mso | IE]></td></tr></table><![endif]-->
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <!--[if mso | IE]></td></tr></table><![endif]-->
+    <!-- Cover details -->
+    <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="" role="presentation" style="width:600px;" width="600" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+    <div style="margin:0px auto;max-width:600px;">
+      <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;">
+        <tbody>
+          <tr>
+            <td style="direction:ltr;font-size:0px;padding:20px 0;text-align:center;">
+              <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:300px;" ><![endif]-->
+              <div class="mj-column-per-50 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+                <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                  <tbody>
+                    <tr>
+                      <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;">
+                        <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:13px;line-height:1;text-align:left;text-transform:uppercase;color:#7C7C7C;">Name</div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;">
+                        <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:13px;line-height:1;text-align:left;color:#000000;">John Critchley</div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <!--[if mso | IE]></td><td class="" style="vertical-align:top;width:300px;" ><![endif]-->
+              <div class="mj-column-per-50 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+                <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                  <tbody>
+                    <tr>
+                      <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;">
+                        <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:13px;line-height:1;text-align:left;text-transform:uppercase;color:#7C7C7C;">Date</div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;">
+                        <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:13px;line-height:1;text-align:left;color:#000000;">1 June 2026</div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <!--[if mso | IE]></td><td class="" style="vertical-align:top;width:300px;" ><![endif]-->
+              <div class="mj-column-per-50 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+                <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                  <tbody>
+                    <tr>
+                      <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;">
+                        <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:13px;line-height:1;text-align:left;text-transform:uppercase;color:#7C7C7C;">Membership Number</div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;">
+                        <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:13px;line-height:1;text-align:left;color:#000000;">17185565</div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <!--[if mso | IE]></td><td class="" style="vertical-align:top;width:300px;" ><![endif]-->
+              <div class="mj-column-per-50 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+                <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                  <tbody>
+                    <tr>
+                      <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;">
+                        <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:13px;line-height:1;text-align:left;text-transform:uppercase;color:#7C7C7C;">Reference</div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;">
+                        <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:13px;line-height:1;text-align:left;color:#000000;">152223023</div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <!--[if mso | IE]></td></tr></table><![endif]-->
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <!--[if mso | IE]></td></tr></table><![endif]-->
+    <!-- Receipt table -->
+    <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="" role="presentation" style="width:600px;" width="600" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+    <div style="margin:0px auto;max-width:600px;">
+      <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;">
+        <tbody>
+          <tr>
+            <td style="direction:ltr;font-size:0px;padding:20px 0;text-align:center;">
+              <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:600px;" ><![endif]-->
+              <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+                <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                  <tbody>
+                    <tr>
+                      <td align="left" class="standardTable lineItemTable" style="font-size:0px;padding:10px 25px;word-break:break-word;">
+                        <table cellpadding="0" cellspacing="0" width="100%" border="0" style="color:#000000;font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:13px;line-height:22px;table-layout:auto;width:100%;border:none;">
+                          <tbody style="border-top: 1px solid #F3F3F3; border-bottom: 1px solid #F3F3F3;">  <tr>
+                              <td style="padding: 10px 0;">Personal Training Session</td>
+                              <td style="padding: 10px 0; text-align: right;" align="right">40.00</td>
+                            </tr>  <tr>
+                              <td style="padding: 10px 0;">Personal Training Session</td>
+                              <td style="padding: 10px 0; text-align: right;" align="right">40.00</td>
+                            </tr>  <tr>
+                              <td style="padding: 10px 0;">Personal Training Session</td>
+                              <td style="padding: 10px 0; text-align: right;" align="right">40.00</td>
+                            </tr>  <tr>
+                              <td style="padding: 10px 0;">Personal Training Session</td>
+                              <td style="padding: 10px 0; text-align: right;" align="right">40.00</td>
+                            </tr>  <tr>
+                              <td style="padding: 10px 0;">Personal Training Session</td>
+                              <td style="padding: 10px 0; text-align: right;" align="right">40.00</td>
+                            </tr>  </tbody>
+                        </table>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <!--[if mso | IE]></td></tr></table><![endif]-->
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <!--[if mso | IE]></td></tr></table><![endif]-->
+    <!-- Footer -->
+    <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#F3F3F3;background-color:#F3F3F3;width:100%;">
+      <tbody>
+        <tr>
+          <td>
+            <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="" role="presentation" style="width:600px;" width="600" bgcolor="#F3F3F3" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+            <div style="margin:0px auto;max-width:600px;">
+              <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;">
+                <tbody>
+                  <tr>
+                    <td style="direction:ltr;font-size:0px;padding:20px 0;text-align:center;">
+                      <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:600px;" ><![endif]-->
+                      <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+                        <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                          <tbody>
+                            <!-- Total breakdown table -->
+                            <tr>
+                              <td align="left" class="standardTable" style="font-size:0px;padding:10px 25px;word-break:break-word;">
+                                <table cellpadding="0" cellspacing="0" width="100%" border="0" style="color:#000000;font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:13px;line-height:22px;table-layout:auto;width:100%;border:none;">
+                                  <tbody>
+                                    <tr>
+                                      <td style="padding: 10px 0;">Total:</td>
+                                      <td style="padding: 10px 0;">GBP</td>
+                                      <td style="padding: 10px 0; text-align: right;" align="right">200.00</td>
+                                    </tr>
+                                    <tr>
+                                      <td style="padding: 10px 0;">Discounts:</td>
+                                      <td style="padding: 10px 0;">GBP</td>
+                                      <td style="padding: 10px 0; text-align: right;" align="right">0.00</td>
+                                    </tr>
+                                  </tbody>
+                                  <tfoot style="text-transform: uppercase; font-weight: bold; border-top: 1px solid #7C7C7C;">
+                                    <tr>
+                                      <td style="padding: 10px 0;">Order Total</td>
+                                      <td style="padding: 10px 0;">GBP</td>
+                                      <td style="padding: 10px 0; text-align: right;" align="right">200.00</td>
+                                    </tr>
+                                  </tfoot>
+                                </table>
+                              </td>
+                            </tr>
+                            <!-- VAT breakdown table --> <tr>
+                              <td align="left" class="standardTable" style="font-size:0px;padding:10px 25px;word-break:break-word;">
+                                <table cellpadding="0" cellspacing="0" width="100%" border="0" style="color:#000000;font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:13px;line-height:22px;table-layout:auto;width:100%;border:none;">
+                                  <thead style="text-transform: uppercase; color: #7C7C7C;">
+                                    <tr>
+                                      <td style="padding: 10px 0;">Rate (%)</td>
+                                      <td style="padding: 10px 0;">Currency</td>
+                                      <td style="padding: 10px 0;">Incl. VAT</td>
+                                      <td style="padding: 10px 0; text-align: right;" align="right">VAT</td>
+                                    </tr>
+                                  </thead>
+                                  <tbody>  <tr>
+                                      <td style="padding: 10px 0;">20.00</td>
+                                      <td style="padding: 10px 0;">GBP</td>
+                                      <td style="padding: 10px 0;">200.00</td>
+                                      <td style="padding: 10px 0; text-align: right;" align="right">33.35</td>
+                                    </tr>  </tbody>
+                                  <tfoot style="text-transform: uppercase; font-weight: bold; border-top: 1px solid #7C7C7C;">
+                                    <tr>
+                                      <td style="padding: 10px 0;">Total</td>
+                                      <td style="padding: 10px 0;">GBP</td>
+                                      <td style="padding: 10px 0;">200.00</td>
+                                      <td style="padding: 10px 0; text-align: right;" align="right">33.35</td>
+                                    </tr>
+                                  </tfoot>
+                                </table>
+                              </td>
+                            </tr> <!-- Legal text -->
+                            <tr>
+                              <td align="center" style="font-size:0px;padding:10px 25px;word-break:break-word;">
+                                <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:13px;line-height:1;text-align:center;color:#4D525C;">
+                                  <p>You can cancel your booking whenever you need to. Just keep in mind that refunds are only available if you cancel at least 24 hours in advance. Refunds will be processed using the same payment method you used to make the booking. You can check out the personal training terms and conditions <a href="https://emea01.safelinks.protection.outlook.com/?url=https%3A%2F%2Fwww.davidlloyd.co.uk%2Fterms-and-conditions%2Fpersonal-training&amp;data=05%7C02%7C%7C26ab8810dccb40c805e908debffc8c7a%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C639159288563177211%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&amp;sdata=Mz92VMTKtjW%2BDuMUy8ME7LZNrXwmZIsqM6FyLu%2F6hsg%3D&amp;reserved=0" originalsrc="https://www.davidlloyd.co.uk/terms-and-conditions/personal-training">here</a>. For all other terms and conditions, like those for guest passes, you can find them <a href="https://emea01.safelinks.protection.outlook.com/?url=https%3A%2F%2Fwww.davidlloyd.co.uk%2F-%2Fmedia%2Ffiles%2Fuk-terms-and-conditions-dec-2022.pdf&amp;data=05%7C02%7C%7C26ab8810dccb40c805e908debffc8c7a%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C639159288563205794%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&amp;sdata=Fpvh%2FtnFxmh7OUV8lfJjcs97opW9T%2BMUtLYB4ULUutw%3D&amp;reserved=0" originalsrc="https://www.davidlloyd.co.uk/-/media/files/uk-terms-and-conditions-dec-2022.pdf">here</a>.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <!--[if mso | IE]></td></tr></table><![endif]-->
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <!--[if mso | IE]></td></tr></table><![endif]-->
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</body>
+
+</html>
+    <img src="http://atmp-tracker-www3.actito.com/WBS?ViPZ-vjgbaTd9wQbdB7gUDivpzevj71oER05x8206Tgbb9VQ47GA2QPtXyUNfU1zRR63K-afF9GhE0kulaSCEQ/U0G4uw4i1jh9cH49bSVmNw.gif" border="0" alt="" width="1" height="1"></body>
+</html>
+--17717421780332051331--

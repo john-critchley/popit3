@@ -1,0 +1,27 @@
+#!/usr/bin/bash
+
+cd /home/john/py/popit3
+
+#exec </dev/null >> /home/john/py/popit3/out.log 2>&1
+
+if [ -f .reprocess ] 
+then
+ ./popit3.py --reprocess
+ rm .reprocess
+else
+ ./popit3.py
+ :> .reprocess
+fi
+
+echo RC: $?
+
+echo Press enter
+read -p '>' _
+# # # # #
+
+. /home/john/.bashrcs/api_keys
+cd /home/john/py/envoy
+#exec >> cron.log 2>&1
+/usr/bin/python3 orchestrator.py --max-iterations 2
+
+echo RC: $?

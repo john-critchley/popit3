@@ -126,8 +126,7 @@ def _schedule_to_jsonhtl(df1, now):
     content = [
         {"heading": {"level": 1, "text": "David Lloyd Schedule"}},
         {"table": {"columns": columns, "rows": rows}},
-        {"para": [f"updated: {now.strftime('%a %d %b %Y %H:%M')}"]},
-    ]
+        ]
     return {"title": "David Lloyd Schedule", "updated": now.strftime('%Y-%m-%d'), "content": content}
 
 
@@ -346,7 +345,6 @@ def process_dl_mails(segregated_dl_emails):
         f'<body><h1>David Lloyd Bookings</h1>\n'
         + error_banner +
         f'<p>{render_events_table_html(_prep_display_records(df1.to_dict("records")), title="My bookings")}</p>\n'
-        f'<p><em>{now.strftime("%Y/%m/%d %H:%M:%S")}</em><p>\n'
         '</body></html>'
         )
 

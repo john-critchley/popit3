@@ -1,0 +1,369 @@
+Received: from GV2PR07MB11505.eurprd07.prod.outlook.com
+ (2603:10a6:150:2f7::17) by AMBPR07MB11950.eurprd07.prod.outlook.com with
+ HTTPS; Tue, 2 Jun 2026 00:23:36 +0000
+Received: from BN8PR04CA0041.namprd04.prod.outlook.com (2603:10b6:408:d4::15)
+ by GV2PR07MB11505.eurprd07.prod.outlook.com (2603:10a6:150:2f7::17) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.71.15; Tue, 2 Jun 2026
+ 00:23:35 +0000
+Received: from BN2PEPF00004FBF.namprd04.prod.outlook.com
+ (2603:10b6:408:d4:cafe::48) by BN8PR04CA0041.outlook.office365.com
+ (2603:10b6:408:d4::15) with Microsoft SMTP Server (version=TLS1_3,
+ cipher=TLS_AES_256_GCM_SHA384) id 15.21.71.16 via Frontend Transport; Tue, 2
+ Jun 2026 00:23:34 +0000
+Authentication-Results: spf=pass (sender IP is 64.68.198.23)
+ smtp.mailfrom=srszone.org; dkim=pass (signature was verified)
+ header.d=mybookings.davidlloyd.co.uk;dmarc=pass action=none
+ header.from=mybookings.davidlloyd.co.uk;compauth=pass reason=100
+Received-SPF: Pass (protection.outlook.com: domain of srszone.org designates
+ 64.68.198.23 as permitted sender) receiver=protection.outlook.com;
+ client-ip=64.68.198.23; helo=mxc03.zoneedit.com; pr=C
+Received: from mxc03.zoneedit.com (64.68.198.23) by
+ BN2PEPF00004FBF.mail.protection.outlook.com (10.167.243.185) with Microsoft
+ SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384) id 15.21.92.5 via
+ Frontend Transport; Tue, 2 Jun 2026 00:23:33 +0000
+X-IncomingTopHeaderMarker: OriginalChecksum:92B8E9C0D570536A1F6D22CB9603288C9605DDECEAB9C2F02103ECB01A9D2954;UpperCasedChecksum:B2F64D360051111C7BF86E657585D430B7976EF43A7966E28C8A7EDA3AFCF0EA;SizeAsReceived:2112;Count:18
+Received: from localhost (localhost [127.0.0.1])
+	by mxc03.zoneedit.com (Postfix) with ESMTP id 77CBC2685AE
+	for <jsr_critchley@hotmail.com>; Tue,  2 Jun 2026 00:23:33 +0000 (UTC)
+Received: from mxc03.zoneedit.com ([127.0.0.1])
+	by localhost (mxc03-zpc.zoneedit.vpn [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id PgLPviVSfuSg for <jsr_critchley@hotmail.com>;
+	Tue,  2 Jun 2026 00:23:33 +0000 (UTC)
+Received: from mta1.mybookings.davidlloyd.co.uk (mta1.mybookings.davidlloyd.co.uk [81.92.116.95])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mxc03.zoneedit.com (Postfix) with ESMTPS id 3956C2685CC
+	for <john.dl@critchley.biz>; Tue,  2 Jun 2026 00:23:32 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=emv; d=mybookings.davidlloyd.co.uk;
+ h=From:Reply-To:To:Message-ID:Subject:MIME-Version:Content-Type:List-Id:Date;
+ i=noreply@mybookings.davidlloyd.co.uk;
+ bh=fbRdnBkDjBoCNpSD/lCByoBZJVq8qE1PuEwDkrSNCmE=;
+ b=lhZuwLnQEu9u1wCvfG/lCjt/ijsha89URWBdj7NHLLyAKSAY5SqM+yxGtVm7FffhlVugNjCftLL3
+   cOnOJ8lCEMJrNaRQL/Gs5WZFXK/b8amLavL7ZjwTF4oQNYCBJT7ixggQUJ2cDDq7MCaYOAKZqVeM
+   +xTu75Se5w66bqDih3w=
+Received: by mta1.mybookings.davidlloyd.co.uk id h3oh8637eros for <john.dl@critchley.biz>; Tue, 2 Jun 2026 02:23:30 +0200 (envelope-from <noreply@mybookings.davidlloyd.co.uk>)
+From: David Lloyd Clubs <noreply@mybookings.davidlloyd.co.uk>
+Reply-To: David Lloyd Clubs <noreply@mybookings.davidlloyd.co.uk>
+To: <john.dl@critchley.biz>
+Message-ID: <2.2.1.1101072161.1771441.1780359810889@mybookings.davidlloyd.co.uk>
+Subject: Personal Training Session Booking Confirmation
+Content-Type: multipart/alternative; boundary=17714411780359810889
+X-EMV-Platform: p7cce.campaigncommander.com$
+X-EMV-NotificationId: 1771441$
+X-EMV-SendRequestId: 1780359810889$
+X-Feedback-ID: 1101072161:NM_1_1771441:100:sfocus
+List-Id: <1101072161.1.2.1.list-id.mybookings.davidlloyd.co.uk>
+Date: Tue, 2 Jun 2026 02:23:30 +0200
+X-IncomingHeaderCount: 18
+Return-Path: SRS0=Q6jv=D6=mybookings.davidlloyd.co.uk=noreply@srszone.org
+X-MS-Exchange-Organization-ExpirationStartTime: 02 Jun 2026 00:23:33.8232
+ (UTC)
+X-MS-Exchange-Organization-ExpirationStartTimeReason: OriginalSubmit
+X-MS-Exchange-Organization-ExpirationInterval: 1:00:00:00.0000000
+X-MS-Exchange-Organization-ExpirationIntervalReason: OriginalSubmit
+X-MS-Exchange-Organization-Network-Message-Id: 3c6dc0b8-599a-42d5-4e25-08dec03d2e76
+X-EOPAttributedMessage: 0
+X-EOPTenantAttributedMessage: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa:0
+X-MS-Exchange-Organization-MessageDirectionality: Incoming
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: BN2PEPF00004FBF:EE_|GV2PR07MB11505:EE_|AMBPR07MB11950:EE_
+X-MS-Exchange-Organization-AuthSource: BN2PEPF00004FBF.namprd04.prod.outlook.com
+X-MS-Exchange-Organization-AuthAs: Anonymous
+X-MS-UserLastLogonTime: 6/1/2026 11:42:34 PM
+X-MS-Office365-Filtering-Correlation-Id: 3c6dc0b8-599a-42d5-4e25-08dec03d2e76
+X-MS-Exchange-EOPDirect: true
+X-Sender-IP: 64.68.198.23
+X-SID-PRA: NOREPLY@MYBOOKINGS.DAVIDLLOYD.CO.UK
+X-SID-Result: PASS
+X-MS-Exchange-AtpMessageProperties: SA|SL
+X-MS-Exchange-Organization-SCL: 1
+X-Microsoft-Antispam: BCL:2;ARA:1444111002|47200799027|5139299004|2120399003|10300799038|9400799043|35120799006|36140799009|9000799056|1680799066|58200799025|23070799003|20103052901057|3069299007|20103052903057|20103052914048|20103052904057|3412199025|440099028|4302099013|5090599003|30041999003|56899033|1360799030|1380799030|1370799030|1602099012;
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 02 Jun 2026 00:23:33.7219
+ (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 3c6dc0b8-599a-42d5-4e25-08dec03d2e76
+X-MS-Exchange-CrossTenant-Id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
+X-MS-Exchange-CrossTenant-AuthSource: BN2PEPF00004FBF.namprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: Internet
+X-MS-Exchange-CrossTenant-RMS-PersistedConsumerOrg: 00000000-0000-0000-0000-000000000000
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: GV2PR07MB11505
+X-MS-Exchange-Transport-EndToEndLatency: 00:00:02.6148011
+X-MS-Exchange-Processed-By-BccFoldering: 15.21.0071.015
+X-Microsoft-Antispam-Mailbox-Delivery:
+	ucf:0;jmr:0;ex:0;auth:1;dest:I;ENG:(5062000311)(920221119095)(90000117)(920221120095)(90012020)(91020020)(91040095)(9050020)(9100341)(944500132)(4810010)(4910033)(9575002)(10195002)(9320005)(120001)(1110175);
+X-Message-Delivery: Vj0xLjE7dXM9MDtsPTA7YT0wO0Q9MTtHRD0xO1NDTD0z
+X-Microsoft-Antispam-Message-Info:
+	=?iso-8859-1?Q?rDlKdntobyvKieys/UCwXCM0KTvWAYmRBEmGHoF3Q/MgSaz/pbWWCiE8EC?=
+ =?iso-8859-1?Q?KJkOp1hyYyZK3oetwLUrUNFTraylIt/PL6J/YeuArX5Bb62I6wl4WzfXWF?=
+ =?iso-8859-1?Q?JS8FxPP28QZ3t6mfIaUuU86xNeo73eRAvBsOXF6wnyga68WaBVn0PHunOC?=
+ =?iso-8859-1?Q?k9BzR+Egue2rJNqmDRil74enTPkeZOE1yYDY870mvZM7fWu8l7PkuJM1oN?=
+ =?iso-8859-1?Q?+D4oXjWsnzfuFdv98AUTOgNeUmUff6hhvnh4S2lHQEwJDNuh9c0Vg82yG1?=
+ =?iso-8859-1?Q?hqgOxdVPT83hDAbJoiOzeSgduK8+tQYeUhIq4Azczz5KMIBJYPyI7UO7y6?=
+ =?iso-8859-1?Q?WsvHWCoyhfzsVPjda+NVAWXaa1LIx+2ZrnqSGl4dTPrWiBxwrNK4in3kaA?=
+ =?iso-8859-1?Q?zucyUY8hXIHiuMkoFKrgcAlQ+7p8jJaYq8BIL0GGyytxnWC3cC5KnIyRUw?=
+ =?iso-8859-1?Q?s7FoorBeu93t/i59bHhdfnxonTcgbOoxBzGUw0iIpKpKCQcvvIWDom/j2A?=
+ =?iso-8859-1?Q?ffXRfTj52UVaATZxLPMKnxGGblfPDXiOEU6jeDiNLv2feKukTRvCz2dFqX?=
+ =?iso-8859-1?Q?1vzSa3GusnwIkaa+Ylgy3e+ZaTE4JyA7TK32/3zj0aLSzMHK4zPw44Rz+b?=
+ =?iso-8859-1?Q?7M8AA63LeAf8X+nehyovj9HCxGRPHY2rWpp2HtlnzcieUNt+1H/iQRpN0X?=
+ =?iso-8859-1?Q?LhyoZryNHKaVEEnPc9gkNErKi8PxGeJjWouA0dtqHLp4HxN7nyNgGB8PyG?=
+ =?iso-8859-1?Q?T3HRgk+ik2XTJoFjMvogdAsB7YofbIZvwGgZY1F9ZLGitPAX4IJYVlvd1O?=
+ =?iso-8859-1?Q?i45h/DCs/AAovkDSw2v8vlgdo5/Sfnyvx1oqQ6+rxBiQYsQqOm+1w49csg?=
+ =?iso-8859-1?Q?5Yu4Nh5wRlTnzeCKTrXqSr+rh4hVVdsNiU9UuOCg+QdLxo1gxXHuXPAXjx?=
+ =?iso-8859-1?Q?NrAkGrGp2c1KlTCa/gBzgf6oCMKnXE5icgTPBT+9mtAFNAhPTjnoGvsAFO?=
+ =?iso-8859-1?Q?/Ja7uBpPBpDxK6Gdck0DFpfPgGpgM7BG4QzEnssRYBchCi6hHOP4PtJIZI?=
+ =?iso-8859-1?Q?Ts79KTXjxEe2ldDGTrj6yiYaxLN0/poQDsduGqV0+h47gDOW2Bl7bIULdK?=
+ =?iso-8859-1?Q?oOm6dZ+C8T5JQ6qokPzjBPdLWccEX/f78rU7bNoa8wj6NhdPWk7tXd5Cae?=
+ =?iso-8859-1?Q?I6RQ1oh7zURJvxy0X5yHm9AY+RROJZTfw63PVO6Y4LZhPY0zvZJGx2+m93?=
+ =?iso-8859-1?Q?pwRVy+cCCcfjV4elD243Gb+mS4nTcO7Egj8mkk8MfDJ9tEuzvFJ2ftyseG?=
+ =?iso-8859-1?Q?dVgBRfiZJZpXU1S6snMHhA4f0oHghN6fZBBLOyCOtoJFRSeinBslPD/0+s?=
+ =?iso-8859-1?Q?+oEcXayNyKv2swCG11eTrAati3TF69I0/FHGlXty5//iyteC/hrzPesBhQ?=
+ =?iso-8859-1?Q?/r0Yppn0K5WAlIx59ajpABSWsc2vlkrhXRAhjXdld1ETj66q0d8Lh1yDc9?=
+ =?iso-8859-1?Q?8kgn6U6ZH4EBJxLH9NI/TVv1v0W0lNw9Uqu6WKlRZcXaY5Xpf0tkAfTEem?=
+ =?iso-8859-1?Q?nk2gPJM1Ffmuo+FLd/qj3Ytau3rcB/5IKv6fhRbwBw/4GbLSZETA/cRiq6?=
+ =?iso-8859-1?Q?VnQKvRBagn4vRj9qBmE02il0iLcS57PyqtOqZVV01UI2c135vn+yaRxQbW?=
+ =?iso-8859-1?Q?m1Cx9VTP3NnXDLk3DIrJzFbll4TZHmcMMXr5z2BklcmZIAN3NoDW0XKkbh?=
+ =?iso-8859-1?Q?lsyVbVqD3nikVGYLoZ2QPdIQK7wODe7MHvid6kcbrJXGs08MyVUln2c+jV?=
+ =?iso-8859-1?Q?rKRW2Nkl+jpeGWSYsCWIw9zDQRXzu9pZqzJHCZWKLtISARCqYxlG25gzJK?=
+ =?iso-8859-1?Q?Lms47NWbVYEpwyxA7flKmsp7rOAPQbc2e4ufhC+FuQAk42aWJ7Dbski7Bp?=
+ =?iso-8859-1?Q?sDO0pAvOyROwhLZYuDvEu+gM/9j2jQbVYtfI5Ll61z177lMHOxH+1biQBD?=
+ =?iso-8859-1?Q?7Z8r90repMyLJuV1c5HjgRy3YhPg=3D=3D?=
+MIME-Version: 1.0
+
+--17714411780359810889
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+
+
+
+--17714411780359810889
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"></head>
+<body>
+        <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
+
+
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+        <!--[if mso]>
+    <style type="text/css">
+        body, table, td {
+            font-family: Arial, Helvetica, sans-serif !important;
+            color: #482e25;
+        }
+
+        a {
+            color: #b83295;
+            text-decoration-color: #b83295;
+        }
+    </style>
+<![endif]-->
+
+        
+
+<style type="text/css">
+    body, table, td, hr {
+            color: #482e25 !important;
+    }
+
+    a {
+            color: #B83295 !important;
+    }
+</style>
+
+    <style type="text/css">
+        body, table, tr, td, span, b {
+            font-size: 14px;
+            line-height: 18px;
+        }
+    </style>
+    </head>
+
+    <body itemscope="" itemtype="http://schema.org/EmailMessage" style="-webkit-font-smoothing: antialiased; -webkit-text-size-adjust: none; width: 100% !important; height: 100%;">
+        <table width="100%" class="big-table" style="background-color: #EEE;" role="presentation">
+            <tr>
+                <td></td>
+                <td class="container" style="display: block !important; max-width: 600px !important; overflow: visible !important; margin: 0 auto !important; clear: both !important;" width="600">
+                    <table style="background-color: #FFF;" cellpadding="0" cellspacing="0" role="presentation">
+                        <tr>
+                            <td>
+                                <table style="padding: 20px 20px 5px 20px;">
+                                    
+
+<tr>
+    <td align="left">
+            <img src="https://res.cloudinary.com/softwire-david-lloyd/image/upload/v1613488725/Actito-MediaFiles/rcxm6fv1io0jyl5rnimd.png" alt="David Lloyd Clubs Logo" width="200">
+    </td>
+</tr>
+
+                                </table>
+                            </td>
+                        </tr>
+
+    <tr>
+        <td>
+            <hr size="3" noshade="">
+        </td>
+    </tr>
+
+                        <tr>
+                            <td>
+                                <table cellpadding="0" cellspacing="0" role="presentation">
+    <tr>
+        <td style="padding: 20px 20px 10px 20px;">
+            <b style="font-size: 20px;">Hi John,</b>
+        </td>
+    </tr>
+
+    <tr>
+        <td style="padding: 20px 20px 10px 20px;">
+Great news! Your 1:1 session has been confirmed. Your session info is below.        </td>
+    </tr>
+    <tr>
+        <td style="padding: 20px 20px 10px 20px;">
+Refunds will only apply if 24 hours notice of cancellation is given.        </td>
+    </tr>
+
+                                    <tr>
+                                        <td style="padding: 5px 20px 5px 20px;">
+                                            <table width="100%" cellpadding="0" cellspacing="0">
+    <tr>
+        <td style="margin: 0; width: 35%;">
+            <b>Booking Reference:</b>
+        </td>
+        <td style="margin: 0; width: 65%;">
+            FT-B4Q-2RQ
+        </td>
+    </tr>
+    <tr>
+        <td style="margin: 0; width: 35%;">
+            <b>Payment reference:</b>
+        </td>
+        <td style="margin: 0; width: 65%;">
+            152223023
+        </td>
+    </tr>
+    <tr>
+        <td style="margin: 0; width: 35%;">
+            <b>Club:</b>
+        </td>
+        <td style="margin: 0; width: 65%;">
+            Bristol Emersons Green
+        </td>
+    </tr>
+    <tr>
+        <td style="margin: 0; width: 35%;">
+            <b>Trainer:</b>
+        </td>
+        <td style="margin: 0; width: 65%;">
+            James Catlin
+        </td>
+    </tr>
+    <tr>
+        <td style="margin: 0; width: 35%;">
+            <b>Date:</b>
+        </td>
+        <td style="margin: 0; width: 65%;">
+            Tue, 23 Jun 2026
+        </td>
+    </tr>
+    <tr>
+        <td style="margin: 0; width: 35%;">
+            <b>Time:</b>
+        </td>
+        <td style="margin: 0; width: 65%;">
+            07:45
+        </td>
+    </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+
+    <tr>
+        <td style="padding: 20px 20px 10px 20px;">
+We can't wait to see you squeezing every last drop out of the time with your Personal Trainer!        </td>
+    </tr>
+
+
+    <tr>
+        <td style="padding: 20px 20px 10px 20px;">
+Your David Lloyd Clubs Team        </td>
+    </tr>
+
+    <tr>
+        <td>
+            <img src="http://www.uploadlibrary.com/DLDigital/crm-0314-207-open-weekend-sport-relief/images/break.gif" alt="Footer">
+        </td>
+    </tr>
+                                    <tr>
+                                        
+
+
+<table width="100%" align="center" cellpadding="5" style="font-family: Arial, Helvetica, sans-serif !important; font-size:12px; line-height:18px; background-color: #ffffff;" bgcolor="#ffffff">
+    <tr>
+        <td></td>
+        <td width="500" align="center">
+            <table width="100%" align="center">
+    <tr>
+        <td align="center">
+            <font size="2">© Copyright 2026 David Lloyd Leisure Group&nbsp;Ltd.</font>
+        </td>
+    </tr>
+
+                <tr><td height="8"></td></tr>
+
+    <tr>
+        <td align="center">
+            <font size="2">Registered Address: David Lloyd Leisure Group Ltd, The Hangar, Mosquito Way, Hatfield Business Park, Hatfield, Hertfordshire, AL10 9AX.</font>
+        </td>
+    </tr>
+    <tr>
+        <td align="center">
+            <font size="2">Registered Company No: 01516226.</font>
+        </td>
+    </tr>
+
+                <tr><td height="8"></td></tr>
+
+                <tr>
+                    <td align="center">
+                        <font size="2">
+                            <span>We use your personal details in line with our</span>
+                            <a href="https://emea01.safelinks.protection.outlook.com/?url=http%3A%2F%2Fwww.davidlloyd.co.uk%2Fpolicy%2Fprivacy-policy&amp;data=05%7C02%7C%7C3c6dc0b8599a42d54e2508dec03d2e76%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C639159566164878519%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&amp;sdata=IZOHlGUojyH4CLYyqVVijIfXZ%2BBUZSZA8Josq67msX8%3D&amp;reserved=0" originalsrc="http://www.davidlloyd.co.uk/policy/privacy-policy">
+                                <font style="text-decoration-color: black; color: #B83295">Privacy Policy.</font>
+                            </a>
+                        </font>
+                    </td>
+                </tr>
+            </table>
+        </td>
+        <td></td>
+    </tr>
+</table>
+
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+                <td></td>
+            </tr>
+        </table>
+    </body>
+</html>
+    <img src="http://atmp-tracker-www3.actito.com/WBS?LVdt1dOLAS16yVUn_syoC_SK6uU_lcOa8TQ_4u8JfMfe2MS7Hqt_v7dY_zMEY-REhahM6okfAu9va1pAOE-4uw/p-GEyaOJ_OJ1kji_vIOqng.gif" border="0" alt="" width="1" height="1"></body>
+</html>
+--17714411780359810889--
