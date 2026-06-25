@@ -214,6 +214,7 @@ def _sync_gcal(mail_dbm, gcal_ids):
 def process_dl_mails(segregated_dl_emails):
     global _run_errors
     _run_errors = []
+    dirty = False
     #keys=None
     verbose=False
     all=[]
@@ -280,6 +281,7 @@ def process_dl_mails(segregated_dl_emails):
                     required_fields=['day', 'activity', 'coach', 'start', 'end', 'venue', 'club']
                     if bo.kind=='booking':
                         mail_dbm[bo[booking_reference]]=dd({k:bo[k] for k in required_fields if k in bo}).to_json()
+                        dirty = True
                         event_id = _gcal_create(bo)
                         if event_id:
                             gcal_ids[bo[booking_reference]] = event_id
@@ -289,8 +291,10 @@ def process_dl_mails(segregated_dl_emails):
                             _gcal_delete(event_id)
                             del gcal_ids[bo[booking_reference]]
                         del mail_dbm[bo[booking_reference]]
+                        dirty = True
                     elif bo.kind=='booking_update':
                         mail_dbm[bo[booking_reference]]=dd({k:bo[k] for k in required_fields if k in bo}).to_json()
+                        dirty = True
                         event_id = gcal_ids.get(bo[booking_reference])
                         if event_id:
                             _gcal_update(event_id, bo)
@@ -301,36 +305,28 @@ def process_dl_mails(segregated_dl_emails):
 
                 _sync_gcal(mail_dbm, gcal_ids)
 
-    with gdata.gdata_simple(os.sep.join([home, loc, '.booksings_db2.gdbm']), mode='r') as db:
-        df=pd.DataFrame(([td(box.Box({booking_reference:k, **box.Box.from_json(v)})) for k,v in db.items()]))
+    if dirty:
+        with gdata.gdata_simple(os.sep.join([home, loc, '.booksings_db2.gdbm']), mode='r') as db:
+            df=pd.DataFrame(([td(box.Box({booking_reference:k, **box.Box.from_json(v)})) for k,v in db.items()]))
 
-    df1=df[df.end>=now].sort_values('start')
-#    def rfc2822_gmt(dt= None):
-#        return email.utils.format_datetime(
-#              now + datetime.timedelta(minutes=15)
-#            if dt is None else
-#                dt.replace(tzinfo=datetime.timezone.utc)
-#              if dt.tzinfo is None else
-#                dt.astimezone(datetime.timezone.utc),
-#            usegmt=True
-#        )
+        df1=df[df.end>=now].sort_values('start')
 
-    error_banner = ''
-    if _run_errors:
-        unique_errors = list(dict.fromkeys(_run_errors))  # deduplicate, preserve order
-        items = ''.join(f'<li>{html.escape(e)}</li>' for e in unique_errors)
-        error_banner = (
-            '<div class="err-banner">'
-            '<strong>&#9888; Pipeline errors</strong><ul>' + items + '</ul></div>\n'
-        )
+        error_banner = ''
+        if _run_errors:
+            unique_errors = list(dict.fromkeys(_run_errors))  # deduplicate, preserve order
+            items = ''.join(f'<li>{html.escape(e)}</li>' for e in unique_errors)
+            error_banner = (
+                '<div class="err-banner">'
+                '<strong>&#9888; Pipeline errors</strong><ul>' + items + '</ul></div>\n'
+            )
 
-    bookings_html=(
-        '<!DOCTYPE html>\n'
-        '<html><head><title>David Lloyd Bookings</title>'
-        '<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">'
-        '<meta http-equiv="Pragma" content="no-cache">'
-        '<meta http-equiv="Expires" content="0">'
-        f"""<style>
+        bookings_html=(
+            '<!DOCTYPE html>\n'
+            '<html><head><title>David Lloyd Bookings</title>'
+            '<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">'
+            '<meta http-equiv="Pragma" content="no-cache">'
+            '<meta http-equiv="Expires" content="0">'
+            f"""<style>
 .bks{{font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;border-collapse:collapse;width:100%}}
 .bks th,.bks td{{border:1px solid #ddd;padding:8px;text-align:center}}
 .bks tr:nth-child(even){{background:#f9f9f9}}
@@ -341,23 +337,25 @@ def process_dl_mails(segregated_dl_emails):
 .err-banner ul{{margin:4px 0 0 0;padding-left:18px}}
 .err-banner li{{font-size:0.85rem;color:#555;word-break:break-all}}
 </style>"""
-        '</head>\n'
-        f'<body><h1>David Lloyd Bookings</h1>\n'
-        + error_banner +
-        f'<p>{render_events_table_html(_prep_display_records(df1.to_dict("records")), title="My bookings")}</p>\n'
-        '</body></html>'
-        )
+            '</head>\n'
+            f'<body><h1>David Lloyd Bookings</h1>\n'
+            + error_banner +
+            f'<p>{render_events_table_html(_prep_display_records(df1.to_dict("records")), title="My bookings")}</p>\n'
+            '</body></html>'
+            )
 
-    user, account, password=netrc.netrc().authenticators(host)
+        user, account, password=netrc.netrc().authenticators(host)
 
-    client=webdav4.client.Client(f'https://{host}', auth=(user,password))
-    html_bytesio = io.BytesIO(bookings_html.encode('utf-8'))
-    html_bytesio.seek(0)
-    client.upload_fileobj(html_bytesio, 'john/DavidLloydSchedule.html', overwrite=True)
-    print('HTML uploaded to WebDAV')
+        client=webdav4.client.Client(f'https://{host}', auth=(user,password))
+        html_bytesio = io.BytesIO(bookings_html.encode('utf-8'))
+        html_bytesio.seek(0)
+        client.upload_fileobj(html_bytesio, 'john/DavidLloydSchedule.html', overwrite=True)
+        print('HTML uploaded to WebDAV')
 
-    publish_dl_schedule(df1, now)
-    df1=df[df.end<now].sort_values('start')
+        publish_dl_schedule(df1, now)
+    else:
+        print('No booking changes — skipping HTML/notes update')
+
     booking_refs={x[booking_reference] for x in cleanup}
     booking_info=[]
     with gdata.gdata(os.sep.join([home, loc, '.booking_map2.gdbm'])) as booking_map:
