@@ -50,7 +50,7 @@ except ImportError:
 CLIENT_ID = os.environ.get('OUTLOOK_CLIENT_ID', '60da67f7-5fde-4e85-baf3-ab28d0c8e034')
 AUTHORITY = 'https://login.microsoftonline.com/consumers'
 TOKEN_ENDPOINT = 'https://login.microsoftonline.com/consumers/oauth2/v2.0/token'
-SCOPES = ['https://outlook.office.com/POP.AccessAsUser.All', 'offline_access']
+SCOPES = ['https://outlook.office.com/POP.AccessAsUser.All']
 SCOPE = SCOPES[0]  # used in netrc hint text
 WEBDAV_BASE = '/var/www/webdav/outlook_tokens'
 FLOW_STORE = '/tmp/outlook_wsgi_flows'
