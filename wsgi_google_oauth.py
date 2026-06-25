@@ -1,39 +1,39 @@
 #!/usr/bin/env python3
 """
 WSGI OAuth handler for Google token renewal via authorization code flow.
+Runs as the web server user (www-data).
 
 GET /authorize-google/          → redirect to Google consent page
-GET /authorize-google/callback  → exchange code, write ~/.google_token.json
+GET /authorize-google/callback  → exchange code, write token to WebDAV
 
-Apache SetEnv (goes into per-request WSGI environ, not os.environ):
-  REDIRECT_URI         Callback URL registered in Google Cloud Console
-  GOOGLE_TOKEN_FILE    Path to write token JSON  (default: /home/john/.google_token.json)
-  GOOGLE_SECRETS_FILE  Path to ansible secrets.yml (default: /home/john/ansible/secrets.yml)
+Credentials come from Apache SetEnv (in /etc/apache2/conf-available/wsgi-google-oauth.conf,
+not checked into git):
+  GOOGLE_CLIENT_ID      OAuth2 client ID
+  GOOGLE_CLIENT_SECRET  OAuth2 client secret
+  REDIRECT_URI          Callback URL registered in Google Cloud Console
+
+Token is written to /var/www/webdav/google_tokens/google_token.json.
+google_services.py fetches it from WebDAV on RefreshError to self-heal.
 
 Register https://www.critchley.biz/authorize-google/callback as an authorized
-redirect URI in Google Cloud Console under the OAuth 2.0 client credentials.
+redirect URI in Google Cloud Console (client: "John Critchley experiments").
 """
 
 import json
 import logging
 import logging.handlers
 import os
-import re
 import secrets
 import urllib.parse
 import urllib.request
 from datetime import datetime, timedelta, timezone
 
-import yaml
-
 # ---------------------------------------------------------------------------
-# Logging — file + stderr so errors appear in Apache log too
+# Logging — file + stderr (stderr → Apache error log)
 # ---------------------------------------------------------------------------
-
-LOG_FILE = '/tmp/wsgi_google_oauth.log'
 
 _log_handler = logging.handlers.RotatingFileHandler(
-    LOG_FILE, maxBytes=1_000_000, backupCount=3
+    '/tmp/wsgi_google_oauth.log', maxBytes=1_000_000, backupCount=3
 )
 _log_handler.setFormatter(logging.Formatter('%(asctime)s %(levelname)s %(message)s'))
 
@@ -41,7 +41,7 @@ logger = logging.getLogger('wsgi_google_oauth')
 logger.setLevel(logging.INFO)
 if not logger.handlers:
     logger.addHandler(_log_handler)
-    logger.addHandler(logging.StreamHandler())  # also → Apache error log
+    logger.addHandler(logging.StreamHandler())
 
 # ---------------------------------------------------------------------------
 # Config
@@ -53,51 +53,29 @@ SCOPES = [
     'https://www.googleapis.com/auth/drive',
 ]
 
-AUTH_URI  = 'https://accounts.google.com/o/oauth2/v2/auth'
-TOKEN_URI = 'https://oauth2.googleapis.com/token'
-
-STATE_DIR = '/tmp/google_auth_states'
-
-_DEFAULT_TOKEN_FILE   = '/home/john/.google_token.json'
-_DEFAULT_SECRETS_FILE = '/home/john/ansible/secrets.yml'
+AUTH_URI    = 'https://accounts.google.com/o/oauth2/v2/auth'
+TOKEN_URI   = 'https://oauth2.googleapis.com/token'
+STATE_DIR   = '/tmp/google_auth_states'
+WEBDAV_DIR  = '/var/www/webdav/google_tokens'
+WEBDAV_FILE = 'google_token.json'
 
 
-def _cfg(wsgi_environ, key, default):
-    """Read config from per-request WSGI environ (where Apache SetEnv lives)."""
+def _cfg(wsgi_environ, key, default=None):
+    """Read from per-request WSGI environ (where Apache SetEnv values live)."""
     return wsgi_environ.get(key) or os.environ.get(key) or default
 
 
 # ---------------------------------------------------------------------------
-# Secrets / token helpers
+# Token helpers
 # ---------------------------------------------------------------------------
 
-def _load_secrets(wsgi_environ):
-    path = _cfg(wsgi_environ, 'GOOGLE_SECRETS_FILE', _DEFAULT_SECRETS_FILE)
-    logger.info('Loading secrets from %s', path)
-    with open(path, encoding='utf-8') as f:
-        return yaml.safe_load(f)
-
-
-def _save_refresh_token(wsgi_environ, refresh_token):
-    path = _cfg(wsgi_environ, 'GOOGLE_SECRETS_FILE', _DEFAULT_SECRETS_FILE)
-    with open(path, encoding='utf-8') as f:
-        text = f.read()
-    text = re.sub(
-        r'^(google_refresh_token:\s*).*$',
-        f'google_refresh_token: "{refresh_token}"',
-        text, flags=re.MULTILINE,
-    )
-    with open(path, 'w', encoding='utf-8') as f:
-        f.write(text)
-    logger.info('Refresh token saved to %s', path)
-
-
-def _write_token_file(wsgi_environ, token_data):
-    path = _cfg(wsgi_environ, 'GOOGLE_TOKEN_FILE', _DEFAULT_TOKEN_FILE)
+def _write_webdav_token(token_data):
+    os.makedirs(WEBDAV_DIR, exist_ok=True)
+    path = os.path.join(WEBDAV_DIR, WEBDAV_FILE)
     with open(path, 'w') as f:
         json.dump(token_data, f, indent=2)
-    os.chmod(path, 0o600)
-    logger.info('Token written to %s', path)
+    os.chmod(path, 0o644)
+    logger.info('Token written to WebDAV at %s', path)
     return path
 
 
@@ -123,7 +101,7 @@ def _consume_state(state):
 # ---------------------------------------------------------------------------
 
 def _redirect_uri(wsgi_environ):
-    override = _cfg(wsgi_environ, 'REDIRECT_URI', None)
+    override = _cfg(wsgi_environ, 'REDIRECT_URI')
     if override:
         return override
     scheme = wsgi_environ.get('wsgi.url_scheme', 'https')
@@ -206,10 +184,12 @@ def application(environ, start_response):
     try:
         # ── Initiate flow ──────────────────────────────────────────────────
         if path in ('/', ''):
-            sec   = _load_secrets(environ)
+            client_id = _cfg(environ, 'GOOGLE_CLIENT_ID')
+            if not client_id:
+                raise RuntimeError('GOOGLE_CLIENT_ID not set — check Apache config')
             state = secrets.token_urlsafe(16)
             redir = _redirect_uri(environ)
-            url   = _auth_url(sec['google_client_id'], redir, state)
+            url   = _auth_url(client_id, redir, state)
             _store_state(state)
             logger.info('Redirecting to Google consent, redirect_uri=%s', redir)
             start_response('302 Found', [('Location', url), ('Cache-Control', 'no-store')])
@@ -238,9 +218,13 @@ def application(environ, start_response):
                 return [_page('Bad Request', '<h1>Google Auth</h1>'
                               '<p class="err">Invalid or expired state. Try again.</p>')]
 
-            sec    = _load_secrets(environ)
+            client_id     = _cfg(environ, 'GOOGLE_CLIENT_ID')
+            client_secret = _cfg(environ, 'GOOGLE_CLIENT_SECRET')
+            if not client_id or not client_secret:
+                raise RuntimeError('GOOGLE_CLIENT_ID / GOOGLE_CLIENT_SECRET not set')
+
             redir  = _redirect_uri(environ)
-            result = _exchange_code(sec['google_client_id'], sec['google_client_secret'], redir, code)
+            result = _exchange_code(client_id, client_secret, redir, code)
 
             if 'error' in result:
                 msg = result.get('error_description', result['error'])
@@ -249,29 +233,26 @@ def application(environ, start_response):
                 return [_page('Token Error', f'<h1>Google Auth</h1>'
                               f'<p class="err">Token exchange failed: {_h(msg)}</p>')]
 
-            access_token  = result['access_token']
-            refresh_token = result.get('refresh_token', '')
             expires_in    = result.get('expires_in', 3600)
-            expiry = (datetime.now(timezone.utc) + timedelta(seconds=expires_in)).isoformat()
+            expiry        = (datetime.now(timezone.utc) + timedelta(seconds=expires_in)).isoformat()
 
             token_data = {
-                'token':         access_token,
-                'refresh_token': refresh_token,
+                'token':         result['access_token'],
+                'refresh_token': result.get('refresh_token', ''),
                 'token_uri':     TOKEN_URI,
-                'client_id':     sec['google_client_id'],
-                'client_secret': sec['google_client_secret'],
+                'client_id':     client_id,
+                'client_secret': client_secret,
                 'scopes':        SCOPES,
                 'expiry':        expiry,
             }
-            token_path = _write_token_file(environ, token_data)
-            if refresh_token:
-                _save_refresh_token(environ, refresh_token)
+            webdav_path = _write_webdav_token(token_data)
+            logger.info('Auth complete. Token at %s', webdav_path)
 
-            logger.info('Auth complete. Token saved to %s', token_path)
             body_html = f"""
 <h1>Google Auth</h1>
 <p class="ok">&#10003; Token saved successfully.</p>
-<p>Written to: <code>{_h(token_path)}</code></p>
+<p>Written to: <code>{_h(webdav_path)}</code></p>
+<p>Accessible via WebDAV — popit3 will pick it up on next run.</p>
 <p>Scopes authorised:</p>
 <pre>{_h(chr(10).join(SCOPES))}</pre>
 <p style="margin-top:20px;">You can close this tab.</p>
@@ -300,6 +281,8 @@ def application(environ, start_response):
 if __name__ == '__main__':
     from wsgiref.simple_server import make_server
     port = 8025
+    os.environ.setdefault('GOOGLE_CLIENT_ID',     'YOUR_CLIENT_ID')
+    os.environ.setdefault('GOOGLE_CLIENT_SECRET', 'YOUR_CLIENT_SECRET')
+    os.environ.setdefault('REDIRECT_URI', f'http://localhost:{port}/callback')
     print(f'Google OAuth dev server on http://localhost:{port}/')
-    print(f'Set REDIRECT_URI=http://localhost:{port}/callback')
     make_server('127.0.0.1', port, application).serve_forever()
