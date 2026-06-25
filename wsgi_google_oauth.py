@@ -74,20 +74,20 @@ def _cfg(wsgi_environ, key, default):
 def _load_secrets(wsgi_environ):
     path = _cfg(wsgi_environ, 'GOOGLE_SECRETS_FILE', _DEFAULT_SECRETS_FILE)
     logger.info('Loading secrets from %s', path)
-    with open(path) as f:
+    with open(path, encoding='utf-8') as f:
         return yaml.safe_load(f)
 
 
 def _save_refresh_token(wsgi_environ, refresh_token):
     path = _cfg(wsgi_environ, 'GOOGLE_SECRETS_FILE', _DEFAULT_SECRETS_FILE)
-    with open(path) as f:
+    with open(path, encoding='utf-8') as f:
         text = f.read()
     text = re.sub(
         r'^(google_refresh_token:\s*).*$',
         f'google_refresh_token: "{refresh_token}"',
         text, flags=re.MULTILINE,
     )
-    with open(path, 'w') as f:
+    with open(path, 'w', encoding='utf-8') as f:
         f.write(text)
     logger.info('Refresh token saved to %s', path)
 
